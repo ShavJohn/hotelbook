@@ -8,8 +8,12 @@ import './bootstrap';
 import { createApp } from 'vue';
 import router from './router'
 import store from './vuex'
+import i18n from './i18n'
 import VueProgressBar from "@aacassandra/vue3-progressbar";
 import VueLazyLoad from "vue3-lazyload";
+
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
 
 const options = {
     color: 'rgba(6, 41, 217, 0.7)',
@@ -52,6 +56,10 @@ import App from './views/App';
 Vue.component('App', App);
 Vue.component("font-awesome-icon", FontAwesomeIcon)
 
+Vue.component('VueDatePicker', VueDatePicker);
+
+window.i18n = i18n;
+
 Vue.use(router)
 Vue.use(VueProgressBar, options)
 Vue.use(VueLazyLoad, {
@@ -61,6 +69,7 @@ Vue.use(VueLazyLoad, {
     attempt: 1,
 })
 Vue.use(store)
+Vue.use(i18n)
 
 /**
  * The following block of code may be used to automatically register your

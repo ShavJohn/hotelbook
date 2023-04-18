@@ -1,0 +1,35 @@
+.responsive-background-image {
+    height: 100vh;
+    background-size: cover;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .responsive-background-image {
+        height: 90vh;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .responsive-background-image {
+        height: 80vh;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .responsive-background-image {
+        height: 70vh;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .responsive-background-image {
+        height: 60vh;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .responsive-background-image {
+        height: 55vh;
+    }
+}

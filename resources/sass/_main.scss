@@ -1,0 +1,57 @@
+*, root {
+    margin: 0;
+    padding: 0;
+}
+
+.btn {
+    cursor: pointer;
+    text-transform: uppercase;
+    border: none;
+    letter-spacing: 3px;
+    padding: 10px 35px;
+    font-size: 14px;
+}
+
+.app-container {
+    min-height: 70vh;
+}
+
+.strip-list-style {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        font-size: 16px;
+        margin-bottom: 20px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.line-height-25 {
+    line-height: 25px;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background: $dark-yellow;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+}
