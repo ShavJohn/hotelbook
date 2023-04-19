@@ -2,7 +2,7 @@
     <div class="padding-gigantic bg-light-black hb-flex hb-justify-content-between hb-align-items-end hb-flex-wrap">
         <div class="booking-button-container">
             <label  class="cursor-pointer">
-                <p>Check-In</p>
+                <p>{{ $t('check_in') }}</p>
                 <Datepicker class="cursor-pointer" v-model="startDate" inputFormat="dd MMM" :lowerLimit="today"></Datepicker>
             </label>
 
@@ -10,7 +10,7 @@
 
         <div class="booking-button-container">
             <label class="cursor-pointer">
-                <p>Check-Out</p>
+                <p>{{ $t('check_out')}}</p>
                 <Datepicker class="cursor-pointer" v-model="endDate" inputFormat="dd MMM" :lowerLimit="endDate"></Datepicker>
             </label>
 
@@ -18,7 +18,7 @@
 
         <div class="booking-button-container">
             <label>
-                <p>Guests</p>
+                <p>{{ $t('guests') }}</p>
                 <div class="booking-button hb-flex hb-justify-content-between">
                     {{ guestCount }}
                     <div>
@@ -35,7 +35,7 @@
 
         <div class="booking-button-container">
             <div class="booking-button cursor-pointer">
-                <button class="cursor-pointer">Check Availability</button>
+                <button class="cursor-pointer">{{ $t('check_availability') }}</button>
             </div>
         </div>
     </div>

@@ -2864,3 +2864,18 @@
     margin-bottom: 0;
   }
 }
+.header-menu-animation {
+  animation-name: header-appear;
+  animation-duration: 1s;
+}
+
+@keyframes header-appear {
+  0% {
+    transform: translateY(-130px);
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+    transform: translatey(0);
+  }
+}

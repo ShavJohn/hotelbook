@@ -5,5 +5,9 @@
     "about": "About",
     "rooms": "Rooms",
     "contact": "Contact",
-    "book_now": "Book Now"
+    "book_now": "Book Now",
+    "check_in": "Check-In",
+    "check_out": "check-out",
+    "guests": "Guests",
+    "check_availability": "Check Availability"
 }
