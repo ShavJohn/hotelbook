@@ -1,6 +1,6 @@
 .header-menu-animation {
     animation-name: header-appear;
-    animation-duration: 1s;
+    animation-duration: 2s;
 }
 
 @keyframes header-appear {
@@ -12,5 +12,18 @@
     100% {
         opacity: 1;
         transform: translatey(0);
+    }
+}
+
+
+@keyframes booking-inputs-appear {
+    0% {
+        opacity: 0.1;
+        transform: translateY(160%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

@@ -3,13 +3,13 @@
     transition: background-color .5s ease-in-out;
 
     &:hover {
-        background-color: #b18b3e;
+        background-color: $darker-yellow;
     }
 }
 
-.bg-light-black { background-color: #373737; }
-.bg-dark-black { background-color: #2d2d2d; }
+.bg-light-black { background-color: $light-black; }
+.bg-dark-black { background-color: $dark-black; }
 
-.color-white { color: white; }
+.color-white { color: $white; }
 
 

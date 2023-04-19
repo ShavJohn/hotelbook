@@ -2362,7 +2362,7 @@
   position: absolute;
   top: 0;
   z-index: 999;
-  background: rgb(255, 255, 255);
+  background: #fff;
   background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
   width: 100%;
 }
@@ -2380,6 +2380,11 @@
   font-weight: bolder;
   margin-right: 30px;
   cursor: pointer;
+  transition: color 1s;
+}
+.header-style .header-menu li:hover {
+  transition: color 1s;
+  color: #cebaa0;
 }
 .header-style .header-menu li:last-of-type {
   margin-right: 0;
@@ -2419,9 +2424,41 @@
   transition: background-color 0.5s ease-in-out;
 }
 
+.header-text-animation {
+  position: absolute;
+  bottom: -40px;
+  font-size: 69px;
+  left: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #fff;
+  animation-name: write-text;
+  animation-duration: 2s;
+}
+
+@keyframes write-text {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
 *, root {
   margin: 0;
   padding: 0;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
 }
 
 .btn {
@@ -2497,7 +2534,7 @@
 }
 
 .color-white {
-  color: white;
+  color: #fff;
 }
 
 .font-10 {
@@ -2808,7 +2845,7 @@
 .booking-button-container .v3dp__datepicker {
   background-color: transparent;
   border-radius: 0;
-  color: #ffffff;
+  color: #fff;
   padding: 15px 20px;
   line-height: 18px;
   border: 1px solid #fff;
@@ -2830,7 +2867,7 @@
   --vdp-current-date-font-weight: bold;
   --vdp-elem-font-size: 0.8em;
   --vdp-elem-border-radius: 3px;
-  --vdp-divider-color: #d5d9e0;
+  --vdp-divider-color: $white-grey;
 }
 .booking-button-container .v3dp__datepicker input {
   background-color: transparent;
@@ -2866,7 +2903,7 @@
 }
 .header-menu-animation {
   animation-name: header-appear;
-  animation-duration: 1s;
+  animation-duration: 2s;
 }
 
 @keyframes header-appear {
@@ -2877,5 +2914,62 @@
   100% {
     opacity: 1;
     transform: translatey(0);
+  }
+}
+@keyframes booking-inputs-appear {
+  0% {
+    opacity: 0.1;
+    transform: translateY(160%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.loader_bg {
+  position: fixed;
+  z-index: 999999;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  border: 0 solid transparent;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+
+.loader::before, .loader::after {
+  content: "";
+  border: 1em solid #C19B77;
+  border-radius: 50%;
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  animation: loader 2s linear infinite;
+  opacity: 0;
+}
+
+.loader::before {
+  animation-delay: 0.5s;
+}
+
+@keyframes loader {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
   }
 }
