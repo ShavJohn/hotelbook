@@ -1,6 +1,6 @@
 <template>
     <div class="header-style">
-        <div class="hb-flex hb-justify-content-between padding-large hb-align-items-center">
+        <div class="hb-flex hb-justify-content-between padding-large hb-align-items-center header-menu-animation">
             <div class="header-logo-styling">
                 <img src="http://www.nicdarkthemes.com/themes/hotel-inn/wp/demo/inn-suites/wp-content/uploads/sites/2/2022/01/logo-motela.png">
             </div>

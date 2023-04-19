@@ -12,8 +12,9 @@ import i18n from './i18n'
 import VueProgressBar from "@aacassandra/vue3-progressbar";
 import VueLazyLoad from "vue3-lazyload";
 
-import VueDatePicker from '@vuepic/vue-datepicker';
-import '@vuepic/vue-datepicker/dist/main.css'
+import moment from 'moment'
+
+import Datepicker from 'vue3-datepicker'
 
 const options = {
     color: 'rgba(6, 41, 217, 0.7)',
@@ -56,11 +57,12 @@ import App from './views/App';
 Vue.component('App', App);
 Vue.component("font-awesome-icon", FontAwesomeIcon)
 
-Vue.component('VueDatePicker', VueDatePicker);
+Vue.component('Datepicker', Datepicker);
 
 window.i18n = i18n;
 
 Vue.use(router)
+Vue.use(moment)
 Vue.use(VueProgressBar, options)
 Vue.use(VueLazyLoad, {
     preLoad: 1.3,
