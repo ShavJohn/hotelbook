@@ -2433,7 +2433,8 @@
   white-space: nowrap;
   color: #fff;
   animation-name: write-text;
-  animation-duration: 2s;
+  animation-duration: 3s;
+  animation-delay: 0.5s;
 }
 
 @keyframes write-text {
@@ -2441,7 +2442,7 @@
     width: 0;
   }
   100% {
-    width: 100%;
+    width: 650px;
   }
 }
 *, root {
