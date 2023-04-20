@@ -8,7 +8,8 @@ export default {
     data () {
         return {
             displayNumber: 0,
-            counter: false
+            counter: false,
+            animationStarted: false
         };
     },
     props: {
@@ -24,6 +25,7 @@ export default {
     },
     methods: {
         counterNumber() {
+            this.animationStarted = true
             clearInterval(this.counter);
             if (this.number === this.displayNumber) {
                 return;
@@ -35,25 +37,34 @@ export default {
                     this.displayNumber = this.number;
                     clearInterval(this.counter);
                 }
-            }.bind(this), 10);
+            }.bind(this), 50);
         },
         startAnimation() {
             let numberDisplay = document.getElementById('numberDisplay')
             let scrollReach = window.innerHeight
 
-            if(numberDisplay.getBoundingClientRect().top <= scrollReach) {
+            if(!this.animationStarted && numberDisplay.getBoundingClientRect().top <= scrollReach) {
                 if(this.number > 0) {
                     this.counterNumber()
                 }
-                if(Math.floor(this.displayNumber) === Math.floor(this.number)) {
+                if(this.animationStarted) {
                     window.removeEventListener('scroll', this.startAnimation)
                 }
             }
         }
     },
     mounted() {
-        window.addEventListener('scroll',  this.startAnimation)
+        let numberDisplay = document.getElementById('numberDisplay')
+        let scrollReach = window.innerHeight
 
+        if(numberDisplay.getBoundingClientRect().top <= scrollReach) {
+            if (this.number > 0) {
+                this.counterNumber()
+            }
+        }
+        if(!this.animationStarted) {
+            window.addEventListener('scroll',  this.startAnimation)
+        }
     }
 };
 </script>

@@ -1,5 +1,7 @@
 <template>
-    <span id="textDisplay">{{ displayText }}</span>
+    <div>
+        <h1 class="display-inline" id="textDisplay"></h1>
+    </div>
 </template>
 
 <script>
@@ -7,7 +9,8 @@ export default {
     name: "animate-text",
     data () {
         return {
-            displayText: '',
+            iteration: 0,
+            animationStarted: false
         };
     },
     props: {
@@ -17,35 +20,43 @@ export default {
         }
     },
     methods: {
-        typeText() {
-            this.text.split('').forEach(letter => {
-                console.log(letter)
-                let interval = setTimeout(function () {
-                    if(this.text.length <= this.displayText.length) {
-                        clearTimeout(interval)
-                    } else {
-                        this.displayText += letter
-                    }
-                }.bind(this), 1000);
-            })
+         typeText() {
+             this.animationStarted = true
+            if (this.iteration < this.text.length) {
+                document.getElementById("textDisplay").innerHTML += this.text.charAt(this.iteration);
+                document.getElementById("textDisplay").style.animation = 'blink-caret .5s step-end infinite'
+                this.iteration++;
+                setTimeout(this.typeText, 200);
+            } else {
+                setTimeout(() => {
+                    document.getElementById("textDisplay").style.removeProperty('animation')
+                }, 1000)
+
+            }
         },
         startAnimation() {
             let numberDisplay = document.getElementById('textDisplay')
             let scrollReach = window.innerHeight
 
-            if(numberDisplay.getBoundingClientRect().top <= scrollReach) {
-                if(this.text.length > 0) {
-                    this.typeText()
-                }
-                if(this.text.length === this.displayText.length) {
-                    window.removeEventListener('scroll', this.startAnimation)
-                }
+            if(!this.animationStarted && numberDisplay.getBoundingClientRect().top <= scrollReach) {
+                this.typeText()
             }
+            if(this.animationStarted) {
+                window.removeEventListener('scroll', this.startAnimation)
+            }
+
         }
+
     },
     mounted() {
-        window.addEventListener('scroll',  this.startAnimation)
-
+        let numberDisplay = document.getElementById('textDisplay')
+        let scrollReach = window.innerHeight
+        if(numberDisplay.getBoundingClientRect().top <= scrollReach) {
+            this.typeText()
+        }
+        if(!this.animationStarted) {
+            window.addEventListener('scroll',  this.startAnimation)
+        }
     }
 }
 </script>

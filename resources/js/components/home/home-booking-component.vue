@@ -56,6 +56,7 @@
                 today: today,
                 startDate: today,
                 endDate: tomorrow,
+                animationStarted: false
             }
         },
         watch: {
@@ -67,11 +68,12 @@
         },
         methods: {
             animateBookingInputs() {
+                this.animationStarted = true
                 let bookingInputs = document.getElementById('bookingInputs')
                 let bookingInputsContainer =  document.getElementById('bookingInputsContainer').getBoundingClientRect()
                 let scrollReach = window.innerHeight
 
-               if(bookingInputsContainer.top <= scrollReach) {
+               if(!this.animationStarted && bookingInputsContainer.top <= scrollReach) {
                    bookingInputs.style.animation = 'booking-inputs-appear 2s'
                    removeEventListener('scroll', this.animateBookingInputs)
                }
@@ -81,10 +83,15 @@
 
         },
         mounted() {
-            this.animateBookingInputs()
-            window.addEventListener('scroll',  () => {
+            let bookingInputsContainer =  document.getElementById('bookingInputsContainer').getBoundingClientRect()
+            let scrollReach = window.innerHeight
+
+            if(bookingInputsContainer.top <= scrollReach) {
                 this.animateBookingInputs()
-            })
+            }
+            if(!this.animationStarted) {
+                window.addEventListener('scroll',  this.animateBookingInputs)
+            }
         }
     }
 </script>

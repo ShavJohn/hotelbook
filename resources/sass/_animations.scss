@@ -27,3 +27,9 @@
         transform: translateY(0);
     }
 }
+
+
+@keyframes blink-caret {
+    from, to { border-right: 5px solid transparent; }
+    50% { border-right: 5px solid orange; }
+}

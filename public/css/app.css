@@ -155,6 +155,12 @@
   .hide-on-ipad {
     display: none !important;
   }
+  .header-text-styling {
+    bottom: -25px !important;
+  }
+  .header-text-styling h1 {
+    font-size: 49px !important;
+  }
 }
 @media screen and (max-width: 800px) {
   .hide-on-large-tablet {
@@ -2424,39 +2430,18 @@
   transition: background-color 0.5s ease-in-out;
 }
 
-.header-text-animation {
+.header-text-styling {
   position: absolute;
   bottom: -40px;
-  font-size: 69px;
   left: 30px;
   color: #fff;
   font-family: monospace;
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: 5px solid orange; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: 5px; /* Adjust as needed */
-  animation: typing 4s steps(30, end), blink-caret 1s step-end infinite;
+}
+.header-text-styling h1 {
+  font-size: 69px;
 }
 
-/* The typing effect */
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 80%;
-  }
-}
-/* The typewriter cursor effect */
-@keyframes blink-caret {
-  from, to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
-}
 *, root {
   margin: 0;
   padding: 0;
@@ -2472,6 +2457,10 @@
 
 .position-absolute {
   position: absolute;
+}
+
+.display-inline {
+  display: inline;
 }
 
 .btn {
@@ -2937,6 +2926,14 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes blink-caret {
+  from, to {
+    border-right: 5px solid transparent;
+  }
+  50% {
+    border-right: 5px solid orange;
   }
 }
 .loader_bg {

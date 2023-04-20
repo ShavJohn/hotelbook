@@ -17,6 +17,14 @@
     .hide-on-ipad {
         display: none !important;
     }
+
+    .header-text-styling {
+        bottom: -25px !important;
+
+        h1 {
+            font-size: 49px !important;
+        }
+    }
 }
 
 @media screen and (max-width: 800px) {
