@@ -45,14 +45,14 @@ export default {
                 if(this.number > 0) {
                     this.counterNumber()
                 }
-                removeEventListener('scroll', this.startAnimation)
+                if(Math.floor(this.displayNumber) === Math.floor(this.number)) {
+                    window.removeEventListener('scroll', this.startAnimation)
+                }
             }
         }
     },
     mounted() {
-        window.addEventListener('scroll',  () => {
-            this.startAnimation()
-        })
+        window.addEventListener('scroll',  this.startAnimation)
 
     }
 };
