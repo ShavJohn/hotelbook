@@ -1,0 +1,55 @@
+.about-us-post-image {
+    width: 48%;
+
+    img {
+        width: 100%;
+    }
+}
+
+.about-us-post-text {
+    width: 48%;
+
+    h2 {
+        font-size: 50px;
+        letter-spacing: 2px;
+        font-weight: 500;
+        margin-bottom: 30px;
+    }
+
+    p {
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+        word-spacing: 1px;
+    }
+
+    hr {
+        background-color: black;
+        height: 1px;
+        margin-bottom: 20px;
+    }
+}
+
+.number-squer {
+    position: absolute;
+    bottom: -50px;
+    left: -50px;
+    border: 10px solid $white;
+    background-color: $dark-yellow;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    span:first-of-type {
+        font-size: 60px;
+        color: $white;
+    }
+
+    &:last-child {
+        font-size: 20px;
+        color: $white;
+    }
+}

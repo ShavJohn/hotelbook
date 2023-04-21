@@ -1,17 +1,13 @@
 <template>
     <div class="padding-90">
-        <animate-number :number="200"/>
+        <about-us-post/>
     </div>
 </template>
 
 <script>
-import animateNumber from '../mainComponents/animate-number'
+import AboutUsPost from "./post-components/about-us-post";
 export default {
-    components: {animateNumber},
-    name: "home-posts"
+    name: "home-posts",
+    components: {AboutUsPost}
 }
 </script>
-
-<style scoped>
-
-</style>

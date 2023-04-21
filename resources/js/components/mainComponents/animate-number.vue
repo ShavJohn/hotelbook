@@ -37,7 +37,7 @@ export default {
                     this.displayNumber = this.number;
                     clearInterval(this.counter);
                 }
-            }.bind(this), 50);
+            }.bind(this), 100);
         },
         startAnimation() {
             let numberDisplay = document.getElementById('numberDisplay')
