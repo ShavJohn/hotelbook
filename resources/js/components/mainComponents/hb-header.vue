@@ -10,13 +10,25 @@
                 <li>{{ $t('rooms') }}</li>
                 <li>{{ $t('contact') }}</li>
             </ul>
-            <button class="btn bg-dark-yellow color-white font-bolder hide-on-large-tablet">{{ $t('book_now') }}</button>
+            <div class="hide-on-large-tablet">
+                <select class="language-dropdown">
+                    <option value="en">EN</option>
+                    <option value="ru">RU</option>
+                </select>
+                <button class="btn bg-dark-yellow color-white font-bolder">{{ $t('book_now') }}</button>
+            </div>
             <font-awesome-icon @click="openMenu = !openMenu" class="header-mobile-menu-icon color-white font-30 cursor-pointer" icon="fa-solid fa-bars" />
         </div>
         <div class="header-mobile-menu-container" :class="openMenu ? 'header-mobile-menu-open' : 'header-mobile-menu-close'">
             <div v-if="openMenu">
                 <div class="hb-flex hb-justify-content-end padding">
                     <font-awesome-icon @click="openMenu = !openMenu" class="color-white font-20 cursor-pointer" icon="fa-solid fa-xmark" />
+                </div>
+                <div class="padding">
+                    <select class="language-dropdown">
+                        <option value="en">EN</option>
+                        <option value="ru">RU</option>
+                    </select>
                 </div>
                 <ul class="header-mobile-menu-list">
                     <li>{{ $t('home') }}</li>

@@ -37,6 +37,19 @@
     }
 }
 
+.language-dropdown {
+    background-color: transparent;
+    border: none;
+    margin-right: 20px;
+    color: white;
+    font-size: 18px;
+    width: 70px;
+
+    & * {
+        color: $dark-yellow;
+    }
+}
+
 .header-mobile-menu-open {
     width: 250px;
     transition: width .5s ease-in-out;

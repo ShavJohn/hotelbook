@@ -1,0 +1,57 @@
+.service-title {
+    font-weight: 500;
+    font-size: 50px;
+}
+.service-component {
+    width: 31%;
+
+    .delimiter {
+        background-color: $dark-yellow;
+        height: 2px;
+        width: 50%;
+        margin-bottom: 5px;
+    }
+
+    h4 {
+        font-weight: 500;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+        color: $dark-yellow;
+    }
+
+    p {
+        line-height: 20px;
+        color: #aaaaaa;
+    }
+}
+
+
+@media screen and (max-width: 1240px) {
+    .service-component {
+        width: 48% !important;
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 840px) {
+    .service-component {
+        width: 100% !important;
+    }
+
+    .service-title {
+        font-size: 40px !important;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .service-title {
+        font-size: 30px !important;
+    }
+}
+
+
+@media screen and (max-width: 540px) {
+    .service-title {
+        font-size: 25px !important;
+    }
+}
