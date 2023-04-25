@@ -2783,13 +2783,13 @@
   }
 }
 .responsive-background-image {
-  height: 100vh;
+  height: 80vh;
   background-size: cover;
 }
 
 @media screen and (max-width: 1200px) {
   .responsive-background-image {
-    height: 90vh;
+    height: 80vh;
   }
 }
 @media screen and (max-width: 1000px) {
@@ -3032,4 +3032,147 @@
 .number-squer:last-child {
   font-size: 20px;
   color: #fff;
+}
+
+.home-rooms-component-container {
+  margin-top: 100px;
+}
+.home-rooms-component-container .all-rooms-btn {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.home-rooms-component-container .all-rooms-btn h1 {
+  font-size: 50px;
+  font-weight: 500;
+}
+.home-rooms-component-container .all-rooms-btn button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 40px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.home-rooms-component-container .all-rooms-btn button:hover {
+  transform: scale(1.1);
+}
+.home-rooms-component-container .rooms-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+.home-rooms-component-container .rooms-list-container .home-room-component-styling {
+  width: 32%;
+  overflow: hidden;
+  height: 250px;
+  position: relative;
+  transition: background-color 0.5s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.home-rooms-component-container .rooms-list-container .home-room-component-styling img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  z-index: -1;
+  transition: all 0.5s ease-in-out;
+}
+.home-rooms-component-container .rooms-list-container .home-room-component-styling .room-price {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  background-color: #C19B77;
+  padding: 5px 25px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.home-rooms-component-container .rooms-list-container .home-room-component-styling .room-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+.home-rooms-component-container .rooms-list-container .home-room-component-styling .room-info h3 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #fff;
+  text-shadow: 1px 1px 1px black;
+}
+.home-rooms-component-container .rooms-list-container .home-room-component-styling .room-info svg {
+  color: #fff;
+  font-size: 20px;
+}
+.home-rooms-component-container .rooms-list-container .home-room-component-styling .room-info span {
+  margin-left: 20px;
+  font-size: 18px;
+  color: #fff;
+}
+.home-rooms-component-container .rooms-list-container .home-room-component-styling:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.home-rooms-component-container .rooms-list-container .home-room-component-styling:hover img {
+  transform: scale(1.5);
+}
+
+@media screen and (max-width: 1240px) {
+  .home-room-component-styling {
+    width: 48% !important;
+  }
+  .home-room-component-styling:last-of-type {
+    margin-top: 30px;
+  }
+}
+@media screen and (max-width: 840px) {
+  .home-room-component-styling {
+    width: 100% !important;
+    margin-top: 30px;
+  }
+  .home-room-component-styling:first-of-type {
+    margin-top: 0 !important;
+  }
+  .home-rooms-component-container {
+    margin-top: 50px;
+  }
+  .home-rooms-component-container .all-rooms-btn h1 {
+    font-size: 40px;
+  }
+  .about-us-post-image {
+    width: 100% !important;
+  }
+  .about-us-post-text {
+    margin-top: 100px;
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 640px) {
+  .home-rooms-component-container .all-rooms-btn h1 {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 540px) {
+  .about-us-post-text h2 {
+    font-size: 30px;
+  }
+  .home-rooms-component-container .all-rooms-btn h1 {
+    font-size: 25px;
+  }
+  .home-rooms-component-container .all-rooms-btn button {
+    padding: 10px 30px;
+  }
+  .number-squer {
+    bottom: -25px;
+    left: -25px;
+    width: 150px;
+    height: 150px;
+  }
+  .number-squer span {
+    text-align: center;
+  }
 }
