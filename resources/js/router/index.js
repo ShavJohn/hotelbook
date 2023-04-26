@@ -10,9 +10,12 @@ import RoomFinishBooking from '../components/rooms/body-components/room-finish-b
 const routes = [
     { path: '/', component: Home, name: 'Home', meta: {title: 'Home'}},
     { path: '/rooms', component: Rooms, name: 'Rooms', meta: {title: 'Rooms'}, children : [
-            { path: '/room-search', component: RoomSearch, }
+            { path: '/room-search', component: RoomSearch, name: 'RoomSearch', meta: {title: 'Search Room'}},
+            { path: '/room-book', component: RoomBook, name: 'RoomBook', meta: {title: 'Book Room'}},
+            { path: '/room-checkout', component: RoomCheckout, name: 'RoomCheckout', meta: {title: 'Checkout Room'}},
+            { path: '/finishing-room-booking', component: RoomFinishBooking, name: 'RoomFinishBooking', meta: {title: 'Finish Room Booking'}}
         ]
-    }
+    },
 ]
 
 const router = createRouter({

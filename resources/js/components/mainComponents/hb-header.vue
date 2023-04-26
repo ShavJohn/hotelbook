@@ -6,7 +6,7 @@
             </div>
             <ul class="header-menu color-white hide-on-large-tablet">
                 <li @click="$router.push({name: 'Home'})">{{ $t('home') }}</li>
-                <li @click="$router.push({name: 'Rooms'})">{{ $t('rooms') }}</li>
+                <li @click="$router.push({name: 'RoomSearch'})">{{ $t('rooms') }}</li>
                 <li>{{ $t('about') }}</li>
                 <li>{{ $t('contact') }}</li>
             </ul>
@@ -31,9 +31,9 @@
                     </select>
                 </div>
                 <ul class="header-mobile-menu-list">
-                    <li>{{ $t('home') }}</li>
+                    <li @click="$router.push({name: 'Home'})">{{ $t('home') }}</li>
+                    <li @click="$router.push({name: 'RoomSearch'})">{{ $t('rooms') }}</li>
                     <li>{{ $t('about') }}</li>
-                    <li>{{ $t('rooms') }}</li>
                     <li>{{ $t('contact') }}</li>
                 </ul>
             </div>
