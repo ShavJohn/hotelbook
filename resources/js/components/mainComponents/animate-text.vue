@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="display-inline" id="textDisplay"></h1>
+        <h1 class="display-inline" id="textDisplay">{{ displayText }}</h1>
     </div>
 </template>
 
@@ -10,23 +10,38 @@ export default {
     data () {
         return {
             iteration: 0,
-            animationStarted: false
+            animationStarted: false,
+            displayText: '',
+            iterableText: ''
         };
     },
     props: {
         text: {
             type: String,
             required: true
+        },
+        displayTime: {
+            type: Number,
+            required: true,
+            default: 200
+        },
+    },
+    watch: {
+        iterableText(val) {
+            if(val !== this.text) {
+                this.typeText()
+            }
         }
     },
     methods: {
          typeText() {
              this.animationStarted = true
             if (this.iteration < this.text.length) {
-                document.getElementById("textDisplay").innerHTML += this.text.charAt(this.iteration);
+                this.iterableText = this.text
+                this.displayText += this.text.charAt(this.iteration);
                 document.getElementById("textDisplay").style.animation = 'blink-caret .5s step-end infinite'
                 this.iteration++;
-                setTimeout(this.typeText, 200);
+                setTimeout(this.typeText, this.displayTime);
             } else {
                 setTimeout(() => {
                     document.getElementById("textDisplay").style.removeProperty('animation')
@@ -35,10 +50,10 @@ export default {
             }
         },
         startAnimation() {
-            let numberDisplay = document.getElementById('textDisplay')
+            let textDisplay = document.getElementById('textDisplay')
             let scrollReach = window.innerHeight
 
-            if(!this.animationStarted && numberDisplay.getBoundingClientRect().top <= scrollReach) {
+            if(!this.animationStarted && textDisplay.getBoundingClientRect().top <= scrollReach) {
                 this.typeText()
             }
             if(this.animationStarted) {

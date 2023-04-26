@@ -15,13 +15,14 @@ export default {
     props: {
         number: {
             type: Number,
-            default: 0
-        }
-    },
-    watch: {
-        number (val) {
-
+            default: 0,
+            required: true
         },
+        animationTime: {
+            type: Number,
+            default: 100,
+            required: true
+        }
     },
     methods: {
         counterNumber() {
@@ -37,7 +38,7 @@ export default {
                     this.displayNumber = this.number;
                     clearInterval(this.counter);
                 }
-            }.bind(this), 100);
+            }.bind(this), this.animationTime);
         },
         startAnimation() {
             let numberDisplay = document.getElementById('numberDisplay')

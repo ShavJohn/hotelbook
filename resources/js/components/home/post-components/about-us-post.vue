@@ -3,7 +3,7 @@
         <div class="about-us-post-image position-relative">
             <img src="http://www.nicdarkthemes.com/themes/hotel-inn/wp/demo/inn-suites/wp-content/uploads/sites/2/2021/12/image-1.jpg">
             <div class="number-squer">
-                <animate-number :number="24"/>
+                <animate-number :number="24" :animation-time="100"/>
                 <span>Years of Experience</span>
             </div>
         </div>

@@ -2444,15 +2444,12 @@
 
 .header-text-styling {
   position: absolute;
-  bottom: -40px;
-  left: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
   color: #fff;
-  font-family: monospace;
-  letter-spacing: 5px; /* Adjust as needed */
-}
-.header-text-styling h1 {
-  font-size: 69px;
-  text-shadow: 1px 1px 1px black;
+  text-align: center;
 }
 
 *, root {
@@ -2797,6 +2794,8 @@
 .responsive-background-image {
   height: 80vh;
   background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 @media screen and (max-width: 1200px) {
@@ -3236,4 +3235,45 @@
   .service-title {
     font-size: 25px !important;
   }
+}
+.background-image-filter {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.booking-steps-indicator-container {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  justify-content: space-between;
+}
+.booking-steps-indicator-container .booking-steps-indicator {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+.booking-steps-indicator-container .booking-steps-indicator:last-of-type {
+  margin-right: 0;
+}
+.booking-steps-indicator-container .booking-steps-indicator .number-indicator {
+  border: 1px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: #fff;
+  margin-right: 20px;
+}
+.booking-steps-indicator-container .booking-steps-indicator .text-indicator {
+  color: #fff;
+}
+.booking-steps-indicator-container .active-indicator .number-indicator {
+  background-color: black !important;
+  border-color: black !important;
 }

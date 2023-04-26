@@ -89,14 +89,10 @@
 
 .header-text-styling {
     position: absolute;
-    bottom: -40px;
-    left: 30px;
-    color: #fff;
-    font-family: monospace;
-    letter-spacing: 5px; /* Adjust as needed */
-
-    h1 {
-        font-size: 69px;
-        text-shadow: 1px 1px 1px black;
-    }
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: $white;
+    text-align: center;
 }

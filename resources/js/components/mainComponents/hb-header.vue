@@ -5,9 +5,9 @@
                 <img src="http://www.nicdarkthemes.com/themes/hotel-inn/wp/demo/inn-suites/wp-content/uploads/sites/2/2022/01/logo-motela.png">
             </div>
             <ul class="header-menu color-white hide-on-large-tablet">
-                <li>{{ $t('home') }}</li>
+                <li @click="$router.push({name: 'Home'})">{{ $t('home') }}</li>
+                <li @click="$router.push({name: 'Rooms'})">{{ $t('rooms') }}</li>
                 <li>{{ $t('about') }}</li>
-                <li>{{ $t('rooms') }}</li>
                 <li>{{ $t('contact') }}</li>
             </ul>
             <div class="hide-on-large-tablet">
