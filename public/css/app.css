@@ -3290,6 +3290,13 @@
   background-color: #373737;
   align-content: space-between;
 }
+.left-menu .search-table .nights-count-styling {
+  color: #C19B77;
+  font-weight: bold;
+  font-size: 40px;
+  font-family: ui-rounded;
+  text-align: center;
+}
 .left-menu .search-table .date-square {
   width: 130px;
   height: 130px;
@@ -3304,6 +3311,19 @@
   text-align: center;
   color: white;
   text-transform: uppercase;
+}
+.left-menu .search-table .date-square .room-guest-count-container span {
+  color: #C19B77;
+  font-weight: bold;
+  font-size: 40px;
+  font-family: ui-rounded;
+}
+.left-menu .search-table .date-square .room-guest-count-btn {
+  display: flex;
+  margin-left: 20px;
+  flex-direction: column;
+  height: 50px;
+  justify-content: space-between;
 }
 
 .rooms-list {

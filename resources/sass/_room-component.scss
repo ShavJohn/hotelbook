@@ -10,6 +10,14 @@
         background-color: $light-black;
         align-content: space-between;
 
+        .nights-count-styling {
+            color: $dark-yellow;
+            font-weight: bold;
+            font-size: 40px;
+            font-family: ui-rounded;
+            text-align: center;
+        }
+
         .date-square {
             width: 130px;
             height: 130px;
@@ -24,6 +32,26 @@
                 text-align: center;
                 color: white;
                 text-transform: uppercase;
+            }
+
+            .room-guest-count-container {
+
+                span {
+                    color: $dark-yellow;
+                    font-weight: bold;
+                    font-size: 40px;
+                    font-family: ui-rounded;
+                }
+            }
+
+            .room-guest-count-btn {
+                display: flex;
+                margin-left: 20px;
+                flex-direction: column;
+                height: 50px;
+                justify-content: space-between;
+
+
             }
         }
     }
