@@ -3303,7 +3303,7 @@
   background-color: #313131;
   padding: 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
   flex-direction: column;
 }
@@ -3483,4 +3483,42 @@
 }
 .rooms-booking-button-container button {
   background-color: transparent;
+}
+
+.dropdown-container {
+  color: #C19B77;
+  position: relative;
+  text-align: center;
+}
+.dropdown-container .dropdown-button {
+  background-color: transparent;
+  border: none;
+  padding: 10px 20px;
+  color: #C19B77;
+}
+.dropdown-container .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 0;
+  transition: height 0.5s ease-in-out;
+  overflow: auto;
+  background-color: #373737;
+  box-shadow: 0 0 1px 0 rgba(136, 136, 136, 0.69);
+  z-index: 99;
+}
+.dropdown-container .dropdown-menu li {
+  padding: 10px 20px;
+  transition: background-color 0.5s ease-in-out;
+  cursor: pointer;
+}
+.dropdown-container .dropdown-menu li:hover {
+  background-color: #4d4d4d;
+}
+.dropdown-container .dropdown-menu .active {
+  background-color: #4d4d4d;
+}
+.dropdown-container .open {
+  height: auto;
+  max-height: 200px;
 }

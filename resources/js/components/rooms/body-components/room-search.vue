@@ -7,13 +7,28 @@
                     <div class="rooms-booking-button-container">
                         <Datepicker class="cursor-pointer" v-model="startDate" inputFormat="dd MMM" :lowerLimit="today"></Datepicker>
                     </div>
+                    <drop-down>
+                        <template #button>
+                            {{ checkinHour }}
+                        </template>
+                        <template #dropdown-menu>
+                            <li v-for="hour in availableHours" @click="checkinHour = hour" :class="checkinHour === hour && 'active'">{{ hour}}</li>
+                        </template>
+                    </drop-down>
                 </div>
                 <div class="date-square">
                     <span>Check-Out</span>
                     <div class="rooms-booking-button-container">
                         <Datepicker class="cursor-pointer" v-model="endDate" inputFormat="dd MMM" :lowerLimit="endDayLimit"></Datepicker>
-                        
                     </div>
+                    <drop-down>
+                        <template #button>
+                            {{ checkoutHour }}
+                        </template>
+                        <template #dropdown-menu>
+                            <li v-for="hour in availableHours" @click="checkoutHour = hour" :class="checkoutHour === hour && 'active'">{{ hour}}</li>
+                        </template>
+                    </drop-down>
                 </div>
                 <div class="date-square">
                     <span>Guests</span>
@@ -43,6 +58,7 @@
 
 <script>
 import RoomComponent from "./room-components/room-component";
+import DropDown from "../../mainComponents/drop-down";
 const today = new Date();
 today.setHours(0, 0, 0, 0)
 const tomorrow = new Date();
@@ -50,7 +66,7 @@ tomorrow.setHours(0, 0, 0, 0)
 tomorrow.setDate(today.getDate()+1);
 export default {
     name: "room-search",
-    components: {RoomComponent},
+    components: {DropDown, RoomComponent},
     data() {
         return {
             guestCount: 1,
@@ -58,12 +74,16 @@ export default {
             startDate: today,
             endDate: tomorrow,
             endDayLimit: tomorrow,
+            checkinHour: 12,
+            checkoutHour: 12,
+            availableHours: [10,11,12,13,14,15,16,17]
         }
     },
     watch: {
         startDate(val) {
             if(val >= this.endDate) {
-                this.endDate = this.endDate.setDate(val.getDate()+1)
+                let currentDate = new Date(val)
+                this.endDate = currentDate.setDate(currentDate.getDate()+1)
                 this.endDate = new Date(this.endDate)
             }
 

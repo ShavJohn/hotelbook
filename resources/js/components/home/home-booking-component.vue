@@ -6,17 +6,13 @@
                     <p>{{ $t('check_in') }}</p>
                     <Datepicker class="cursor-pointer" v-model="startDate" inputFormat="dd MMM" :lowerLimit="today"></Datepicker>
                 </label>
-
             </div>
-
             <div class="booking-button-container">
                 <label class="cursor-pointer">
                     <p>{{ $t('check_out')}}</p>
                     <Datepicker class="cursor-pointer" v-model="endDate" inputFormat="dd MMM" :lowerLimit="endDayLimit"></Datepicker>
                 </label>
-
             </div>
-
             <div class="booking-button-container">
                 <label>
                     <p>{{ $t('guests') }}</p>
@@ -65,7 +61,8 @@
         watch: {
             startDate(val) {
                 if(val >= this.endDate) {
-                    this.endDate = this.endDate.setDate(val.getDate()+1)
+                    let currentDate = new Date(val)
+                    this.endDate = currentDate.setDate(currentDate.getDate()+1)
                     this.endDate = new Date(this.endDate)
                 }
                 this.endDayLimit = this.endDayLimit.setDate(this.startDate.getDate()+1)

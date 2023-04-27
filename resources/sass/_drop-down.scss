@@ -1,0 +1,46 @@
+.dropdown-container {
+    color: $dark-yellow;
+    position: relative;
+    text-align: center;
+
+    .dropdown-button {
+        background-color: transparent;
+        border: none;
+        padding: 10px 20px;
+        color: $dark-yellow;
+
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        height: 0;
+        transition: height 0.5s ease-in-out;
+        overflow: auto;
+        background-color: $light-black;
+        box-shadow: 0 0 1px 0 rgba(136, 136, 136, 0.69);
+        z-index: 99;
+
+        li {
+            padding: 10px 20px;
+            transition: background-color .5s ease-in-out;
+            cursor: pointer;
+
+
+            &:hover {
+                background-color: #4d4d4d;
+            }
+        }
+
+        .active {
+            background-color: #4d4d4d;
+        }
+    }
+
+
+    .open {
+        height: auto;
+        max-height: 200px;
+    }
+}
