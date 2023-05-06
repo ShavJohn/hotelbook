@@ -1,5 +1,7 @@
 <template>
-
+    <div>
+        Room Book
+    </div>
 </template>
 
 <script>

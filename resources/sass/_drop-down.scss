@@ -1,4 +1,6 @@
 .dropdown-container {
+    display: flex;
+    justify-content: center;
     color: $dark-yellow;
     position: relative;
     text-align: center;
@@ -8,7 +10,8 @@
         border: none;
         padding: 10px 20px;
         color: $dark-yellow;
-
+        font-size: 35px;
+        font-weight: 600;
     }
 
     .dropdown-menu {
@@ -26,7 +29,8 @@
             padding: 10px 20px;
             transition: background-color .5s ease-in-out;
             cursor: pointer;
-
+            font-size: 35px;
+            font-weight: 600;
 
             &:hover {
                 background-color: #4d4d4d;

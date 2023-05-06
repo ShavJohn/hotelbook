@@ -3,10 +3,10 @@
         <div class="background-image-filter">
             <animate-text class="header-text-styling" text="Rooms" :display-time="500"/>
             <div class="booking-steps-indicator-container">
-                <div v-for="(text, index) in bookingIndicators" class="booking-steps-indicator"
-                     :class="activeIndicator === index+1 && 'active-indicator'">
+                <div v-for="(bookingIndicator, index) in bookingIndicators" class="booking-steps-indicator"
+                     :class="bookingIndicator.routeName === $route.name && 'active-indicator'">
                     <div class="number-indicator"><span>{{ index+1 }}</span></div>
-                    <span class="text-indicator">{{ text }}</span>
+                    <span class="text-indicator">{{ bookingIndicator.name }}</span>
                 </div>
             </div>
         </div>

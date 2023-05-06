@@ -44,7 +44,7 @@ export default {
             let numberDisplay = document.getElementById('numberDisplay')
             let scrollReach = window.innerHeight
 
-            if(!this.animationStarted && numberDisplay.getBoundingClientRect().top <= scrollReach) {
+            if(!this.animationStarted && numberDisplay && numberDisplay.getBoundingClientRect().top <= scrollReach) {
                 if(this.number > 0) {
                     this.counterNumber()
                 }
@@ -58,7 +58,7 @@ export default {
         let numberDisplay = document.getElementById('numberDisplay')
         let scrollReach = window.innerHeight
 
-        if(numberDisplay.getBoundingClientRect().top <= scrollReach) {
+        if(numberDisplay && numberDisplay.getBoundingClientRect().top <= scrollReach) {
             if (this.number > 0) {
                 this.counterNumber()
             }

@@ -1,8 +1,12 @@
-.left-menu {
-    width: 32%;
+.room-body-padding {
+    padding: 70px;
+}
 
-    .search-table {
-        min-height: 370px;
+.left-menu {
+    width: 38%;
+    margin-right: 30px;
+
+    .date-table {
         padding: 30px;
         display: flex;
         justify-content: space-between;
@@ -19,14 +23,27 @@
         }
 
         .date-square {
-            width: 130px;
-            height: 130px;
+            min-height: 130px;
             background-color: #313131;
             padding: 20px;
             display: flex;
-            justify-content: space-between;
             flex-wrap: wrap;
             flex-direction: column;
+
+            .dropdown-button {
+                display: flex;
+                align-items: center;
+
+                .clock-icon {
+                    margin-right: 10px;
+                    font-size: 20px;
+                }
+
+                .dropdown-icon {
+                    margin-left: 20px;
+                    font-size: 14px;
+                }
+            }
 
             span {
                 text-align: center;
@@ -58,10 +75,14 @@
 }
 
 .rooms-list {
-    width: 64%;
+    width: 58%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 
     .booking-room-container {
-        width: 400px;
+        width: 48%;
+        margin-bottom: 30px;
 
         .room-image {
             height: 250px;
@@ -160,7 +181,65 @@
     }
 }
 
+.rooms-booking-chosen-container {
+    display: flex;
+    flex-direction: column;
+
+    .chosen-room-image-container {
+        position: relative;
+        height: 250px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .chosen-room-image-filter {
+            top: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+    }
+
+
+
+    .rooms-booking-chosen-dates-container {
+        display: flex;
+        flex-direction: column;
+
+        .booking-day {
+            color:  $dark-yellow !important;
+            font-size: 60px;
+        }
+
+        .booking-month-year {
+            font-size: 14px;
+        }
+
+        .booking-weekday {
+            font-size: 14px;
+        }
+    }
+}
+
 .rooms-booking-button-container {
+    display: flex;
+    justify-content: center;
+
+
+    .dropdown-calendar {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        span {
+            color: $dark-yellow !important;
+        }
+    }
+
     p {
         color: $white;
         margin-bottom: 20px;
@@ -195,7 +274,7 @@
     }
 
     .v3dp__popout {
-        top: 50px
+        top: 100%;
     }
 
     .v3dp__datepicker {
@@ -230,7 +309,7 @@
             font-weight: bold;
             width: 100%;
             text-align: center;
-            font-size: 40px;
+            font-size: 60px;
             font-family: ui-rounded;
 
             &:focus-visible {
@@ -245,5 +324,280 @@
 
     button {
         background-color: transparent;
+    }
+}
+
+.navigation-btn-container {
+    width: 100%;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+
+        li {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $dark-yellow;
+            color: $white;
+            margin-right: 20px;
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+
+        .active-room-page {
+            background-color: black;
+        }
+    }
+}
+
+.rooms-filter-container {
+    padding: 30px;
+
+    label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        span:first-of-type {
+            font-size: 30px;
+        }
+
+        span:last-of-type {
+            font-size: 25px;
+            color: #4a5568;
+        }
+    }
+
+    input[type="range"] {
+        /* removing default appearance */
+        -webkit-appearance: none;
+        appearance: none;
+        /* creating a custom design */
+        width: 100%;
+        margin: 30px 0;
+        cursor: pointer;
+        outline: none;
+        /*  slider progress trick  */
+        overflow: hidden;
+        border-radius: 16px;
+    }
+
+    /* Track: webkit browsers */
+    input[type="range"]::-webkit-slider-runnable-track {
+        height: 5px;
+        background: #ccc;
+        border-radius: 16px;
+    }
+
+    /* Track: Mozilla Firefox */
+    input[type="range"]::-moz-range-track {
+        height: 5px;
+        background: #ccc;
+        border-radius: 16px;
+    }
+
+    /* Thumb: webkit */
+    input[type="range"]::-webkit-slider-thumb {
+        /* removing default appearance */
+        -webkit-appearance: none;
+        appearance: none;
+        /* creating a custom design */
+        height: 15px;
+        width: 15px;
+        background-color: #373737;
+        border: 2px solid #373737;
+        /*  slider progress trick  */
+        box-shadow: -407px 0 0 400px #373737;
+    }
+
+
+    /* Thumb: Firefox */
+    input[type="range"]::-moz-range-thumb {
+        height: 20px;
+        width: 20px;
+        background-color: #373737;
+        border: 1px solid #373737;
+        /*  slider progress trick  */
+        box-shadow: -407px 0 0 400px #373737;
+    }
+
+
+    .room-features-container {
+        button {
+            background: transparent;
+            border: navajowhite;
+            font-size: 30px;
+            font-family: auto;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            span {
+                font-size: 30px;
+            }
+
+            svg {
+                font-size: 15px;
+                color: #4a5568;
+            }
+        }
+
+        .room-features-menu {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            height: 0;
+            transition: height 1s ease-in-out;
+            overflow: hidden;
+
+            li {
+                display: flex;
+                width: 50%;
+                margin-bottom: 10px;
+
+                label {
+
+                }
+
+                input {
+                    width: 15px;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .open-features-menu {
+            height: 300px;
+            transition: height 1s ease-in-out;
+        }
+    }
+}
+
+@media screen and (min-width: 1450px) {
+    .date-square {
+        width: 38%;
+    }
+}
+
+
+@media screen and (max-width: 1490px) {
+    .room-body-padding {
+        padding: 60px;
+    }
+}
+
+@media screen and (max-width: 1450px) {
+    .date-square {
+        width: 100%;
+        margin-bottom: 30px;
+
+        &:last-of-type {
+            margin-bottom: 0 !important;
+        }
+    }
+}
+
+
+@media screen and (max-width: 1390px) {
+    .left-menu {
+        width: 48%;
+    }
+
+    .date-square {
+        width: 40% ;
+        margin-bottom: 0;
+    }
+
+    .rooms-list {
+        width: 48%;
+        justify-content: center;
+    }
+
+    .rooms-list {
+        .booking-room-container {
+            width: 100%;
+        }
+    }
+
+
+    .booking-steps-indicator-container {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .date-square {
+        width: 100% ;
+        margin-bottom: 30px;
+
+        &:last-of-type {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .booking-steps-indicator-container {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 840px) {
+    .booking-steps-indicator-container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 870px) {
+    .rooms-list {
+        width: 47%;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .room-body-padding {
+        padding: 0px;
+    }
+
+    .date-square {
+        width: 100% ;
+        margin-bottom: 30px;
+
+        &:last-of-type {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .left-menu {
+        width: 100%;
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    .rooms-list {
+        width: 100%;
+        justify-content: center;
+        padding: 30px;
+
+        .booking-room-container {
+            width: 100%;
+        }
+    }
+
+    .booking-steps-indicator-container {
+        flex-wrap: wrap;
+
+        .booking-steps-indicator {
+            width: 48%;
+            margin-bottom: 20px;
+            margin-right: 0 !important;
+        }
     }
 }

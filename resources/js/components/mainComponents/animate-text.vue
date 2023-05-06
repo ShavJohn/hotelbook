@@ -53,7 +53,7 @@ export default {
             let textDisplay = document.getElementById('textDisplay')
             let scrollReach = window.innerHeight
 
-            if(!this.animationStarted && textDisplay.getBoundingClientRect().top <= scrollReach) {
+            if(!this.animationStarted && textDisplay && textDisplay.getBoundingClientRect().top <= scrollReach) {
                 this.typeText()
             }
             if(this.animationStarted) {
@@ -66,7 +66,7 @@ export default {
     mounted() {
         let numberDisplay = document.getElementById('textDisplay')
         let scrollReach = window.innerHeight
-        if(numberDisplay.getBoundingClientRect().top <= scrollReach) {
+        if(numberDisplay && numberDisplay.getBoundingClientRect().top <= scrollReach) {
             this.typeText()
         }
         if(!this.animationStarted) {

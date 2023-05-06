@@ -62,7 +62,6 @@ Vue.component('Datepicker', Datepicker);
 window.i18n = i18n;
 
 Vue.use(router)
-Vue.use(moment)
 Vue.use(VueProgressBar, options)
 Vue.use(VueLazyLoad, {
     preLoad: 1.3,
@@ -72,6 +71,8 @@ Vue.use(VueLazyLoad, {
 })
 Vue.use(store)
 Vue.use(i18n)
+
+window.moment = moment
 
 /**
  * The following block of code may be used to automatically register your

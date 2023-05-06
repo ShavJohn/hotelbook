@@ -73,10 +73,10 @@
             animateBookingInputs() {
                 this.animationStarted = true
                 let bookingInputs = document.getElementById('bookingInputs')
-                let bookingInputsContainer =  document.getElementById('bookingInputsContainer').getBoundingClientRect()
+                let bookingInputsContainer =  document.getElementById('bookingInputsContainer')
                 let scrollReach = window.innerHeight
 
-               if(!this.animationStarted && bookingInputsContainer.top <= scrollReach) {
+               if(!this.animationStarted && bookingInputsContainer && bookingInputsContainer.getBoundingClientRect().top <= scrollReach) {
                    bookingInputs.style.animation = 'booking-inputs-appear 2s'
                    removeEventListener('scroll', this.animateBookingInputs)
                }
@@ -86,10 +86,10 @@
 
         },
         mounted() {
-            let bookingInputsContainer =  document.getElementById('bookingInputsContainer').getBoundingClientRect()
+            let bookingInputsContainer =  document.getElementById('bookingInputsContainer')
             let scrollReach = window.innerHeight
 
-            if(bookingInputsContainer.top <= scrollReach) {
+            if(bookingInputsContainer && bookingInputsContainer.getBoundingClientRect().top <= scrollReach) {
                 this.animateBookingInputs()
             }
             if(!this.animationStarted) {
