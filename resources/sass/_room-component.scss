@@ -14,12 +14,49 @@
         background-color: $light-black;
         align-content: space-between;
 
+        .your-reservation {
+            width: 100%;
+            margin-bottom: 30px;
+            text-align: center;
+
+            span {
+                font-size: 20px;
+                color: white;
+            }
+        }
+
         .nights-count-styling {
             color: $dark-yellow;
             font-weight: bold;
             font-size: 40px;
             font-family: ui-rounded;
             text-align: center;
+        }
+
+        .total-mount-of-reservation {
+            width: 100%;
+            min-height: 130px;
+            background-color: #313131;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            margin-top: 30px;
+            justify-content: space-around;
+
+            span {
+                color: white;
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            span:first-of-type {
+
+            }
+
+            span:last-of-type {
+                font-size: 50px;
+            }
         }
 
         .date-square {
@@ -69,6 +106,100 @@
                 justify-content: space-between;
 
 
+            }
+        }
+    }
+}
+
+.room-book-container {
+    width: 58%;
+
+    .extra-services-container {
+
+
+        h2 {
+            font-size: 35px;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+
+            li {
+                width: 50%;
+                margin-bottom: 20px;
+
+                input {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+
+.booked-room-inputs-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .booked-room-input {
+        display: flex;
+        flex-direction: column;
+        width: 49%;
+        position: relative;
+        margin-bottom: 20px;
+
+        label {
+            margin-bottom: 15px;
+        }
+
+        input {
+            padding: 10px 20px;
+            border: none;
+            background: #eee7e7;
+
+            &:focus-visible {
+                outline: none;
+            }
+        }
+
+        .input-delimiter {
+            height: 3px;
+            width: 0;
+            background-color: $dark-yellow;
+            transform: translateX(-50%);
+            left: 50%;
+            position: absolute;
+            bottom: 0;
+            transition: width .5s ease-in-out;
+        }
+
+        input:focus + .input-delimiter {
+            width: 100%;
+            transition: width .5s ease-in-out;
+        }
+    }
+
+    .text-area {
+        width: 100%;
+
+        textarea {
+            height: 150px;
+            resize: none;
+            padding: 10px 20px;
+            border: none;
+            background: #eee7e7;
+
+            &:focus-visible {
+                outline: none;
+            }
+
+            &:focus + .input-delimiter {
+                width: 100%;
+                transition: width .5s ease-in-out;
             }
         }
     }
@@ -522,6 +653,12 @@
         justify-content: center;
     }
 
+    .room-book-container {
+        width: 48%;
+        justify-content: center;
+
+    }
+
     .rooms-list {
         .booking-room-container {
             width: 100%;
@@ -559,6 +696,10 @@
     .rooms-list {
         width: 47%;
     }
+
+    .room-book-container {
+        width: 47%;
+    }
 }
 
 @media screen and (max-width: 720px) {
@@ -588,7 +729,13 @@
 
         .booking-room-container {
             width: 100%;
+            justify-content: center;
+            padding: 30px;
         }
+    }
+
+    .room-book-container {
+        width: 100%;
     }
 
     .booking-steps-indicator-container {

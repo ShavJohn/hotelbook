@@ -5,6 +5,9 @@
             <div class="chosen-room-image-filter"></div>
         </div>
         <div class="date-table">
+            <div class="your-reservation">
+                <span>Your Reservation</span>
+            </div>
             <div class="date-square hb-justify-content-between margin-bottom-large">
                 <span>Check-In</span>
                 <div class="rooms-booking-chosen-dates-container">
@@ -30,6 +33,10 @@
             <div class="date-square hb-justify-content-around">
                 <span>Nights</span>
                 <b class="nights-count-styling">{{ parseInt((endDate - startDate) / (1000 * 60 * 60 * 24), 10) }}</b>
+            </div>
+            <div class="total-mount-of-reservation">
+                <span>Total</span>
+                <span>50 $</span>
             </div>
         </div>
     </div>
