@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home'
 import Rooms from '../views/Rooms';
+import Room from '../views/Room'
 
 import RoomSearch from '../components/rooms/body-components/room-search'
 import RoomBook from '../components/rooms/body-components/room-book'
@@ -16,6 +17,7 @@ const routes = [
             { path: '/finishing-room-booking', component: RoomFinishBooking, name: 'RoomFinishBooking', meta: {title: 'Finish Room Booking'}}
         ]
     },
+    { path: '/rooms/:room', component: Room, name: 'Room', meta: {title: 'room'} },
 ]
 
 const router = createRouter({
@@ -24,7 +26,16 @@ const router = createRouter({
 })
 
 router.beforeEach(async (toRoute, fromRoute, next) => {
-    window.document.title = toRoute.meta && toRoute.meta.title ? toRoute.meta.title : 'Home';
+    if(toRoute.meta && toRoute.meta.title) {
+        if(Object.keys(toRoute.params).length) {
+            let metaData = toRoute.params[toRoute.meta.title].replace('-', ' ')
+            window.document.title = metaData.toUpperCase()
+        } else {
+            window.document.title = toRoute.meta.title
+        }
+    } else {
+        window.document.title = 'Home'
+    }
     next()
 })
 

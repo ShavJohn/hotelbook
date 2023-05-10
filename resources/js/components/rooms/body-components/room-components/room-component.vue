@@ -23,7 +23,7 @@
                 <div class="feature-icons">
 
                 </div>
-                <button>Full Info ></button>
+                <button><router-link :to="{ name: 'Room', params: { room: 'single-suit'}}">Full Info </router-link></button>
             </div>
         </div>
     </div>
