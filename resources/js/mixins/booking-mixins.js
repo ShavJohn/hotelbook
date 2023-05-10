@@ -36,6 +36,8 @@ export default {
             bookingPrice: 300,
             openFeaturesMenu: false,
             openServicesMenu: false,
+            paymentMethod: 'creditCard',
+            cardData: '',
             roomFeatures: [
                 {
                     name: 'Wi-Fi',
