@@ -3,8 +3,11 @@
 }
 
 .left-menu {
-    width: 38%;
     margin-right: 30px;
+}
+
+.left-menu, .right-menu {
+    width: 38%;
 
     .date-table {
         padding: 30px;
@@ -225,7 +228,7 @@
     cursor: pointer;
 }
 
-.rooms-list {
+.rooms-list, .rooms-page-item {
     width: 58%;
     display: flex;
     justify-content: space-between;
@@ -732,17 +735,17 @@
 
 
 @media screen and (max-width: 1390px) {
-    .left-menu {
-        width: 48%;
+    .left-menu, .right-menu {
+        width: 48% !important;
     }
 
     .date-square {
-        width: 40% ;
+        width: 40%;
         margin-bottom: 0;
     }
 
-    .rooms-list {
-        width: 48%;
+    .rooms-list, .rooms-page-item {
+        width: 48% !important;
         justify-content: center;
     }
 
@@ -798,6 +801,56 @@
 }
 
 @media screen and (max-width: 870px) {
+
+    .rooms-booking-chosen-container {
+        margin-top: 30px;
+    }
+
+    .room-book-container {
+        padding: 30px;
+    }
+
+    .room-page-body {
+        padding: 0px;
+        flex-direction: column-reverse;
+    }
+
+    .room-body-padding {
+        padding: 0px;
+    }
+
+    .date-square {
+        width: 100% ;
+        margin-bottom: 30px;
+
+        &:last-of-type {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .room-book-container {
+        width: 100%;
+    }
+
+    .left-menu, .right-menu {
+        width: 100% !important;
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    .rooms-list, .rooms-page-item {
+        width: 100% !important;
+        justify-content: center;
+        padding: 30px;
+
+        .booking-room-container {
+            width: 100%;
+            justify-content: center;
+            padding: 30px;
+        }
+    }
+
+
     .rooms-list {
         width: 47%;
     }
@@ -822,48 +875,6 @@
 }
 
 @media screen and (max-width: 720px) {
-    .rooms-booking-chosen-container {
-        margin-top: 30px;
-    }
-
-    .room-book-container {
-        padding: 30px;
-    }
-
-    .room-body-padding {
-        padding: 0px;
-    }
-
-    .date-square {
-        width: 100% ;
-        margin-bottom: 30px;
-
-        &:last-of-type {
-            margin-bottom: 0 !important;
-        }
-    }
-
-    .left-menu {
-        width: 100%;
-        justify-content: center;
-        margin-right: 0;
-    }
-
-    .rooms-list {
-        width: 100%;
-        justify-content: center;
-        padding: 30px;
-
-        .booking-room-container {
-            width: 100%;
-            justify-content: center;
-            padding: 30px;
-        }
-    }
-
-    .room-book-container {
-        width: 100%;
-    }
 
     .booking-steps-indicator-container {
         flex-wrap: wrap;
