@@ -4112,3 +4112,124 @@
 .slider-container button:last-of-type {
   right: 20px;
 }
+
+.contact-body {
+  padding: 90px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.contact-body .map-container {
+  width: 48%;
+  margin-right: 30px;
+}
+.contact-body .map-container iframe {
+  width: 100%;
+}
+.contact-body .contact-us-inputs {
+  width: 48%;
+}
+.contact-body .contact-us-inputs .contact-us-input {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 20px;
+}
+.contact-body .contact-us-inputs .contact-us-input label {
+  margin-bottom: 15px;
+}
+.contact-body .contact-us-inputs .contact-us-input input {
+  padding: 10px 20px;
+  border: none;
+  background: #eee7e7;
+}
+.contact-body .contact-us-inputs .contact-us-input input:focus-visible {
+  outline: none;
+}
+.contact-body .contact-us-inputs .contact-us-input .input-delimiter {
+  height: 3px;
+  width: 0;
+  background-color: #C19B77;
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+  bottom: 0;
+  transition: width 0.5s ease-in-out;
+}
+.contact-body .contact-us-inputs .contact-us-input input:focus + .input-delimiter {
+  width: 100%;
+  transition: width 0.5s ease-in-out;
+}
+.contact-body .contact-us-inputs .text-area {
+  width: 100%;
+}
+.contact-body .contact-us-inputs .text-area textarea {
+  height: 150px;
+  resize: none;
+  padding: 10px 20px;
+  border: none;
+  background: #eee7e7;
+}
+.contact-body .contact-us-inputs .text-area textarea:focus-visible {
+  outline: none;
+}
+.contact-body .contact-us-inputs .text-area textarea:focus + .input-delimiter {
+  width: 100%;
+  transition: width 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 1000px) {
+  .map-container {
+    width: 100% !important;
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+  .contact-us-inputs {
+    width: 100% !important;
+  }
+}
+.about-body-container {
+  padding: 90px;
+}
+
+.login-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-container .login-inputs {
+  width: 48%;
+}
+.login-container .login-inputs .login-input {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 20px;
+}
+.login-container .login-inputs .login-input label {
+  margin-bottom: 15px;
+}
+.login-container .login-inputs .login-input input {
+  padding: 10px 20px;
+  border: none;
+  background: #eee7e7;
+}
+.login-container .login-inputs .login-input input:focus-visible {
+  outline: none;
+}
+.login-container .login-inputs .login-input .input-delimiter {
+  height: 3px;
+  width: 0;
+  background-color: #C19B77;
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+  bottom: 0;
+  transition: width 0.5s ease-in-out;
+}
+.login-container .login-inputs .login-input input:focus + .input-delimiter {
+  width: 100%;
+  transition: width 0.5s ease-in-out;
+}

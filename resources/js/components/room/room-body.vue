@@ -3,6 +3,18 @@
         <div class="rooms-page-item">
             <h2>Single Suit</h2>
             <slider :images="images"/>
+            <div class="room-ditaiels-container">
+                <font-awesome-icon icon="fa-solid fa-user" />
+                <span>{{ guestCount }}</span>
+            </div>
+            <div class="room-info-container">
+                <p>
+
+                </p>
+            </div>
+            <div class="room-service-container">
+
+            </div>
         </div>
         <div class="right-menu">
             <room-date-table/>
@@ -18,6 +30,7 @@ export default {
     components: {Slider, RoomDateTable},
     data() {
         return {
+            guestCount: 5,
             images: [
                 'https://static.theprint.in/wp-content/uploads/2022/10/Hotel.jpg?compress=true&quality=80&w=376&dpr=2.6',
                 'https://www.gannett-cdn.com/-mm-/05b227ad5b8ad4e9dcb53af4f31d7fbdb7fa901b/c=0-64-2119-1259/local/-/media/USATODAY/USATODAY/2014/08/13/1407953244000-177513283.jpg',

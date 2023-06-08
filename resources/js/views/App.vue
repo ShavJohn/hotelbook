@@ -3,11 +3,11 @@
         <div class="loader_bg" v-show="loader">
             <div class="loader"></div>
         </div>
-        <hb-header/>
+        <hb-header v-if="$route.name !== 'Login'"/>
         <div class="app-container">
             <router-view></router-view>
         </div>
-        <hb-footer/>
+        <hb-footer v-if="$route.name !== 'Login'"/>
     </div>
 </template>
 

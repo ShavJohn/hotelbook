@@ -1,10 +1,16 @@
 <template>
-
+    <div>
+        <about-header/>
+        <about-body/>
+    </div>
 </template>
 
 <script>
+import AboutHeader from "../components/about/about-header";
+import AboutBody from "../components/about/about-body";
 export default {
-    name: "About"
+    name: "About",
+    components: {AboutBody, AboutHeader}
 }
 </script>
 

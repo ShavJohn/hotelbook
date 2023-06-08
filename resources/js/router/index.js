@@ -2,6 +2,9 @@ import {createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home'
 import Rooms from '../views/Rooms';
 import Room from '../views/Room'
+import Contact from "../views/Contact";
+import About from "../views/About";
+import Login from "../views/Login"
 
 import RoomSearch from '../components/rooms/body-components/room-search'
 import RoomBook from '../components/rooms/body-components/room-book'
@@ -18,6 +21,9 @@ const routes = [
         ]
     },
     { path: '/rooms/:room', component: Room, name: 'Room', meta: {title: 'room'} },
+    { path: '/contact', component: Contact, name: 'Contact', meta: {title: 'Contact'}},
+    { path: '/about', component: About, name: 'About', meta: {title: 'About'}},
+    { path: '/login', component: Login, name: 'Login', meta: {title: 'Login'}}
 ]
 
 const router = createRouter({

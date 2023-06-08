@@ -7,8 +7,8 @@
             <ul class="header-menu color-white hide-on-large-tablet">
                 <li @click="$router.push({name: 'Home'})">{{ $t('home') }}</li>
                 <li @click="$router.push({name: 'RoomSearch'})">{{ $t('rooms') }}</li>
-                <li>{{ $t('about') }}</li>
-                <li>{{ $t('contact') }}</li>
+                <li @click="$router.push({name: 'About'})">{{ $t('about') }}</li>
+                <li @click="$router.push({name: 'Contact'})">{{ $t('contact') }}</li>
             </ul>
             <div class="hide-on-large-tablet">
                 <select class="language-dropdown">
