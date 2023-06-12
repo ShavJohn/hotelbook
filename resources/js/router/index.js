@@ -1,4 +1,6 @@
 import {createRouter, createWebHistory } from 'vue-router'
+import store from '../vuex'
+
 import Home from '../views/Home'
 import Rooms from '../views/Rooms';
 import Room from '../views/Room'
@@ -42,7 +44,14 @@ router.beforeEach(async (toRoute, fromRoute, next) => {
     } else {
         window.document.title = 'Home'
     }
-    next()
+
+    if(toRoute.name === 'Login') {
+        if(store.getters['auth/authUserGetter'] && store.getters['auth/accessTokenGetter']) {
+            return  next({name: 'Home'})
+        }
+    }
+
+    return next()
 })
 
 export default router

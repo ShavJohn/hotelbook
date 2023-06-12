@@ -24,6 +24,11 @@ export default {
             loader: true
         }
     },
+    computed: {
+        authUser() {
+            return this.$store.getters['auth/authUserGetter']
+        },
+    },
     methods: {
         getGeneralData() {
             setTimeout(() => {

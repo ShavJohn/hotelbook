@@ -4191,7 +4191,10 @@
   padding: 90px;
 }
 
-.login-container {
+.login-page-container {
+  height: 100vh;
+}
+.login-page-container .login-inputs-container {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -4199,27 +4202,51 @@
   justify-content: center;
   align-items: center;
 }
-.login-container .login-inputs {
-  width: 48%;
+.login-page-container .login-inputs-container .login-inputs {
+  width: 25%;
+  background-color: #373737;
+  padding: 40px;
+  border-radius: 30px;
 }
-.login-container .login-inputs .login-input {
+.login-page-container .login-inputs-container .login-inputs h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
+}
+.login-page-container .login-inputs-container .login-inputs .login-logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.login-page-container .login-inputs-container .login-inputs .login-logo-container .login-logo {
+  width: 100px;
+}
+.login-page-container .login-inputs-container .login-inputs .login-input {
   display: flex;
   flex-direction: column;
   position: relative;
   margin-bottom: 20px;
 }
-.login-container .login-inputs .login-input label {
+.login-page-container .login-inputs-container .login-inputs .login-input label {
   margin-bottom: 15px;
+  color: white;
 }
-.login-container .login-inputs .login-input input {
+.login-page-container .login-inputs-container .login-inputs .login-input input {
   padding: 10px 20px;
   border: none;
-  background: #eee7e7;
+  background: transparent;
+  color: white;
 }
-.login-container .login-inputs .login-input input:focus-visible {
+.login-page-container .login-inputs-container .login-inputs .login-input input:focus-visible {
   outline: none;
 }
-.login-container .login-inputs .login-input .input-delimiter {
+.login-page-container .login-inputs-container .login-inputs .login-input input::-moz-placeholder {
+  color: wheat;
+}
+.login-page-container .login-inputs-container .login-inputs .login-input input::placeholder {
+  color: wheat;
+}
+.login-page-container .login-inputs-container .login-inputs .login-input .input-delimiter {
   height: 3px;
   width: 0;
   background-color: #C19B77;
@@ -4229,7 +4256,16 @@
   bottom: 0;
   transition: width 0.5s ease-in-out;
 }
-.login-container .login-inputs .login-input input:focus + .input-delimiter {
+.login-page-container .login-inputs-container .login-inputs .login-input input:focus + .input-delimiter {
   width: 100%;
   transition: width 0.5s ease-in-out;
+}
+.login-page-container .login-inputs-container .login-inputs .login-btn {
+  padding: 5px 50px;
+  font-size: 18px;
+  border-radius: 20px;
+  background-color: #C19B77;
+  color: white;
+  border: double;
+  cursor: pointer;
 }
