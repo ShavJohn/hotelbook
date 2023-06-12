@@ -1,0 +1,23 @@
+.admin-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    position: relative;
+    padding: 20px 30px;
+
+    .logout-btn {
+        display: flex;
+        align-items: center;
+        padding: 5px 30px;
+        font-size: 18px;
+        border-radius: 20px;
+        background-color: $dark-yellow;
+        color: white;
+        border: double;
+        cursor: pointer;
+
+        svg {
+            margin-right: 15px;
+        }
+    }
+}

@@ -2366,7 +2366,6 @@
 }
 .header-style {
   position: absolute;
-  top: 0;
   z-index: 999;
   background: #fff;
   background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
@@ -4268,4 +4267,26 @@
   color: white;
   border: double;
   cursor: pointer;
+}
+
+.admin-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 20px 30px;
+}
+.admin-header-container .logout-btn {
+  display: flex;
+  align-items: center;
+  padding: 5px 30px;
+  font-size: 18px;
+  border-radius: 20px;
+  background-color: #C19B77;
+  color: white;
+  border: double;
+  cursor: pointer;
+}
+.admin-header-container .logout-btn svg {
+  margin-right: 15px;
 }

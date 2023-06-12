@@ -22,6 +22,7 @@ Route::group(['middleware' => 'api'], function() {
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('/check-auth', 'App\Http\Controllers\Auth\AuthController@checkAuth');
 
+        Route::post('/logout', 'App\Http\Controllers\Auth\AuthController@logOut');
     });
 
 });
