@@ -21,6 +21,9 @@ export default {
     methods: {
         logout() {
             this.$store.dispatch('auth/logOut').then(res => {
+                if(res.data.success){
+                    this.$router.push({name: 'Home'})
+                }
                 this.$emit('alert', {
                     'type': res.data.type,
                     'message': res.data.message

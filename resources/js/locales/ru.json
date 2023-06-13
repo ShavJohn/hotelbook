@@ -1,13 +1,13 @@
 {
-    "en": "EN",
-    "ru": "RU",
-    "home": "Home",
-    "about": "About",
-    "rooms": "Rooms",
-    "contact": "Contact",
-    "book_now": "Book Now",
-    "check_in": "Check-In",
-    "check_out": "check-out",
-    "guests": "Guests",
-    "check_availability": "Check Availability"
+    "en": "АНГ",
+    "ru": "РУС",
+    "home": "Главная страница",
+    "about": "о нас",
+    "rooms": "Номера",
+    "contact": "Контакт",
+    "book_now": "Забронируйте сейчас",
+    "check_in": "Регистрироваться",
+    "check_out": "Выезд ",
+    "guests": "Гости",
+    "check_availability": "Проверить наличие свободных мест"
 }

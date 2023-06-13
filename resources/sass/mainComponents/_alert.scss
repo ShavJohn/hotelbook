@@ -1,0 +1,30 @@
+.alert-component {
+    z-index: 9999999;
+    position: fixed;
+    bottom: 100px;
+    left: 100px;
+    background: white;
+    padding: 30px 50px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 0px 0px 15px 1px #eee;
+}
+
+.open-alert {
+    left: 20px;
+    transition: left 1s;
+}
+
+.close-alert {
+    left: -1500px;
+    transition: left 1s;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: darkred;
+}

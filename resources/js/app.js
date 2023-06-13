@@ -17,12 +17,12 @@ import moment from 'moment'
 import Datepicker from 'vue3-datepicker'
 
 const options = {
-    color: 'rgba(6, 41, 217, 0.7)',
+    color: '#b18b3e',
     failedColor: '#874b4b',
     thickness: '5px',
     transition: {
         speed: '0.5s',
-        opacity: '0.6s',
+        opacity: '0.8s',
         termination: 300
     },
     autoRevert: true,

@@ -30,6 +30,12 @@
                     </button>
                 </li>
                 <li>
+                    <button @click="$router.push({name: 'AdminRooms'})">
+                        <font-awesome-icon icon="fa-solid fa-bed" />
+                        Rooms
+                    </button>
+                </li>
+                <li>
                     <button>
                         <font-awesome-icon icon="fa-solid fa-gear" />
                         Settings

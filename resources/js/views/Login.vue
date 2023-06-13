@@ -39,13 +39,16 @@ export default {
                 if(res.data.success){
                     this.$router.push({name: 'Home'})
                 }
-                this.$emit('alert', {
+
+                this.$store.dispatch('alert/alertResponse', {
                     'type': res.data.type,
+                    'status': res.status,
                     'message': res.data.message
                 })
             }).catch(err => {
-                this.$emit('alert', {
+                this.$store.dispatch('alert/alertResponse', {
                     'type': err.data.type,
+                    'status': err.status,
                     'message': err.data.message
                 })
             })

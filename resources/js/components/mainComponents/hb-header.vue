@@ -11,7 +11,7 @@
                 <li @click="$router.push({name: 'Contact'})">{{ $t('contact') }}</li>
             </ul>
             <div class="hide-on-large-tablet">
-                <select class="language-dropdown">
+                <select class="language-dropdown" v-model="locale" @change="changeLang()">
                     <option value="en">EN</option>
                     <option value="ru">RU</option>
                 </select>
@@ -46,7 +46,17 @@ export default {
     name: "hb-header",
     data() {
         return {
-            openMenu: false
+            openMenu: false,
+            locale:  this.$i18n.locale,
+        }
+    },
+    methods: {
+        changeLang() {
+          this.$Progress.start()
+          this.$i18n.locale = this.locale
+
+          localStorage.setItem('leng', this.locale)
+          this.$Progress.finish()
         }
     },
     mounted() {

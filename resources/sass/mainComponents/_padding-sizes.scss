@@ -1,0 +1,279 @@
+//padding remover
+.strip-padding              { padding: 0 !important; }
+.strip-padding-top          { padding-top: 0 !important; }
+.strip-padding-bottom       { padding-bottom: 0 !important; }
+.strip-padding-left         { padding-left: 0 !important; }
+.strip-padding-right        { padding-right: 0 !important; }
+
+//padding top sizes
+.padding-top-micro          { padding-top: 5px !important; }
+.padding-top-small          { padding-top: 10px !important; }
+.padding-top-medium         { padding-top: 15px !important; }
+.padding-top                { padding-top: 20px !important; }
+.padding-top-big            { padding-top: 25px !important; }
+.padding-top-large          { padding-top: 30px !important; }
+.padding-top-very-big       { padding-top: 35px !important; }
+.padding-top-very-large     { padding-top: 40px !important; }
+.padding-top-gigantic       { padding-top: 50px !important; }
+
+//padding bottom sizes
+.padding-bottom-micro       { padding-bottom: 5px !important; }
+.padding-bottom-small       { padding-bottom: 10px !important; }
+.padding-bottom-medium      { padding-bottom: 15px !important; }
+.padding-bottom             { padding-bottom: 20px !important; }
+.padding-bottom-big         { padding-bottom: 25px !important; }
+.padding-bottom-large       { padding-bottom: 30px !important; }
+.padding-bottom-very-big    { padding-bottom: 35px !important; }
+.padding-bottom-very-large  { padding-bottom: 40px !important; }
+.padding-bottom-gigantic    { padding-bottom: 50px !important; }
+
+//padding left sizes
+.padding-left-micro         { padding-left: 5px !important; }
+.padding-left-small         { padding-left: 10px !important; }
+.padding-left-medium        { padding-left: 15px !important; }
+.padding-left               { padding-left: 20px !important; }
+.padding-left-big           { padding-left: 25px !important; }
+.padding-left-large         { padding-left: 30px !important; }
+.padding-left-very-big      { padding-left: 35px !important; }
+.padding-left-very-large    { padding-left: 40px !important; }
+.padding-left-gigantic      { padding-left: 50px !important; }
+.padding-left-80            { padding-left: 80px !important; }
+.padding-left-90            { padding-left: 90px !important; }
+
+//padding right sizes
+.padding-right-micro        { padding-right: 5px !important; }
+.padding-right-small        { padding-right: 10px !important; }
+.padding-right-medium       { padding-right: 15px !important; }
+.padding-right              { padding-right: 20px !important; }
+.padding-right-big          { padding-right: 25px !important; }
+.padding-right-large        { padding-right: 30px !important; }
+.padding-right-very-big     { padding-right: 35px !important; }
+.padding-right-very-large   { padding-right: 40px !important; }
+.padding-right-gigantic     { padding-right: 50px !important; }
+
+//padding vertical sizes
+.padding-vertical-micro         { padding-top: 5px !important; padding-bottom: 5px !important; }
+.padding-vertical-small         { padding-top: 10px !important; padding-bottom: 10px !important; }
+.padding-vertical-medium        { padding-top: 15px !important; padding-bottom: 15px !important; }
+.padding-vertical               { padding-top: 20px !important; padding-bottom: 20px !important; }
+.padding-vertical-big           { padding-top: 25px !important; padding-bottom: 25px !important; }
+.padding-vertical-large         { padding-top: 30px !important; padding-bottom: 30px !important; }
+.padding-vertical-very-big      { padding-top: 35px !important; padding-bottom: 35px !important; }
+.padding-vertical-very-large    { padding-top: 40px !important; padding-bottom: 40px !important; }
+.padding-vertical-gigantic      { padding-top: 50px !important; padding-bottom: 50px !important; }
+.padding-vertical-80            { padding-top: 80px !important; padding-bottom: 80px !important; }
+.padding-vertical-90            { padding-top: 90px !important; padding-bottom: 90px !important; }
+
+//padding horizontal sizes
+.padding-horizontal-micro       { padding-left: 5px !important; padding-right: 5px !important; }
+.padding-horizontal-small       { padding-left: 10px !important; padding-right: 10px !important; }
+.padding-horizontal-medium      { padding-left: 15px !important; padding-right: 15px !important; }
+.padding-horizontal             { padding-left: 20px !important; padding-right: 20px !important; }
+.padding-horizontal-big         { padding-left: 25px !important; padding-right: 25px !important; }
+.padding-horizontal-large       { padding-left: 30px !important; padding-right: 30px !important; }
+.padding-horizontal-very-big    { padding-left: 35px !important; padding-right: 35px !important; }
+.padding-horizontal-very-large  { padding-left: 40px !important; padding-right: 40px !important; }
+.padding-horizontal-gigantic    { padding-left: 50px !important; padding-right: 50px !important; }
+.padding-horizontal-80          { padding-left: 80px !important; padding-right: 80px !important; }
+.padding-horizontal-90          { padding-left: 90px !important; padding-right: 90px !important; }
+
+//padding sizes
+.padding-micro       { padding: 5px !important; }
+.padding-small       { padding: 10px !important; }
+.padding-medium      { padding: 15px !important; }
+.padding             { padding: 20px !important; }
+.padding-big         { padding: 25px !important; }
+.padding-large       { padding: 30px !important; }
+.padding-very-big    { padding: 35px !important; }
+.padding-very-large  { padding: 40px !important; }
+.padding-gigantic    { padding: 50px !important; }
+.padding-80          { padding: 80px !important; }
+.padding-90          { padding: 90px !important;}
+.padding-120         { padding: 120px !important;}
+
+
+//Laptop
+@media screen and ( max-width: 1140px){
+    //padding remover
+    .strip-padding-laptop               { padding: 0 !important; }
+    .strip-padding-top-laptop            { padding-top: 0 !important; }
+    .strip-padding-bottom-laptop        { padding-bottom: 0 !important; }
+    .strip-padding-left-laptop          { padding-left: 0 !important; }
+    .strip-padding-right-laptop         { padding-right: 0 !important; }
+    .strip-padding-vertical-laptop      { padding-top: 0px !important; padding-bottom: 0px !important; }
+    .strip-padding-horizontal-laptop    { padding-left: 0px !important; padding-right: 0px !important; }
+
+    //padding top sizes
+    .padding-top-micro-laptop           { padding-top: 5px !important; }
+    .padding-top-small-laptop           { padding-top: 10px !important; }
+    .padding-top-medium-laptop          { padding-top: 15px !important; }
+    .padding-top-laptop                 { padding-top: 20px !important; }
+    .padding-top-big-laptop             { padding-top: 25px !important; }
+    .padding-top-large-laptop           { padding-top: 30px !important; }
+    .padding-top-very-big-laptop        { padding-top: 35px !important; }
+    .padding-top-very-large-laptop      { padding-top: 40px !important; }
+    .padding-top-gigantic-laptop        { padding-top: 50px !important; }
+
+    //padding bottom sizes
+    .padding-bottom-micro-laptop        { padding-bottom: 5px !important; }
+    .padding-bottom-small-laptop        { padding-bottom: 10px !important; }
+    .padding-bottom-medium-laptop       { padding-bottom: 15px !important; }
+    .padding-bottom-laptop              { padding-bottom: 20px !important; }
+    .padding-bottom-big-laptop          { padding-bottom: 25px !important; }
+    .padding-bottom-large-laptop        { padding-bottom: 30px !important; }
+    .padding-bottom-very-big-laptop     { padding-bottom: 35px !important; }
+    .padding-bottom-very-large-laptop   { padding-bottom: 40px !important; }
+    .padding-bottom-gigantic-laptop     { padding-bottom: 50px !important; }
+
+    //padding left sizes
+    .padding-left-micro-laptop          { padding-left: 5px !important; }
+    .padding-left-small-laptop          { padding-left: 10px !important; }
+    .padding-left-medium-laptop         { padding-left: 15px !important; }
+    .padding-left-laptop                { padding-left: 20px !important; }
+    .padding-left-big-laptop            { padding-left: 25px !important; }
+    .padding-left-large-laptop          { padding-left: 30px !important; }
+    .padding-left-very-big-laptop       { padding-left: 35px !important; }
+    .padding-left-very-large-laptop     { padding-left: 40px !important; }
+    .padding-left-gigantic-laptop       { padding-left: 50px !important; }
+
+    //padding right sizes
+    .padding-right-micro-laptop         { padding-right: 5px !important; }
+    .padding-right-small-laptop         { padding-right: 10px !important; }
+    .padding-right-medium-laptop        { padding-right: 15px !important; }
+    .padding-right-laptop               { padding-right: 20px !important; }
+    .padding-right-big-laptop           { padding-right: 25px !important; }
+    .padding-right-large-laptop         { padding-right: 30px !important; }
+    .padding-right-very-big-laptop      { padding-right: 35px !important; }
+    .padding-right-very-large-laptop    { padding-right: 40px !important; }
+    .padding-right-gigantic-laptop      { padding-right: 50px !important; }
+
+    //padding vertical sizes
+    .padding-vertical-micro-laptop          { padding-top: 5px !important; padding-bottom: 5px !important; }
+    .padding-vertical-small-laptop          { padding-top: 10px !important; padding-bottom: 10px !important; }
+    .padding-vertical-medium-laptop         { padding-top: 15px !important; padding-bottom: 15px !important; }
+    .padding-vertical-laptop                { padding-top: 20px !important; padding-bottom: 20px !important; }
+    .padding-vertical-big-laptop            { padding-top: 25px !important; padding-bottom: 25px !important; }
+    .padding-vertical-large-laptop          { padding-top: 30px !important; padding-bottom: 30px !important; }
+    .padding-vertical-very-big-laptop       { padding-top: 35px !important; padding-bottom: 35px !important; }
+    .padding-vertical-very-large-laptop     { padding-top: 40px !important; padding-bottom: 40px !important; }
+    .padding-vertical-gigantic-laptop       { padding-top: 50px !important; padding-bottom: 50px !important; }
+
+    //padding horizontal sizes
+    .padding-horizontal-micro-laptop        { padding-left: 5px !important; padding-right: 5px !important; }
+    .padding-horizontal-small-laptop        { padding-left: 10px !important; padding-right: 10px !important; }
+    .padding-horizontal-medium-laptop       { padding-left: 15px !important; padding-right: 15px !important; }
+    .padding-horizontal-laptop              { padding-left: 20px !important; padding-right: 20px !important; }
+    .padding-horizontal-big-laptop          { padding-left: 25px !important; padding-right: 25px !important; }
+    .padding-horizontal-large-laptop        { padding-left: 30px !important; padding-right: 30px !important; }
+    .padding-horizontal-very-big-laptop     { padding-left: 35px !important; padding-right: 35px !important; }
+    .padding-horizontal-very-large-laptop   { padding-left: 40px !important; padding-right: 40px !important; }
+    .padding-horizontal-gigantic-laptop     { padding-left: 50px !important; padding-right: 50px !important; }
+
+
+    //padding sizes
+    .padding-micro-laptop       { padding: 5px !important; }
+    .padding-small-laptop       { padding: 10px !important; }
+    .padding-medium-laptop      { padding: 15px !important; }
+    .padding-laptop             { padding: 20px !important; }
+    .padding-big-laptop         { padding: 25px !important; }
+    .padding-large-laptop       { padding: 30px !important; }
+    .padding-very-big-laptop    { padding: 35px !important; }
+    .padding-very-large-laptop  { padding: 40px !important; }
+    .padding-gigantic-laptop    { padding: 50px !important; }
+    .padding-80-laptop          { padding: 80px !important; }
+    .padding-90-laptop          { padding: 90px !important;}
+}
+
+//tablet
+@media screen and (max-width: 680px) {
+
+    //padding remover
+    .strip-padding-tablet               { padding: 0 !important; }
+    .strip-padding-top-tablet            { padding-top: 0 !important; }
+    .strip-padding-bottom-tablet        { padding-bottom: 0 !important; }
+    .strip-padding-left-tablet          { padding-left: 0 !important; }
+    .strip-padding-right-tablet         { padding-right: 0 !important; }
+    .strip-padding-vertical-tablet      { padding-top: 0px !important; padding-bottom: 0px !important; }
+    .strip-padding-horizontal-tablet    { padding-left: 0px !important; padding-right: 0px !important; }
+
+    //padding top sizes
+    .padding-top-micro-tablet           { padding-top: 5px !important; }
+    .padding-top-small-tablet           { padding-top: 10px !important; }
+    .padding-top-medium-tablet          { padding-top: 15px !important; }
+    .padding-top-tablet                 { padding-top: 20px !important; }
+    .padding-top-big-tablet             { padding-top: 25px !important; }
+    .padding-top-large-tablet           { padding-top: 30px !important; }
+    .padding-top-very-big-tablet        { padding-top: 35px !important; }
+    .padding-top-very-large-tablet      { padding-top: 40px !important; }
+    .padding-top-gigantic-tablet        { padding-top: 50px !important; }
+
+    //padding bottom sizes
+    .padding-bottom-micro-tablet        { padding-bottom: 5px !important; }
+    .padding-bottom-small-tablet        { padding-bottom: 10px !important; }
+    .padding-bottom-medium-tablet       { padding-bottom: 15px !important; }
+    .padding-bottom-tablet              { padding-bottom: 20px !important; }
+    .padding-bottom-big-tablet          { padding-bottom: 25px !important; }
+    .padding-bottom-large-tablet        { padding-bottom: 30px !important; }
+    .padding-bottom-very-big-tablet     { padding-bottom: 35px !important; }
+    .padding-bottom-very-large-tablet   { padding-bottom: 40px !important; }
+    .padding-bottom-gigantic-tablet     { padding-bottom: 50px !important; }
+
+    //padding left sizes
+    .padding-left-micro-tablet          { padding-left: 5px !important; }
+    .padding-left-small-tablet          { padding-left: 10px !important; }
+    .padding-left-medium-tablet         { padding-left: 15px !important; }
+    .padding-left-tablet                { padding-left: 20px !important; }
+    .padding-left-big-tablet            { padding-left: 25px !important; }
+    .padding-left-large-tablet          { padding-left: 30px !important; }
+    .padding-left-very-big-tablet       { padding-left: 35px !important; }
+    .padding-left-very-large-tablet     { padding-left: 40px !important; }
+    .padding-left-gigantic-tablet       { padding-left: 50px !important; }
+
+    //padding right sizes
+    .padding-right-micro-tablet         { padding-right: 5px !important; }
+    .padding-right-small-tablet         { padding-right: 10px !important; }
+    .padding-right-medium-tablet        { padding-right: 15px !important; }
+    .padding-right-tablet               { padding-right: 20px !important; }
+    .padding-right-big-tablet           { padding-right: 25px !important; }
+    .padding-right-large-tablet         { padding-right: 30px !important; }
+    .padding-right-very-big-tablet      { padding-right: 35px !important; }
+    .padding-right-very-large-tablet    { padding-right: 40px !important; }
+    .padding-right-gigantic-tablet      { padding-right: 50px !important; }
+
+    //padding vertical sizes
+    .padding-vertical-micro-tablet          { padding-top: 5px !important; padding-bottom: 5px !important; }
+    .padding-vertical-small-tablet          { padding-top: 10px !important; padding-bottom: 10px !important; }
+    .padding-vertical-medium-tablet         { padding-top: 15px !important; padding-bottom: 15px !important; }
+    .padding-vertical-tablet                { padding-top: 20px !important; padding-bottom: 20px !important; }
+    .padding-vertical-big-tablet            { padding-top: 25px !important; padding-bottom: 25px !important; }
+    .padding-vertical-large-tablet          { padding-top: 30px !important; padding-bottom: 30px !important; }
+    .padding-vertical-very-big-tablet       { padding-top: 35px !important; padding-bottom: 35px !important; }
+    .padding-vertical-very-large-tablet     { padding-top: 40px !important; padding-bottom: 40px !important; }
+    .padding-vertical-gigantic-tablet       { padding-top: 50px !important; padding-bottom: 50px !important; }
+
+    //padding horizontal sizes
+    .padding-horizontal-micro-tablet        { padding-left: 5px !important; padding-right: 5px !important; }
+    .padding-horizontal-small-tablet        { padding-left: 10px !important; padding-right: 10px !important; }
+    .padding-horizontal-medium-tablet       { padding-left: 15px !important; padding-right: 15px !important; }
+    .padding-horizontal-tablet              { padding-left: 20px !important; padding-right: 20px !important; }
+    .padding-horizontal-big-tablet          { padding-left: 25px !important; padding-right: 25px !important; }
+    .padding-horizontal-large-tablet        { padding-left: 30px !important; padding-right: 30px !important; }
+    .padding-horizontal-very-big-tablet     { padding-left: 35px !important; padding-right: 35px !important; }
+    .padding-horizontal-very-large-tablet   { padding-left: 40px !important; padding-right: 40px !important; }
+    .padding-horizontal-gigantic-tablet     { padding-left: 50px !important; padding-right: 50px !important; }
+
+
+    //padding sizes
+    .padding-micro-tablet       { padding: 5px !important; }
+    .padding-small-tablet       { padding: 10px !important; }
+    .padding-medium-tablet      { padding: 15px !important; }
+    .padding-tablet             { padding: 20px !important; }
+    .padding-big-tablet         { padding: 25px !important; }
+    .padding-large-tablet       { padding: 30px !important; }
+    .padding-very-big-tablet    { padding: 35px !important; }
+    .padding-very-large-tablet  { padding: 40px !important; }
+    .padding-gigantic-tablet    { padding: 50px !important; }
+    .padding-80-tablet          { padding: 80px !important; }
+    .padding-90-tablet          { padding: 90px !important;}
+
+}

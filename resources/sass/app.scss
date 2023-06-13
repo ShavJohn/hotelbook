@@ -3,58 +3,60 @@
 
 @import "variables";
 
-@import "sizes";
+@import "mainComponents/sizes";
 
-@import "responsiveDesings";
+@import "mainComponents/responsiveDesings";
 
-@import "padding-sizes";
+@import "mainComponents/padding-sizes";
 
-@import "margin-sizes";
+@import "mainComponents/margin-sizes";
 
-@import "grid-system";
+@import "mainComponents/grid-system";
 
-@import "flex";
+@import "mainComponents/flex";
 
-@import "header-style";
+@import "mainComponents/header-style";
 
-@import "main";
+@import "mainComponents/main";
 
-@import "color";
+@import "mainComponents/color";
 
-@import "fonts";
+@import "mainComponents/fonts";
 
-@import "footer-style";
+@import "mainComponents/footer-style";
 
-@import "home-header-background";
+@import "home/home-header-background";
 
-@import "home-booking";
+@import "home/home-booking";
 
-@import "animations";
+@import "mainComponents/animations";
 
-@import "loading-animations";
+@import "mainComponents/loading-animations";
 
-@import "home-page-posts-style";
+@import "home/home-page-posts-style";
 
-@import "services-styling";
+@import "services/services-styling";
 
-@import "rooms-styling";
+@import "rooms/rooms-styling";
 
-@import "room-page";
+@import "room/room-page";
 
-@import "room-component";
+@import "room/room-component";
 
-@import "drop-down";
+@import "mainComponents/drop-down";
 
-@import "admin-sidebar";
+@import "admin/admin-sidebar";
 
-@import "modals";
+@import "mainComponents/modals";
 
-@import "slider";
+@import "mainComponents/slider";
 
-@import "contact-page";
+@import "contact/contact-page";
 
-@import "about-page";
+@import "about/about-page";
 
-@import "login";
+@import "mainComponents/login";
 
-@import "admin-header";
+@import "admin/admin-header";
+
+@import "mainComponents/alert";
