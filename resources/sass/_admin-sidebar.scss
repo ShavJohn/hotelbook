@@ -1,0 +1,50 @@
+.admin-sidebar-container {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    background-color: #373737;
+    z-index: 1000;
+    box-shadow: -1px 0px 4px 0px rgba(138, 138, 138, 0.5411764706);
+    overflow: hidden;
+
+
+    .admin-sidebar-menu-container {
+
+        li {
+            width: 100%;
+
+            button {
+                text-align: left;
+                width: 100%;
+                padding: 30px;
+                border: none;
+                background-color: transparent;
+                font-size: 18px;
+                color: white;
+                white-space: nowrap;
+                cursor: pointer;
+
+                svg {
+                    margin-right: 20px;
+                }
+            }
+
+            &:hover {
+                button {
+                    transition: background-color 0.5s ease-in-out;
+                    background-color: $dark-yellow;
+                }
+            }
+        }
+    }
+}
+
+.admin-sidebar-menu-open {
+    width: 250px;
+    transition: width .5s ease-in-out;
+}
+
+.admin-sidebar-menu-close {
+    width: 0;
+    transition: width .5s ease-in-out;
+}

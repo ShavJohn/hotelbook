@@ -7,6 +7,9 @@ import Room from '../views/Room'
 import Contact from "../views/Contact";
 import About from "../views/About";
 import Login from "../views/Login"
+import Bookings from "../views/adminPages/Bookings"
+import Messages from "../views/adminPages/Messages"
+import Statistics from "../views/adminPages/Statistics"
 
 import RoomSearch from '../components/rooms/body-components/room-search'
 import RoomBook from '../components/rooms/body-components/room-book'
@@ -25,7 +28,10 @@ const routes = [
     { path: '/rooms/:room', component: Room, name: 'Room', meta: {title: 'room'} },
     { path: '/contact', component: Contact, name: 'Contact', meta: {title: 'Contact'}},
     { path: '/about', component: About, name: 'About', meta: {title: 'About'}},
-    { path: '/login', component: Login, name: 'Login', meta: {title: 'Login'}}
+    { path: '/login', component: Login, name: 'Login', meta: {title: 'Login'}},
+    { path: '/bookings', component: Bookings, name: 'Bookings', meta: {title: 'Bookings', auth: true, admin: true}},
+    { path: '/messages', component: Messages, name: 'Messages', meta: {title: 'Messages', auth: true, admin: true}},
+    { path: '/statistics', component: Statistics, name: 'Statistics', meta: {title: 'Statistics', auth: true, admin: true}},
 ]
 
 const router = createRouter({
@@ -49,6 +55,10 @@ router.beforeEach(async (toRoute, fromRoute, next) => {
         if(store.getters['auth/authUserGetter'] && store.getters['auth/accessTokenGetter']) {
             return  next({name: 'Home'})
         }
+    }
+
+    if(toRoute.meta.auth && toRoute.meta.admin && (!store.getters['auth/authUserGetter'] || !store.getters['auth/accessTokenGetter'])) {
+        return next({name: 'Home'})
     }
 
     return next()

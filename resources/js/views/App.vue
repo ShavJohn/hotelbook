@@ -3,23 +3,23 @@
         <div class="loader_bg" v-show="loader">
             <div class="loader"></div>
         </div>
-        <admin-header v-if="authUser"></admin-header>
-        <hb-header v-if="$route.name !== 'Login'"/>
-        <div class="app-container">
+        <Admin v-if="authUser"></Admin>
+        <hb-header v-if="$route.name !== 'Login' && !$route.meta.admin"/>
+        <div id="app-body" class="app-container">
             <router-view></router-view>
         </div>
-        <hb-footer v-if="$route.name !== 'Login'"/>
+        <hb-footer v-if="$route.name !== 'Login' && !$route.meta.admin"/>
     </div>
 </template>
 
 <script>
 import HbHeader from "../components/mainComponents/hb-header";
 import HbFooter from "../components/mainComponents/hb-footer";
-import AdminHeader from "../components/admin/admin-header"
 import main from "../mixins/main"
+import Admin from "./Admin";
 export default {
     name: "App.vue",
-    components: {HbFooter, HbHeader, AdminHeader},
+    components: {Admin, HbFooter, HbHeader},
     mixins: [main],
     data() {
         return {

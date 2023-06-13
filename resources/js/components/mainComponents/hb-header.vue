@@ -20,7 +20,7 @@
             <font-awesome-icon @click="openMenu = !openMenu" class="header-mobile-menu-icon color-white font-30 cursor-pointer" icon="fa-solid fa-bars" />
         </div>
         <div class="header-mobile-menu-container" :class="openMenu ? 'header-mobile-menu-open' : 'header-mobile-menu-close'">
-            <div v-if="openMenu">
+            <template v-if="openMenu">
                 <div class="hb-flex hb-justify-content-end padding">
                     <font-awesome-icon @click="openMenu = !openMenu" class="color-white font-20 cursor-pointer" icon="fa-solid fa-xmark" />
                 </div>
@@ -33,10 +33,10 @@
                 <ul class="header-mobile-menu-list">
                     <li @click="$router.push({name: 'Home'})">{{ $t('home') }}</li>
                     <li @click="$router.push({name: 'RoomSearch'})">{{ $t('rooms') }}</li>
-                    <li>{{ $t('about') }}</li>
-                    <li>{{ $t('contact') }}</li>
+                    <li @click="$router.push({name: 'About'})">{{ $t('about') }}</li>
+                    <li @click="$router.push({name: 'Contact'})">{{ $t('contact') }}</li>
                 </ul>
-            </div>
+            </template>
         </div>
     </div>
 </template>
@@ -48,6 +48,12 @@ export default {
         return {
             openMenu: false
         }
+    },
+    mounted() {
+        let appBody = document.getElementById('app-body')
+        appBody.addEventListener('click', () => {
+            this.openMenu = false
+        })
     }
 }
 </script>

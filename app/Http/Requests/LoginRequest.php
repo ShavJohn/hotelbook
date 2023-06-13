@@ -24,6 +24,7 @@ class LoginRequest extends FormRequest
      */
     #[ArrayShape(['email' => "string", 'password' => "string"])] public function rules(): array
     {
+
         return [
             'email' => 'required|string|email',
             'password' => 'required|string',

@@ -2420,7 +2420,7 @@
 .header-mobile-menu-container {
   height: 100vh;
   top: 0;
-  position: absolute;
+  position: fixed;
   right: 0;
   background: #373737;
   box-shadow: -1px 0px 4px 0px rgba(138, 138, 138, 0.5411764706);
@@ -4070,6 +4070,47 @@
   max-height: 200px;
 }
 
+.admin-sidebar-container {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  background-color: #373737;
+  z-index: 1000;
+  box-shadow: -1px 0px 4px 0px rgba(138, 138, 138, 0.5411764706);
+  overflow: hidden;
+}
+.admin-sidebar-container .admin-sidebar-menu-container li {
+  width: 100%;
+}
+.admin-sidebar-container .admin-sidebar-menu-container li button {
+  text-align: left;
+  width: 100%;
+  padding: 30px;
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  color: white;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.admin-sidebar-container .admin-sidebar-menu-container li button svg {
+  margin-right: 20px;
+}
+.admin-sidebar-container .admin-sidebar-menu-container li:hover button {
+  transition: background-color 0.5s ease-in-out;
+  background-color: #C19B77;
+}
+
+.admin-sidebar-menu-open {
+  width: 250px;
+  transition: width 0.5s ease-in-out;
+}
+
+.admin-sidebar-menu-close {
+  width: 0;
+  transition: width 0.5s ease-in-out;
+}
+
 .slider-container {
   width: 100%;
   position: relative;
@@ -4275,6 +4316,10 @@
   align-items: center;
   position: relative;
   padding: 20px 30px;
+}
+.admin-header-container .admin-sidebar-btn {
+  font-size: 20px;
+  cursor: pointer;
 }
 .admin-header-container .logout-btn {
   display: flex;

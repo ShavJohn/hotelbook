@@ -63,7 +63,7 @@
 .header-mobile-menu-container {
     height: 100vh;
     top: 0;
-    position: absolute;
+    position: fixed;
     right: 0;
     background: $light-black;
     box-shadow: -1px 0px 4px 0px $light-grey;

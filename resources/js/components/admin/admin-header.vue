@@ -1,7 +1,7 @@
 <template>
     <div class="admin-header-container">
-        <div>
-            <font-awesome-icon icon="fa-solid fa-bars-staggered" />
+        <div class="admin-sidebar-btn">
+            <font-awesome-icon @click="toggleSidebar()" icon="fa-solid fa-bars-staggered" />
         </div>
         <div>
 
@@ -14,8 +14,10 @@
 </template>
 
 <script>
+import AdminPanelMixins from '../../mixins/admin-panel-mixins'
 export default {
     name: "admin-header",
+    mixins: [AdminPanelMixins],
     methods: {
         logout() {
             this.$store.dispatch('auth/logOut').then(res => {
