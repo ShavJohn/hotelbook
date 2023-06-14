@@ -1,6 +1,9 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+// Bootstrap
+@import 'bootstrap';
+
 @import "variables";
 
 @import "mainComponents/sizes";
@@ -60,3 +63,9 @@
 @import "admin/admin-header";
 
 @import "mainComponents/alert";
+
+@import "admin/rooms/table";
+
+@import "admin/rooms/room-panel";
+
+@import "mainComponents/modal-styling";

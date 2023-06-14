@@ -1,0 +1,25 @@
+.modal-content {
+
+
+    .modal-header {
+        button {
+            border: none;
+            background-color: transparent;
+            color: $darker-yellow;
+            font-size: 20px;
+            font-weight: 800;
+        }
+    }
+
+    .modal-body {
+
+        .modal-inputs-container {
+
+            .input-elements {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+    }
+}

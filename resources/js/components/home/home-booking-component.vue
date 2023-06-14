@@ -14,7 +14,7 @@
                 </label>
             </div>
             <div class="booking-button-container">
-                <label>
+                <label class="hb-width-100">
                     <p>{{ $t('guests') }}</p>
                     <div class="booking-button hb-flex hb-justify-content-between">
                         {{ guestCount }}

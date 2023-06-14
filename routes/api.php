@@ -17,12 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'api'], function() {
     //auth routes
 
-    Route::post('/login', 'App\Http\Controllers\Auth\AuthController@login');
+
+    Route::post('/login', 'App\Http\Controllers\AuthController@login');
 
     Route::group(['middleware' => 'auth:api'], function () {
-        Route::get('/check-auth', 'App\Http\Controllers\Auth\AuthController@checkAuth');
+        Route::get('/check-auth', 'App\Http\Controllers\AuthController@checkAuth');
 
-        Route::post('/logout', 'App\Http\Controllers\Auth\AuthController@logOut');
+        Route::post('/logout', 'App\Http\Controllers\AuthController@logOut');
     });
 
 });

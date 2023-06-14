@@ -18,6 +18,12 @@
                     </button>
                 </li>
                 <li>
+                    <button @click="$router.push({name: 'AdminRooms'})">
+                        <font-awesome-icon icon="fa-solid fa-bed" />
+                        Rooms
+                    </button>
+                </li>
+                <li>
                     <button @click="$router.push({name: 'Statistics'})">
                         <font-awesome-icon icon="fa-solid fa-chart-line" />
                         Statistics
@@ -27,12 +33,6 @@
                     <button @click="$router.push({name: 'Messages'})">
                         <font-awesome-icon icon="fa-solid fa-envelope" />
                         Messages
-                    </button>
-                </li>
-                <li>
-                    <button @click="$router.push({name: 'AdminRooms'})">
-                        <font-awesome-icon icon="fa-solid fa-bed" />
-                        Rooms
                     </button>
                 </li>
                 <li>

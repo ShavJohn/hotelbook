@@ -1,0 +1,17 @@
+.room-actions-container {
+    padding: 30px 30px 0;
+
+    .room-action-btn {
+        background-color: $dark-yellow;
+        color: white;
+        padding: 5px 30px;
+        border: double;
+        border-radius: 20px;
+        margin-right: 20px;
+        cursor: pointer;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+}
