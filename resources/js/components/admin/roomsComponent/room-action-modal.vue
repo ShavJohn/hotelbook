@@ -12,18 +12,18 @@
                 <div class="input-elements">
                     <span>Room Image</span>
                     <label for="room-image">
-                        <div class="image-action-btn">
+                        <span class="image-action-btn">
                             <font-awesome-icon icon="fa-solid fa-file-arrow-up" />
-                        </div>
+                        </span>
                         <input type="file" class="hidden" id="room-image">
                     </label>
                 </div>
                 <div class="input-elements">
                     <span>Room Additional Images</span>
                     <label for="room-additional-image">
-                        <div class="image-action-btn">
+                        <span class="image-action-btn">
                             <font-awesome-icon icon="fa-solid fa-file-arrow-up" />
-                        </div>
+                        </span>
                         <input type="file" class="hidden" id="room-additional-image">
                     </label>
                 </div>
@@ -34,7 +34,8 @@
             </form>
         </template>
         <template #modal-footer>
-
+            <button type="button" data-bs-dismiss="modal" aria-label="Close" class="modal-btn btn-grey close">Close</button>
+            <button class="modal-btn btn-action">Add</button>
         </template>
     </modals>
 </template>

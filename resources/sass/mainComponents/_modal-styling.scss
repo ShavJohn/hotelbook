@@ -2,6 +2,12 @@
 
 
     .modal-header {
+        padding: 30px;
+
+        h4 {
+            margin-bottom: 0;
+        }
+
         button {
             border: none;
             background-color: transparent;
@@ -12,14 +18,56 @@
     }
 
     .modal-body {
+        padding: 0;
+        overflow-y: auto;
+        max-height: 500px;
 
         .modal-inputs-container {
+            padding: 30px;
 
             .input-elements {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                margin-bottom: 30px;
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+
+                input {
+                    padding: 5px 15px;
+                    border-top: none;
+                    border-right: none;
+                    border-left: none;
+                    border-bottom: 2px solid $lighter-grey;
+
+                    &:focus-visible  {
+                        outline: none;
+                        border-bottom: 2px solid $dark-yellow;
+                    }
+                }
             }
+        }
+    }
+
+    .modal-footer {
+        padding: 30px;
+        justify-content: space-between;
+
+        .modal-btn {
+            padding: 5px 40px;
+            border: double;
+            color: white;
+            border-radius: 20px;
+        }
+
+        .btn-grey {
+            background-color: $light-grey;
+        }
+
+        .btn-action {
+            background-color: $dark-yellow;
         }
     }
 }

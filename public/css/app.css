@@ -15191,6 +15191,12 @@ textarea.form-control-lg {
   margin-right: 0;
 }
 
+.modal-content .modal-header {
+  padding: 30px;
+}
+.modal-content .modal-header h4, .modal-content .modal-header .h4 {
+  margin-bottom: 0;
+}
 .modal-content .modal-header button {
   border: none;
   background-color: transparent;
@@ -15198,8 +15204,47 @@ textarea.form-control-lg {
   font-size: 20px;
   font-weight: 800;
 }
+.modal-content .modal-body {
+  padding: 0;
+  overflow-y: auto;
+  max-height: 500px;
+}
+.modal-content .modal-body .modal-inputs-container {
+  padding: 30px;
+}
 .modal-content .modal-body .modal-inputs-container .input-elements {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 30px;
+}
+.modal-content .modal-body .modal-inputs-container .input-elements:last-of-type {
+  margin-bottom: 0;
+}
+.modal-content .modal-body .modal-inputs-container .input-elements input {
+  padding: 5px 15px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid #888888;
+}
+.modal-content .modal-body .modal-inputs-container .input-elements input:focus-visible {
+  outline: none;
+  border-bottom: 2px solid #C19B77;
+}
+.modal-content .modal-footer {
+  padding: 30px;
+  justify-content: space-between;
+}
+.modal-content .modal-footer .modal-btn {
+  padding: 5px 40px;
+  border: double;
+  color: white;
+  border-radius: 20px;
+}
+.modal-content .modal-footer .btn-grey {
+  background-color: rgba(138, 138, 138, 0.5411764706);
+}
+.modal-content .modal-footer .btn-action {
+  background-color: #C19B77;
 }
