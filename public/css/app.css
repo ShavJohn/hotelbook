@@ -15196,6 +15196,15 @@ textarea.form-control-lg {
 }
 .modal-content .modal-header h4, .modal-content .modal-header .h4 {
   margin-bottom: 0;
+  font-weight: 700;
+}
+.modal-content .modal-header .modal-language-dropdown {
+  background-color: transparent;
+  border: none;
+  margin-right: 20px;
+  color: #b18b3e;
+  font-size: 18px;
+  width: 70px;
 }
 .modal-content .modal-header button {
   border: none;
@@ -15207,7 +15216,7 @@ textarea.form-control-lg {
 .modal-content .modal-body {
   padding: 0;
   overflow-y: auto;
-  max-height: 500px;
+  max-height: 350px;
 }
 .modal-content .modal-body .modal-inputs-container {
   padding: 30px;
@@ -15217,6 +15226,17 @@ textarea.form-control-lg {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
+}
+.modal-content .modal-body .modal-inputs-container .input-elements .input-name {
+  font-size: 16px;
+  font-weight: 700;
+}
+.modal-content .modal-body .modal-inputs-container .input-elements .image-action-btn {
+  cursor: pointer;
+}
+.modal-content .modal-body .modal-inputs-container .input-elements .image-action-btn svg {
+  font-size: 24px;
+  color: #C19B77;
 }
 .modal-content .modal-body .modal-inputs-container .input-elements:last-of-type {
   margin-bottom: 0;

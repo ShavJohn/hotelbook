@@ -3,12 +3,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div id="modal-header" class="modal-header">
-                    <h4>
-                        <slot name="modal-header"></slot>
-                    </h4>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <slot name="modal-header"></slot>
                 </div>
                 <div id="modal-body" class="modal-body">
                     <slot name="modal-body"></slot>

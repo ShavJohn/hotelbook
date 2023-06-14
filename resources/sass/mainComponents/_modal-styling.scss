@@ -6,6 +6,16 @@
 
         h4 {
             margin-bottom: 0;
+            font-weight: 700;
+        }
+
+        .modal-language-dropdown {
+            background-color: transparent;
+            border: none;
+            margin-right: 20px;
+            color: $darker-yellow;
+            font-size: 18px;
+            width: 70px;
         }
 
         button {
@@ -20,7 +30,7 @@
     .modal-body {
         padding: 0;
         overflow-y: auto;
-        max-height: 500px;
+        max-height: 350px;
 
         .modal-inputs-container {
             padding: 30px;
@@ -30,6 +40,20 @@
                 justify-content: space-between;
                 align-items: center;
                 margin-bottom: 30px;
+
+                .input-name {
+                    font-size: 16px;
+                    font-weight: 700;
+                }
+
+                .image-action-btn {
+                    cursor: pointer;
+
+                    svg {
+                        font-size: 24px;
+                        color: $dark-yellow;
+                    }
+                }
 
                 &:last-of-type {
                     margin-bottom: 0;

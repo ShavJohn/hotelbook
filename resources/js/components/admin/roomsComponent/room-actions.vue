@@ -3,6 +3,7 @@
         <button class="room-action-btn" @click="openAddRoomModal()">Add Room</button>
         <button class="room-action-btn">Add Features</button>
         <button class="room-action-btn">Add Services</button>
+        <button class="room-action-btn">Add Types</button>
         <room-action-modal/>
     </div>
 </template>
