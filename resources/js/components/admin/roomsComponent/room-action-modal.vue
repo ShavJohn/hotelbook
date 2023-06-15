@@ -3,7 +3,7 @@
         <template #modal-header>
             <h4>Add Room</h4>
             <div>
-                <select class="modal-language-dropdown">
+                <select class="modal-language-dropdown" v-model="dataLang">
                     <option value="en">EN</option>
                     <option value="ru">RU</option>
                 </select>
@@ -16,11 +16,11 @@
             <form class="modal-inputs-container">
                 <div class="input-elements">
                     <span class="input-name">Room Number</span>
-                    <input type="number" id="room-number" name="room-number" placeholder="Enter Room Number">
+                    <input type="number" id="room-number" name="room-number" placeholder="Enter Room Number" v-model="roomData.number">
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Room Price</span>
-                    <input type="number" id="room-price" name="room-price" placeholder="Enter Room Price">
+                    <input type="number" id="room-price" name="room-price" placeholder="Enter Room Price" v-model="roomData[dataLang].price">
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Room Image</span>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Room Name</span>
-                    <input type="text" id="room-name" name="room-name" placeholder="Enter Room Name">
+                    <input type="text" id="room-name" name="room-name" placeholder="Enter Room Name" v-model="roomData[dataLang].name">
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Room Type</span>
@@ -67,7 +67,17 @@ import Modals from "../../mainComponents/modals";
 import DropDown from "../../mainComponents/drop-down";
 export default {
     name: "room-action-modal",
-    components: {DropDown, Modals}
+    components: {DropDown, Modals},
+    data() {
+        return {
+            dataLang: 'en'
+        }
+    },
+    computed: {
+        roomData() {
+            return this.$store.getters['rooms/roomGetter']
+        }
+    }
 }
 </script>
 
