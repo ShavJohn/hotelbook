@@ -71,6 +71,20 @@
                         border-bottom: 2px solid $dark-yellow;
                     }
                 }
+
+                textarea {
+                    resize: none;
+                    padding: 5px 15px;
+                    border-top: none;
+                    border-right: none;
+                    border-left: none;
+                    border-bottom: 2px solid $lighter-grey;
+
+                    &:focus-visible  {
+                        outline: none;
+                        border-bottom: 2px solid $dark-yellow;
+                    }
+                }
             }
         }
     }

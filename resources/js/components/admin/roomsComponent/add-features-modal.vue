@@ -1,7 +1,7 @@
 <template>
     <modals modal-id="addFeatures">
         <template #modal-header>
-            <h4>Add Feature</h4>
+            <h4>Add Room Feature</h4>
             <div>
                 <select class="modal-language-dropdown" v-model="dataLang">
                     <option value="en">EN</option>
@@ -15,13 +15,25 @@
         <template #modal-body>
             <form class="modal-inputs-container">
                 <div class="input-elements">
-                    <span class="input-name">Room Number</span>
-                    <input type="number" id="room-number" name="room-number" placeholder="Enter Room Number" v-model="roomData.number">
+                    <span class="input-name">Feature Name</span>
+                    <input type="text" id="feature-name" name="feature-name" placeholder="Enter Room Feature" v-model="feature[dataLang].name">
                 </div>
                 <div class="input-elements">
-                    <span class="input-name">Room Number</span>
-                    <input type="number" id="room-number" name="room-number" placeholder="Enter Room Number" v-model="roomData.number">
+                    <span class="input-name">Feature Description</span>
+                    <textarea id="feature-description" placeholder="Enter Room Feature Description" v-model="feature[dataLang].description">
+                    </textarea>
                 </div>
+                <template v-for="feature in roomFeatures">
+                  <div class="input-elements">
+                    <span class="input-name">Feature Name</span>
+                    <input type="text" name="feature-name" placeholder="Enter Room Feature" v-model="feature[dataLang].name">
+                  </div>
+                  <div class="input-elements">
+                    <span class="input-name">Feature Description</span>
+                    <textarea placeholder="Enter Room Feature Description" v-model="feature[dataLang].description">
+                    </textarea>
+                  </div>
+                </template>
             </form>
         </template>
         <template #modal-footer>
@@ -36,12 +48,15 @@ import Modals from "../../mainComponents/modals";
 export default {
     name: "add-features-modal",
     components: {Modals},
+    computed: {
+        roomFeatures() {
+          return this.$store.getters['room/featuresGetter']
+        }
+    },
     data() {
         return {
             dataLang: 'en',
             feature: {
-                id: '',
-                slugName: '',
                 en: {
                     name: '',
                     description: ''

@@ -15252,6 +15252,18 @@ textarea.form-control-lg {
   outline: none;
   border-bottom: 2px solid #C19B77;
 }
+.modal-content .modal-body .modal-inputs-container .input-elements textarea {
+  resize: none;
+  padding: 5px 15px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid #888888;
+}
+.modal-content .modal-body .modal-inputs-container .input-elements textarea:focus-visible {
+  outline: none;
+  border-bottom: 2px solid #C19B77;
+}
 .modal-content .modal-footer {
   padding: 30px;
   justify-content: space-between;
