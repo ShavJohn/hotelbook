@@ -16,9 +16,12 @@
             <form class="modal-inputs-container">
                 <div class="input-elements">
                     <span class="input-name">Type</span>
-                    <input type="text" id="feature-name" name="feature-name" placeholder="Enter Room Feature" v-model="type[dataLang].name">
+                    <input type="text" id="feature-name" name="feature-name" placeholder="Enter Room Feature" v-model="fSTItem[dataLang].name">
                 </div>
-                <template v-for="type in roomTypes">
+                <template v-for="(type, key) in roomTypes">
+                    <div class="element-remove-btn">
+                        <font-awesome-icon icon="fa-solid fa-xmark" @click="removeItemFromArray('services', key)" />
+                    </div>
                     <div class="input-elements">
                         <span class="input-name">Type</span>
                         <input type="text" name="feature-name" placeholder="Enter Room Feature" v-model="type[dataLang].name">
@@ -28,35 +31,19 @@
         </template>
         <template #modal-footer>
             <button type="button" data-bs-dismiss="modal" aria-label="Close" class="modal-btn btn-grey close">Close</button>
-            <button class="modal-btn btn-action">Add</button>
+            <button class="modal-btn btn-action" @click="addItemToArray('types')">Add</button>
         </template>
     </modals>
 </template>
 
 <script>
 import Modals from "../../mainComponents/modals";
+import roomMixins from "../../../mixins/room-mixin";
 
 export default {
     name: "add-types-modal",
     components: {Modals},
-    computed: {
-        roomTypes() {
-            return this.$store.getters['room/typesGetter']
-        },
-    },
-    data() {
-        return {
-            dataLang: 'en',
-            type: {
-                en: {
-                    name: '',
-                },
-                ru: {
-                    name: '',
-                }
-            },
-        }
-    }
+    mixins: [roomMixins],
 }
 </script>
 

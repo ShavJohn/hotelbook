@@ -32,6 +32,20 @@
         overflow-y: auto;
         max-height: 350px;
 
+        .element-remove-btn {
+            display: flex;
+            justify-content: flex-end;
+
+            svg {
+                cursor: pointer;
+                font-weight: 700;
+                position: absolute;
+                color: $dark-yellow;
+                right: 0;
+                top: 0;
+            }
+        }
+
         .modal-inputs-container {
             padding: 30px;
 
@@ -73,6 +87,7 @@
                 }
 
                 textarea {
+                    width: 48%;
                     resize: none;
                     padding: 5px 15px;
                     border-top: none;

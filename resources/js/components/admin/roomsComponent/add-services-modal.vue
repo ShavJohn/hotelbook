@@ -16,14 +16,17 @@
             <form class="modal-inputs-container">
                 <div class="input-elements">
                     <span class="input-name">Service Name</span>
-                    <input type="text" id="feature-name" name="feature-name" placeholder="Enter Room Feature" v-model="service[dataLang].name">
+                    <input type="text" id="feature-name" name="feature-name" placeholder="Enter Room Feature" v-model="fSTItem[dataLang].name">
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Feature Description</span>
-                    <textarea id="feature-description" placeholder="Enter Room Feature Description" v-model="service[dataLang].description">
+                    <textarea id="feature-description" placeholder="Enter Room Feature Description" v-model="fSTItem[dataLang].description">
                     </textarea>
                 </div>
-                <template v-for="service in roomServices">
+                <template v-for="(service, key) in roomServices">
+                    <div class="element-remove-btn">
+                        <font-awesome-icon icon="fa-solid fa-xmark" @click="removeItemFromArray('services', key)" />
+                    </div>
                     <div class="input-elements">
                         <span class="input-name">Service Name</span>
                         <input type="text" name="feature-name" placeholder="Enter Room Feature" v-model="service[dataLang].name">
@@ -38,37 +41,19 @@
         </template>
         <template #modal-footer>
             <button type="button" data-bs-dismiss="modal" aria-label="Close" class="modal-btn btn-grey close">Close</button>
-            <button class="modal-btn btn-action">Add</button>
+            <button class="modal-btn btn-action" @click="addItemToArray('services')">Add</button>
         </template>
     </modals>
 </template>
 
 <script>
 import Modals from "../../mainComponents/modals";
+import roomMixins from "../../../mixins/room-mixin";
 
 export default {
     name: "add-services-modal",
     components: {Modals},
-    computed: {
-        roomServices() {
-            return this.$store.getters['room/servicesGetter']
-        },
-    },
-    data() {
-        return {
-            dataLang: 'en',
-            service: {
-                en: {
-                    name: '',
-                    description: ''
-                },
-                ru: {
-                    name: '',
-                    description: ''
-                }
-            },
-        }
-    }
+    mixins: [roomMixins],
 }
 </script>
 

@@ -19,15 +19,9 @@ export default {
             roomServices: []
         },
         rooms: [],
-        types: [
-
-        ],
-        features: [
-
-        ],
-        services: [
-
-        ]
+        types: [],
+        features: [],
+        services: []
     },
     getters: {
         roomGetter(state) {

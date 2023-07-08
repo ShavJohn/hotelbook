@@ -15218,6 +15218,18 @@ textarea.form-control-lg {
   overflow-y: auto;
   max-height: 350px;
 }
+.modal-content .modal-body .element-remove-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+.modal-content .modal-body .element-remove-btn svg {
+  cursor: pointer;
+  font-weight: 700;
+  position: absolute;
+  color: #C19B77;
+  right: 0;
+  top: 0;
+}
 .modal-content .modal-body .modal-inputs-container {
   padding: 30px;
 }
@@ -15253,6 +15265,7 @@ textarea.form-control-lg {
   border-bottom: 2px solid #C19B77;
 }
 .modal-content .modal-body .modal-inputs-container .input-elements textarea {
+  width: 48%;
   resize: none;
   padding: 5px 15px;
   border-top: none;

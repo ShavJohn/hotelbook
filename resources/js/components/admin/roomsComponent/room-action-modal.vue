@@ -65,19 +65,12 @@
 <script>
 import Modals from "../../mainComponents/modals";
 import DropDown from "../../mainComponents/drop-down";
+import roomMixins from "../../../mixins/room-mixin";
 export default {
     name: "room-action-modal",
     components: {DropDown, Modals},
-    data() {
-        return {
-            dataLang: 'en'
-        }
-    },
-    computed: {
-        roomData() {
-            return this.$store.getters['rooms/roomGetter']
-        }
-    }
+    mixins: [roomMixins],
+
 }
 </script>
 
