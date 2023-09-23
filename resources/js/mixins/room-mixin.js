@@ -43,6 +43,24 @@ export default {
                     description: this.fSTItem.ru.description
                 }
             })
+
+            let data = {
+                type: arrayName,
+                array: {
+                    en: {
+                        name: this.fSTItem.en.name,
+                        description: this.fSTItem.en.description
+                    },
+                    ru: {
+                        name: this.fSTItem.ru.name,
+                        description: this.fSTItem.ru.description
+                    }
+                }
+            }
+
+            this.$store.dispatch('rooms/addRoomFST', data)
+
+
             this.fSTItem.en.name = ''
             this.fSTItem.en.description = ''
             this.fSTItem.ru.name = ''

@@ -6,5 +6,14 @@ namespace App\Interfaces;
 
 interface RoomOptionsInterface
 {
-    public function get(): mixed;
+    /**
+     * @return mixed
+     */
+    public function getFST();
+
+    /**
+     * @param $data
+     * @return mixed
+     */
+    public function setRoomFST($data);
 }

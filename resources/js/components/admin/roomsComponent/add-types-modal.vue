@@ -19,12 +19,14 @@
                     <input type="text" id="feature-name" name="feature-name" placeholder="Enter Room Feature" v-model="fSTItem[dataLang].name">
                 </div>
                 <template v-for="(type, key) in roomTypes">
-                    <div class="element-remove-btn">
-                        <font-awesome-icon icon="fa-solid fa-xmark" @click="removeItemFromArray('services', key)" />
-                    </div>
-                    <div class="input-elements">
-                        <span class="input-name">Type</span>
-                        <input type="text" name="feature-name" placeholder="Enter Room Feature" v-model="type[dataLang].name">
+                    <div class="position-relative">
+                        <div class="element-remove-btn">
+                            <font-awesome-icon icon="fa-solid fa-xmark" @click="removeItemFromArray('types', key)" />
+                        </div>
+                        <div class="input-elements">
+                            <span class="input-name">Type</span>
+                            <input type="text" name="feature-name" placeholder="Enter Room Feature" v-model="type[dataLang].name">
+                        </div>
                     </div>
                 </template>
             </form>

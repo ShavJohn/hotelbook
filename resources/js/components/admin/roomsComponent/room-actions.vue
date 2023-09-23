@@ -1,9 +1,9 @@
 <template>
     <div class="room-actions-container">
-        <button class="room-action-btn" @click="openModal('#roomAction')">Add Room</button>
-        <button class="room-action-btn" @click="openModal('#addFeatures')">Features</button>
-        <button class="room-action-btn" @click="openModal('#addServices')">Services</button>
-        <button class="room-action-btn" @click="openModal('#addTypes')">Types</button>
+        <button type="button" class="room-action-btn" @click="openModal('#roomAction')">Add Room</button>
+        <button type="button" class="room-action-btn" @click="openModal('#addFeatures')">Features</button>
+        <button type="button" class="room-action-btn" @click="openModal('#addServices')">Services</button>
+        <button type="button" class="room-action-btn" @click="openModal('#addTypes')">Types</button>
         <room-action-modal/>
         <add-features-modal/>
         <add-services-modal/>

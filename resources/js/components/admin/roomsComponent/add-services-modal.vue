@@ -24,17 +24,19 @@
                     </textarea>
                 </div>
                 <template v-for="(service, key) in roomServices">
-                    <div class="element-remove-btn">
-                        <font-awesome-icon icon="fa-solid fa-xmark" @click="removeItemFromArray('services', key)" />
-                    </div>
-                    <div class="input-elements">
-                        <span class="input-name">Service Name</span>
-                        <input type="text" name="feature-name" placeholder="Enter Room Feature" v-model="service[dataLang].name">
-                    </div>
-                    <div class="input-elements">
-                        <span class="input-name">Feature Description</span>
-                        <textarea placeholder="Enter Room Feature Description" v-model="service[dataLang].description">
-                    </textarea>
+                    <div class="position-relative">
+                        <div class="element-remove-btn">
+                            <font-awesome-icon icon="fa-solid fa-xmark" @click="removeItemFromArray('services', key)" />
+                        </div>
+                        <div class="input-elements">
+                            <span class="input-name">Service Name</span>
+                            <input type="text" name="feature-name" placeholder="Enter Room Feature" v-model="service[dataLang].name">
+                        </div>
+                        <div class="input-elements">
+                            <span class="input-name">Feature Description</span>
+                            <textarea placeholder="Enter Room Feature Description" v-model="service[dataLang].description">
+                            </textarea>
+                        </div>
                     </div>
                 </template>
             </form>

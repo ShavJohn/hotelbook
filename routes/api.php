@@ -20,8 +20,13 @@ Route::group(['middleware' => 'api'], function() {
 
     Route::post('/login', 'App\Http\Controllers\AuthController@login');
 
+    Route::get('/get-room-fst', 'App\Http\Controllers\RoomOptionsController@getRoomFST');
+
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('/check-auth', 'App\Http\Controllers\AuthController@checkAuth');
+
+        //room feature routs
+        Route::post('/add-room-{fst}', 'App\Http\Controllers\RoomOptionsController@addRoomFST');
 
         Route::post('/logout', 'App\Http\Controllers\AuthController@logOut');
     });

@@ -10,7 +10,10 @@ import RoomsTable from "../../components/admin/roomsComponent/rooms-table";
 import RoomActions from "../../components/admin/roomsComponent/room-actions";
 export default {
     name: "Rooms",
-    components: {RoomActions, RoomsTable}
+    components: {RoomActions, RoomsTable},
+    mounted() {
+        this.$store.dispatch('rooms/getRoomFST')
+    }
 }
 </script>
 

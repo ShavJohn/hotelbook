@@ -14,4 +14,9 @@ class RoomOptions extends Model
         'en',
         'ru'
     ];
+
+    protected $casts = [
+        'en' => 'array',
+        'ru' => 'array'
+    ];
 }

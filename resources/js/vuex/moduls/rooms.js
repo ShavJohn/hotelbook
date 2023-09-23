@@ -67,6 +67,36 @@ export default {
         }
     },
     actions: {
+        addRoomFST(context, data) {
+            return new Promise((resolve, reject) => {
+                axios.post(`/add-room-${data.type}`, data.array).then((res) => {
 
+
+                    context.dispatch('alert/alertResponse', {
+                        'type': res.data.type,
+                        'status': res.status,
+                        'message': res.data.message
+                    }, { root:true })
+
+                    resolve(res)
+                }).catch(err => {
+                    reject(err)
+                })
+            })
+        },
+        getRoomFST(context, data) {
+            return new Promise((resolve, reject) => {
+                axios.get('/get-room-fst').then((res) => {
+                    context.commit('featuresSetter', res.data.features)
+                    context.commit('servicesSetter', res.data.services)
+                    context.commit('typesSetter', res.data.roomTypes)
+
+                    resolve(res)
+                }).catch((err) => {
+
+                    reject(err)
+                })
+            })
+        }
     }
 }
