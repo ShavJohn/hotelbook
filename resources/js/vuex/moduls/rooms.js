@@ -80,6 +80,34 @@ export default {
 
                     resolve(res)
                 }).catch(err => {
+
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
+
+                    reject(err)
+                })
+            })
+        },
+        removeFST(context, data) {
+            return new Promise((resolve, reject) => {
+                axios.delete(`/delete-fst/${data}`).then((res) => {
+
+                    context.dispatch('alert/alertResponse', {
+                        'type': res.data.type,
+                        'status': res.status,
+                        'message': res.data.message
+                    }, { root:true })
+                }).catch(err => {
+
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
+
                     reject(err)
                 })
             })

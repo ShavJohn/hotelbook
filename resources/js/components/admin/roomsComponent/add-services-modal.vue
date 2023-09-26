@@ -13,29 +13,36 @@
             </div>
         </template>
         <template #modal-body>
-            <form class="modal-inputs-container">
+            <form class="modal-inputs-container overflow-modal">
                 <div class="input-elements">
                     <span class="input-name">Service Name</span>
-                    <input type="text" id="feature-name" name="feature-name" placeholder="Enter Room Feature" v-model="fSTItem[dataLang].name">
+                    <input type="text" id="service-name" name="service-name" placeholder="Enter Room service" v-model="fSTItem[dataLang].name">
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Feature Description</span>
-                    <textarea id="feature-description" placeholder="Enter Room Feature Description" v-model="fSTItem[dataLang].description">
+                    <textarea id="service-description" placeholder="Enter Room service Description" v-model="fSTItem[dataLang].description">
                     </textarea>
                 </div>
                 <template v-for="(service, key) in roomServices">
-                    <div class="position-relative">
+                    <div class="position-relative margin-top-large">
                         <div class="element-remove-btn">
-                            <font-awesome-icon icon="fa-solid fa-xmark" @click="removeItemFromArray('services', key)" />
+                            <font-awesome-icon icon="fa-solid fa-xmark" @click="removeItemFromArray('services', service.id, key)" />
                         </div>
-                        <div class="input-elements">
-                            <span class="input-name">Service Name</span>
-                            <input type="text" name="feature-name" placeholder="Enter Room Feature" v-model="service[dataLang].name">
+                        <div class="input-elements-display">
+                            <div>
+                                <span class="input-name">Service Name</span>
+                            </div>
+                            <div>
+                                <span>{{ service[dataLang].name }}</span>
+                            </div>
                         </div>
-                        <div class="input-elements">
-                            <span class="input-name">Feature Description</span>
-                            <textarea placeholder="Enter Room Feature Description" v-model="service[dataLang].description">
-                            </textarea>
+                        <div class="input-elements-display">
+                            <div>
+                                <span class="input-name">Feature Description</span>
+                            </div>
+                            <div>
+                                <span>{{ service[dataLang].description }}</span>
+                            </div>
                         </div>
                     </div>
                 </template>

@@ -31,4 +31,13 @@ class RoomOptionsRepository implements RoomOptionsInterface
     {
         return $this->model->create($data);
     }
+
+    /**
+     * @param $data
+     * @return mixed|void
+     */
+    public function removeFST($id)
+    {
+        return $this->model->where('id', $id)->delete();
+    }
 }

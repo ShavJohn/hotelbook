@@ -4,18 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Interfaces\RoomOptionsInterface;
-use function League\Flysystem\get;
-use function Ramsey\Uuid\Codec\encode;
 
 class RoomOptionsController extends Controller
 {
+    /**
+     * @var RoomOptionsInterface
+     */
     private $roomOptionsRepo;
 
+    /**
+     * RoomOptionsController constructor.
+     * @param RoomOptionsInterface $roomOptionsRepo
+     */
     public function __construct(RoomOptionsInterface $roomOptionsRepo)
     {
         $this->roomOptionsRepo = $roomOptionsRepo;
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getRoomFST()
     {
         try {
@@ -58,6 +66,11 @@ class RoomOptionsController extends Controller
         }
     }
 
+    /**
+     * @param $fst
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function addRoomFST($fst, Request $request)
     {
         try {
@@ -75,6 +88,29 @@ class RoomOptionsController extends Controller
                 'success' => 1,
                 'type' => 'success',
                 'message'  => ucfirst(rtrim($fst,'s')) . ' has been created',
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => 0,
+                'type' => 'error',
+                'message'  => 'Something went wrong',
+            ], 422);
+        }
+    }
+
+    /**
+     * @param $fst
+     */
+    public function removeFST($fst)
+    {
+        try {
+
+            $this->roomOptionsRepo->removeFST($fst);
+
+            return response()->json([
+                'success' => 1,
+                'type' => 'success',
+                'message'  => 'Item has been removed',
             ], 200);
         } catch (\Exception $e) {
             return response()->json([

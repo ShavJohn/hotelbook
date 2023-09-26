@@ -16,4 +16,10 @@ interface RoomOptionsInterface
      * @return mixed
      */
     public function setRoomFST($data);
+
+    /**
+     * @param $data
+     * @return mixed
+     */
+    public function removeFST($id);
 }

@@ -13,19 +13,35 @@
             </div>
         </template>
         <template #modal-body>
-            <form class="modal-inputs-container">
+            <form class="modal-inputs-container overflow-modal">
                 <div class="input-elements">
-                    <span class="input-name">Type</span>
-                    <input type="text" id="feature-name" name="feature-name" placeholder="Enter Room Feature" v-model="fSTItem[dataLang].name">
+                    <span class="input-name">Type Name</span>
+                    <input type="text" id="type-name" name="type-name" placeholder="Enter Room Type name" v-model="fSTItem[dataLang].name">
+                </div>
+                <div class="input-elements">
+                    <span class="input-name">Type Count</span>
+                    <input type="text" id="type-description" name="type-description" placeholder="Enter Room Type count" v-model="fSTItem[dataLang].description">
                 </div>
                 <template v-for="(type, key) in roomTypes">
-                    <div class="position-relative">
+                    <div class="position-relative margin-top-large">
                         <div class="element-remove-btn">
-                            <font-awesome-icon icon="fa-solid fa-xmark" @click="removeItemFromArray('types', key)" />
+                            <font-awesome-icon icon="fa-solid fa-xmark" @click="removeItemFromArray('types', type.id, key)" />
                         </div>
-                        <div class="input-elements">
-                            <span class="input-name">Type</span>
-                            <input type="text" name="feature-name" placeholder="Enter Room Feature" v-model="type[dataLang].name">
+                        <div class="input-elements-display">
+                            <div>
+                                <span class="input-name">Type</span>
+                            </div>
+                            <div>
+                                <span>{{ type[dataLang].name }}</span>
+                            </div>
+                        </div>
+                        <div class="input-elements-display">
+                            <div>
+                                <span class="input-name">Count</span>
+                            </div>
+                            <div>
+                                <span>{{ type[dataLang].description }}</span>
+                            </div>
                         </div>
                     </div>
                 </template>

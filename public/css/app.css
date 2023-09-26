@@ -16042,6 +16042,7 @@ textarea.form-control-lg {
 .dropdown-container .open {
   height: auto;
   max-height: 200px;
+  display: block;
 }
 
 .admin-sidebar-container {
@@ -16419,6 +16420,8 @@ textarea.form-control-lg {
 }
 .modal-content .modal-body {
   padding: 0;
+}
+.modal-content .modal-body .overflow-modal {
   overflow-y: auto;
   max-height: 350px;
 }
@@ -16438,37 +16441,49 @@ textarea.form-control-lg {
   padding: 30px;
 }
 .modal-content .modal-body .modal-inputs-container .input-elements {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
 }
-.modal-content .modal-body .modal-inputs-container .input-elements .input-name {
+.modal-content .modal-body .modal-inputs-container .input-elements-display {
+  justify-content: center;
+  gap: 20px;
+}
+.modal-content .modal-body .modal-inputs-container .input-elements-display div {
+  width: 50%;
+}
+.modal-content .modal-body .modal-inputs-container .input-elements-display div:first-of-type {
+  text-align: end;
+}
+.modal-content .modal-body .modal-inputs-container .input-elements, .modal-content .modal-body .modal-inputs-container .input-elements-display {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.modal-content .modal-body .modal-inputs-container .input-elements .input-name, .modal-content .modal-body .modal-inputs-container .input-elements-display .input-name {
   font-size: 16px;
   font-weight: 700;
 }
-.modal-content .modal-body .modal-inputs-container .input-elements .image-action-btn {
+.modal-content .modal-body .modal-inputs-container .input-elements .image-action-btn, .modal-content .modal-body .modal-inputs-container .input-elements-display .image-action-btn {
   cursor: pointer;
 }
-.modal-content .modal-body .modal-inputs-container .input-elements .image-action-btn svg {
+.modal-content .modal-body .modal-inputs-container .input-elements .image-action-btn svg, .modal-content .modal-body .modal-inputs-container .input-elements-display .image-action-btn svg {
   font-size: 24px;
   color: #C19B77;
 }
-.modal-content .modal-body .modal-inputs-container .input-elements:last-of-type {
+.modal-content .modal-body .modal-inputs-container .input-elements:last-of-type, .modal-content .modal-body .modal-inputs-container .input-elements-display:last-of-type {
   margin-bottom: 0;
 }
-.modal-content .modal-body .modal-inputs-container .input-elements input {
+.modal-content .modal-body .modal-inputs-container .input-elements input, .modal-content .modal-body .modal-inputs-container .input-elements-display input {
   padding: 5px 15px;
   border-top: none;
   border-right: none;
   border-left: none;
   border-bottom: 2px solid #888888;
 }
-.modal-content .modal-body .modal-inputs-container .input-elements input:focus-visible {
+.modal-content .modal-body .modal-inputs-container .input-elements input:focus-visible, .modal-content .modal-body .modal-inputs-container .input-elements-display input:focus-visible {
   outline: none;
   border-bottom: 2px solid #C19B77;
 }
-.modal-content .modal-body .modal-inputs-container .input-elements textarea {
+.modal-content .modal-body .modal-inputs-container .input-elements textarea, .modal-content .modal-body .modal-inputs-container .input-elements-display textarea {
   width: 48%;
   resize: none;
   padding: 5px 15px;
@@ -16477,7 +16492,7 @@ textarea.form-control-lg {
   border-left: none;
   border-bottom: 2px solid #888888;
 }
-.modal-content .modal-body .modal-inputs-container .input-elements textarea:focus-visible {
+.modal-content .modal-body .modal-inputs-container .input-elements textarea:focus-visible, .modal-content .modal-body .modal-inputs-container .input-elements-display textarea:focus-visible {
   outline: none;
   border-bottom: 2px solid #C19B77;
 }
@@ -16496,4 +16511,50 @@ textarea.form-control-lg {
 }
 .modal-content .modal-footer .btn-action {
   background-color: #C19B77;
+}
+
+.multiselect-dropdown-container {
+  width: 50%;
+  position: relative;
+}
+.multiselect-dropdown-container button {
+  width: 100%;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  background-color: transparent;
+  border-bottom: 2px solid #C19B77;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.multiselect-dropdown-container button svg {
+  color: #C19B77;
+}
+.multiselect-dropdown-container .open {
+  height: auto;
+}
+.multiselect-dropdown-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #edeceb;
+  position: absolute;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.multiselect-dropdown-container ul li {
+  padding: 5px 20px;
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out;
+}
+.multiselect-dropdown-container ul li:hover {
+  background-color: #d5d5d5;
+  transition: background-color 0.5s ease-in-out;
+}
+.multiselect-dropdown-container ul hr {
+  margin: 0;
 }

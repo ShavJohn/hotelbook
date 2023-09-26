@@ -66,8 +66,10 @@ export default {
             this.fSTItem.ru.name = ''
             this.fSTItem.ru.description = ''
         },
-        removeItemFromArray(arrayName, key) {
+        removeItemFromArray(arrayName, id, key) {
             this.$store.state.rooms[`${arrayName}`].splice(key, 1)
+
+            this.$store.dispatch('rooms/removeFST', id)
         }
     }
 }

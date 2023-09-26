@@ -13,7 +13,7 @@
             </div>
         </template>
         <template #modal-body>
-            <form class="modal-inputs-container">
+            <form class="modal-inputs-container overflow-modal">
                 <div class="input-elements">
                     <span class="input-name">Feature Name</span>
                     <input type="text" id="feature-name" name="feature-name" placeholder="Enter Room Feature" v-model="fSTItem[dataLang].name">
@@ -26,16 +26,23 @@
                 <template v-for="(feature, key) in roomFeatures">
                     <div class="position-relative margin-top-large">
                         <div class="element-remove-btn">
-                            <font-awesome-icon icon="fa-solid fa-xmark" @click="removeItemFromArray('features', key)" />
+                            <font-awesome-icon icon="fa-solid fa-xmark" @click="removeItemFromArray('features', feature.id, key)" />
                         </div>
-                        <div class="input-elements">
-                            <span class="input-name">Feature Name</span>
-                            <input type="text" name="feature-name" placeholder="Enter Room Feature" v-model="feature[dataLang].name">
+                        <div class="input-elements-display">
+                            <div class="">
+                                <span class="input-name">Feature Name</span>
+                            </div>
+                            <div>
+                                <span>{{ feature[dataLang].name }}</span>
+                            </div>
                         </div>
-                        <div class="input-elements">
-                            <span class="input-name">Feature Description</span>
-                            <textarea placeholder="Enter Room Feature Description" v-model="feature[dataLang].description">
-                        </textarea>
+                        <div class="input-elements-display">
+                            <div>
+                                <span class="input-name">Feature Description</span>
+                            </div>
+                            <div>
+                                <span>{{ feature[dataLang].description }}</span>
+                            </div>
                         </div>
                     </div>
                 </template>

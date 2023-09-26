@@ -46,12 +46,25 @@
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Room Type</span>
+                    <multiselect-dropdown>
+                        <template #button>
+                            Room Types
+                        </template>
+                        <template #available-options>
+                            <li v-for="roomType in roomTypes">{{ roomType[dataLang].name }}</li>
+                        </template>
+                        <template #selected-options>
+                            <li>Not selected yet</li>
+                        </template>
+                    </multiselect-dropdown>
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Room Features</span>
+<!--                    {{ roomFeatures }}-->
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Room Services</span>
+<!--                    {{ roomServices }}-->
                 </div>
             </form>
         </template>
@@ -66,9 +79,10 @@
 import Modals from "../../mainComponents/modals";
 import DropDown from "../../mainComponents/drop-down";
 import roomMixins from "../../../mixins/room-mixin";
+import MultiselectDropdown from "../../mainComponents/multiselect-dropdown";
 export default {
     name: "room-action-modal",
-    components: {DropDown, Modals},
+    components: {MultiselectDropdown, DropDown, Modals},
     mixins: [roomMixins],
 
 }

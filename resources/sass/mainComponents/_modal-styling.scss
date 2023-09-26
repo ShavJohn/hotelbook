@@ -29,8 +29,11 @@
 
     .modal-body {
         padding: 0;
-        overflow-y: auto;
-        max-height: 350px;
+        
+        .overflow-modal {
+            overflow-y: auto;
+            max-height: 350px;
+        }
 
         .element-remove-btn {
             display: flex;
@@ -50,10 +53,25 @@
             padding: 30px;
 
             .input-elements {
-                display: flex;
                 justify-content: space-between;
+            }
+
+            .input-elements-display {
+                justify-content: center;
+                gap: 20px;
+
+                div {
+                    width: 50%;
+
+                    &:first-of-type {
+                        text-align: end;
+                    }
+                }
+            }
+            .input-elements, .input-elements-display {
+                display: flex;
                 align-items: center;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
 
                 .input-name {
                     font-size: 16px;

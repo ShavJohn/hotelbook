@@ -27,6 +27,7 @@ Route::group(['middleware' => 'api'], function() {
 
         //room feature routs
         Route::post('/add-room-{fst}', 'App\Http\Controllers\RoomOptionsController@addRoomFST');
+        Route::delete('/delete-fst/{fst}', 'App\Http\Controllers\RoomOptionsController@removeFST');
 
         Route::post('/logout', 'App\Http\Controllers\AuthController@logOut');
     });

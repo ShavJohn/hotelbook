@@ -26,7 +26,7 @@ const routes = [
             { path: '/finishing-room-booking', component: RoomFinishBooking, name: 'RoomFinishBooking', meta: {title: 'Finish Room Booking'}}
         ]
     },
-    { path: '/rooms/:room', component: Room, name: 'Room', meta: {title: 'room'} },
+    { path: '/room/:room', component: Room, name: 'Room', meta: {title: 'room'} },
     { path: '/contact', component: Contact, name: 'Contact', meta: {title: 'Contact'}},
     { path: '/about', component: About, name: 'About', meta: {title: 'About'}},
     { path: '/login', component: Login, name: 'Login', meta: {title: 'Login'}},
