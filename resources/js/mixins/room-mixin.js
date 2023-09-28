@@ -24,12 +24,27 @@ export default {
         roomTypes() {
             return this.$store.getters['rooms/typesGetter']
         },
+        selectedType() {
+            return this.$store.getters['rooms/selectedTypeGetter']
+        },
         roomServices() {
             return this.$store.getters['rooms/servicesGetter']
         },
+        selectedServices() {
+            return this.$store.getters['rooms/selectedServicesGetter']
+        },
+        filteredServices() {
+            return this.roomServices.filter(roomType => !this.selectedServices.includes(roomType))
+        },
         roomFeatures() {
             return this.$store.getters['rooms/featuresGetter']
-        }
+        },
+        selectedFeatures() {
+            return this.$store.getters['rooms/selectedFeaturesGetter']
+        },
+        filteredFeatures() {
+            return this.roomFeatures.filter(roomType => !this.selectedFeatures.includes(roomType))
+        },
     },
     methods: {
         addItemToArray(arrayName) {
@@ -66,10 +81,20 @@ export default {
             this.fSTItem.ru.name = ''
             this.fSTItem.ru.description = ''
         },
-        removeItemFromArray(arrayName, id, key) {
-            this.$store.state.rooms[`${arrayName}`].splice(key, 1)
+        chooseFST(type, data) {
+            if(type === 'roomServices') {
+                  this.$store.state.rooms.room.selectedServices.push(data)
+              } else if(type === 'roomFeatures') {
+                  this.$store.state.rooms.room.selectedFeatures.push(data)
+              }
+        },
+        removeSFTItem(arrayName, id, key) {
+            this.removeItemFromArray(arrayName, key)
 
             this.$store.dispatch('rooms/removeFST', id)
+        },
+        removeItemFromArray(arrayName, key) {
+            this.$store.state.rooms[`${arrayName}`].splice(key, 1)
         }
     }
 }

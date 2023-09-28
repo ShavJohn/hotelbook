@@ -33,17 +33,29 @@
         overflow: hidden;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
+        z-index: 100;
 
         li {
             padding: 5px 20px;
             cursor: pointer;
             transition: background-color .5s ease-in-out;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
             &:hover {
                 background-color: #d5d5d5;
                 transition: background-color .5s ease-in-out;
             }
 
+        }
+
+        .multiselect-disabled {
+            cursor: not-allowed;
+
+            &:hover {
+                background-color: #edeceb;
+            }
         }
 
         hr {

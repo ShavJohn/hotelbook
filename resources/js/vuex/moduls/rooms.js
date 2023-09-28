@@ -12,16 +12,16 @@ export default {
                 price: ''
             },
             number: '',
-            roomImage: [],
+            roomImage: {},
             additionalImages: [],
-            roomType: [],
-            roomFeatures: [],
-            roomServices: []
+            selectedType: {},
+            selectedFeatures: [],
+            selectedServices: []
         },
         rooms: [],
         types: [],
         features: [],
-        services: []
+        services: [],
     },
     getters: {
         roomGetter(state) {
@@ -33,11 +33,20 @@ export default {
         typesGetter(state) {
             return state.types
         },
+        selectedTypeGetter(state) {
+            return state.room.selectedType
+        },
         featuresGetter(state) {
             return state.features
         },
+        selectedFeaturesGetter(state) {
+            return state.room.selectedFeatures
+        },
         servicesGetter(state) {
             return state.services
+        },
+        selectedServicesGetter(state) {
+            return state.room.selectedServices
         }
     },
     mutations: {
@@ -59,12 +68,21 @@ export default {
         typesSetter(state, data) {
             state.types = data
         },
+        selectedTypeSetter(state, data) {
+            state.room.selectedType = data
+        },
         featuresSetter(state, data) {
             state.features = data
         },
+        selectedFeaturesSetter(state, data) {
+            state.room.selectedFeatures = data
+        },
         servicesSetter(state, data) {
             state.services = data
-        }
+        },
+        selectedServicesSetter(state, data) {
+            state.room.selectedServices = data
+         }
     },
     actions: {
         addRoomFST(context, data) {

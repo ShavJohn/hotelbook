@@ -16545,15 +16545,25 @@ textarea.form-control-lg {
   overflow: hidden;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  z-index: 100;
 }
 .multiselect-dropdown-container ul li {
   padding: 5px 20px;
   cursor: pointer;
   transition: background-color 0.5s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .multiselect-dropdown-container ul li:hover {
   background-color: #d5d5d5;
   transition: background-color 0.5s ease-in-out;
+}
+.multiselect-dropdown-container ul .multiselect-disabled {
+  cursor: not-allowed;
+}
+.multiselect-dropdown-container ul .multiselect-disabled:hover {
+  background-color: #edeceb;
 }
 .multiselect-dropdown-container ul hr {
   margin: 0;

@@ -26,7 +26,7 @@
                 <template v-for="(service, key) in roomServices">
                     <div class="position-relative margin-top-large">
                         <div class="element-remove-btn">
-                            <font-awesome-icon icon="fa-solid fa-xmark" @click="removeItemFromArray('services', service.id, key)" />
+                            <font-awesome-icon icon="fa-solid fa-xmark" @click="removeSFTItem('services', service.id, key)" />
                         </div>
                         <div class="input-elements-display">
                             <div>

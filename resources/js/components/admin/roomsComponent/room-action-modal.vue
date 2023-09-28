@@ -46,25 +46,50 @@
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Room Type</span>
+                    <select v-model="$store.state.rooms.room.selectedType">
+                        <option value="" disabled selected>Select Room Type</option>
+                        <option v-for="roomType in roomTypes" :value="roomType">{{ roomType[dataLang].name }}</option>
+                    </select>
+                </div>
+                <div class="input-elements">
+                    <span class="input-name">Room Features</span>
                     <multiselect-dropdown>
                         <template #button>
-                            Room Types
+                            Room Features
                         </template>
                         <template #available-options>
-                            <li v-for="roomType in roomTypes">{{ roomType[dataLang].name }}</li>
+                            <li v-for="roomFeature in filteredFeatures" @click="chooseFST('roomFeatures', roomFeature)">{{ roomFeature[dataLang].name }}</li>
                         </template>
                         <template #selected-options>
-                            <li>Not selected yet</li>
+                            <template v-if="selectedFeatures.length">
+                                <li v-for="(selectedFeature, key) in selectedFeatures">
+                                    {{ selectedFeature[dataLang].name }}
+                                    <font-awesome-icon icon="fa-solid fa-xmark" @click="removeItemFromArray('selectedFeatures', key)" />
+                                </li>
+                            </template>
+                            <li v-else class="multiselect-disabled">Not selected yet</li>
                         </template>
                     </multiselect-dropdown>
                 </div>
                 <div class="input-elements">
-                    <span class="input-name">Room Features</span>
-<!--                    {{ roomFeatures }}-->
-                </div>
-                <div class="input-elements">
                     <span class="input-name">Room Services</span>
-<!--                    {{ roomServices }}-->
+                    <multiselect-dropdown>
+                        <template #button>
+                            Room Services
+                        </template>
+                        <template #available-options>
+                            <li v-for="roomService in filteredServices" @click="chooseFST('roomServices', roomService)">{{ roomService[dataLang].name }}</li>
+                        </template>
+                        <template #selected-options>
+                            <template v-if="selectedServices.length">
+                                <li v-for="(selectedService, key) in selectedServices">
+                                    {{ selectedService[dataLang].name }}
+                                    <font-awesome-icon icon="fa-solid fa-xmark" @click="removeItemFromArray('selectedServices', key)" />
+                                </li>
+                            </template>
+                            <li v-else class="multiselect-disabled">Not selected yet</li>
+                        </template>
+                    </multiselect-dropdown>
                 </div>
             </form>
         </template>
