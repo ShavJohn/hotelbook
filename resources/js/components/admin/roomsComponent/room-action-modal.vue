@@ -24,12 +24,18 @@
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Room Image</span>
-                    <label for="room-image">
+                    <label v-if="!roomData.roomImage.length" :key="imagesUploaded">
                         <span class="image-action-btn">
                             <font-awesome-icon icon="fa-solid fa-file-arrow-up" />
                         </span>
-                        <input type="file" class="hidden" id="room-image">
+                        <input type="file" class="hidden" name="image" @change="uploadImage($event, key)">
                     </label>
+                    <div v-else class="image-content">
+                        <img v-if="roomData.roomImage && roomData.roomImage.length" :src="`${imagePrefix}/${roomData.roomImage}`">
+                        <div class="image-action-btn">
+                            <font-awesome-icon icon="fa-solid fa-xmark" @click="deleteImage(roomData.roomImage, 0, 'single')" />
+                        </div>
+                    </div>
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Room Additional Images</span>

@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Interfaces\ImageInterface;
 use App\Interfaces\RoomOptionsInterface;
+use App\Repositories\ImageRepository;
 use App\Repositories\RoomOptionsRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,6 +30,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             RoomOptionsInterface::class,
             RoomOptionsRepository::class
+        );
+        $this->app->bind(
+            ImageInterface::class,
+            ImageRepository::class
         );
     }
 }

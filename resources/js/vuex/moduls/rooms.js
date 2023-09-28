@@ -12,7 +12,7 @@ export default {
                 price: ''
             },
             number: '',
-            roomImage: {},
+            roomImage: '',
             additionalImages: [],
             selectedType: {},
             selectedFeatures: [],
