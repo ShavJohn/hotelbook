@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('room_f_s_t_s', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('room_id');
-            $table->unsignedBigInteger('sft_id');
+            $table->unsignedBigInteger('room_options_id');
             $table->timestamps();
 
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('no action');
-            $table->foreign('sft_id')->references('id')->on('room_options')->onDelete('no action');
+            $table->foreign('room_options_id')->references('id')->on('room_options')->onDelete('no action');
         });
     }
 

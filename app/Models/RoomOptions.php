@@ -19,4 +19,9 @@ class RoomOptions extends Model
         'en' => 'array',
         'ru' => 'array'
     ];
+
+    public function room()
+    {
+        return $this->belongsToMany(Room::class);
+    }
 }

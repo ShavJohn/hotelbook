@@ -25,6 +25,6 @@ class Room extends Model
 
     public function sft()
     {
-        return $this->belongsToMany(RoomFST::class);
+        return $this->belongsToMany(RoomOptions::class);
     }
 }

@@ -13,9 +13,4 @@ class RoomFST extends Model
         'room_id',
         'fst_id',
     ];
-
-    public function room()
-    {
-        return $this->belongsToMany(Room::class);
-    }
 }
