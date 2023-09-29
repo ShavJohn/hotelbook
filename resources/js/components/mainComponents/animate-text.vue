@@ -39,7 +39,7 @@ export default {
             if (this.iteration < this.text.length) {
                 this.iterableText = this.text
                 this.displayText += this.text.charAt(this.iteration);
-                document.getElementById("textDisplay").style.animation = 'blink-caret .5s step-end infinite'
+                document.getElementById("textDisplay") ? document.getElementById("textDisplay").style.animation = 'blink-caret .5s step-end infinite' : ''
                 this.iteration++;
                 setTimeout(this.typeText, this.displayTime);
             } else {

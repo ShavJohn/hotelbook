@@ -16569,6 +16569,14 @@ textarea.form-control-lg {
   margin: 0;
 }
 
+.multiple-images-container {
+  display: flex;
+  flex-direction: column;
+}
+.multiple-images-container label {
+  text-align: end;
+}
+
 .image-content {
   position: relative;
 }

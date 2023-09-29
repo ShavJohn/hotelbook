@@ -90,11 +90,8 @@ export default {
             formData.append('image', e.target.files[0])
 
             this.$store.dispatch('imageActions/imageUpload', formData).then((res) => {
-                // this.widgetData.background_image = res.data.image
 
-
-                console.log(454545, res, 45454)
-                this.$store.state.rooms.room.roomImage = res.data.image
+                this.$store.state.rooms.room.main_image = res.data.image
                 this.$emit('alert', {
                     'type': res?.data?.type,
                     'message': res?.data?.message
@@ -112,8 +109,8 @@ export default {
 
             this.imagesUploaded++
             this.$store.dispatch('imageActions/imageUpload', formData).then((res) => {
-                // this.widgetData.partners.push(res.data.image)
 
+                this.$store.state.rooms.room.additionalImages.push(res.data.image)
                 this.$emit('alert', {
                     'type': res?.data?.type,
                     'message': res?.data?.message
@@ -128,12 +125,11 @@ export default {
         deleteImage(imageName, key, list) {
             this.$store.dispatch('imageActions/imageDelete', imageName).then((res) => {
                 if(res.data.success) {
-                    // if(!list) {
-                    //     this.widgetData.background_image = ''
-                    // } else {
-                    //     console.log(545454)
-                    //     this.widgetData.partners.splice(key, 1)
-                    // }
+                    if(!list) {
+                        this.$store.state.rooms.room.main_image = ''
+                    } else {
+                        this.$store.state.rooms.room.additionalImages.splice(key, 1)
+                    }
 
                     this.$emit('alert', {
                         'type': res?.data?.type,
@@ -166,10 +162,13 @@ export default {
         },
         chooseFST(type, data) {
             if(type === 'roomServices') {
-                  this.$store.state.rooms.room.selectedServices.push(data)
-              } else if(type === 'roomFeatures') {
-                  this.$store.state.rooms.room.selectedFeatures.push(data)
-              }
+                this.$store.state.rooms.room.selectedServices.push(data)
+            } else if(type === 'roomFeatures') {
+                this.$store.state.rooms.room.selectedFeatures.push(data)
+            }
+        },
+        addRoom() {
+            this.$store.dispatch('rooms/addRoom')
         },
         removeSFTItem(arrayName, id, key) {
             this.removeItemFromArray(arrayName, key)

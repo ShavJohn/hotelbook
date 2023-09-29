@@ -5,14 +5,16 @@ export default {
             id: '',
             en: {
                 name: '',
-                price: ''
+                adult_price: '',
+                child_price: '',
             },
             ru: {
                 name: '',
-                price: ''
+                adult_price: '',
+                child_price: '',
             },
             number: '',
-            roomImage: '',
+            main_image: '',
             additionalImages: [],
             selectedType: {},
             selectedFeatures: [],
@@ -56,7 +58,7 @@ export default {
             state.room.ru.name = data.room.ru.name ? data.room.ru.name : ''
             state.room.ru.price = data.room.ru.price ? data.room.ru.price : ''
             state.room.number = data.room.number ? data.room.number : ''
-            state.room.roomImage = data.room.roomImage ? data.room.roomImage : []
+            state.room.main_image = data.room.main_image ? data.room.main_image : []
             state.room.additionalImages = data.room.additionalImages ? data.room.additionalImages : []
             state.room.roomType = data.room.roomType ? data.room.roomType : ''
             state.room.roomFeatures = data.room.roomFeatures ? data.room.roomFeatures : []
@@ -85,6 +87,33 @@ export default {
          }
     },
     actions: {
+        addRoom(context, data) {
+            return new Promise((resolve, reject) => {
+                axios.post('/add-room', context.state.room).then((res) => {
+
+                })
+            })
+        },
+        getRoom(context, data) {
+            return new Promise((resolve, reject) => {
+
+            })
+        },
+        getRooms(context, data) {
+            return new Promise((resolve, reject) => {
+
+            })
+        },
+        updateRoom(context, data) {
+            return new Promise((resolve, reject) => {
+
+            })
+        },
+        removeRoom(context, data) {
+            return new Promise((resolve, reject) => {
+
+            })
+        },
         addRoomFST(context, data) {
             return new Promise((resolve, reject) => {
                 axios.post(`/add-room-${data.type}`, data.array).then((res) => {

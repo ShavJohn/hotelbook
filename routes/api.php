@@ -34,6 +34,9 @@ Route::group(['middleware' => 'api'], function() {
         Route::delete('/delete-image/{image}', 'App\Http\Controllers\ImageController@deleteImage');
         Route::delete('/delete-image-from-db/{image}', 'App\Http\Controllers\ImageController@deleteImageFromDB');
 
+        //Room routs
+        Route::post('/add-room', 'App\Http\Controllers\RoomController@addRoom');
+
         Route::post('/logout', 'App\Http\Controllers\AuthController@logOut');
     });
 

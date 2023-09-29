@@ -19,32 +19,46 @@
                     <input type="number" id="room-number" name="room-number" placeholder="Enter Room Number" v-model="roomData.number">
                 </div>
                 <div class="input-elements">
-                    <span class="input-name">Room Price</span>
-                    <input type="number" id="room-price" name="room-price" placeholder="Enter Room Price" v-model="roomData[dataLang].price">
+                    <span class="input-name">Adult Price</span>
+                    <input type="number" id="adult-price" name="adult-price" placeholder="Enter Adult Price" v-model="roomData[dataLang].adult_price">
+                </div>
+                <div class="input-elements">
+                    <span class="input-name">Child Price</span>
+                    <input type="number" id="child-price" name="child-price" placeholder="Enter Child Price" v-model="roomData[dataLang].child_price">
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Room Image</span>
-                    <label v-if="!roomData.roomImage.length" :key="imagesUploaded">
+                    <label v-if="!roomData.main_image.length" :key="imagesUploaded">
                         <span class="image-action-btn">
                             <font-awesome-icon icon="fa-solid fa-file-arrow-up" />
                         </span>
                         <input type="file" class="hidden" name="image" @change="uploadImage($event, key)">
                     </label>
                     <div v-else class="image-content">
-                        <img v-if="roomData.roomImage && roomData.roomImage.length" :src="`${imagePrefix}/${roomData.roomImage}`">
+                        <img v-if="roomData.main_image && roomData.main_image.length" :src="`${imagePrefix}/${roomData.main_image}`">
                         <div class="image-action-btn">
-                            <font-awesome-icon icon="fa-solid fa-xmark" @click="deleteImage(roomData.roomImage, 0, 'single')" />
+                            <font-awesome-icon icon="fa-solid fa-xmark" @click="deleteImage(roomData.main_image, 0, 'single')" />
                         </div>
                     </div>
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Room Additional Images</span>
-                    <label for="room-additional-image">
-                        <span class="image-action-btn">
-                            <font-awesome-icon icon="fa-solid fa-file-arrow-up" />
-                        </span>
-                        <input type="file" class="hidden" id="room-additional-image">
-                    </label>
+                    <div class="multiple-images-container">
+                        <label v-if="roomData.additionalImages.length < 10" :key="imagesUploaded" for="room-additional-image">
+                            <span class="image-action-btn">
+                                <font-awesome-icon icon="fa-solid fa-file-arrow-up" />
+                            </span>
+                            <input type="file" class="hidden" id="room-additional-image" @change="uploadImages">
+                        </label>
+                        <div v-if="roomData.additionalImages && roomData.additionalImages.length" v-for="(image, key) in roomData.additionalImages"
+                             class="image-content margin-top-medium">
+                            <img v-if="image && image.length" :src="`${imagePrefix}/${image}`">
+                            <div class="image-action-btn">
+                                <font-awesome-icon v-if="typeof image === 'string'" icon="fa-solid fa-xmark" @click="deleteImage(image, key, true)" />
+                                <font-awesome-icon v-else icon="fa-solid fa-xmark" @click="deleteImageFromDBToo(image, key, true)" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Room Name</span>
@@ -101,7 +115,7 @@
         </template>
         <template #modal-footer>
             <button type="button" data-bs-dismiss="modal" aria-label="Close" class="modal-btn btn-grey close">Close</button>
-            <button class="modal-btn btn-action">Add</button>
+            <button class="modal-btn btn-action" @click.prevent="addRoom">Add</button>
         </template>
     </modals>
 </template>
