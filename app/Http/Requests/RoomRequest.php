@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use JetBrains\PhpStorm\ArrayShape;
 
-class RegisterRequest extends FormRequest
+class RoomRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,11 @@ class RegisterRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    #[ArrayShape(['email' => "string", 'name' => "string", 'password' => "string", 'passwordConfirm' => "string"])] public function rules(): array
+    #[ArrayShape(['number' => "string", 'main_image' => "string"])] public function rules(): array
     {
         return [
-            'email' => 'required|email:rfc,dns|unique:users,email',
-            'name' => 'required|unique:users,name',
-            'password' => 'required|min:8',
-            'passwordConfirm' => 'required|same:password'
+            'number' => 'required',
+            'main_image' => 'required',
         ];
     }
 }

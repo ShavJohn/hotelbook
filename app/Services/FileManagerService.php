@@ -14,7 +14,7 @@ class FileManagerService
     /**
      * @var \Illuminate\Contracts\Filesystem\Filesystem
      */
-    protected $disk;
+    protected Filesystem $disk;
 
     /**
      * FileManagerService constructor.
@@ -30,7 +30,7 @@ class FileManagerService
      * @param $fileName
      * @return JsonResponse
      */
-    public function getFile($fileName)
+    public function getFile($fileName): JsonResponse
     {
         $prefix = $fileName[0] === '/' ? 'public' : 'public/';
         try {
@@ -66,7 +66,7 @@ class FileManagerService
      * @param bool $uploadPrefix
      * @return JsonResponse
      */
-    public function uploadFile($image, $name, $uploadPrefix = true)
+    public function uploadFile($image, $name, $uploadPrefix = true): JsonResponse
     {
         try {
             $image->encode();
@@ -94,7 +94,7 @@ class FileManagerService
      * @param $image
      * @return mixed
      */
-    public function fixImageOrientation($image)
+    public function fixImageOrientation($image): mixed
     {
         $exif = $image->exif();
 
@@ -122,7 +122,7 @@ class FileManagerService
      * @param int $limit
      * @return mixed
      */
-    public function imageSizeLimit($image, $limit = 2048)
+    public function imageSizeLimit($image, $limit = 2048): mixed
     {
         $width = $image->width();
         $height = $image->height();
@@ -142,7 +142,7 @@ class FileManagerService
      * @param $path
      * @return JsonResponse
      */
-    public function delete($path)
+    public function delete($path): JsonResponse
     {
         try {
             $prefix = $path[0] === '/' ? 'public' : 'public/';

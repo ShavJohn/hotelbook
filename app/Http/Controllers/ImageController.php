@@ -14,16 +14,17 @@ class ImageController extends Controller
     /**
      * @var FileManagerService
      */
-    protected $filemenager;
+    protected FileManagerService $filemenager;
 
     /**
      * @var ImageInterface
      */
-    protected $imageRepo;
+    protected ImageInterface $imageRepo;
 
     /**
      * ImageController constructor.
      * @param FileManagerService $fileManagerService
+     * @param ImageInterface $imageRepo
      */
     public function __construct(FileManagerService $fileManagerService,ImageInterface $imageRepo)
     {
@@ -35,7 +36,7 @@ class ImageController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function uploadImage(Request $request)
+    public function uploadImage(Request $request): JsonResponse
     {
         try {
             $file = $request->file('image');
@@ -70,9 +71,10 @@ class ImageController extends Controller
     }
 
     /**
+     * @param $image
      * @return JsonResponse
      */
-    public function deleteImage($image)
+    public function deleteImage($image): JsonResponse
     {
         try {
 
@@ -98,7 +100,7 @@ class ImageController extends Controller
      * @param $image
      * @return JsonResponse
      */
-    public function deleteImageFromDB(Request $request,$image)
+    public function deleteImageFromDB(Request $request,$image): JsonResponse
     {
         try {
             if($request['image']) {

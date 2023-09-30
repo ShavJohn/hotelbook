@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 
 class RoomFSTController extends Controller
 {
-    private $roomFSTRepo;
+    private RoomFSTInterface $roomFSTRepo;
 
     public function __construct(RoomFSTInterface $roomFSTRepo)
     {
         $this->roomFSTRepo = $roomFSTRepo;
     }
+
+
 
 
 }

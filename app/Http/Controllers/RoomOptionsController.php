@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Interfaces\RoomOptionsInterface;
+use Illuminate\Support\Facades\DB;
 
 class RoomOptionsController extends Controller
 {
     /**
      * @var RoomOptionsInterface
      */
-    private $roomOptionsRepo;
+    private RoomOptionsInterface $roomOptionsRepo;
 
     /**
      * RoomOptionsController constructor.
@@ -22,9 +24,9 @@ class RoomOptionsController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function getRoomFST()
+    public function getRoomFST(): JsonResponse
     {
         try {
 
@@ -69,12 +71,12 @@ class RoomOptionsController extends Controller
     /**
      * @param $fst
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function addRoomFST($fst, Request $request)
+    public function addRoomFST($fst, Request $request): JsonResponse
     {
         try {
-
+            DB::beginTransaction();
             $data = [
                 'type' => $fst,
                 'en'   => $request['en'],
@@ -84,12 +86,14 @@ class RoomOptionsController extends Controller
             $this->roomOptionsRepo->setRoomFST($data);
 
 
+            DB::commit();
             return response()->json([
                 'success' => 1,
                 'type' => 'success',
                 'message'  => ucfirst(rtrim($fst,'s')) . ' has been created',
             ], 200);
         } catch (\Exception $e) {
+            DB::rollBack();
             return response()->json([
                 'success' => 0,
                 'type' => 'error',
@@ -100,8 +104,9 @@ class RoomOptionsController extends Controller
 
     /**
      * @param $fst
+     * @return JsonResponse
      */
-    public function removeFST($fst)
+    public function removeFST($fst): JsonResponse
     {
         try {
 

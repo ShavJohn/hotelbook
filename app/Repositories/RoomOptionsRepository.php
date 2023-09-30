@@ -8,7 +8,7 @@ use App\Interfaces\RoomOptionsInterface;
 
 class RoomOptionsRepository implements RoomOptionsInterface
 {
-    private $model;
+    private RoomOptions $model;
 
     public function __construct(RoomOptions $roomOptions)
     {
@@ -18,7 +18,7 @@ class RoomOptionsRepository implements RoomOptionsInterface
     /**
      * @return mixed
      */
-    public function getFST()
+    public function getFST(): mixed
     {
         return $this->model->get();
     }
@@ -27,16 +27,16 @@ class RoomOptionsRepository implements RoomOptionsInterface
      * @param $data
      * @return mixed
      */
-    public function setRoomFST($data)
+    public function setRoomFST($data): mixed
     {
         return $this->model->create($data);
     }
 
     /**
-     * @param $data
-     * @return mixed|void
+     * @param $id
+     * @return mixed
      */
-    public function removeFST($id)
+    public function removeFST($id): mixed
     {
         return $this->model->where('id', $id)->delete();
     }

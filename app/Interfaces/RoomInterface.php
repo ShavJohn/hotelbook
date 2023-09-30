@@ -10,7 +10,7 @@ interface RoomInterface
      * @param $data
      * @return mixed
      */
-    public function addRoom($data);
+    public function addRoom($data): mixed;
 
 
 }

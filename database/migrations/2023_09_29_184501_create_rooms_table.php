@@ -19,7 +19,7 @@ return new class extends Migration
             $table->json('ru');
             $table->string('number');
             $table->string('main_image');
-            $table->string('position');
+            $table->string('position')->nullable();
             $table->timestamps();
         });
     }

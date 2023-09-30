@@ -10,15 +10,19 @@ use App\Models\Room;
 class RoomRepository implements RoomInterface
 {
 
-    private $model;
+    private Room $model;
 
     public function __construct(Room $room)
     {
         $this->model = $room;
     }
 
-    public function addRoom($data)
+    /**
+     * @param $data
+     * @return mixed
+     */
+    public function addRoom($data): mixed
     {
-        return $this->model->creat($data);
+        return $this->model->create($data);
     }
 }

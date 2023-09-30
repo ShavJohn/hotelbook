@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Room extends Model
 {
@@ -23,7 +24,10 @@ class Room extends Model
         'ru' => 'array'
     ];
 
-    public function sft()
+    /**
+     * @return BelongsToMany
+     */
+    public function roomOptions(): BelongsToMany
     {
         return $this->belongsToMany(RoomOptions::class);
     }
