@@ -12,15 +12,15 @@
                     </button>
                 </li>
                 <li>
-                    <button @click="$router.push({name: 'Bookings'})">
-                        <font-awesome-icon icon="fa-solid fa-calendar-days" />
-                        Bookings
-                    </button>
-                </li>
-                <li>
                     <button @click="$router.push({name: 'AdminRooms'})">
                         <font-awesome-icon icon="fa-solid fa-bed" />
                         Rooms
+                    </button>
+                </li>
+                <li>
+                    <button @click="$router.push({name: 'Bookings'})">
+                        <font-awesome-icon icon="fa-solid fa-calendar-days" />
+                        Bookings
                     </button>
                 </li>
                 <li>

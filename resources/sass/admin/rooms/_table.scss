@@ -13,8 +13,63 @@
 
         td, th {
             border: 1px solid #dddddd;
-            text-align: left;
             padding: 10px;
         }
+
+        th {
+            text-align: left;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        tbody {
+            img {
+                width: 200px;
+            }
+
+            tr:nth-child(even){background-color: #f2f2f2;}
+        }
+    }
+
+    .leader-animation {
+        display: flex;
+        justify-content: center;
+        margin-top: 60px;
+        margin-bottom: 60px;
+
+        .loader-style {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            color: $dark-yellow;
+        }
+    }
+
+    .room-table-action-btn {
+        color: white;
+        padding: 5px 30px;
+        border: double;
+        border-radius: 20px;
+        margin-right: 20px;
+        cursor: pointer;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+
+    .btn-bg-yellow {
+        background-color: $dark-yellow;
+    }
+
+    .btn-bg-red {
+        background-color: $dark-red;
+    }
+
+    .remove-room-message {
+        font-size: 18px;
+        font-weight: 600;
     }
 }

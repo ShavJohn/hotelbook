@@ -22,6 +22,8 @@ Route::group(['middleware' => 'api'], function() {
 
     Route::get('/get-room-fst', 'App\Http\Controllers\RoomOptionsController@getRoomFST');
 
+    Route::get('/get-rooms','App\Http\Controllers\RoomController@getRooms');
+
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('/check-auth', 'App\Http\Controllers\AuthController@checkAuth');
 
@@ -36,6 +38,7 @@ Route::group(['middleware' => 'api'], function() {
 
         //Room routs
         Route::post('/add-room', 'App\Http\Controllers\RoomController@addRoom');
+        Route::delete('/delete-room/{roomId}', 'App\Http\Controllers\RoomController@removeRoom');
 
         Route::post('/logout', 'App\Http\Controllers\AuthController@logOut');
     });

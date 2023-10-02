@@ -14445,6 +14445,24 @@ textarea.form-control-lg {
   display: inline;
 }
 
+.loader-style {
+  font-size: 12px;
+  width: 15px;
+  height: 15px;
+  margin-left: 15px;
+}
+
+.tag-container {
+  display: flex;
+  gap: 10px;
+}
+.tag-container .custom-tag {
+  padding: 5px 20px;
+  border-radius: 20px;
+  background-color: #C19B77;
+  color: white;
+}
+
 .btn {
   cursor: pointer;
   text-transform: uppercase;
@@ -16376,8 +16394,52 @@ textarea.form-control-lg {
 }
 .rooms-table-container table td, .rooms-table-container table th {
   border: 1px solid #dddddd;
-  text-align: left;
   padding: 10px;
+}
+.rooms-table-container table th {
+  text-align: left;
+}
+.rooms-table-container table td {
+  text-align: center;
+}
+.rooms-table-container table tbody img {
+  width: 200px;
+}
+.rooms-table-container table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.rooms-table-container .leader-animation {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+.rooms-table-container .leader-animation .loader-style {
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  color: #C19B77;
+}
+.rooms-table-container .room-table-action-btn {
+  color: white;
+  padding: 5px 30px;
+  border: double;
+  border-radius: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.rooms-table-container .room-table-action-btn:last-of-type {
+  margin-right: 0;
+}
+.rooms-table-container .btn-bg-yellow {
+  background-color: #C19B77;
+}
+.rooms-table-container .btn-bg-red {
+  background-color: #8c3131;
+}
+.rooms-table-container .remove-room-message {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .room-actions-container {

@@ -7,11 +7,13 @@ export default {
                 name: '',
                 adult_price: '',
                 child_price: '',
+                description: ''
             },
             ru: {
                 name: '',
                 adult_price: '',
                 child_price: '',
+                description: ''
             },
             number: '',
             main_image: '',
@@ -90,16 +92,40 @@ export default {
         addRoom(context, data) {
             return new Promise((resolve, reject) => {
                 axios.post('/add-room', context.state.room).then((res) => {
+                    resolve(res)
+                    context.dispatch('alert/alertResponse', {
+                        'type': res.data.type,
+                        'status': res.status,
+                        'message': res.data.message
+                    }, { root:true })
+                }).catch(err => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
 
+                    reject(err)
+                })
+            })
+        },
+        getRooms(context, data) {
+            return new Promise((resolve, reject) => {
+                axios.get('/get-rooms', {params: data}).then((res) => {
+                    context.commit('roomsSetter', res.data.roomData)
+                    resolve(res)
+                }).catch(err => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
+
+                    reject(err)
                 })
             })
         },
         getRoom(context, data) {
-            return new Promise((resolve, reject) => {
-
-            })
-        },
-        getRooms(context, data) {
             return new Promise((resolve, reject) => {
 
             })
@@ -111,7 +137,24 @@ export default {
         },
         removeRoom(context, data) {
             return new Promise((resolve, reject) => {
+                axios.delete(`/delete-room/${data}`).then((res) => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': res.data.type,
+                        'status': res.status,
+                        'message': res.data.message
+                    }, { root:true })
 
+                    resolve(res)
+                }).catch(err => {
+
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
+
+                    reject(err)
+                })
             })
         },
         addRoomFST(context, data) {
@@ -147,6 +190,7 @@ export default {
                         'status': res.status,
                         'message': res.data.message
                     }, { root:true })
+                    resolve(res)
                 }).catch(err => {
 
                     context.dispatch('alert/alertResponse', {

@@ -78,8 +78,6 @@ export default {
     },
     mounted() {
         this.getGeneralData()
-
-
     }
 }
 </script>

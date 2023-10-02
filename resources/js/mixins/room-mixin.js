@@ -3,6 +3,8 @@ export default {
         return {
             dataLang: 'en',
             imagesUploaded: 0,
+            btnLoading: false,
+            tableContentLoader: false,
             fSTItem: {
                 en: {
                     name: '',
@@ -13,6 +15,9 @@ export default {
                     description: ''
                 }
             },
+            skip: 0,
+            take: 5,
+            removeRoomId: 0,
         }
     },
     computed: {
@@ -51,6 +56,15 @@ export default {
         },
     },
     methods: {
+        displayType(array) {
+            return array.find(( name ) => name.type === "types")
+        },
+        displayFeatures(array) {
+            return array.filter(( name ) => name.type === "features")
+        },
+        displayServices(array) {
+            return array.filter(( name ) => name.type === "services")
+        },
         addItemToArray(arrayName) {
             this.$store.state.rooms[`${arrayName}`].push({
                 en: {
@@ -144,7 +158,6 @@ export default {
             })
         },
         deleteImageFromDBToo(imageName, key) {
-            console.log(imageName);
             this.$store.dispatch('imageActions/imageDeleteFromDb', imageName).then((res) => {
                 if(res.data.success) {
                     // this.widgetData.partners.splice(key, 1)
@@ -168,7 +181,61 @@ export default {
             }
         },
         addRoom() {
-            this.$store.dispatch('rooms/addRoom')
+            this.btnLoading = true
+            if(!this.roomData.number ||
+                !this.roomData[this.dataLang].adult_price ||
+                !this.roomData[this.dataLang].child_price ||
+                !this.roomData.main_image ||
+                !this.roomData[this.dataLang].name
+            ) {
+                this.$store.dispatch('alert/alertResponse', {
+                    'type': 'Error',
+                    'status': 0,
+                    'message': 'Please fill all inputs'
+                }, { root:true })
+                this.btnLoading = false
+                return;
+            }
+            this.$store.dispatch('rooms/addRoom').then((res) => {
+                this.getRooms()
+                this.btnLoading = false
+                $('#roomAction').modal("hide");
+            }).catch(() => {
+                this.btnLoading = false
+            })
+        },
+        changePage(action) {
+            if(action === 'next' && this.roomsData.length +1 >= this.take) {
+                this.skip = this.skip + this.take
+                this.getRooms()
+            } else if(action === 'prev' && this.skip > 0) {
+                this.skip = this.skip - this.take
+                this.getRooms()
+            }
+        },
+        openRemoveRoomModal(id) {
+            this.removeRoomId = id
+            $('#removeRoom').modal("show");
+        },
+        removeRoom(id) {
+            this.btnLoading = true
+            this.$store.dispatch('rooms/removeRoom', id).then(() => {
+                this.btnLoading = false
+                this.getRooms()
+                $('#removeRoom').modal("hide");
+            }).catch(() => {
+                this.btnLoading = false
+            })
+        },
+        getRooms() {
+            this.tableContentLoader = true
+            let data = {
+                'skip': this.skip,
+                'take': this.take
+            }
+            this.$store.dispatch('rooms/getRooms', data).then(() => {
+                this.tableContentLoader = false
+            })
         },
         removeSFTItem(arrayName, id, key) {
             this.removeItemFromArray(arrayName, key)

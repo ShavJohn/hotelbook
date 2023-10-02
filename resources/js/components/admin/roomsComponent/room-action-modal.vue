@@ -65,6 +65,10 @@
                     <input type="text" id="room-name" name="room-name" placeholder="Enter Room Name" v-model="roomData[dataLang].name">
                 </div>
                 <div class="input-elements">
+                    <span class="input-name">Room Description</span>
+                    <textarea id="room-description" name="room-description" placeholder="Enter Room description" v-model="roomData[dataLang].description"></textarea>
+                </div>
+                <div class="input-elements">
                     <span class="input-name">Room Type</span>
                     <select v-model="$store.state.rooms.room.selectedType">
                         <option value="" disabled selected>Select Room Type</option>
@@ -115,7 +119,11 @@
         </template>
         <template #modal-footer>
             <button type="button" data-bs-dismiss="modal" aria-label="Close" class="modal-btn btn-grey close">Close</button>
-            <button class="modal-btn btn-action" @click.prevent="addRoom">Add</button>
+            <button class="modal-btn btn-action" @click.prevent="addRoom">Add
+                <div v-if="btnLoading" class="spinner-border loader-style" role="status">
+                    <span class="sr-only"></span>
+                </div>
+            </button>
         </template>
     </modals>
 </template>

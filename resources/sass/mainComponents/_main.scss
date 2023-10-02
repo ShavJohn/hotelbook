@@ -19,6 +19,25 @@
     display: inline;
 }
 
+.loader-style  {
+    font-size: 12px;
+    width: 15px;
+    height: 15px;
+    margin-left: 15px;
+}
+
+.tag-container {
+    display: flex;
+    gap: 10px;
+
+    .custom-tag {
+        padding: 5px 20px;
+        border-radius: 20px;
+        background-color: $dark-yellow;
+        color: white;
+    }
+}
+
 .btn {
     cursor: pointer;
     text-transform: uppercase;

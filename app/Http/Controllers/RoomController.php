@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RoomRequest;
 use App\Interfaces\ImageInterface;
 use App\Interfaces\RoomInterface;
+use App\Models\Room;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -21,6 +22,59 @@ class RoomController extends Controller
     {
         $this->roomRepo = $room;
         $this->imageRepo = $imageRepo;
+    }
+
+    /**
+     * @param $id
+     * @return JsonResponse
+     */
+    public function getRoom($id): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+            $roomData = [];
+
+            DB::commit();
+            return response()->json([
+                'success' => 1,
+                'type' => 'success',
+                'roomData'  => $roomData,
+            ], 200);
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            Log::error($exception);
+            return response()->json([
+                'success' => 0,
+                'type' => 'error',
+                'message'  => 'Something went wrong',
+            ], 422);
+        }
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function getRooms(Request $request): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+            $roomsData = $this->roomRepo->getRooms($request->skip, $request->take);
+
+            DB::commit();
+            return response()->json([
+                'success' => 1,
+                'type' => 'success',
+                'roomData'  => $roomsData,
+            ], 200);
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            Log::error($exception);
+            return response()->json([
+                'success' => 0,
+                'type' => 'error',
+                'message'  => 'Something went wrong',
+            ], 422);
+        }
     }
 
     /**
@@ -52,7 +106,7 @@ class RoomController extends Controller
                         $additionalImageArray[] = [
                             'image' => $image,
                             'imageable_id' => $roomDataFromDB->id,
-                            'imageable_type' => 'Room',
+                            'imageable_type' => Room::class,
                             'user_id' => auth()->user()->id,
                             'created_at' => Carbon::now(),
                             'updated_at' => Carbon::now(),
@@ -62,6 +116,7 @@ class RoomController extends Controller
                     $this->imageRepo->store($additionalImageArray);
                 }
 
+                #Connecting FSTs to room
                 if(count($request['selectedFeatures'])) {
                     foreach ($request['selectedFeatures'] as $selectedFeature) {
                         $roomDataFromDB->roomOptions()->attach($selectedFeature['id']);
@@ -92,6 +147,59 @@ class RoomController extends Controller
                     'message'  => 'Please fill form correctly',
                 ], 200);
             }
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            Log::error($exception);
+            return response()->json([
+                'success' => 0,
+                'type' => 'error',
+                'message'  => 'Something went wrong',
+            ], 422);
+        }
+    }
+
+    /**
+     * @param $id
+     * @param $request
+     * @return JsonResponse
+     */
+    public function updateRoom($id, $request): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+
+
+            DB::commit();
+            return response()->json([
+                'success' => 1,
+                'type' => 'success',
+            ], 200);
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            Log::error($exception);
+            return response()->json([
+                'success' => 0,
+                'type' => 'error',
+                'message'  => 'Something went wrong',
+            ], 422);
+        }
+    }
+
+    /**
+     * @param $id
+     * @return JsonResponse
+     */
+    public function removeRoom($roomId): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+            $this->roomRepo->deleteRoom(intval($roomId));
+            DB::commit();
+            return response()->json([
+                'success' => 1,
+                'type' => 'success',
+                'message' => 'Room has been removed'
+            ], 200);
         } catch (\Exception $exception) {
             DB::rollBack();
             Log::error($exception);
