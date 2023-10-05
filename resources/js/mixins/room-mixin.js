@@ -188,7 +188,7 @@ export default {
         deleteImageFromDBToo(imageName, key) {
             this.$store.dispatch('imageActions/imageDeleteFromDb', imageName).then((res) => {
                 if(res.data.success) {
-                    // this.widgetData.partners.splice(key, 1)
+                    this.$store.state.rooms.room.additionalImages.splice(key, 1)
                     this.$emit('alert', {
                         'type': res?.data?.type,
                         'message': res?.data?.message
@@ -235,8 +235,14 @@ export default {
                 this.btnLoading = false
             })
         },
-        editRoom() {
-
+        editRoom(roomData) {
+            this.$store.dispatch('rooms/updateRoom',roomData).then(() => {
+                this.getRooms()
+                this.editModal = false
+                $('#roomAction').modal("hide");
+            }).catch(() => {
+                this.editModal = false
+            })
         },
         changePage(action) {
             if(action === 'next' && this.roomsData.length +1 >= this.take) {

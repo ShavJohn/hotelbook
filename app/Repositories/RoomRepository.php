@@ -48,7 +48,7 @@ class RoomRepository implements RoomInterface
      */
     public function getRoom($id): mixed
     {
-        return $this->model->where('id', $id)->get();
+        return $this->model->where('id', $id)->first();
     }
 
     /**
@@ -58,7 +58,7 @@ class RoomRepository implements RoomInterface
      */
     public function updateRoom($id, $data): mixed
     {
-        return $this->model->where('id', $id)->update([$data]);
+        return $this->model->where('id', $id)->update($data);
     }
 
     /**

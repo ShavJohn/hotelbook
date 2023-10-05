@@ -158,14 +158,25 @@ export default {
                 })
             })
         },
-        getRoom(context, data) {
-            return new Promise((resolve, reject) => {
-
-            })
-        },
         updateRoom(context, data) {
             return new Promise((resolve, reject) => {
+                axios.put('/update-room', {params: data}).then((res) => {
 
+                    context.dispatch('alert/alertResponse', {
+                        'type': res.data.type,
+                        'status': res.status,
+                        'message': res.data.message
+                    }, { root:true })
+                    resolve(res)
+                }).catch(err => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
+
+                    reject(err)
+                })
             })
         },
         removeRoom(context, data) {
@@ -193,7 +204,6 @@ export default {
         addRoomFST(context, data) {
             return new Promise((resolve, reject) => {
                 axios.post(`/add-room-${data.type}`, data.array).then((res) => {
-
 
                     context.dispatch('alert/alertResponse', {
                         'type': res.data.type,

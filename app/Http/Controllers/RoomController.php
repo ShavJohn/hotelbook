@@ -25,33 +25,7 @@ class RoomController extends Controller
     }
 
     /**
-     * @param $id
-     * @return JsonResponse
-     */
-    public function getRoom($id): JsonResponse
-    {
-        try {
-            DB::beginTransaction();
-            $roomData = [];
-
-            DB::commit();
-            return response()->json([
-                'success' => 1,
-                'type' => 'success',
-                'roomData'  => $roomData,
-            ], 200);
-        } catch (\Exception $exception) {
-            DB::rollBack();
-            Log::error($exception);
-            return response()->json([
-                'success' => 0,
-                'type' => 'error',
-                'message'  => 'Something went wrong',
-            ], 422);
-        }
-    }
-
-    /**
+     * @param Request $request
      * @return JsonResponse
      */
     public function getRooms(Request $request): JsonResponse
@@ -159,20 +133,64 @@ class RoomController extends Controller
     }
 
     /**
-     * @param $id
-     * @param $request
+     * @param Request $request
      * @return JsonResponse
      */
-    public function updateRoom($id, $request): JsonResponse
+    public function updateRoom(Request $request): JsonResponse
     {
         try {
             DB::beginTransaction();
+            $roomData = $request->params;
+            $roomId = $roomData['id'];
 
+            $roomModel = $this->roomRepo->getRoom($roomId);
+
+            $roomUpdateData = [
+                'en' => $roomData['en'],
+                'ru' => $roomData['ru'],
+                'number' => $roomData['number'],
+                'main_image' => $roomData['main_image'],
+            ];
+
+            $additionalImages = $roomData['additionalImages'];
+            $additionalImageArray = [];
+
+            foreach ($additionalImages as $image) {
+                if(gettype($image) === 'string') {
+                    $additionalImageArray[] = [
+                        'image' => $image,
+                        'imageable_id' => $roomId,
+                        'imageable_type' => Room::class,
+                        'user_id' => auth()->user()->id,
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now(),
+                    ];
+                }
+            }
+
+            $room_options_id = [];
+
+            $room_options_id[] = $roomData['selectedType']['id'];
+
+            foreach ($roomData['selectedFeatures'] as $selectedFeatures) {
+                $room_options_id[] = $selectedFeatures['id'];
+            }
+
+            foreach ($roomData['selectedServices'] as $selectedServices) {
+                $room_options_id[] = $selectedServices['id'];
+            }
+
+            $roomModel->roomOptions()->sync($room_options_id);
+
+            $this->imageRepo->store($additionalImageArray);
+
+            $this->roomRepo->updateRoom($roomId, $roomUpdateData);
 
             DB::commit();
             return response()->json([
                 'success' => 1,
                 'type' => 'success',
+                'message'  => 'Room data has been updated',
             ], 200);
         } catch (\Exception $exception) {
             DB::rollBack();

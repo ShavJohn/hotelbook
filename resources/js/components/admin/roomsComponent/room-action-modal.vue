@@ -52,12 +52,18 @@
                         </label>
                         <div v-if="roomData.additionalImages && roomData.additionalImages.length" v-for="(image, key) in roomData.additionalImages"
                              class="image-content margin-top-medium">
-                            <img v-if="image && image.image && image.image.length && editModal" :src="`${imagePrefix}/${image.image}`">
-                            <img v-else-if="image && image.length" :src="`${imagePrefix}/${image}`">
-                            <div class="image-action-btn">
-                                <font-awesome-icon v-if="typeof image === 'string'" icon="fa-solid fa-xmark" @click="deleteImage(image, key, true)" />
-                                <font-awesome-icon v-else icon="fa-solid fa-xmark" @click="deleteImageFromDBToo(image, key, true)" />
-                            </div>
+                            <template v-if="image && image.image && image.image.length && editModal">
+                                <img :src="`${imagePrefix}/${image.image}`">
+                                <div class="image-action-btn">
+                                    <font-awesome-icon icon="fa-solid fa-xmark" @click="deleteImageFromDBToo(image.image, key)" />
+                                </div>
+                            </template>
+                            <template v-else-if="image && image.length">
+                                <img :src="`${imagePrefix}/${image}`">
+                                <div class="image-action-btn">
+                                    <font-awesome-icon icon="fa-solid fa-xmark" @click="deleteImage(image, key, true)" />
+                                </div>
+                            </template>
                         </div>
                     </div>
                 </div>
@@ -120,7 +126,7 @@
         </template>
         <template #modal-footer>
             <button type="button" data-bs-dismiss="modal" aria-label="Close" class="modal-btn btn-grey close">Close</button>
-            <button v-if="editModal" class="modal-btn btn-action" @click.prevent="editRoom()">Upadte
+            <button v-if="editModal" class="modal-btn btn-action" @click.prevent="editRoom(roomData)">Upadte
                 <div v-if="btnLoading" class="spinner-border loader-style" role="status">
                     <span class="sr-only"></span>
                 </div>

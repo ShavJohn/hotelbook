@@ -39,6 +39,7 @@ Route::group(['middleware' => 'api'], function() {
         //Room routs
         Route::post('/add-room', 'App\Http\Controllers\RoomController@addRoom');
         Route::delete('/delete-room/{roomId}', 'App\Http\Controllers\RoomController@removeRoom');
+        Route::put('/update-room', 'App\Http\Controllers\RoomController@updateRoom');
 
         Route::post('/logout', 'App\Http\Controllers\AuthController@logOut');
     });
