@@ -130,8 +130,8 @@ class RoomController extends Controller
                     }
                 }
 
-                if(count($request['selectedType'])) {
-                    $roomDataFromDB->roomOptions()->attach($request['selectedType']['id']);
+                if($request['selectedType']) {
+                    $roomDataFromDB->roomOptions()->attach($request['selectedType']);
                 }
 
                 DB::commit();

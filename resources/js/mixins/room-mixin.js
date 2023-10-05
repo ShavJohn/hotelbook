@@ -18,6 +18,7 @@ export default {
             skip: 0,
             take: 5,
             removeRoomId: 0,
+            testType: "Double"
         }
     },
     computed: {
@@ -43,7 +44,19 @@ export default {
             return this.$store.getters['rooms/selectedServicesGetter']
         },
         filteredServices() {
-            return this.roomServices.filter(roomType => !this.selectedServices.includes(roomType))
+            return this.roomServices.filter((roomType) => {
+                return !this.selectedServices.some((service) => {
+                    // Here you can define your own logic to compare objects.
+                    // For example, you can compare properties 'en', 'id', 'ru', and 'type'.
+                    return (
+                        service.en.description === roomType.en.description &&
+                        service.en.name === roomType.en.name &&
+                        service.id === roomType.id &&
+                        service.ru.description === roomType.ru.description &&
+                        service.ru.name === roomType.ru.name
+                    );
+                });
+            })
         },
         roomFeatures() {
             return this.$store.getters['rooms/featuresGetter']
@@ -52,8 +65,23 @@ export default {
             return this.$store.getters['rooms/selectedFeaturesGetter']
         },
         filteredFeatures() {
-            return this.roomFeatures.filter(roomType => !this.selectedFeatures.includes(roomType))
+            return this.roomFeatures.filter((roomType) => {
+                return !this.selectedFeatures.some((service) => {
+                    // Here you can define your own logic to compare objects.
+                    // For example, you can compare properties 'en', 'id', 'ru', and 'type'.
+                    return (
+                        service.en.description === roomType.en.description &&
+                        service.en.name === roomType.en.name &&
+                        service.id === roomType.id &&
+                        service.ru.description === roomType.ru.description &&
+                        service.ru.name === roomType.ru.name
+                    );
+                });
+            })
         },
+        editModal() {
+            return this.$store.getters['rooms/editModalGetter']
+        }
     },
     methods: {
         displayType(array) {
@@ -173,6 +201,9 @@ export default {
                 })
             })
         },
+        compareTwoObj(obj1, obj2) {
+            return obj1.id && obj2.id && obj1.id === obj2.id && obj1.type === obj2.type;
+        },
         chooseFST(type, data) {
             if(type === 'roomServices') {
                 this.$store.state.rooms.room.selectedServices.push(data)
@@ -204,6 +235,9 @@ export default {
                 this.btnLoading = false
             })
         },
+        editRoom() {
+
+        },
         changePage(action) {
             if(action === 'next' && this.roomsData.length +1 >= this.take) {
                 this.skip = this.skip + this.take
@@ -216,6 +250,12 @@ export default {
         openRemoveRoomModal(id) {
             this.removeRoomId = id
             $('#removeRoom').modal("show");
+        },
+        openRoomEditModal(roomData) {
+            this.$store.state.rooms.editModal = true
+            this.$store.commit('rooms/roomSetter', roomData)
+
+            $('#roomAction').modal("show");
         },
         removeRoom(id) {
             this.btnLoading = true
@@ -243,7 +283,7 @@ export default {
             this.$store.dispatch('rooms/removeFST', id)
         },
         removeItemFromArray(arrayName, key) {
-            this.$store.state.rooms[`${arrayName}`].splice(key, 1)
+            this.$store.state.rooms.room[arrayName].splice(key, 1)
         }
     }
 }

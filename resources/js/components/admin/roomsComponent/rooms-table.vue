@@ -25,7 +25,7 @@
                     <td class="hide-on-large-tablet hide-on-laptop"><div class="tag-container"><span v-for="service in displayServices(roomData.room_options)" class="custom-tag">{{ service[dataLang].name }}</span></div></td>
                     <td class="hide-on-tablet">Available</td>
                     <td>
-                        <button type="button" class="room-table-action-btn btn-bg-yellow">Edit</button>
+                        <button type="button" class="room-table-action-btn btn-bg-yellow" @click="openRoomEditModal(roomData)">Edit</button>
                         <button type="button" class="room-table-action-btn btn-bg-red" @click="openRemoveRoomModal(roomData.id)">Remove</button>
                     </td>
                 </tr>

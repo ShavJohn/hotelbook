@@ -26,6 +26,7 @@ export default {
         types: [],
         features: [],
         services: [],
+        editModal: false,
     },
     getters: {
         roomGetter(state) {
@@ -51,20 +52,52 @@ export default {
         },
         selectedServicesGetter(state) {
             return state.room.selectedServices
+        },
+        editModalGetter(state) {
+            return state.editModal
         }
     },
     mutations: {
         roomSetter(state, data) {
-            state.room.en.name = data.room.en.name ? data.room.en.name : ''
-            state.room.en.price = data.room.en.price ? data.room.en.price : ''
-            state.room.ru.name = data.room.ru.name ? data.room.ru.name : ''
-            state.room.ru.price = data.room.ru.price ? data.room.ru.price : ''
-            state.room.number = data.room.number ? data.room.number : ''
-            state.room.main_image = data.room.main_image ? data.room.main_image : []
-            state.room.additionalImages = data.room.additionalImages ? data.room.additionalImages : []
-            state.room.roomType = data.room.roomType ? data.room.roomType : ''
-            state.room.roomFeatures = data.room.roomFeatures ? data.room.roomFeatures : []
-            state.room.roomServices = data.room.roomServices ? data.room.roomServices : []
+            state.room.id = data.id
+            state.room.en = data.en ? data.en : ''
+            state.room.ru = data.ru ? data.ru : ''
+            state.room.number = data.number ? data.number : ''
+            state.room.main_image = data.main_image ? data.main_image : []
+            state.room.additionalImages = data.images ? data.images : []
+
+
+
+            state.room.selectedType = data.room_options.find(( name ) => name.type === "types") ? data.room_options.find(( name ) => name.type === "types") : ''
+
+            data.room_options.forEach(room => {
+                if(room.type === 'features') {
+                    state.room.selectedFeatures.push(room)
+                } else if(room.type === 'services') {
+                    state.room.selectedServices.push(room)
+                }
+            })
+        },
+        resetRoomData(state, data) {
+            state.id = '',
+            state.en = {
+                name: '',
+                adult_price: '',
+                child_price: '',
+                description: ''
+            },
+            state.ru = {
+                name: '',
+                    adult_price: '',
+                    child_price: '',
+                    description: ''
+            },
+            state.number = '',
+            state.main_image = '',
+            state.additionalImages = [],
+            state.selectedType = {},
+            state.selectedFeatures = [],
+            state.selectedServices = []
         },
         roomsSetter(state, data) {
             state.rooms = data

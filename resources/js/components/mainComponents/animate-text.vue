@@ -44,7 +44,7 @@ export default {
                 setTimeout(this.typeText, this.displayTime);
             } else {
                 setTimeout(() => {
-                    document.getElementById("textDisplay").style.removeProperty('animation')
+                    document.getElementById("textDisplay") ? document.getElementById("textDisplay").style.removeProperty('animation') : ''
                 }, 1000)
 
             }

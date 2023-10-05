@@ -52,7 +52,8 @@
                         </label>
                         <div v-if="roomData.additionalImages && roomData.additionalImages.length" v-for="(image, key) in roomData.additionalImages"
                              class="image-content margin-top-medium">
-                            <img v-if="image && image.length" :src="`${imagePrefix}/${image}`">
+                            <img v-if="image && image.image && image.image.length && editModal" :src="`${imagePrefix}/${image.image}`">
+                            <img v-else-if="image && image.length" :src="`${imagePrefix}/${image}`">
                             <div class="image-action-btn">
                                 <font-awesome-icon v-if="typeof image === 'string'" icon="fa-solid fa-xmark" @click="deleteImage(image, key, true)" />
                                 <font-awesome-icon v-else icon="fa-solid fa-xmark" @click="deleteImageFromDBToo(image, key, true)" />
@@ -70,9 +71,9 @@
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Room Type</span>
-                    <select v-model="$store.state.rooms.room.selectedType">
-                        <option value="" disabled selected>Select Room Type</option>
-                        <option v-for="roomType in roomTypes" :value="roomType">{{ roomType[dataLang].name }}</option>
+                    <select v-model="$store.state.rooms.room.selectedType.id">
+                        <option disabled>Select Room Type</option>
+                        <option v-for="roomType in roomTypes" :key="roomType.id" :value="roomType.id">{{ roomType[dataLang].name }}</option>
                     </select>
                 </div>
                 <div class="input-elements">
@@ -119,7 +120,12 @@
         </template>
         <template #modal-footer>
             <button type="button" data-bs-dismiss="modal" aria-label="Close" class="modal-btn btn-grey close">Close</button>
-            <button class="modal-btn btn-action" @click.prevent="addRoom">Add
+            <button v-if="editModal" class="modal-btn btn-action" @click.prevent="editRoom()">Upadte
+                <div v-if="btnLoading" class="spinner-border loader-style" role="status">
+                    <span class="sr-only"></span>
+                </div>
+            </button>
+            <button v-else class="modal-btn btn-action" @click.prevent="addRoom">Add
                 <div v-if="btnLoading" class="spinner-border loader-style" role="status">
                     <span class="sr-only"></span>
                 </div>
@@ -137,6 +143,9 @@ export default {
     name: "room-action-modal",
     components: {MultiselectDropdown, DropDown, Modals},
     mixins: [roomMixins],
+    unmounted() {
+        this.$store.commit('rooms/resetRoomData')
+    }
 
 }
 </script>
