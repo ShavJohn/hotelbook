@@ -16688,3 +16688,216 @@ textarea.form-control-lg {
 .image-upload-icon:hover {
   outline-color: #cebaa0;
 }
+
+.room-booking-panel {
+  padding: 30px;
+  position: relative;
+}
+.room-booking-panel .table-btn-container {
+  width: 100%;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+  align-items: center;
+}
+.room-booking-panel .table-btn-container span {
+  font-size: 22px;
+  font-weight: 600;
+}
+.room-booking-panel .table-btn-container .date-btn {
+  font-size: 30px;
+  border: none;
+  background: #C19B77;
+  padding: 0px 15px;
+  color: #fff;
+}
+.room-booking-panel .room-table-action-btn {
+  color: white;
+  padding: 5px 30px;
+  border: double;
+  border-radius: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.room-booking-panel .room-table-action-btn:last-of-type {
+  margin-right: 0;
+}
+.room-booking-panel .btn-bg-yellow {
+  background-color: #C19B77;
+}
+.room-booking-panel .btn-bg-red {
+  background-color: #8c3131;
+}
+.room-booking-panel .inner-table {
+  overflow-y: auto;
+  position: relative;
+}
+.room-booking-panel .inner-table table {
+  font-family: arial, sans-serif;
+  width: 100%;
+  border-collapse: separate;
+}
+.room-booking-panel .inner-table table .table-sticky {
+  position: sticky;
+  left: 0;
+  top: auto;
+  /*only relevant for first row*/
+}
+.room-booking-panel .inner-table table .headcol:before {
+  content: "Row ";
+}
+.room-booking-panel .inner-table table th {
+  background-color: #C19B77;
+  color: white;
+}
+.room-booking-panel .inner-table table td, .room-booking-panel .inner-table table th {
+  border: none;
+  padding: 10px;
+}
+.room-booking-panel .inner-table table th {
+  text-align: center;
+}
+.room-booking-panel .inner-table table td {
+  text-align: center;
+}
+
+.message-container {
+  padding: 30px;
+  display: flex;
+}
+.message-container .message-inner-container {
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+}
+.message-container .messages-lists {
+  width: 25%;
+  overflow-y: auto;
+  height: 80vh;
+  border-right: 1px solid #cebaa0;
+  background-color: #ebebeb;
+}
+.message-container .messages-lists .list-element {
+  cursor: pointer;
+  background-color: #f9f7f4;
+  transition: background-color 0.5s ease-in-out;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid #cebaa0;
+}
+.message-container .messages-lists .list-element .mail-sender-info h4, .message-container .messages-lists .list-element .mail-sender-info .h4 {
+  color: #cebaa0;
+  transition: color 0.5s ease-in-out;
+}
+.message-container .messages-lists .list-element .mail-sender-info .mail-from-container span:first-of-type {
+  margin-right: 10px;
+  font-weight: 700;
+  color: #cebaa0;
+  transition: color 0.5s ease-in-out;
+}
+.message-container .messages-lists .list-element:hover {
+  background-color: #d7d7d5;
+  transition: background-color 0.5s ease-in-out;
+}
+.message-container .messages-lists .list-element:hover h4, .message-container .messages-lists .list-element:hover .h4 {
+  color: #C19B77;
+  transition: color 0.5s ease-in-out;
+}
+.message-container .messages-lists .list-element:hover .mail-from-container span:first-of-type {
+  color: #C19B77;
+  transition: color 0.5s ease-in-out;
+}
+.message-container .message-content {
+  width: 75%;
+  padding: 20px;
+  background-color: #e0dfde;
+}
+.message-container .message-content .message-view-container {
+  height: 100%;
+}
+.message-container .message-content .message-view-container .no-message-view-inner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.message-container .message-content .message-view-container .message-view-inner-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .height-75 {
+  height: 75%;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .height-25 {
+  height: 25%;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .height-50 {
+  height: 50%;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .message-section {
+  overflow-y: auto;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .message-section h4, .message-container .message-content .message-view-container .message-view-inner-container .message-section .h4 {
+  color: #C19B77;
+  transition: color 0.5s ease-in-out;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .message-section .mail-from-container span:first-of-type {
+  margin-right: 10px;
+  font-weight: 700;
+  color: #C19B77;
+  transition: color 0.5s ease-in-out;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .message-section .mail-from-container span:last-of-type {
+  font-weight: bold;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .message-section .mail-time-info {
+  margin-bottom: 30px;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .message-section .mail-time-info span:first-of-type {
+  margin-right: 10px;
+  font-weight: 700;
+  color: #C19B77;
+  transition: color 0.5s ease-in-out;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .message-section .mail-time-info span:last-of-type {
+  font-weight: bold;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .reply-section {
+  overflow-y: auto;
+  display: flex;
+  width: 100%;
+  gap: 25px;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .reply-section .mail-subject-text-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .reply-section .mail-subject-text-container input {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 20px;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .reply-section .mail-subject-text-container textarea {
+  height: 65%;
+  resize: none;
+  overflow-y: auto;
+  border: none;
+  border-radius: 20px;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .reply-section button {
+  align-self: self-end;
+  color: white;
+  padding: 5px 30px;
+  border: double;
+  border-radius: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+  background-color: #C19B77;
+}

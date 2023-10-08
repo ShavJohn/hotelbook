@@ -22,6 +22,9 @@ export default {
     components: {AddTypesModal, AddServicesModal, RoomActionModal, AddFeaturesModal},
     methods: {
         openModal(modalId) {
+            if(modalId === '#roomAction') {
+                this.$store.commit('rooms/resetRoomData')
+            }
             $(modalId).modal("show");
         }
     }

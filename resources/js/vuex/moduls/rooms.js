@@ -79,25 +79,25 @@ export default {
             })
         },
         resetRoomData(state, data) {
-            state.id = '',
-            state.en = {
+            state.room.id = '',
+            state.room.en = {
                 name: '',
                 adult_price: '',
                 child_price: '',
                 description: ''
             },
-            state.ru = {
+            state.room.ru = {
                 name: '',
                     adult_price: '',
                     child_price: '',
                     description: ''
             },
-            state.number = '',
-            state.main_image = '',
-            state.additionalImages = [],
-            state.selectedType = {},
-            state.selectedFeatures = [],
-            state.selectedServices = []
+            state.room.number = '',
+            state.room.main_image = '',
+            state.room.additionalImages = [],
+            state.room.selectedType = {},
+            state.room.selectedFeatures = [],
+            state.room.selectedServices = []
         },
         roomsSetter(state, data) {
             state.rooms = data
@@ -144,6 +144,12 @@ export default {
         },
         getRooms(context, data) {
             return new Promise((resolve, reject) => {
+                if(!data) {
+                    data = {
+                        skip: 0,
+                        take: 5,
+                    }
+                }
                 axios.get('/get-rooms', {params: data}).then((res) => {
                     context.commit('roomsSetter', res.data.roomData)
                     resolve(res)

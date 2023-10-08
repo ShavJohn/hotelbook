@@ -149,9 +149,6 @@ export default {
     name: "room-action-modal",
     components: {MultiselectDropdown, DropDown, Modals},
     mixins: [roomMixins],
-    unmounted() {
-        this.$store.commit('rooms/resetRoomData')
-    }
 
 }
 </script>

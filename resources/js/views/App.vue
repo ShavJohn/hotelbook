@@ -45,10 +45,9 @@ export default {
     },
     methods: {
         getGeneralData() {
-            setTimeout(() => {
+            this.$store.dispatch('rooms/getRooms').then(() => {
                 this.loader = false
-            }, 1000)
-
+            })
         }
     },
     async created() {

@@ -1,12 +1,14 @@
 <template>
     <div>
-
+        <room-booking-table/>
     </div>
 </template>
 
 <script>
+import RoomBookingTable from "../../components/admin/bookingComponents/room-booking-table";
 export default {
-    name: "Bookings"
+    name: "Bookings",
+    components: {RoomBookingTable}
 }
 </script>
 

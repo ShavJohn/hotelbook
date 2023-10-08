@@ -1,0 +1,170 @@
+.message-container {
+    padding: 30px;
+    display: flex;
+
+    .message-inner-container {
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        width: 100%;
+    }
+
+    .messages-lists {
+        width: 25%;
+        overflow-y: auto;
+        height: 80vh;
+        border-right: 1px solid $light-yellow;
+        background-color: #ebebeb;
+
+        .list-element {
+            cursor: pointer;
+            background-color: #f9f7f4;
+            transition: background-color .5s ease-in-out;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid $light-yellow;
+
+            .mail-sender-info {
+
+                h4 {
+                    color: $light-yellow;
+                    transition: color .5s ease-in-out;
+                }
+
+                .mail-from-container {
+                    span:first-of-type {
+                        margin-right: 10px;
+                        font-weight: 700;
+                        color: $light-yellow;
+                        transition: color .5s ease-in-out;
+                    }
+                }
+            }
+
+            .mail-date {
+
+            }
+
+            &:hover {
+                background-color: #d7d7d5;
+                transition: background-color .5s ease-in-out;
+
+                h4 {
+                    color: $dark-yellow;
+                    transition: color .5s ease-in-out;
+                }
+
+                .mail-from-container {
+                    span:first-of-type {
+                        color: $dark-yellow;
+                        transition: color .5s ease-in-out;
+                    }
+                }
+            }
+        }
+    }
+
+    .message-content {
+        width: 75%;
+        padding: 20px;
+        background-color: #e0dfde;
+
+        .message-view-container {
+            height: 100%;
+
+            .no-message-view-inner-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .message-view-inner-container {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+
+                .height-75 { height: 75% }
+                .height-25 { height: 25% }
+                .height-50 { height: 50% }
+
+                .message-section {
+                    overflow-y: auto;
+
+                    h4 {
+                        color: $dark-yellow;
+                        transition: color .5s ease-in-out;
+                    }
+
+                    .mail-from-container {
+                        span:first-of-type {
+                            margin-right: 10px;
+                            font-weight: 700;
+                            color: $dark-yellow;
+                            transition: color .5s ease-in-out;
+                        }
+
+                        span:last-of-type {
+                            font-weight: bold;
+                        }
+                    }
+
+                    .mail-time-info {
+                        margin-bottom: 30px;
+
+                        span:first-of-type {
+                            margin-right: 10px;
+                            font-weight: 700;
+                            color: $dark-yellow;
+                            transition: color .5s ease-in-out;
+                        }
+
+                        span:last-of-type {
+                            font-weight: bold;
+                        }
+                    }
+                }
+
+                .reply-section {
+                    overflow-y: auto;
+                    display: flex;
+                    width: 100%;
+                    gap: 25px;
+
+                    .mail-subject-text-container {
+                        width: 80%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 25px;
+
+                        input {
+                            padding: 5px 15px;
+                            border: none;
+                            border-radius: 10px;
+                        }
+
+                        textarea {
+                            height: 65%;
+                            resize: none;
+                            overflow-y: auto;
+                            border: none;
+                            border-radius: 10px;
+                        }
+                    }
+
+                    button {
+                        align-self: self-end;
+                        color: white;
+                        padding: 5px 30px;
+                        border: double;
+                        border-radius: 20px;
+                        margin-right: 20px;
+                        cursor: pointer;
+                        background-color: $dark-yellow;
+                    }
+                }
+            }
+        }
+    }
+}

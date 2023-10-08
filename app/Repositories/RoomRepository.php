@@ -37,8 +37,10 @@ class RoomRepository implements RoomInterface
                 $q->select('room_options.id', 'room_options.type', 'room_options.en', 'room_options.ru');
             }])
             ->with('images')
-            ->skip($skip)
-            ->take($take)
+            ->when(($skip || $skip === '0') && $take, function($q) use ($skip, $take) {
+                $q->skip($skip)
+                    ->take($take);
+            })
             ->get();
     }
 
