@@ -37,20 +37,20 @@ export default {
         createUser() {
             this.$store.dispatch('auth/createNewUser', this.newUser).then(res => {
                 if(res.data.success) {
-                    this.$emit('alert', {
-                        'type': res.data.type,
-                        'message': res.data.message
+                    this.$store.dispatch('alert/alertResponse', {
+                        'type': res?.data?.type,
+                        'message': res?.data?.message
                     })
                 } else {
-                    this.$emit('alert', {
-                        'type': res.data.type,
-                        'message': res.data.message
+                    this.$store.dispatch('alert/alertResponse', {
+                        'type': res?.data?.type,
+                        'message': res?.data?.message
                     })
                 }
             }).catch(err => {
-                this.$emit('alert', {
-                    'type': err.data.type,
-                    'message': err.data.message
+                this.$store.dispatch('alert/alertResponse', {
+                    'type': err?.data?.type,
+                    'message': err?.data?.message
                 })
             })
         }

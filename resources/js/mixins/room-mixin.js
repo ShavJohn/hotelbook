@@ -134,12 +134,12 @@ export default {
             this.$store.dispatch('imageActions/imageUpload', formData).then((res) => {
 
                 this.$store.state.rooms.room.main_image = res.data.image
-                this.$emit('alert', {
+                this.$store.dispatch('alert/alertResponse', {
                     'type': res?.data?.type,
                     'message': res?.data?.message
                 })
             }).catch((err) => {
-                this.$emit('alert', {
+                this.$store.dispatch('alert/alertResponse', {
                     'type': err?.data?.type,
                     'message': err?.data?.message
                 })
@@ -153,15 +153,16 @@ export default {
             this.$store.dispatch('imageActions/imageUpload', formData).then((res) => {
 
                 this.$store.state.rooms.room.additionalImages.push(res.data.image)
-                this.$emit('alert', {
+                this.$store.dispatch('alert/alertResponse', {
                     'type': res?.data?.type,
                     'message': res?.data?.message
                 })
             }).catch((err) => {
-                this.$emit('alert', {
+                this.$store.dispatch('alert/alertResponse', {
                     'type': err?.data?.type,
                     'message': err?.data?.message
                 })
+
             })
         },
         deleteImage(imageName, key, list) {
@@ -173,13 +174,13 @@ export default {
                         this.$store.state.rooms.room.additionalImages.splice(key, 1)
                     }
 
-                    this.$emit('alert', {
+                    this.$store.dispatch('alert/alertResponse', {
                         'type': res?.data?.type,
                         'message': res?.data?.message
                     })
                 }
             }).catch((err) => {
-                this.$emit('alert', {
+                this.$store.dispatch('alert/alertResponse', {
                     'type': err?.data?.type,
                     'message': err?.data?.message
                 })
@@ -189,13 +190,13 @@ export default {
             this.$store.dispatch('imageActions/imageDeleteFromDb', imageName).then((res) => {
                 if(res.data.success) {
                     this.$store.state.rooms.room.additionalImages.splice(key, 1)
-                    this.$emit('alert', {
+                    this.$store.dispatch('alert/alertResponse', {
                         'type': res?.data?.type,
                         'message': res?.data?.message
                     })
                 }
             }).catch((err) => {
-                this.$emit('alert', {
+                this.$store.dispatch('alert/alertResponse', {
                     'type': err?.data?.type,
                     'message': err?.data?.message
                 })

@@ -40,12 +40,12 @@ export default {
             formData.append('image', e.target.files[0])
 
             this.$store.dispatch('generalSettings/logoUpload', formData).then((res) => {
-                this.$emit('alert', {
+                this.$store.dispatch('alert/alertResponse', {
                     'type': res?.data?.type,
                     'message': res?.data?.message
                 })
             }).catch((err) => {
-                this.$emit('alert', {
+                this.$store.dispatch('alert/alertResponse', {
                     'type': err?.data?.type,
                     'message': err?.data?.message
                 })
@@ -53,12 +53,13 @@ export default {
         },
         deleteLogo(imageName) {
             this.$store.dispatch('generalSettings/logoDelete', imageName).then((res) => {
-                this.$emit('alert', {
+                this.$store.dispatch('alert/alertResponse', {
                     'type': res?.data?.type,
                     'message': res?.data?.message
                 })
+
             }).catch((err) => {
-                this.$emit('alert', {
+                this.$store.dispatch('alert/alertResponse', {
                     'type': err?.data?.type,
                     'message': err?.data?.message
                 })
@@ -79,12 +80,12 @@ export default {
                 if(res.data.success) {
                     $('#generalSettingsModal').modal('hide')
                 }
-                this.$emit('alert', {
+                this.$store.dispatch('alert/alertResponse', {
                     'type': res?.data?.type,
                     'message': res?.data?.message
                 })
             }).catch((err) => {
-                this.$emit('alert', {
+                this.$store.dispatch('alert/alertResponse', {
                     'type': err?.data?.type,
                     'message': err?.data?.message
                 })

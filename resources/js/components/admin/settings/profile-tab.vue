@@ -68,14 +68,14 @@ export default {
                 this.currentUser.email = this.currentUser.newEmail
             }
             this.$store.dispatch('auth/saveUserChanges', this.currentUser).then(res => {
-                this.$emit('alert', {
-                    'type': res.data.type,
-                    'message': res.data.message
+                this.$store.dispatch('alert/alertResponse', {
+                    'type': res?.data?.type,
+                    'message': res?.data?.message
                 })
             }).catch(err => {
-                this.$emit('alert', {
-                    'type': err.data.type,
-                    'message': err.data.message
+                this.$store.dispatch('alert/alertResponse', {
+                    'type': err?.data?.type,
+                    'message': err?.data?.message
                 })
             })
         }
