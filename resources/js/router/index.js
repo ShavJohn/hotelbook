@@ -11,6 +11,7 @@ import Bookings from "../views/adminPages/Bookings"
 import Messages from "../views/adminPages/Messages"
 import Statistics from "../views/adminPages/Statistics"
 import AdminRooms from "../views/adminPages/Rooms"
+import Settings from "../views/adminPages/Settings"
 
 import RoomSearch from '../components/rooms/body-components/room-search'
 import RoomBook from '../components/rooms/body-components/room-book'
@@ -30,10 +31,11 @@ const routes = [
     { path: '/contact', component: Contact, name: 'Contact', meta: {title: 'Contact'}},
     { path: '/about', component: About, name: 'About', meta: {title: 'About'}},
     { path: '/login', component: Login, name: 'Login', meta: {title: 'Login'}},
-    { path: '/bookings', component: Bookings, name: 'Bookings', meta: {title: 'Bookings', auth: true, admin: true}},
-    { path: '/messages', component: Messages, name: 'Messages', meta: {title: 'Messages', auth: true, admin: true}},
-    { path: '/statistics', component: Statistics, name: 'Statistics', meta: {title: 'Statistics', auth: true, admin: true}},
-    { path: '/admin-rooms', component: AdminRooms, name: 'AdminRooms', meta: {title: 'Rooms', auth: true, admin: true}},
+    { path: '/admin/bookings', component: Bookings, name: 'Bookings', meta: {title: 'Bookings', auth: true, admin: true}},
+    { path: '/admin/messages', component: Messages, name: 'Messages', meta: {title: 'Messages', auth: true, admin: true}},
+    { path: '/admin/statistics', component: Statistics, name: 'Statistics', meta: {title: 'Statistics', auth: true, admin: true}},
+    { path: '/admin/rooms', component: AdminRooms, name: 'AdminRooms', meta: {title: 'Rooms', auth: true, admin: true}},
+    { path: '/admin/settings', component: Settings, name: 'Settings', meta: {title: 'Settings', auth: true, admin: true}},
 ]
 
 const router = createRouter({

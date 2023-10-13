@@ -12119,20 +12119,46 @@ textarea.form-control-lg {
   display: none;
 }
 
-@media screen and (max-width: 1140px) {
+.show-on-ipad {
+  display: none;
+}
+
+.lg-screen-width-80 {
+  width: 80vw !important;
+}
+
+@media screen and (max-width: 1180px) {
   .hide-on-laptop {
     display: none !important;
+  }
+  .message-container .messages-lists {
+    width: 40% !important;
+  }
+  .message-container .message-content {
+    width: 60% !important;
   }
 }
 @media screen and (max-width: 900px) {
   .hide-on-ipad {
     display: none !important;
   }
+  .show-on-ipad {
+    display: block;
+  }
   .header-text-styling {
     bottom: -25px !important;
   }
   .header-text-styling h1, .header-text-styling .h1 {
     font-size: 49px !important;
+  }
+  .message-container .open-messenger-tabs {
+    width: 100% !important;
+    display: block;
+  }
+  .message-container .close-messenger-tab {
+    width: 0% !important;
+    padding: 0 !important;
+    display: none;
   }
 }
 @media screen and (max-width: 800px) {
@@ -12147,10 +12173,16 @@ textarea.form-control-lg {
   .hide-on-tablet {
     display: none !important;
   }
+  .md-screen-width-90 {
+    width: 90vw !important;
+  }
 }
 @media screen and (max-width: 520px) {
   .hide-on-mobile {
     display: none !important;
+  }
+  .sm-full-screen-width {
+    width: 100vw !important;
   }
 }
 .strip-padding {
@@ -16387,6 +16419,8 @@ textarea.form-control-lg {
   font-family: arial, sans-serif;
   width: 100%;
   border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
 }
 .rooms-table-container table th {
   background-color: #C19B77;
@@ -16404,6 +16438,9 @@ textarea.form-control-lg {
 }
 .rooms-table-container table tbody img {
   width: 200px;
+}
+.rooms-table-container table tbody tr {
+  background-color: #fff;
 }
 .rooms-table-container table tbody tr:nth-child(even) {
   background-color: #f2f2f2;
@@ -16440,6 +16477,11 @@ textarea.form-control-lg {
 .rooms-table-container .remove-room-message {
   font-size: 18px;
   font-weight: 600;
+}
+
+.rooms-panel-container {
+  background-color: #f0f5f8;
+  min-height: 91vh;
 }
 
 .room-actions-container {
@@ -16692,6 +16734,8 @@ textarea.form-control-lg {
 .room-booking-panel {
   padding: 30px;
   position: relative;
+  min-height: 91vh;
+  background-color: #f0f5f8;
 }
 .room-booking-panel .table-btn-container {
   width: 100%;
@@ -16733,6 +16777,7 @@ textarea.form-control-lg {
 .room-booking-panel .inner-table {
   overflow-y: auto;
   position: relative;
+  border-radius: 10px;
 }
 .room-booking-panel .inner-table table {
   font-family: arial, sans-serif;
@@ -16756,6 +16801,9 @@ textarea.form-control-lg {
   border: none;
   padding: 10px;
 }
+.room-booking-panel .inner-table table tr {
+  background-color: #fff;
+}
 .room-booking-panel .inner-table table th {
   text-align: center;
 }
@@ -16765,7 +16813,8 @@ textarea.form-control-lg {
 
 .message-container {
   padding: 30px;
-  display: flex;
+  background-color: #f0f5f8;
+  min-height: 91vh;
 }
 .message-container .message-inner-container {
   border-radius: 10px;
@@ -16815,7 +16864,12 @@ textarea.form-control-lg {
 .message-container .message-content {
   width: 75%;
   padding: 20px;
-  background-color: #e0dfde;
+  background-color: #fff;
+  height: 80vh;
+}
+.message-container .message-content svg {
+  font-size: 25px;
+  margin-bottom: 20px;
 }
 .message-container .message-content .message-view-container {
   height: 100%;
@@ -16839,8 +16893,21 @@ textarea.form-control-lg {
 .message-container .message-content .message-view-container .message-view-inner-container .height-50 {
   height: 50%;
 }
+.message-container .message-content .message-view-container .message-view-inner-container .height-100 {
+  height: 100%;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .height-0 {
+  height: 0;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .message-section-height {
+  height: 75%;
+}
+.message-container .message-content .message-view-container .message-view-inner-container .reply-section-height {
+  height: 25%;
+}
 .message-container .message-content .message-view-container .message-view-inner-container .message-section {
   overflow-y: auto;
+  margin-bottom: 20px;
 }
 .message-container .message-content .message-view-container .message-view-inner-container .message-section h4, .message-container .message-content .message-view-container .message-view-inner-container .message-section .h4 {
   color: #C19B77;
@@ -16867,6 +16934,9 @@ textarea.form-control-lg {
 .message-container .message-content .message-view-container .message-view-inner-container .message-section .mail-time-info span:last-of-type {
   font-weight: bold;
 }
+.message-container .message-content .message-view-container .message-view-inner-container .message-section p {
+  margin: 0;
+}
 .message-container .message-content .message-view-container .message-view-inner-container .reply-section {
   overflow-y: auto;
   display: flex;
@@ -16883,6 +16953,7 @@ textarea.form-control-lg {
   padding: 5px 15px;
   border: none;
   border-radius: 10px;
+  background-color: #edf1f4;
 }
 .message-container .message-content .message-view-container .message-view-inner-container .reply-section .mail-subject-text-container input:focus-visible, .message-container .message-content .message-view-container .message-view-inner-container .reply-section .mail-subject-text-container input:focus {
   border: none;
@@ -16895,6 +16966,7 @@ textarea.form-control-lg {
   border: none;
   border-radius: 10px;
   padding: 15px;
+  background-color: #edf1f4;
 }
 .message-container .message-content .message-view-container .message-view-inner-container .reply-section .mail-subject-text-container textarea:focus-visible, .message-container .message-content .message-view-container .message-view-inner-container .reply-section .mail-subject-text-container textarea:focus {
   border: none;
@@ -16909,4 +16981,99 @@ textarea.form-control-lg {
   margin-right: 20px;
   cursor: pointer;
   background-color: #C19B77;
+}
+
+@media screen and (max-width: 900px) {
+  .message-section-height {
+    height: 60% !important;
+  }
+  .reply-section-height {
+    height: 30% !important;
+  }
+}
+@media screen and (max-width: 680px) {
+  .message-section-height {
+    height: 60% !important;
+  }
+  .reply-section-height {
+    height: 40% !important;
+    display: block !important;
+  }
+  .reply-section-height .mail-subject-text-container {
+    width: 100% !important;
+    margin-bottom: 20px !important;
+  }
+}
+.settings-page-body {
+  min-height: 91vh;
+  padding: 30px 0px;
+  display: flex;
+  justify-content: center;
+  background-color: #f0f5f8;
+}
+.settings-page-body .settings-container {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.settings-page-body .settings-container .settings-menu {
+  background-color: #d5d9e0;
+}
+.settings-page-body .settings-container .settings-menu ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+.settings-page-body .settings-container .settings-menu ul li {
+  padding: 15px 30px;
+  cursor: pointer;
+}
+.settings-page-body .settings-container .settings-menu ul .active-tab-indicator {
+  background-color: #C19B77;
+  color: #fff;
+}
+.settings-page-body .settings-container .settings-body {
+  padding: 30px;
+  background-color: #fff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.settings-page-body .settings-container .settings-body .settings-content .settings-element {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.settings-page-body .settings-container .settings-body .settings-content .settings-element:last-of-type {
+  margin-bottom: 0;
+}
+.settings-page-body .settings-container .settings-body .settings-content .settings-element label {
+  margin-right: 50px;
+  font-weight: 700;
+}
+.settings-page-body .settings-container .settings-body .settings-content .settings-element input {
+  padding: 10px 25px;
+  background-color: #edf1f4;
+  border-radius: 20px;
+  border: none;
+  width: 50%;
+}
+.settings-page-body .settings-container .settings-body .settings-content .settings-element textarea {
+  padding: 10px 25px;
+  background-color: #edf1f4;
+  border-radius: 20px;
+  border: none;
+  width: 50%;
+  resize: none;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.settings-page-body .settings-container .settings-body .settings-content button {
+  background-color: #C19B77;
+  color: white;
+  padding: 10px 30px;
+  border: double;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 30px;
 }

@@ -1,0 +1,90 @@
+.settings-page-body {
+    min-height: 91vh;
+    padding: 30px 0px;
+    display: flex;
+    justify-content: center;
+    background-color: $light-blue;
+
+    .settings-container {
+        border-radius: 10px;
+        overflow: hidden;
+
+        .settings-menu {
+            background-color: $white-grey;
+
+            ul {
+                list-style: none;
+                display: flex;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    padding: 15px 30px;
+                    cursor: pointer;
+                }
+
+                .active-tab-indicator {
+                    background-color: $dark-yellow;
+                    color: $white;
+                }
+            }
+        }
+
+        .settings-body {
+            padding: 30px;
+            background-color: $white;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+
+            .settings-content {
+
+                .settings-element {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 30px;
+
+                    &:last-of-type {
+                        margin-bottom: 0;
+                    }
+
+                    label {
+                        margin-right: 50px;
+                        font-weight: 700;
+                    }
+
+                    input {
+                        padding: 10px 25px;
+                        background-color: $les-dark-blue;
+                        border-radius: 20px;
+                        border: none;
+                        width: 50%;
+                    }
+
+                    textarea {
+                        padding: 10px 25px;
+                        background-color: $les-dark-blue;
+                        border-radius: 20px;
+                        border: none;
+                        width: 50%;
+                        resize: none;
+                        max-height: 200px;
+                        overflow-y: auto;
+                    }
+
+                }
+
+                button {
+                    background-color: $dark-yellow;
+                    color: white;
+                    padding: 10px 30px;
+                    border: double;
+                    border-radius: 30px;
+                    cursor: pointer;
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+
+}

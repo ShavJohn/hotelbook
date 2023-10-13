@@ -4,7 +4,7 @@
             <span>No message selected</span>
         </div>
         <div v-else class="message-view-inner-container">
-            <div class="message-section" :class="!replied ? 'height-75' : 'height-50'">
+            <div class="message-section" :class="!replied ? 'message-section-height' : 'height-100'">
                 <h4>Subject of mail</h4>
                 <div class="mail-from-container">
                     <span>from:</span>
@@ -34,7 +34,7 @@
                     Warm regards,
                 </p>
             </div>
-            <div class="reply-section" :class="!replied ? 'height-25' : 'height-50' ">
+            <div class="reply-section" :class="!replied ? 'reply-section-height' : 'height-0' ">
                 <template v-if="!replied">
                     <div class="mail-subject-text-container">
                         <input type="text" name="mail-subject" placeholder="Enter email subject">

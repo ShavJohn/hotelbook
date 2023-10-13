@@ -1,6 +1,8 @@
 .room-booking-panel {
     padding: 30px;
     position: relative;
+    min-height: 91vh;
+    background-color: $light-blue;
 
     .table-btn-container {
         width: 100%;
@@ -49,6 +51,7 @@
     .inner-table {
         overflow-y: auto;
         position: relative;
+        border-radius: 10px;
 
         table {
             font-family: arial, sans-serif;
@@ -74,6 +77,10 @@
             td, th {
                 border: none;
                 padding: 10px;
+            }
+
+            tr {
+                background-color: $white;
             }
 
             th {

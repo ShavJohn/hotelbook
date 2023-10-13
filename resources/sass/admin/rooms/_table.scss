@@ -5,6 +5,8 @@
         font-family: arial, sans-serif;
         width: 100%;
         border-collapse: collapse;
+        border-radius: 10px;
+        overflow: hidden;
 
         th {
             background-color: $dark-yellow;
@@ -27,6 +29,10 @@
         tbody {
             img {
                 width: 200px;
+            }
+
+            tr {
+                background-color: $white;
             }
 
             tr:nth-child(even){background-color: #f2f2f2;}

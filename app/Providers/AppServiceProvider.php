@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Interfaces\GeneralSettingsInterface;
 use App\Interfaces\ImageInterface;
 use App\Interfaces\RoomFSTInterface;
 use App\Interfaces\RoomInterface;
 use App\Interfaces\RoomOptionsInterface;
+use App\Repositories\GeneralSettingsRepository;
 use App\Repositories\ImageRepository;
 use App\Repositories\RoomFSTRepository;
 use App\Repositories\RoomOptionsRepository;
@@ -46,6 +48,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             RoomFSTInterface::class,
             RoomFSTRepository::class
+        );
+        $this->app->bind(
+            GeneralSettingsInterface::class,
+            GeneralSettingsRepository::class
         );
     }
 }

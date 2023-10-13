@@ -6,9 +6,27 @@
     display: none;
 }
 
-@media screen and (max-width: 1140px) {
+.show-on-ipad {
+    display: none;
+}
+
+.lg-screen-width-80 {
+    width: 80vw !important;
+}
+
+@media screen and (max-width: 1180px) {
     .hide-on-laptop {
         display: none !important;
+    }
+
+    .message-container {
+        .messages-lists {
+            width: 40% !important;
+        }
+
+        .message-content {
+            width: 60% !important;
+        }
     }
 }
 
@@ -18,11 +36,28 @@
         display: none !important;
     }
 
+    .show-on-ipad {
+        display: block;
+    }
+
     .header-text-styling {
         bottom: -25px !important;
 
         h1 {
             font-size: 49px !important;
+        }
+    }
+
+    .message-container {
+        .open-messenger-tabs {
+            width: 100% !important;
+            display: block;
+        }
+
+        .close-messenger-tab {
+            width: 0% !important;
+            padding: 0 !important;
+            display: none;
         }
     }
 }
@@ -42,11 +77,19 @@
     .hide-on-tablet {
         display: none !important;
     }
+
+    .md-screen-width-90 {
+        width: 90vw !important;
+    }
 }
 
 
 @media screen and (max-width: 520px) {
     .hide-on-mobile {
         display: none !important;
+    }
+
+    .sm-full-screen-width {
+        width: 100vw !important;
     }
 }

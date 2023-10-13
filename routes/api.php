@@ -22,6 +22,9 @@ Route::group(['middleware' => 'api'], function() {
 
     Route::get('/get-room-fst', 'App\Http\Controllers\RoomOptionsController@getRoomFST');
 
+    //general settings
+    Route::get('/get-general-settings', 'App\Http\Controllers\GeneralSettingsController@getGeneralSettings');
+
     Route::get('/get-rooms','App\Http\Controllers\RoomController@getRooms');
 
     Route::group(['middleware' => 'auth:api'], function () {
@@ -35,6 +38,11 @@ Route::group(['middleware' => 'api'], function() {
         Route::post('/upload-image', 'App\Http\Controllers\ImageController@uploadImage');
         Route::delete('/delete-image/{image}', 'App\Http\Controllers\ImageController@deleteImage');
         Route::delete('/delete-image-from-db/{image}', 'App\Http\Controllers\ImageController@deleteImageFromDB');
+
+        //General Settings
+        Route::post('/upload-logo', 'App\Http\Controllers\GeneralSettingsController@uploadLogo');
+        Route::delete('/delete-logo/{logo}', 'App\Http\Controllers\GeneralSettingsController@deleteLogo');
+        Route::post('/update-general-settings', 'App\Http\Controllers\GeneralSettingsController@updateGeneralSettings');
 
         //Room routs
         Route::post('/add-room', 'App\Http\Controllers\RoomController@addRoom');

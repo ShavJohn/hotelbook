@@ -4,6 +4,8 @@ import adminPanel from './moduls/adminPanel'
 import alert from "./moduls/alert";
 import rooms from "./moduls/rooms"
 import imageActions from "./moduls/imageActions";
+import generalSettings from "./moduls/generalSettings";
+
 
 export default createStore({
     modules: {
@@ -11,6 +13,7 @@ export default createStore({
         adminPanel,
         alert,
         rooms,
-        imageActions
+        imageActions,
+        generalSettings
     }
 })

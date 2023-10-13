@@ -45,8 +45,10 @@ export default {
     },
     methods: {
         getGeneralData() {
-            this.$store.dispatch('rooms/getRooms').then(() => {
-                this.loader = false
+            this.$store.dispatch('generalSettings/getGeneralSettings').then(() => {
+                this.$store.dispatch('rooms/getRooms').then(() => {
+                    this.loader = false
+                })
             })
         }
     },

@@ -36,7 +36,7 @@
                     </button>
                 </li>
                 <li>
-                    <button>
+                    <button @click="$router.push({name: 'Settings'})">
                         <font-awesome-icon icon="fa-solid fa-gear" />
                         Settings
                     </button>
