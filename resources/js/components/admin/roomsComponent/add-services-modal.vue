@@ -3,7 +3,7 @@
         <template #modal-header>
             <h4>Add Room Services</h4>
             <div>
-                <select class="modal-language-dropdown" v-model="dataLang">
+                <select name="service-language-dropdown" id="service-language-dropdown" class="modal-language-dropdown" v-model="dataLang">
                     <option value="en">EN</option>
                     <option value="ru">RU</option>
                 </select>

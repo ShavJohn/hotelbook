@@ -8,10 +8,10 @@
             <div class="hb-width-50 hb-width-100-tablet">
                 <h2 class="margin-bottom font-500">All Contacts</h2>
                 <ul class="strip-list-style">
-                    <li><font-awesome-icon icon="fa-solid fa-location-dot" class="margin-right" />111 8th Ave, New York U.S.A.</li>
-                    <li><font-awesome-icon icon="fa-solid fa-phone" class="margin-right"/>Reserve +1-202-555-0153</li>
-                    <li><font-awesome-icon icon="fa-solid fa-envelope" class="margin-right"/>info@hotel.com</li>
-                    <li><font-awesome-icon icon="fa-regular fa-clock" class="margin-right"/>08 am - 06 pm Sunday closed</li>
+                    <li><font-awesome-icon icon="fa-solid fa-location-dot" class="margin-right" />{{ address.value }}</li>
+                    <li><font-awesome-icon icon="fa-solid fa-phone" class="margin-right"/>{{ phone.value }}</li>
+                    <li><font-awesome-icon icon="fa-solid fa-envelope" class="margin-right"/>{{ email.value }}</li>
+                    <li><font-awesome-icon icon="fa-regular fa-clock" class="margin-right"/>{{ businessHours.value }}</li>
                 </ul>
             </div>
         </div>
@@ -23,7 +23,21 @@
 
 <script>
 export default {
-    name: "hb-footer"
+    name: "hb-footer",
+    computed: {
+        address() {
+            return this.$store.getters['generalSettings/address']
+        },
+        phone() {
+            return this.$store.getters['generalSettings/phone']
+        },
+        email() {
+            return this.$store.getters['generalSettings/email']
+        },
+        businessHours() {
+            return this.$store.getters['generalSettings/businessHours']
+        },
+    }
 }
 </script>
 

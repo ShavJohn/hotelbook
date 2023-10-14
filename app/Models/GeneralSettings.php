@@ -14,6 +14,7 @@ class GeneralSettings extends Model
      */
     protected $fillable = [
         'key',
-        'value'
+        'value',
+        'additional_value'
     ];
 }

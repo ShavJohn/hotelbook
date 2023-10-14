@@ -1,28 +1,28 @@
 <template>
     <form class="settings-content">
         <div class="settings-element">
-            <label>User Name</label>
-            <input type="text" placeholder="Enter Your User Name"  v-model="currentUser.name">
+            <label for="user-name">User Name</label>
+            <input id="user-name" type="text" placeholder="Enter Your User Name"  v-model="currentUser.name">
         </div>
         <div class="settings-element">
-            <label>Your Email Address</label>
-            <input type="email" placeholder="Enter Your Email" v-model="currentUser.email">
+            <label for="user-email">Your Email Address</label>
+            <input id="user-email" type="email" placeholder="Enter Your Email" v-model="currentUser.email">
         </div>
         <div class="settings-element">
-            <label>Your New Email</label>
-            <input type="email" placeholder="Enter Your New Email" v-model="currentUser.newEmail">
+            <label for="user-new-email">Your New Email</label>
+            <input id="user-new-email" type="email" placeholder="Enter Your New Email" v-model="currentUser.newEmail">
         </div>
         <div class="settings-element">
-            <label>Current Password</label>
-            <input type="password" autocomplete="off" placeholder="Enter Your Current Password" v-model="currentUser.password">
+            <label for="current-password">Current Password</label>
+            <input id="current-password" type="password" autocomplete="off" placeholder="Enter Your Current Password" v-model="currentUser.password">
         </div>
         <div class="settings-element">
-            <label>New Password</label>
-            <input type="password" autocomplete="off" placeholder="Enter Your New Password" v-model="currentUser.newPassword">
+            <label for="new-password">New Password</label>
+            <input id="new-password" type="password" autocomplete="off" placeholder="Enter Your New Password" v-model="currentUser.newPassword">
         </div>
         <div class="settings-element">
-            <label>New Password Confirm</label>
-            <input type="password" autocomplete="off" placeholder="Enter Your Confirm Password" v-model="currentUser.newPasswordConfirm">
+            <label for="new-password-confirm">New Password Confirm</label>
+            <input id="new-password-confirm" type="password" autocomplete="off" placeholder="Enter Your Confirm Password" v-model="currentUser.newPasswordConfirm">
         </div>
         <button @click.prevent="saveChanges()" class="hm-btn-style">Save Changes</button>
     </form>

@@ -2,50 +2,6 @@ export default {
     namespaced: true,
     state: {
         openSideBar: false,
-        pages: [
-            {
-                name: 'Home',
-                dropDown: false,
-                route: 'Home',
-                id: 1,
-                show: true
-            },
-            {
-                name: 'Services',
-                dropDown: true,
-                route: 'Services',
-                id: 2,
-                show: true
-            },
-            // {
-            //     name: 'Projects',
-            //     dropDown: true,
-            //     route: 'Projects',
-            //     id: 3,
-            //     show: true
-            // },
-            // {
-            //     name: 'About',
-            //     dropDown: false,
-            //     route: 'About',
-            //     id: 4,
-            //     show: true
-            // },
-            // {
-            //     name: 'Blog',
-            //     dropDown: false,
-            //     route: 'Blog',
-            //     id: 5,
-            //     show: true
-            // },
-            {
-                name: 'Contact',
-                dropDown: false,
-                route: 'Contact',
-                id: 6,
-                show: true
-            },
-        ],
         logo: {
             key: 'logo',
             value: ''
@@ -87,9 +43,6 @@ export default {
         openSideBar(state) {
             return state.openSideBar
         },
-        pages(state) {
-            return state.pages
-        },
         logo(state) {
             return state.logo
         },
@@ -105,9 +58,6 @@ export default {
         email(state) {
             return state.email
         },
-        fax(state) {
-            return state.fax
-        },
         businessHours(state) {
             return state.businessHours
         },
@@ -120,7 +70,6 @@ export default {
     },
     mutations: {
         logoSetter(state, data) {
-            console.log(data)
             state.logo.value = data.logo ? data.logo : ''
         },
         companyNameSetter(state, data) {
@@ -134,9 +83,6 @@ export default {
         },
         emailSetter(state, data) {
             state.email.value = data.email ? data.email : ''
-        },
-        faxSetter(state, data) {
-            state.fax.value = data.fax ? data.fax : ''
         },
         businessHoursSetter(state, data) {
             state.businessHours.value = data.businessHours ? data.businessHours : ''
@@ -188,13 +134,11 @@ export default {
         getGeneralSettings(context, data) {
             return new Promise((resolve, reject) => {
                 axios.get(`/get-general-settings`).then((res) => {
-                    console.log(res.data)
                     context.commit('logoSetter', res.data.setting)
                     context.commit('companyNameSetter', res.data.setting)
                     context.commit('addressSetter', res.data.setting)
                     context.commit('phoneSetter', res.data.setting)
                     context.commit('emailSetter', res.data.setting)
-                    context.commit('faxSetter', res.data.setting)
                     context.commit('businessHoursSetter', res.data.setting)
                     context.commit('metaTitleSetter', res.data.setting)
                     context.commit('metaDescSetter', res.data.setting)

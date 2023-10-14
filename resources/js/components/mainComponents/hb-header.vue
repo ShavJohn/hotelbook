@@ -2,7 +2,7 @@
     <div class="header-style">
         <div class="hb-flex hb-justify-content-between padding-large hb-align-items-center header-menu-animation">
             <div class="header-logo-styling">
-                <img src="http://www.nicdarkthemes.com/themes/hotel-inn/wp/demo/inn-suites/wp-content/uploads/sites/2/2022/01/logo-motela.png">
+                <img v-if="logo.value && logo.value.length" :src="`${imagePrefix}/${logo.value}`">
             </div>
             <ul class="header-menu color-white hide-on-large-tablet">
                 <li @click="$router.push({name: 'Home'})">{{ $t('home') }}</li>
@@ -11,7 +11,7 @@
                 <li @click="$router.push({name: 'Contact'})">{{ $t('contact') }}</li>
             </ul>
             <div class="hide-on-large-tablet">
-                <select class="language-dropdown" v-model="locale" @change="changeLang()">
+                <select id="header-choose-language-large-screen" name="header-choose-language-large-screen" class="language-dropdown" v-model="locale" @change="changeLang()">
                     <option value="en">EN</option>
                     <option value="ru">RU</option>
                 </select>
@@ -25,7 +25,7 @@
                     <font-awesome-icon @click="openMenu = !openMenu" class="color-white font-20 cursor-pointer" icon="fa-solid fa-xmark" />
                 </div>
                 <div class="padding">
-                    <select class="language-dropdown">
+                    <select id="header-choose-language-mobile" name="header-choose-language-mobile" class="language-dropdown">
                         <option value="en">EN</option>
                         <option value="ru">RU</option>
                     </select>
@@ -48,6 +48,14 @@ export default {
         return {
             openMenu: false,
             locale:  this.$i18n.locale,
+        }
+    },
+    computed: {
+        logo() {
+            return this.$store.getters['generalSettings/logo']
+        },
+        imagePrefix() {
+            return window.imagePrefix
         }
     },
     methods: {

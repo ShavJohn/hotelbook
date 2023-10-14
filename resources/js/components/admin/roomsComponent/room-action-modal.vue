@@ -3,7 +3,7 @@
         <template #modal-header>
             <h4>Add Room</h4>
             <div>
-                <select class="modal-language-dropdown" v-model="dataLang">
+                <select name="room-action-language-dropdown" id="room-action-language-dropdown" class="modal-language-dropdown" v-model="dataLang">
                     <option value="en">EN</option>
                     <option value="ru">RU</option>
                 </select>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Room Type</span>
-                    <select v-model="$store.state.rooms.room.selectedType.id">
+                    <select name="room-action-room-type" id="room-action-room-type" v-model="$store.state.rooms.room.selectedType.id">
                         <option disabled>Select Room Type</option>
                         <option v-for="roomType in roomTypes" :key="roomType.id" :value="roomType.id">{{ roomType[dataLang].name }}</option>
                     </select>

@@ -15,9 +15,6 @@ export default {
         email() {
             return this.$store.getters['generalSettings/email']
         },
-        fax() {
-            return this.$store.getters['generalSettings/fax']
-        },
         businessHours() {
             return this.$store.getters['generalSettings/businessHours']
         },
@@ -77,9 +74,6 @@ export default {
                 this.$store.state.generalSettings.metaDesc,
             ]
             this.$store.dispatch('generalSettings/updateGeneralSettings', data).then((res) => {
-                if(res.data.success) {
-                    $('#generalSettingsModal').modal('hide')
-                }
                 this.$store.dispatch('alert/alertResponse', {
                     'type': res?.data?.type,
                     'message': res?.data?.message

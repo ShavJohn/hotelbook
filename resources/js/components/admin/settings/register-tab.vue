@@ -1,20 +1,20 @@
 <template>
     <form class="settings-content">
         <div class="settings-element">
-            <label>New User Name</label>
-            <input type="text" placeholder="Enter New User Name"  v-model="newUser.name">
+            <label for="new-user-name">New User Name</label>
+            <input id="new-user-name" type="text" placeholder="Enter New User Name"  v-model="newUser.name">
         </div>
         <div class="settings-element">
-            <label>New User Email</label>
-            <input type="text" placeholder="Enter New User Email"  v-model="newUser.email">
+            <label for="new-user-email">New User Email</label>
+            <input id="new-user-email" type="text" placeholder="Enter New User Email"  v-model="newUser.email">
         </div>
         <div class="settings-element">
-            <label>New User Password</label>
-            <input type="text" placeholder="Enter New User Password"  v-model="newUser.password">
+            <label for="new-user-password">New User Password</label>
+            <input id="new-user-password" type="text" placeholder="Enter New User Password"  v-model="newUser.password">
         </div>
         <div class="settings-element">
-            <label>New User Password Confirm</label>
-            <input type="text" placeholder="Enter New User Password Confirm"  v-model="newUser.password">
+            <label for="new-user-password-confirm">New User Password Confirm</label>
+            <input id="new-user-password-confirm" type="text" placeholder="Enter New User Password Confirm"  v-model="newUser.password">
         </div>
         <button @click.prevent="createUser()" class="hm-btn-style">Save Changes</button>
     </form>
