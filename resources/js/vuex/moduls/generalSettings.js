@@ -2,6 +2,7 @@ export default {
     namespaced: true,
     state: {
         openSideBar: false,
+        localeLang: localStorage.getItem('lang') ? localStorage.getItem('lang') :  'en',
         logo: {
             key: 'logo',
             value: ''
@@ -37,11 +38,14 @@ export default {
         metaDesc: {
             key: 'metaDesc',
             value: '',
-        }
+        },
     },
     getters: {
         openSideBar(state) {
             return state.openSideBar
+        },
+        getLocale(state) {
+            return state.localeLang
         },
         logo(state) {
             return state.logo

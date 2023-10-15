@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('key');
             $table->longText('value')->nullable();
             $table->json('json_value')->nullable();
+            $table->boolean('page_setting')->default(false);
             $table->timestamps();
         });
     }

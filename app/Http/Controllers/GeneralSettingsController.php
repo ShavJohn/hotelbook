@@ -39,7 +39,7 @@ class GeneralSettingsController extends Controller
     public function getGeneralSettings(): JsonResponse
     {
         try {
-            $generalSettings =  $this->generalSettingsRepo->getGeneralSettings();
+            $generalSettings =  $this->generalSettingsRepo->getGeneralSettings(false);
             $logo = '';
             $companyName = '';
             $address = '';
@@ -88,6 +88,80 @@ class GeneralSettingsController extends Controller
                 'setting' => $data
             ], 200);
         }  catch (\Exception $exception) {
+            Log::error($exception);
+            return response()->json([
+                'success' => 0,
+                'type' => 'error',
+                'message'  => 'Something went wrong',
+            ], 422);
+        }
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function getPageSettings(): JsonResponse
+    {
+        try {
+            $data = $this->generalSettingsRepo->getGeneralSettings(true);
+
+            return response()->json([
+                'success' => 1,
+                'type' => 'success',
+                'settings' => $data
+            ], 200);
+        } catch (\Exception $exception) {
+            Log::error($exception);
+            return response()->json([
+                'success' => 0,
+                'type' => 'error',
+                'message'  => 'Something went wrong',
+            ], 422);
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function updatePageSettings(Request $request): JsonResponse
+    {
+        try {
+            $pageSettings = [];
+            DB::beginTransaction();
+
+            foreach ($request->all() as $value ) {
+                foreach ($value as $key=>$item) {
+                    if(gettype($item) === 'array') {
+                        $pageSettings[] = [
+                            'key' => $key,
+                            'json_value' => $item,
+                            'page_setting' => true
+                        ];
+                    } else {
+                        $pageSettings[] = [
+                            'key' => $key,
+                            'value' => $item,
+                            'page_setting' => true
+                        ];
+                    }
+
+                }
+
+            }
+
+            foreach ($pageSettings as $data) {
+                $this->generalSettingsRepo->updateOrCreatePageData($data['key'], $data);
+            }
+
+            DB::commit();
+            return response()->json([
+                'success' => 1,
+                'type' => 'success',
+                'message' => 'Section has been updated'
+            ], 200);
+        } catch (\Exception $exception) {
+            DB::rollBack();
             Log::error($exception);
             return response()->json([
                 'success' => 0,

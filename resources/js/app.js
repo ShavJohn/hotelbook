@@ -11,6 +11,7 @@ import store from './vuex'
 import i18n from './i18n'
 import VueProgressBar from "@aacassandra/vue3-progressbar";
 import VueLazyLoad from "vue3-lazyload";
+import mian from './mixins/main'
 
 import moment from 'moment'
 
@@ -76,6 +77,8 @@ const outside = {
 Vue.directive('outside', outside)
 
 Vue.component('Datepicker', Datepicker);
+
+Vue.mixin(mian)
 
 window.i18n = i18n;
 

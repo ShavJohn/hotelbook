@@ -13,12 +13,19 @@ interface GeneralSettingsInterface
 
     /**
      * @param $key
+     * @param $data
+     */
+    public function updateOrCreatePageData($key, $data);
+
+    /**
+     * @param $key
      * @return mixed
      */
     public function ifExist($key): mixed;
 
     /**
+     * @param $page_setting
      * @return mixed
      */
-    public function getGeneralSettings(): mixed;
+    public function getGeneralSettings($page_setting): mixed;
 }

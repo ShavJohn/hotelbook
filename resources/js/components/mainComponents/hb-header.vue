@@ -11,7 +11,7 @@
                 <li @click="$router.push({name: 'Contact'})">{{ $t('contact') }}</li>
             </ul>
             <div class="hide-on-large-tablet">
-                <select id="header-choose-language-large-screen" name="header-choose-language-large-screen" class="language-dropdown" v-model="locale" @change="changeLang()">
+                <select id="header-choose-language-large-screen" name="header-choose-language-large-screen" class="language-dropdown" v-model="$store.state.generalSettings.localeLang" @change="changeLang()">
                     <option value="en">EN</option>
                     <option value="ru">RU</option>
                 </select>
@@ -46,8 +46,7 @@ export default {
     name: "hb-header",
     data() {
         return {
-            openMenu: false,
-            locale:  this.$i18n.locale,
+            openMenu: false
         }
     },
     computed: {
@@ -61,9 +60,9 @@ export default {
     methods: {
         changeLang() {
           this.$Progress.start()
-          this.$i18n.locale = this.locale
+          this.$i18n.locale = this.localeLang
 
-          localStorage.setItem('leng', this.locale)
+          localStorage.setItem('lang', this.localeLang)
           this.$Progress.finish()
         }
     },

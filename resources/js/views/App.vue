@@ -18,13 +18,11 @@
 import { useRoute, useRouter } from 'vue-router'
 import HbHeader from "../components/mainComponents/hb-header";
 import HbFooter from "../components/mainComponents/hb-footer";
-import main from "../mixins/main"
 import Admin from "./Admin";
 import AlertComponent from "../components/mainComponents/alert-component";
 export default {
     name: "App.vue",
     components: {AlertComponent, Admin, HbFooter, HbHeader},
-    mixins: [main],
     data() {
         return {
             loader: true
@@ -46,8 +44,10 @@ export default {
     methods: {
         getGeneralData() {
             this.$store.dispatch('generalSettings/getGeneralSettings').then(() => {
-                this.$store.dispatch('rooms/getRooms').then(() => {
-                    this.loader = false
+                this.$store.dispatch('pageSettings/getPageSettings').then(() => {
+                    this.$store.dispatch('rooms/getRooms').then(() => {
+                        this.loader = false
+                    })
                 })
             })
         }

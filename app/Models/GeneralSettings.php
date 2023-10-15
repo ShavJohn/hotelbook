@@ -15,6 +15,11 @@ class GeneralSettings extends Model
     protected $fillable = [
         'key',
         'value',
-        'additional_value'
+        'json_value',
+        'page_setting'
+    ];
+
+    protected $casts = [
+        'json_value' => 'array'
     ];
 }

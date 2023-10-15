@@ -32,7 +32,7 @@
                         <span class="image-action-btn">
                             <font-awesome-icon icon="fa-solid fa-file-arrow-up" />
                         </span>
-                        <input type="file" class="hidden" name="image" @change="uploadImage($event, key)">
+                        <input type="file" class="hidden" name="image" @change="uploadImage($event)">
                     </label>
                     <div v-else class="image-content">
                         <img v-if="roomData.main_image && roomData.main_image.length" :src="`${imagePrefix}/${roomData.main_image}`">

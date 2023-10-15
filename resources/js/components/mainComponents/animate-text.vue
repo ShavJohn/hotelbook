@@ -31,6 +31,23 @@ export default {
             if(val !== this.text) {
                 this.typeText()
             }
+        },
+        text(val) {
+            if(!val.length) {
+                this.iteration = 0
+                this.animationStarted = true
+                this.displayText = ''
+                this.iterableText = ''
+            }
+            this.typeText()
+        },
+        localeLang(val) {
+            this.iteration = 0
+            this.animationStarted = true
+            this.displayText = ''
+            this.iterableText = ''
+
+            this.typeText()
         }
     },
     methods: {

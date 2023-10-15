@@ -44,6 +44,20 @@ class GeneralSettingsRepository implements GeneralSettingsInterface
 
     /**
      * @param $key
+     * @param $data
+     * @return mixed
+     */
+    public function updateOrCreatePageData($key, $data)
+    {
+        if($this->ifExist($key)) {
+            return $this->model->where('key', $key)->update($data);
+        } else {
+            return $this->model->create($data);
+        }
+    }
+
+    /**
+     * @param $key
      * @return mixed
      */
     public function ifExist($key): mixed
@@ -52,10 +66,11 @@ class GeneralSettingsRepository implements GeneralSettingsInterface
     }
 
     /**
+     * @param $page_setting
      * @return mixed
      */
-    public function getGeneralSettings(): mixed
+    public function getGeneralSettings($page_setting): mixed
     {
-        return $this->model->get();
+        return $this->model->where('page_setting', $page_setting)->get();
     }
 }

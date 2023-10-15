@@ -5,6 +5,7 @@ import alert from "./moduls/alert";
 import rooms from "./moduls/rooms"
 import imageActions from "./moduls/imageActions";
 import generalSettings from "./moduls/generalSettings";
+import pageSettings from "./moduls/pageSettings"
 
 
 export default createStore({
@@ -14,6 +15,7 @@ export default createStore({
         alert,
         rooms,
         imageActions,
-        generalSettings
+        generalSettings,
+        pageSettings
     }
 })
