@@ -14501,12 +14501,17 @@ textarea.form-control-lg {
 .display-edit-elements:hover .edit-elements {
   opacity: 1;
 }
+.display-edit-elements .header-edit-vertical-position {
+  top: 100px;
+}
+.display-edit-elements .element-edit-vertical-position {
+  top: 50px;
+}
 .display-edit-elements .edit-elements {
   position: absolute;
-  top: 100px;
-  right: 100px;
   z-index: 999;
   padding: 25px;
+  right: 100px;
   opacity: 0;
   border-radius: 20px;
   cursor: pointer;

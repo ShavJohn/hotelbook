@@ -16,10 +16,29 @@ export default {
         },
         localeLang() {
             return this.$store.getters['generalSettings/getLocale']
-        }
+        },
+        elementEditModalType() {
+            return this.$store.getters['pageSettings/getElementEditModalType']
+        },
+        footerData() {
+            return this.$store.getters['pageSettings/getFooterData']
+        },
+        address() {
+            return this.$store.getters['generalSettings/address']
+        },
+        phone() {
+            return this.$store.getters['generalSettings/phone']
+        },
+        email() {
+            return this.$store.getters['generalSettings/email']
+        },
+        businessHours() {
+            return this.$store.getters['generalSettings/businessHours']
+        },
     },
     methods: {
-        openModal(modalId) {
+        openElementEditModal(modalId, modalType) {
+            this.$store.state.pageSettings.elementEditModalType = modalType
             $(modalId).modal("show");
         },
         uploadImage(e) {
@@ -28,7 +47,7 @@ export default {
 
             this.$store.dispatch('imageActions/imageUpload', formData).then((res) => {
 
-                this.$store.state.pageSettings.headerData.header_background_image = res.data.image
+                this.$store.state.pageSettings.headerData.header_home_background_image = res.data.image
                 this.$store.dispatch('alert/alertResponse', {
                     'type': res?.data?.type,
                     'message': res?.data?.message
@@ -43,7 +62,7 @@ export default {
         deleteImage(imageName, key, list) {
             this.$store.dispatch('imageActions/imageDelete', imageName).then((res) => {
                 if(res.data.success) {
-                    this.$store.state.pageSettings.headerData.header_background_image = ''
+                    this.$store.state.pageSettings.headerData.header_home_background_image = ''
 
                     this.$store.dispatch('alert/alertResponse', {
                         'type': res?.data?.type,
