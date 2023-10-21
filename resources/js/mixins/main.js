@@ -45,9 +45,10 @@ export default {
             let formData = new FormData()
             formData.append('image', e.target.files[0])
 
+
             this.$store.dispatch('imageActions/imageUpload', formData).then((res) => {
 
-                this.$store.state.pageSettings.headerData.header_home_background_image = res.data.image
+                this.$store.state.pageSettings.headerData[this.elementEditModalType] = res.data.image
                 this.$store.dispatch('alert/alertResponse', {
                     'type': res?.data?.type,
                     'message': res?.data?.message

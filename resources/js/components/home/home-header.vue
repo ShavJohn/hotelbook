@@ -5,7 +5,7 @@
         </div>
         <template v-if="authUser">
             <div class="edit-elements header-edit-vertical-position">
-                <font-awesome-icon @click="openElementEditModal('#edit-elements-modal', 'header-section')" icon="fa-solid fa-pen-to-square" />
+                <font-awesome-icon @click="openElementEditModal('#edit-elements-modal', 'header_home_background_image')" icon="fa-solid fa-pen-to-square" />
             </div>
         </template>
     </div>

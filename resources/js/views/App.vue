@@ -9,6 +9,7 @@
         <hb-header v-if="$route.name !== 'Login' && !$route.meta.admin"/>
         <div id="app-body" class="app-container">
             <router-view></router-view>
+            <edit-elements-modal/>
         </div>
         <hb-footer v-if="$route.name !== 'Login' && !$route.meta.admin"/>
     </div>
@@ -20,9 +21,10 @@ import HbHeader from "../components/mainComponents/hb-header";
 import HbFooter from "../components/mainComponents/hb-footer";
 import Admin from "./Admin";
 import AlertComponent from "../components/mainComponents/alert-component";
+import EditElementsModal from "../components/mainComponents/edit-elements-modal";
 export default {
     name: "App.vue",
-    components: {AlertComponent, Admin, HbFooter, HbHeader},
+    components: {AlertComponent, Admin, HbFooter, HbHeader, EditElementsModal},
     data() {
         return {
             loader: true

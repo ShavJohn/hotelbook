@@ -1,5 +1,5 @@
 <template>
-    <div class="responsive-background-image position-relative" style="background-image: url(http://www.nicdarkthemes.com/themes/hotel-inn/wp/demo/inn-suites/wp-content/uploads/sites/2/2021/11/parallax-10.jpg)">
+    <div class="responsive-background-image position-relative display-edit-elements" :style="headerData.header_rooms_background_image?.length && `background-image: url(${imagePrefix}/${headerData.header_rooms_background_image})`">
         <div class="background-image-filter">
             <animate-text class="header-text-styling" text="Rooms" :display-time="500"/>
             <div class="booking-steps-indicator-container">
@@ -10,6 +10,11 @@
                 </div>
             </div>
         </div>
+        <template v-if="authUser">
+            <div class="edit-elements header-edit-vertical-position">
+                <font-awesome-icon @click="openElementEditModal('#edit-elements-modal', 'header_rooms_background_image')" icon="fa-solid fa-pen-to-square" />
+            </div>
+        </template>
     </div>
 </template>
 
