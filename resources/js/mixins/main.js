@@ -36,6 +36,7 @@ export default {
             return this.$store.getters['generalSettings/businessHours']
         },
     },
+    
     methods: {
         openElementEditModal(modalId, modalType) {
             this.$store.state.pageSettings.elementEditModalType = modalType
