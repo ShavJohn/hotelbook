@@ -33,7 +33,6 @@ export default {
     mutations: {
         setHeaderData(state, data) {
             data.forEach(item => {
-                console.log(item)
                 if(item.key === 'header_home_background_image') {
                     state.headerData.header_home_background_image = item.value ? item.value : ''
                 } else  if(item.key === 'header_rooms_background_image') {
@@ -47,7 +46,6 @@ export default {
                     state.headerData.header_title.ru = item.json_value.ru
                 }
             })
-            console.log(state.headerData)
         },
         setFooterData(state, data) {
             data.forEach(item => {
