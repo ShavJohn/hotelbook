@@ -17111,3 +17111,19 @@ textarea.form-control-lg {
   cursor: pointer;
   margin-top: 30px;
 }
+
+.create-post-btn {
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  background-color: #C19B77;
+  color: white;
+  border: double;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 10px 35px;
+  font-size: 14px;
+  border-radius: 30px;
+}

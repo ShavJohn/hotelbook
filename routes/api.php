@@ -52,6 +52,9 @@ Route::group(['middleware' => 'api'], function() {
         //Page Settings
         Route::post('/update-page-settings', 'App\Http\Controllers\GeneralSettingsController@updatePageSettings');
 
+        //Post Actions
+        Route::post('/create-post', 'App\Http\Controllers\PostController@createPost');
+
         //Room routs
         Route::post('/add-room', 'App\Http\Controllers\RoomController@addRoom');
         Route::delete('/delete-room/{roomId}', 'App\Http\Controllers\RoomController@removeRoom');

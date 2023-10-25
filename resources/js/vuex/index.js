@@ -6,6 +6,7 @@ import rooms from "./moduls/rooms"
 import imageActions from "./moduls/imageActions";
 import generalSettings from "./moduls/generalSettings";
 import pageSettings from "./moduls/pageSettings"
+import postActions from "./moduls/postActions"
 
 
 export default createStore({
@@ -16,6 +17,7 @@ export default createStore({
         rooms,
         imageActions,
         generalSettings,
-        pageSettings
+        pageSettings,
+        postActions
     }
 })

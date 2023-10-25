@@ -1,24 +1,22 @@
 <template>
-    <div class="padding-90 padding-very-large-tablet">
-        <div class="hb-flex hb-justify-content-between hb-align-items-center hb-flex-wrap">
-            <div class="about-us-post-image position-relative">
-                <img src="http://www.nicdarkthemes.com/themes/hotel-inn/wp/demo/inn-suites/wp-content/uploads/sites/2/2021/12/image-1.jpg">
-            </div>
-            <div class="about-us-post-text">
-                <h2>Welcome to Spa Relax Hotel</h2>
-                <p>Quisque vitae posuere libero. Phasellus feugiat erat sit amet dui condimentum imperdiet. Ut at libero nec ligula fringilla dictum sit amet id dui. Integer gravida dolor elit, sit amet vestibulum mi elementum eget. Nullam in nibh vitae magna tempus tincidunt ac sed ligula. Sed ornare eu dui a lobortis in hac habitasse.</p>
-                <hr>
-                <strong class="margin-top">Main Mail</strong>
-                <p class="margin-top">info@hotel.com</p>
-            </div>
-        </div>
+    <div class="padding-90 padding-very-large-tablet position-relative">
+        <button v-if="authUser" class="create-post-btn" @click="openModal('#post-actions-modal', 'add')">
+            Create Post
+        </button>
+        <home-post/>
+        <post-action-modal/>
     </div>
 </template>
 
 <script>
 
+import HomePost from "./post-components/home-post";
+import PostActionModal from "./post-components/post-action-modal";
+import PostsMixins from "../../mixins/posts-mixins";
+
 export default {
     name: "home-posts",
-
+    components: {PostActionModal, HomePost},
+    mixins: [PostsMixins]
 }
 </script>
