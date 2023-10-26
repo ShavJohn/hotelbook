@@ -1,5 +1,15 @@
+.post-direction-design {
+    flex-direction: row;
+
+    &:nth-of-type(even) {
+        flex-direction: row-reverse;
+    }
+}
+
+
+
 .about-us-post-image {
-    width: 48%;
+    width: 25%;
 
     img {
         width: 100%;
@@ -7,7 +17,7 @@
 }
 
 .about-us-post-text {
-    width: 48%;
+    width: 70%;
 
     h2 {
         font-size: 50px;

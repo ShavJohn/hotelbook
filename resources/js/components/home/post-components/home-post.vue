@@ -1,27 +1,33 @@
 <template>
-    <div>
-        <div class="hb-flex hb-justify-content-between hb-align-items-center hb-flex-wrap">
-            <div class="post-actions-container">
-                <font-awesome-icon icon="fa-solid fa-pen-to-square" />
-                <font-awesome-icon icon="fa-solid fa-trash" />
-            </div>
-            <div class="about-us-post-image position-relative">
-                <img src="http://www.nicdarkthemes.com/themes/hotel-inn/wp/demo/inn-suites/wp-content/uploads/sites/2/2021/12/image-1.jpg">
-            </div>
-            <div class="about-us-post-text">
-                <h2>Welcome to Spa Relax Hotel</h2>
-                <p>Quisque vitae posuere libero. Phasellus feugiat erat sit amet dui condimentum imperdiet. Ut at libero nec ligula fringilla dictum sit amet id dui. Integer gravida dolor elit, sit amet vestibulum mi elementum eget. Nullam in nibh vitae magna tempus tincidunt ac sed ligula. Sed ornare eu dui a lobortis in hac habitasse.</p>
-                <hr>
-                <strong class="margin-top">Main Mail</strong>
-                <p class="margin-top">info@hotel.com</p>
-            </div>
+    <div class="position-relative post-direction-design padding-very-large hb-flex hb-justify-content-between hb-align-items-center hb-flex-wrap post-actions-container">
+        <div class="post-actions-btn">
+            <font-awesome-icon @click="openModal('#post-actions-modal', 'edit', currentPostData)" icon="fa-solid fa-pen-to-square" />
+            <font-awesome-icon @click="deletePost(currentPostData.id, postKey)" icon="fa-solid fa-trash" />
+        </div>
+        <div class="about-us-post-image position-relative">
+            <img v-if="currentPostData.image_path && currentPostData.image_path.length" :src="`${imagePrefix}/${currentPostData.image_path}`">
+        </div>
+        <div class="about-us-post-text">
+            <h2>{{ currentPostData.title[localeLang] }}</h2>
+            <p>{{ currentPostData.body[localeLang] }}</p>
         </div>
     </div>
 </template>
 
 <script>
+import PostsMixins from "../../../mixins/posts-mixins";
+
 export default {
-    name: "home-post"
+    name: "home-post",
+    props: {
+        currentPostData: {
+            required: true
+        },
+        postKey: {
+            required: true
+        }
+    },
+    mixins: [PostsMixins]
 }
 </script>
 

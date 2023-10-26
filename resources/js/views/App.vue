@@ -47,8 +47,10 @@ export default {
         getGeneralData() {
             this.$store.dispatch('generalSettings/getGeneralSettings').then(() => {
                 this.$store.dispatch('pageSettings/getPageSettings').then(() => {
-                    this.$store.dispatch('rooms/getRooms').then(() => {
-                        this.loader = false
+                    this.$store.dispatch('postActions/getAllPosts').then(() => {
+                        this.$store.dispatch('rooms/getRooms').then(() => {
+                            this.loader = false
+                        })
                     })
                 })
             })

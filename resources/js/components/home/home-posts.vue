@@ -1,9 +1,9 @@
 <template>
-    <div class="padding-90 padding-very-large-tablet position-relative">
+    <div class="position-relative">
         <button v-if="authUser" class="create-post-btn" @click="openModal('#post-actions-modal', 'add')">
             Create Post
         </button>
-        <home-post/>
+        <home-post v-if="posts.length" v-for="(post, key) in posts" :current-post-data="post" :post-key="key"/>
         <post-action-modal/>
     </div>
 </template>

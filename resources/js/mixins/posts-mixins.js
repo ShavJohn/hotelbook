@@ -10,10 +10,16 @@ export default {
         },
         postData() {
             return this.$store.getters['postActions/getPostData']
+        },
+        posts() {
+            return this.$store.getters['postActions/getPosts']
         }
     },
     methods: {
-        openModal(modalId, type) {
+        openModal(modalId, type, editData = []) {
+            if(Object.keys(editData).length) {
+                this.$store.commit('postActions/setPostData', editData)
+            }
             this.$store.commit('postActions/setPostsModalType', type)
             $(modalId).modal("show");
         },
@@ -55,10 +61,14 @@ export default {
                 })
             })
         },
-        createPost() {
-            this.$store.dispatch('postActions/createPost', this.postData).then(() => {
+        postActions(type) {
+            this.$store.dispatch(type === 'add' ? 'postActions/createPost' : 'postActions/editPost', this.postData).then(() => {
                 $('#post-actions-modal').modal("hide");
             })
+        },
+        deletePost(postId, postKey) {
+            this.$store.commit('postActions/removePost', postKey)
+            this.$store.dispatch('postActions/deletePost', postId)
         }
     }
 }

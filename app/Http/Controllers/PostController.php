@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\PostInterface;
+use App\Models\Post;
+use App\Services\FileManagerService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,11 +12,14 @@ use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
 {
-    protected $postRepo;
+    protected PostInterface $postRepo;
 
-    public function __construct(PostInterface $postRepo)
+    protected FileManagerService $fileManagerService;
+
+    public function __construct(PostInterface $postRepo, FileManagerService $fileManagerService)
     {
         $this->postRepo = $postRepo;
+        $this->fileManagerService = $fileManagerService;
     }
 
     /**
@@ -70,17 +75,16 @@ class PostController extends Controller
     }
 
     /**
-     * @param $postId
      * @param Request $request
      * @return JsonResponse
      */
-    public function updatePost($postId, Request $request): JsonResponse
+    public function updatePost(Request $request): JsonResponse
     {
         try {
             DB::beginTransaction();
             $data = $request->all();
 
-            $this->postRepo->updatePost($postId, $data);
+            $this->postRepo->updatePost($data['id'], $data);
 
             DB::commit();
             return response()->json([
@@ -100,15 +104,16 @@ class PostController extends Controller
     }
 
     /**
-     * @param $postId
+     * @param Post $post
      * @return JsonResponse
      */
-    public function deletePost($postId): JsonResponse
+    public function deletePost(Post $post): JsonResponse
     {
         try {
             DB::beginTransaction();
 
-            $this->postRepo->deletePost($postId);
+            $this->filemenager->delete($post->image_path);
+            $this->postRepo->deletePost($post->id);
 
             DB::commit();
             return response()->json([

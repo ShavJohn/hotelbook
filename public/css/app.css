@@ -15052,15 +15052,22 @@ textarea.form-control-lg {
     opacity: 0;
   }
 }
+.post-direction-design {
+  flex-direction: row;
+}
+.post-direction-design:nth-of-type(even) {
+  flex-direction: row-reverse;
+}
+
 .about-us-post-image {
-  width: 48%;
+  width: 25%;
 }
 .about-us-post-image img {
   width: 100%;
 }
 
 .about-us-post-text {
-  width: 48%;
+  width: 70%;
 }
 .about-us-post-text h2, .about-us-post-text .h2 {
   font-size: 50px;
@@ -17118,7 +17125,7 @@ textarea.form-control-lg {
   transform: translate(-50%, -50%);
   left: 50%;
   background-color: #C19B77;
-  color: white;
+  color: #fff;
   border: double;
   cursor: pointer;
   text-transform: uppercase;
@@ -17126,4 +17133,29 @@ textarea.form-control-lg {
   padding: 10px 35px;
   font-size: 14px;
   border-radius: 30px;
+  z-index: 99;
+}
+
+.post-actions-container:hover .post-actions-btn {
+  opacity: 1;
+}
+.post-actions-container .post-actions-btn {
+  z-index: 99;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  border: double;
+  background-color: #C19B77;
+  color: #fff;
+  padding: 10px 50px;
+  position: absolute;
+  top: 30px;
+  right: 60px;
+  border-radius: 30px;
+}
+.post-actions-container .post-actions-btn svg {
+  font-size: 20px;
+  cursor: pointer;
+}
+.post-actions-container .post-actions-btn svg:first-of-type {
+  margin-right: 20px;
 }

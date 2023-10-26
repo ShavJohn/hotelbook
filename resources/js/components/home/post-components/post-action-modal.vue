@@ -1,7 +1,6 @@
 <template>
     <modals modal-id="post-actions-modal">
         <template #modal-header>
-            {{ postsModalType }}
             <h4 v-if="postsModalType === 'add'">Add Post</h4>
             <h4 v-else-if="postsModalType === 'edit'">Edit Post</h4>
             <div>
@@ -43,8 +42,14 @@
         </template>
         <template #modal-footer>
             <button type="button" data-bs-dismiss="modal" aria-label="Close" class="modal-btn btn-grey close">Close</button>
-            <button v-if="postsModalType === 'add'" class="modal-btn btn-action" @click="createPost()">Create Post</button>
-            <button v-else-if="postsModalType === 'edit'" class="modal-btn btn-action">Edit Post</button>
+            <button  class="modal-btn btn-action" @click="postActions(postsModalType)">
+                <template v-if="postsModalType === 'add'">
+                    Create Post
+                </template>
+                <template v-else-if="postsModalType === 'edit'">
+                    Edit Post
+                </template>
+            </button>
         </template>
     </modals>
 </template>

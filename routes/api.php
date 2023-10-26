@@ -29,6 +29,9 @@ Route::group(['middleware' => 'api'], function() {
     //get page settings
     Route::get('/get-page-settings', 'App\Http\Controllers\GeneralSettingsController@getPageSettings');
 
+    //get posts
+    Route::get('get-posts', 'App\Http\Controllers\PostController@getPosts');
+
     //get rooms
     Route::get('/get-rooms','App\Http\Controllers\RoomController@getRooms');
 
@@ -54,6 +57,8 @@ Route::group(['middleware' => 'api'], function() {
 
         //Post Actions
         Route::post('/create-post', 'App\Http\Controllers\PostController@createPost');
+        Route::put('/update-post', 'App\Http\Controllers\PostController@updatePost');
+        Route::delete('/delete-post/{post}', 'App\Http\Controllers\PostController@deletePost');
 
         //Room routs
         Route::post('/add-room', 'App\Http\Controllers\RoomController@addRoom');
