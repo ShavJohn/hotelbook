@@ -23,6 +23,9 @@ Route::group(['middleware' => 'api'], function() {
     //get rooms features, service and types
     Route::get('/get-room-fst', 'App\Http\Controllers\RoomOptionsController@getRoomFST');
 
+    //message route
+    Route::post('/send-message', 'App\Http\Controllers\EmailController@store');
+
     //get general settings
     Route::get('/get-general-settings', 'App\Http\Controllers\GeneralSettingsController@getGeneralSettings');
 
@@ -37,6 +40,10 @@ Route::group(['middleware' => 'api'], function() {
 
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('/check-auth', 'App\Http\Controllers\AuthController@checkAuth');
+
+        //message routs
+        Route::get('/get-messages', 'App\Http\Controllers\EmailController@index');
+        Route::post('/reply-to-message', 'App\Http\Controllers\EmailController@reply');
 
         //room feature routs
         Route::post('/add-room-{fst}', 'App\Http\Controllers\RoomOptionsController@addRoomFST');

@@ -6,27 +6,35 @@
         <div class="contact-us-inputs">
             <div class="contact-us-input">
                 <label for="user-name">Name</label>
-                <input id="user-name" type="text" name="user-name" placeholder="Enter your Name">
+                <input id="user-name" type="text" name="user-name" placeholder="Enter your Name" v-model="emailInfo.name">
                 <div class="input-delimiter"></div>
             </div>
             <div class="contact-us-input">
                 <label for="user-email">Email</label>
-                <input id="user-email" type="email" name="user-email" placeholder="Enter your Email">
+                <input id="user-email" type="email" name="user-email" placeholder="Enter your Email" v-model="emailInfo.email">
+                <div class="input-delimiter"></div>
+            </div>
+            <div class="contact-us-input">
+                <label for="user-phone">Phone number</label>
+                <input id="user-phone" type="tel" name="user-phone" placeholder="Enter your Phone" v-model="emailInfo.phone_number">
                 <div class="input-delimiter"></div>
             </div>
             <div class="contact-us-input text-area">
                 <label>Message</label>
-                <textarea id="user-message"  name="user-message" placeholder="Enter your message"></textarea>
+                <textarea id="user-message" name="user-message" placeholder="Enter your message" v-model="emailInfo.message"></textarea>
                 <div class="input-delimiter"></div>
             </div>
-            <button class="chosen-room-checkout-btn">Send</button>
+            <button class="chosen-room-checkout-btn" @click="sendMessage()">Send</button>
         </div>
     </div>
 </template>
 
 <script>
+import emails from "../../mixins/emails-mixins";
+
 export default {
-    name: "contact-body'"
+    name: "contact-body'",
+    mixins: [emails],
 }
 </script>
 

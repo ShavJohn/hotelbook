@@ -7,6 +7,7 @@ import imageActions from "./moduls/imageActions";
 import generalSettings from "./moduls/generalSettings";
 import pageSettings from "./moduls/pageSettings"
 import postActions from "./moduls/postActions"
+import emails from "./moduls/emails";
 
 
 export default createStore({
@@ -18,6 +19,7 @@ export default createStore({
         imageActions,
         generalSettings,
         pageSettings,
-        postActions
+        postActions,
+        emails
     }
 })
