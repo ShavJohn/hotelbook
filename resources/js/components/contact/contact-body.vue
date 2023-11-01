@@ -24,7 +24,11 @@
                 <textarea id="user-message" name="user-message" placeholder="Enter your message" v-model="emailInfo.message"></textarea>
                 <div class="input-delimiter"></div>
             </div>
-            <button class="chosen-room-checkout-btn" @click="sendMessage()">Send</button>
+            <button class="chosen-room-checkout-btn" @click="sendMessage()">Send
+                <div v-if="loading" class="spinner-border loader-style" role="status">
+                    <span class="sr-only"></span>
+                </div>
+            </button>
         </div>
     </div>
 </template>

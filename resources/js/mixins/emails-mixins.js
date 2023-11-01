@@ -8,7 +8,14 @@ export default {
                 message: '',
                 custom_input_form: {}
             },
-            loading: false
+            messageReceiverData: {},
+            replyData: {
+                title: '',
+                message: '',
+            },
+            loading: false,
+            skip: 0,
+            take: 10
         }
     },
     computed: {
@@ -56,12 +63,19 @@ export default {
                 })
             }
         },
+        getEmails(skip = 0, take = 10) {
+            let data = {
+                skip: skip,
+                take: take
+            }
+            this.$store.dispatch('emails/getContactMessages', data)
+        },
         reply() {
             let data = {
-                messageReceiverData: this.mailData,
-                replyData: this.mail
+                messageReceiverData: this.messageReceiverData,
+                replyData: this.replyData
             }
-            console.log(data)
+
             this.$store.dispatch('emails/replyToMessage', data).then(res => {
                 if(res.data.success) {
                 }
