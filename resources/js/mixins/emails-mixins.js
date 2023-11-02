@@ -8,22 +8,35 @@ export default {
                 message: '',
                 custom_input_form: {}
             },
-            messageReceiverData: {},
             replyData: {
                 title: '',
                 message: '',
             },
             loading: false,
             skip: 0,
-            take: 10
+            take: 10,
         }
     },
     computed: {
         messages() {
             return this.$store.getters['emails/contactUsMessagesGetter']
         },
+        selectedMessage() {
+            return this.$store.getters['emails/getSelectedMessage']
+        },
+        displayTab() {
+            return this.$store.getters['emails/getDisplayTab']
+        }
     },
     methods: {
+        formatDate(date) {
+            return moment(date).format('MM/DD/YYYY hh:mm')
+        },
+        toggleMessages(message, type) {
+            console.log(message, type)
+            this.$store.commit('emails/setSelectedMessage', message)
+            this.$store.commit('emails/setDisplayType', type)
+        },
         sendMessage() {
             if(this.emailInfo.name.length && this.emailInfo.email.length && this.emailInfo.message.length) {
                 this.loading = true
@@ -72,7 +85,7 @@ export default {
         },
         reply() {
             let data = {
-                messageReceiverData: this.messageReceiverData,
+                messageSelected: this.selectedMessage,
                 replyData: this.replyData
             }
 

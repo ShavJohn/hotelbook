@@ -16,6 +16,8 @@
 
 <script>
 
+import emails from "../../../mixins/emails-mixins";
+
 export default {
     name: "messages-list",
     props: {
@@ -23,11 +25,7 @@ export default {
             required: true
         }
     },
-    methods: {
-        formatDate(date) {
-            return moment(date).format('MM/DD/YYYY hh:mm')
-        }
-    }
+    mixins: [emails],
 }
 </script>
 

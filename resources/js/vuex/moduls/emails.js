@@ -1,16 +1,30 @@
 export default {
     namespaced: true,
     state: {
-        contactUsMessages: []
+        contactUsMessages: [],
+        selectedMessage: {},
+        displayTab: ''
     },
     getters: {
         contactUsMessagesGetter(state) {
             return state.contactUsMessages
+        },
+        getSelectedMessage(state) {
+            return state.selectedMessage
+        },
+        getDisplayTab(state) {
+            return state.displayTab
         }
     },
     mutations: {
         contactUsMessagesSetter(state, data) {
             state.contactUsMessages = data
+        },
+        setSelectedMessage(state, data) {
+            state.selectedMessage = data
+        },
+        setDisplayType(state, data) {
+            state.displayTab = data
         }
     },
     actions: {

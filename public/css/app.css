@@ -16916,6 +16916,7 @@ textarea.form-control-lg {
   height: 100%;
 }
 .message-container .message-content .message-view-container .no-message-view-inner-container {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
