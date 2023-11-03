@@ -28,4 +28,8 @@ class Email extends Model
         'message',
         'reply'
     ];
+
+    protected $casts = [
+        'reply' => 'array'
+    ];
 }

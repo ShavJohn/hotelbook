@@ -125,11 +125,9 @@ class EmailController extends Controller
             DB::beginTransaction();
             $data = $request->all();
 
+            Mail::to($request['messageSelected']['email'])->send(new ReplyToCustumerMessage($data));
 
-
-            Mail::to($request['messageReceiverData']['email'])->send(new ReplyToCustumerMessage($data));
-
-            $this->emailRepo->replied($data['messageReceiverData']['id']);
+            $this->emailRepo->reply($data['messageSelected']['id'], $data['replyData']);
 
             DB::commit();
             return response()->json([

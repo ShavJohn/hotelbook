@@ -26,16 +26,19 @@ export default {
         },
         displayTab() {
             return this.$store.getters['emails/getDisplayTab']
+        },
+        dataFinished() {
+            return this.$store.getters['emails/getDataFinished']
         }
     },
     methods: {
         formatDate(date) {
             return moment(date).format('MM/DD/YYYY hh:mm')
         },
-        toggleMessages(message, type) {
-            console.log(message, type)
+        toggleMessages(message, type, key) {
             this.$store.commit('emails/setSelectedMessage', message)
             this.$store.commit('emails/setDisplayType', type)
+            this.$store.commit('emails/setCurrentKey', key)
         },
         sendMessage() {
             if(this.emailInfo.name.length && this.emailInfo.email.length && this.emailInfo.message.length) {
@@ -49,15 +52,15 @@ export default {
 
                     this.loading = false
 
-                    this.$emit('alert', {
-                        'type': res.data.type,
-                        'message': res.data.message
+                    this.$store.dispatch('alert/alertResponse', {
+                        'type': res?.data?.type,
+                        'message': res?.data?.message
                     })
                 }).catch(err => {
                     this.loading = false
-                    this.$emit('alert', {
-                        'type': err.data.type,
-                        'message': err.data.message
+                    this.$store.dispatch('alert/alertResponse', {
+                        'type': err?.data?.type,
+                        'message': err?.data?.message
                     })
                 })
             } else {
@@ -70,7 +73,7 @@ export default {
                     message = 'Message field is required'
                 }
 
-                this.$emit('alert', {
+                this.$store.dispatch('alert/alertResponse', {
                     'type': 'error',
                     'message': message
                 })
@@ -89,17 +92,17 @@ export default {
                 replyData: this.replyData
             }
 
+            this.$store.commit('emails/updateEmailData', data.replyData)
+
             this.$store.dispatch('emails/replyToMessage', data).then(res => {
-                if(res.data.success) {
-                }
-                this.$emit('alert', {
-                    'type': res.data.type,
-                    'message': res.data.message
+                this.$store.dispatch('alert/alertResponse', {
+                    'type': res?.data?.type,
+                    'message': res?.data?.message
                 })
             }).catch(err => {
-                this.$emit('alert', {
-                    'type': err.data.type,
-                    'message': err.data.message
+                this.$store.dispatch('alert/alertResponse', {
+                    'type': err?.data?.type,
+                    'message': err?.data?.message
                 })
             })
         }

@@ -41,10 +41,11 @@ class EmailRepository implements  EmailInterface
 
     /**
      * @param $id
+     * @param $replyData
      * @return mixed
      */
-    public function replied($id): mixed
+    public function reply($id, $replyData): mixed
     {
-        return $this->model->where('id', $id)->update(['replied' => 1]);
+        return $this->model->where('id', $id)->update(['reply' => $replyData]);
     }
 }

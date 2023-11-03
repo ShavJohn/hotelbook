@@ -28,5 +28,5 @@ interface EmailInterface
      * @param $id
      * @return mixed
      */
-    public function replied($id): mixed;
+    public function reply($id, $replyData): mixed;
 }

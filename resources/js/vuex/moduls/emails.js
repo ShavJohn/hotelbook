@@ -3,7 +3,9 @@ export default {
     state: {
         contactUsMessages: [],
         selectedMessage: {},
-        displayTab: ''
+        displayTab: '',
+        currentKey: 0,
+        dataFinished: false,
     },
     getters: {
         contactUsMessagesGetter(state) {
@@ -14,17 +16,32 @@ export default {
         },
         getDisplayTab(state) {
             return state.displayTab
+        },
+        getCurrentKey(state) {
+            return state.currentKey
+        },
+        getDataFinished(state) {
+            return state.dataFinished
         }
     },
     mutations: {
         contactUsMessagesSetter(state, data) {
-            state.contactUsMessages = data
+            state.contactUsMessages.push(...data)
         },
         setSelectedMessage(state, data) {
             state.selectedMessage = data
         },
         setDisplayType(state, data) {
             state.displayTab = data
+        },
+        setCurrentKey(state, data) {
+            state.currentKey = data
+        },
+        updateEmailData(state, data) {
+            state.contactUsMessages[state.currentKey].reply = data
+        },
+        setDataFinished(state, data) {
+            state.dataFinished = data
         }
     },
     actions: {
@@ -45,6 +62,10 @@ export default {
                         take: data.take
                     }
                 }).then(res => {
+                    if(!res.data.messages.length) {
+                        context.commit('setDataFinished', true)
+                    }
+
                     context.commit('contactUsMessagesSetter', res.data.messages)
                     resolve(res)
                 }).catch(err => {
@@ -54,7 +75,6 @@ export default {
         },
         replyToMessage(context, data) {
             return new Promise((resolve, reject) => {
-                console.log(data)
                 axios.post('/reply-to-message', data).then((res) => {
                     resolve(res)
                 }).catch((err) => {

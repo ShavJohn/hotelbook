@@ -2,7 +2,7 @@
 @section('content')
     <div class="margin-top">
         <span>Hello dear</span>
-        <b>{{ $messageReceiverData['name'] }}</b>
+        <b>{{ $messageSelected['name'] }}</b>
     </div>
     <div class="margin-top">
         <span>We have received your emil and here is our reply to it</span>

@@ -16951,6 +16951,9 @@ textarea.form-control-lg {
   overflow-y: auto;
   margin-bottom: 20px;
 }
+.message-container .message-content .message-view-container .message-view-inner-container .message-section:last-of-type {
+  margin-bottom: 0 !important;
+}
 .message-container .message-content .message-view-container .message-view-inner-container .message-section h4, .message-container .message-content .message-view-container .message-view-inner-container .message-section .h4 {
   color: #C19B77;
   transition: color 0.5s ease-in-out;

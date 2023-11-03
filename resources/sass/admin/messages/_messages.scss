@@ -105,6 +105,10 @@
                     overflow-y: auto;
                     margin-bottom: 20px;
 
+                    &:last-of-type {
+                        margin-bottom: 0 !important;
+                    }
+
                     h4 {
                         color: $dark-yellow;
                         transition: color .5s ease-in-out;
