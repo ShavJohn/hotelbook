@@ -1,21 +1,21 @@
 <template>
     <div class="booking-room-container">
         <div class="room-image">
-            <img src="http://www.nicdarkthemes.com/themes/hotel-inn/wp/demo/inn-suites/wp-content/uploads/sites/2/2021/12/parallax-26.jpg"/>
+            <img :src="`${imagePrefix}/${roomData.main_image}`"/>
             <div class="room-status">
                 <span>Available</span>
             </div>
         </div>
         <div class="room-info-card">
             <div class="room-info-container">
-                <h2>{{ roomName }}</h2>
+                <h2>{{ roomData[localeLang].name }}</h2>
                 <div class="room-guest-count">
                     <font-awesome-icon icon="fa-solid fa-user" />
-                    <span>{{ guestCount }}</span>
+                    <span>{{ roomType[localeLang].description }}</span>
                 </div>
-                <p>Some text for room that goes here for testing</p>
+                <p>{{ roomData[localeLang].description }}</p>
                 <button>
-                    <span>Book Now For {{ price }} $</span>
+                    <span>Book Now For {{ roomData[localeLang].adult_price }} $</span>
                 </button>
             </div>
             <div class="room-features">
@@ -23,7 +23,7 @@
                 <div class="feature-icons">
 
                 </div>
-                <button><router-link :to="{ name: 'Room', params: { room: 'single-suit'}}">Full Info </router-link></button>
+                <button><router-link :to="{ name: 'Room', params: { room: roomData.id}}">Full Info </router-link></button>
             </div>
         </div>
     </div>
@@ -33,15 +33,15 @@
 export default {
     name: "room-component",
     props: {
-        price: {
-            required: true
-        },
-        roomName: {
-            required: true
-        },
-        guestCount: {
+        roomData: {
             required: true
         }
+    },
+    computed: {
+        roomType() {
+            return this.roomData.room_options.find(item => item.type === 'types')
+        },
+
     }
 
 }

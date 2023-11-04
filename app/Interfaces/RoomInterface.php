@@ -20,6 +20,11 @@ interface RoomInterface
     public function getRooms($skip, $take): mixed;
 
     /**
+     * @return mixed
+     */
+    public function getRoomTotalCount(): mixed;
+
+    /**
      * @param $id
      * @return mixed
      */

@@ -61,6 +61,10 @@ router.beforeEach(async (toRoute, fromRoute, next) => {
         }
     }
 
+    if(toRoute.name === 'Room') {
+        store.dispatch('rooms/getRoom', toRoute.params.room)
+    }
+
     if(toRoute.meta.auth && toRoute.meta.admin && (!store.getters['auth/authUserGetter'] || !store.getters['auth/accessTokenGetter'])) {
         return next({name: 'Home'})
     }

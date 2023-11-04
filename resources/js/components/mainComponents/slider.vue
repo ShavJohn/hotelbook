@@ -2,7 +2,7 @@
     <div class="slider-container">
         <button @click="prevSlide()"><font-awesome-icon icon="fa-solid fa-chevron-left" /></button>
         <div class="slider-image-container">
-            <img class="slider-image" v-for="(image, key) in images" :src="image" :class="key === activeSlide && 'active-slider-image'">
+            <img class="slider-image" v-for="(image, key) in images" :src="`${imagePrefix}/${image.image}`" :class="key === activeSlide && 'active-slider-image'">
         </div>
         <button @click="nextSlide()"><font-awesome-icon icon="fa-solid fa-chevron-right" /></button>
     </div>

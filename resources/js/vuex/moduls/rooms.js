@@ -27,6 +27,7 @@ export default {
         features: [],
         services: [],
         editModal: false,
+        roomTotalCount: 0,
     },
     getters: {
         roomGetter(state) {
@@ -55,6 +56,9 @@ export default {
         },
         editModalGetter(state) {
             return state.editModal
+        },
+        getRoomTotalCount(state) {
+            return state.roomTotalCount
         }
     },
     mutations: {
@@ -119,7 +123,10 @@ export default {
         },
         selectedServicesSetter(state, data) {
             state.room.selectedServices = data
-         }
+        },
+        setRoomTotalCount(state, data) {
+            state.roomTotalCount = data
+        }
     },
     actions: {
         addRoom(context, data) {
@@ -142,6 +149,22 @@ export default {
                 })
             })
         },
+        getRoom(context, data) {
+            return new Promise((resolve, reject) => {
+                axios.get(`/get-room/${data}`).then((res) => {
+                    context.commit('roomSetter', res.data.room)
+                    resolve(res)
+                }).catch(err => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
+
+                    reject(err)
+                })
+            })
+        },
         getRooms(context, data) {
             return new Promise((resolve, reject) => {
                 if(!data) {
@@ -152,6 +175,7 @@ export default {
                 }
                 axios.get('/get-rooms', {params: data}).then((res) => {
                     context.commit('roomsSetter', res.data.roomData)
+                    context.commit('setRoomTotalCount', res.data.roomTotalCount)
                     resolve(res)
                 }).catch(err => {
                     context.dispatch('alert/alertResponse', {

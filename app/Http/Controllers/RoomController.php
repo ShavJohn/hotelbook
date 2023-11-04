@@ -25,23 +25,48 @@ class RoomController extends Controller
     }
 
     /**
+     * @param Room $room
+     * @return JsonResponse
+     */
+    public function getRoom($room): JsonResponse
+    {
+        try {
+
+            $roomData = $this->roomRepo->getRoom($room);
+
+            return response()->json([
+                'success' => 1,
+                'type' => 'success',
+                'room'  => $roomData,
+            ], 200);
+        } catch (\Exception $exception) {
+            Log::error($exception);
+            return response()->json([
+                'success' => 0,
+                'type' => 'error',
+                'message'  => 'Something went wrong',
+            ], 422);
+        }
+    }
+
+    /**
      * @param Request $request
      * @return JsonResponse
      */
     public function getRooms(Request $request): JsonResponse
     {
         try {
-            DB::beginTransaction();
             $roomsData = $this->roomRepo->getRooms($request->skip, $request->take);
+            $roomTotalCount = $this->roomRepo->getRoomTotalCount();
 
-            DB::commit();
+
             return response()->json([
                 'success' => 1,
                 'type' => 'success',
                 'roomData'  => $roomsData,
+                'roomTotalCount' => $roomTotalCount,
             ], 200);
         } catch (\Exception $exception) {
-            DB::rollBack();
             Log::error($exception);
             return response()->json([
                 'success' => 0,

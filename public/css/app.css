@@ -15790,6 +15790,7 @@ textarea.form-control-lg {
   background-color: #C19B77;
   color: #fff;
   margin-right: 20px;
+  cursor: pointer;
 }
 .navigation-btn-container ul li:last-of-type {
   margin-right: 0;

@@ -1,11 +1,9 @@
 <template>
     <div class="rooms-list">
-        <room-component :price="36" room-name="Private Room" :guest-count="3"/>
-        <room-component :price="36" room-name="Private Room" :guest-count="3"/>
+        <room-component v-for="roomData in roomsData" :room-data="roomData"/>
         <div class="hb-flex hb-justify-content-center navigation-btn-container">
             <ul>
-                <li class="active-room-page">1</li>
-                <li>2</li>
+                <li v-for="page in visiblePages" :class="page === currentPage && 'active-room-page'" @click="currentPage = page">{{ page }}</li>
             </ul>
         </div>
     </div>
@@ -13,6 +11,7 @@
 
 <script>
 import RoomComponent from "./room-components/room-component";
+import roomMixins from "../../../mixins/room-mixin";
 
 export default {
     name: "room-search",
@@ -20,8 +19,7 @@ export default {
     methods: {
 
     },
-    mounted() {
-    }
+    mixins: [roomMixins],
 }
 </script>
 

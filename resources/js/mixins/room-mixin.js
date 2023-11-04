@@ -17,8 +17,16 @@ export default {
             },
             skip: 0,
             take: 5,
+            currentPage: 1,
+            pageCount: 5,
             removeRoomId: 0,
             testType: "Double"
+        }
+    },
+    watch: {
+        'currentPage': function(val) {
+            this.skip =  (val - 1) * 5;
+            this.getRooms()
         }
     },
     computed: {
@@ -81,7 +89,20 @@ export default {
         },
         editModal() {
             return this.$store.getters['rooms/editModalGetter']
-        }
+        },
+        roomTotalCount() {
+            return this.$store.getters['rooms/getRoomTotalCount']
+        },
+        totalPages() {
+            return Math.ceil(this.roomTotalCount / this.take)
+        },
+        visiblePages() {
+            const range = 2; // Number of pages to show before and after the current page
+            const startPage = Math.max(1, this.currentPage - range);
+            const endPage = Math.min(this.totalPages, this.currentPage + range);
+
+            return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
+        },
     },
     methods: {
         displayType(array) {
@@ -275,12 +296,14 @@ export default {
             })
         },
         getRooms() {
+            this.$Progress.start()
             this.tableContentLoader = true
             let data = {
                 'skip': this.skip,
                 'take': this.take
             }
             this.$store.dispatch('rooms/getRooms', data).then(() => {
+                this.$Progress.finish()
                 this.tableContentLoader = false
             })
         },

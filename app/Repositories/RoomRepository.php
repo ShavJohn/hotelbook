@@ -45,12 +45,25 @@ class RoomRepository implements RoomInterface
     }
 
     /**
+     * @return mixed
+     */
+    public function getRoomTotalCount(): mixed
+    {
+        return $this->model->count();
+    }
+
+    /**
      * @param $id
      * @return mixed
      */
     public function getRoom($id): mixed
     {
-        return $this->model->where('id', $id)->first();
+        return $this->model->where('id', $id)
+            ->with(['roomOptions' => function($q) {
+                $q->select('room_options.id', 'room_options.type', 'room_options.en', 'room_options.ru');
+            }])
+            ->with('images')
+            ->first();
     }
 
     /**
