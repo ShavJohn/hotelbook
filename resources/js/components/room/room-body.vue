@@ -1,19 +1,27 @@
 <template>
     <div class="room-page-body">
         <div class="rooms-page-item">
-            <h2>{{ roomData[localeLang]?.name }}</h2>
             <slider :images="roomData.additionalImages"/>
+            <h2>{{ roomData[localeLang]?.name }}</h2>
             <div class="room-ditaiels-container">
                 <font-awesome-icon icon="fa-solid fa-user" />
                 <span>{{ roomData.selectedType[localeLang]?.description }}</span>
             </div>
+            <div class="room-options-container">
+                <div class="room-option-item">
+                    {{ roomData.selectedType[localeLang]?.name }}
+                </div>
+                <div v-if="roomData.selectedFeatures.length" class="room-option-item" v-for="roomFeature in roomData.selectedFeatures">
+                    {{ roomFeature[localeLang]?.name }}
+                </div>
+                <div v-if="roomData.selectedServices.length" class="room-option-item" v-for="roomService in roomData.selectedServices">
+                    {{ roomService[localeLang]?.name }}
+                </div>
+            </div>
             <div class="room-info-container">
                 <p>
-
+                    {{ roomData[localeLang].description }}
                 </p>
-            </div>
-            <div class="room-service-container">
-
             </div>
         </div>
         <div class="right-menu">

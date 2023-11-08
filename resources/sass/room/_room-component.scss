@@ -228,7 +228,50 @@
     cursor: pointer;
 }
 
-.rooms-list, .rooms-page-item {
+
+.rooms-page-item {
+    width: 58%;
+
+    h2 {
+        margin: 20px 0;
+    }
+
+    .room-ditaiels-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+
+        svg {
+            border: 2px solid $dark-yellow;
+            padding: 10px;
+            font-size: 24px;
+            border-radius: 50%;
+            color: $dark-yellow;
+        }
+
+        span {
+            font-size: 24px;
+            margin-left: 20px
+        }
+    }
+
+    .room-options-container {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+
+        .room-option-item {
+            padding: 5px 40px;
+            border-radius: 20px;
+            background-color: $dark-yellow;
+            color: $white;
+            border: double;
+        }
+    }
+}
+
+.rooms-list {
     width: 58%;
     display: flex;
     justify-content: space-between;

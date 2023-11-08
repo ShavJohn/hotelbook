@@ -15562,27 +15562,63 @@ textarea.form-control-lg {
   cursor: pointer;
 }
 
-.rooms-list, .rooms-page-item {
+.rooms-page-item {
+  width: 58%;
+}
+.rooms-page-item h2, .rooms-page-item .h2 {
+  margin: 20px 0;
+}
+.rooms-page-item .room-ditaiels-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.rooms-page-item .room-ditaiels-container svg {
+  border: 2px solid #C19B77;
+  padding: 10px;
+  font-size: 24px;
+  border-radius: 50%;
+  color: #C19B77;
+}
+.rooms-page-item .room-ditaiels-container span {
+  font-size: 24px;
+  margin-left: 20px;
+}
+.rooms-page-item .room-options-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.rooms-page-item .room-options-container .room-option-item {
+  padding: 5px 40px;
+  border-radius: 20px;
+  background-color: #C19B77;
+  color: #fff;
+  border: double;
+}
+
+.rooms-list {
   width: 58%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.rooms-list .booking-room-container, .rooms-page-item .booking-room-container {
+.rooms-list .booking-room-container {
   width: 48%;
   margin-bottom: 30px;
 }
-.rooms-list .booking-room-container .room-image, .rooms-page-item .booking-room-container .room-image {
+.rooms-list .booking-room-container .room-image {
   height: 250px;
   position: relative;
 }
-.rooms-list .booking-room-container .room-image img, .rooms-page-item .booking-room-container .room-image img {
+.rooms-list .booking-room-container .room-image img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.rooms-list .booking-room-container .room-image .room-status, .rooms-page-item .booking-room-container .room-image .room-status {
+.rooms-list .booking-room-container .room-image .room-status {
   position: absolute;
   top: 10px;
   right: 0;
@@ -15590,33 +15626,33 @@ textarea.form-control-lg {
   background-color: #C19B77;
   color: #fff;
 }
-.rooms-list .booking-room-container .room-info-card, .rooms-page-item .booking-room-container .room-info-card {
+.rooms-list .booking-room-container .room-info-card {
   border-right: 1px solid rgba(170, 170, 170, 0.3294117647);
   border-left: 1px solid rgba(170, 170, 170, 0.3294117647);
   border-bottom: 1px solid rgba(170, 170, 170, 0.3294117647);
 }
-.rooms-list .booking-room-container .room-info-card .room-info-container, .rooms-page-item .booking-room-container .room-info-card .room-info-container {
+.rooms-list .booking-room-container .room-info-card .room-info-container {
   padding: 30px;
 }
-.rooms-list .booking-room-container .room-info-card .room-info-container h2, .rooms-list .booking-room-container .room-info-card .room-info-container .h2, .rooms-page-item .booking-room-container .room-info-card .room-info-container h2, .rooms-page-item .booking-room-container .room-info-card .room-info-container .h2 {
+.rooms-list .booking-room-container .room-info-card .room-info-container h2, .rooms-list .booking-room-container .room-info-card .room-info-container .h2 {
   font-size: 30px;
   font-weight: 500;
   margin-bottom: 20px;
 }
-.rooms-list .booking-room-container .room-info-card .room-info-container .room-guest-count, .rooms-page-item .booking-room-container .room-info-card .room-info-container .room-guest-count {
+.rooms-list .booking-room-container .room-info-card .room-info-container .room-guest-count {
   margin-bottom: 20px;
   color: #888888;
 }
-.rooms-list .booking-room-container .room-info-card .room-info-container .room-guest-count svg, .rooms-page-item .booking-room-container .room-info-card .room-info-container .room-guest-count svg {
+.rooms-list .booking-room-container .room-info-card .room-info-container .room-guest-count svg {
   font-size: 18px;
   margin-right: 20px;
   color: #888888;
 }
-.rooms-list .booking-room-container .room-info-card .room-info-container p, .rooms-page-item .booking-room-container .room-info-card .room-info-container p {
+.rooms-list .booking-room-container .room-info-card .room-info-container p {
   margin-bottom: 20px;
   color: #888888;
 }
-.rooms-list .booking-room-container .room-info-card .room-info-container button, .rooms-page-item .booking-room-container .room-info-card .room-info-container button {
+.rooms-list .booking-room-container .room-info-card .room-info-container button {
   background-color: transparent;
   border: 2px solid #C19B77;
   padding: 10px 30px;
@@ -15624,17 +15660,17 @@ textarea.form-control-lg {
   font-weight: 700;
   cursor: pointer;
 }
-.rooms-list .booking-room-container .room-info-card .room-info-container button span, .rooms-page-item .booking-room-container .room-info-card .room-info-container button span {
+.rooms-list .booking-room-container .room-info-card .room-info-container button span {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-.rooms-list .booking-room-container .room-features, .rooms-page-item .booking-room-container .room-features {
+.rooms-list .booking-room-container .room-features {
   padding: 30px;
   display: flex;
   justify-content: space-between;
   position: relative;
 }
-.rooms-list .booking-room-container .room-features .room-feature-delimiter, .rooms-page-item .booking-room-container .room-features .room-feature-delimiter {
+.rooms-list .booking-room-container .room-features .room-feature-delimiter {
   position: absolute;
   width: 85%;
   height: 1px;
@@ -15643,7 +15679,7 @@ textarea.form-control-lg {
   left: 50%;
   transform: translate(-50%);
 }
-.rooms-list .booking-room-container .room-features button, .rooms-page-item .booking-room-container .room-features button {
+.rooms-list .booking-room-container .room-features button {
   border: none;
   background-color: transparent;
   text-transform: uppercase;

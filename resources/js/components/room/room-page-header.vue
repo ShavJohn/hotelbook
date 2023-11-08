@@ -1,5 +1,5 @@
 <template>
-    <div class="responsive-background-image position-relative" :style="`background-image: url(${imagePrefix}/${roomData.main_image})`">
+    <div class="responsive-background-image position-relative" :style="roomData.main_image?.length && `background-image: url(${imagePrefix}/${roomData.main_image})`">
         <div class="background-image-filter">
             <div class="header-text-for-price">
                 <span>{{roomData[localeLang]?.adult_price }} $</span>

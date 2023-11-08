@@ -69,12 +69,13 @@ export default {
             state.room.number = data.number ? data.number : ''
             state.room.main_image = data.main_image ? data.main_image : []
             state.room.additionalImages = data.images ? data.images : []
-
-
+            state.room.selectedFeatures = []
+            state.room.selectedServices = []
 
             state.room.selectedType = data.room_options.find(( name ) => name.type === "types") ? data.room_options.find(( name ) => name.type === "types") : ''
 
             data.room_options.forEach(room => {
+                console.log(room)
                 if(room.type === 'features') {
                     state.room.selectedFeatures.push(room)
                 } else if(room.type === 'services') {
