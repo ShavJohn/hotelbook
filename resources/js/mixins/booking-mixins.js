@@ -30,59 +30,21 @@ export default {
             startDate: today,
             endDate: tomorrow,
             endDayLimit: tomorrow,
-            checkinHour: 12,
-            checkoutHour: 12,
             availableHours: [10,11,12,13,14,15,16,17],
             bookingPrice: 300,
             openFeaturesMenu: false,
             openServicesMenu: false,
-            paymentMethod: 'creditCard',
+            paymentMethod: 'payOnArrive',
             cardData: '',
-            roomFeatures: [
-                {
-                    name: 'Wi-Fi',
-                    type: 'wifi',
-                    included: false
-                },
-                {
-                    name: 'TV',
-                    type: 'tv',
-                    included: true
-                },
-                {
-                    name: 'Pool',
-                    type: 'pool',
-                    included: true
-                },
-                {
-                    name: 'Smart Lock',
-                    type: 'smart-lock',
-                    included: false
-                }
-            ],
-            roomServices: [
-                {
-                    name: 'Cleaning',
-                    type: 'cleaning',
-                    included: false
-                },
-                {
-                    name: 'Laundry',
-                    type: 'laundry',
-                    included: true
-                },
-                {
-                    name: 'Breakfast',
-                    type: 'breakfast',
-                    included: true
-                },
-                {
-                    name: 'Parking',
-                    type: 'parking',
-                    included: false
-                }
-            ]
         }
+    },
+    computed: {
+        bookingData() {
+            return this.$store.getters['bookings/getBookingData']
+        },
+        bookingDate() {
+            return this.$store.getters['bookings/getBookingDate']
+        },
     },
     watch: {
         startDate(val) {
@@ -97,6 +59,26 @@ export default {
         },
     },
     methods: {
+        tuggleData(data) {
+            if(!this.bookingData.guestData.extraServices.find(item => item.id === data.id)) {
+                this.$store.commit('bookings/setExtraServices', data)
+            } else {
+                let key = this.bookingData.guestData.extraServices.findIndex(item => item.id === data.id)
+                this.$store.commit('bookings/removeExtraServices', key)
+            }
+            console.log(this.bookingData.guestData.extraServices)
+        },
+        chooseRoom(roomData) {
+            let dates = {
+                startDate: this.startDate,
+                endDate: this.endDate
+            }
+            this.$store.commit('bookings/setChosenRoomData', roomData)
+            this.$router.push({name: 'RoomBook'})
+        },
+        checkout() {
+            this.$router.push({name: 'RoomCheckout'})
+        },
         dateFormat(date, format) {
             return moment(date).format(format)
         },

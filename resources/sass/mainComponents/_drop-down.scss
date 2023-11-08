@@ -17,7 +17,7 @@
     .dropdown-menu {
         position: absolute;
         top: 100%;
-        width: 100%;
+        width: 50%;
         height: 0;
         transition: height 0.5s ease-in-out;
         overflow: auto;
@@ -31,6 +31,8 @@
             cursor: pointer;
             font-size: 35px;
             font-weight: 600;
+            color: $white;
+            text-align: center;
 
             &:hover {
                 background-color: #4d4d4d;

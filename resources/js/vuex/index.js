@@ -8,6 +8,7 @@ import generalSettings from "./moduls/generalSettings";
 import pageSettings from "./moduls/pageSettings"
 import postActions from "./moduls/postActions"
 import emails from "./moduls/emails";
+import bookings from "./moduls/bookings";
 
 
 export default createStore({
@@ -20,6 +21,7 @@ export default createStore({
         generalSettings,
         pageSettings,
         postActions,
-        emails
+        emails,
+        bookings,
     }
 })

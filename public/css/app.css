@@ -16146,7 +16146,7 @@ textarea.form-control-lg {
 .dropdown-container .dropdown-menu {
   position: absolute;
   top: 100%;
-  width: 100%;
+  width: 50%;
   height: 0;
   transition: height 0.5s ease-in-out;
   overflow: auto;
@@ -16160,6 +16160,8 @@ textarea.form-control-lg {
   cursor: pointer;
   font-size: 35px;
   font-weight: 600;
+  color: #fff;
+  text-align: center;
 }
 .dropdown-container .dropdown-menu li:hover {
   background-color: #4d4d4d;

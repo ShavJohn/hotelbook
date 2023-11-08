@@ -10,8 +10,8 @@
             </button>
             <ul class="room-features-menu" :class="openFeaturesMenu && 'open-features-menu'">
                 <li v-for="roomFeature in roomFeatures">
-                    <input type="checkbox" :id="roomFeature.type" :name="roomFeature.type" v-model="roomFeature.included">
-                    <label :for="roomFeature.type">{{ roomFeature.name }}</label>
+                    <input type="checkbox" :id="roomFeature.type" :name="roomFeature.type" @change="tuggleData(roomFeature)">
+                    <label :for="roomFeature.type">{{ roomFeature[localeLang].name }}</label>
                 </li>
             </ul>
         </div>
@@ -22,9 +22,9 @@
                 <font-awesome-icon v-else icon="fa-solid fa-chevron-down" />
             </button>
             <ul class="room-features-menu" :class="openServicesMenu && 'open-features-menu'">
-                <li v-for="roomFeature in roomFeatures">
-                    <input type="checkbox" :id="roomFeature.type" :name="roomFeature.type" v-model="roomFeature.included">
-                    <label :for="roomFeature.type">{{ roomFeature.name }}</label>
+                <li v-for="roomService in roomServices">
+                    <input type="checkbox" :id="roomService.type" :name="roomService.type" @change="tuggleData(roomService)">
+                    <label :for="roomService.type">{{ roomService[localeLang].name }}</label>
                 </li>
             </ul>
         </div>
@@ -33,10 +33,11 @@
 
 <script>
 import BookingMixins from "../../../../mixins/booking-mixins";
+import roomMixins from "../../../../mixins/room-mixin";
 
 export default {
     name: "room-filter-component",
-    mixins: [BookingMixins],
+    mixins: [BookingMixins, roomMixins],
 }
 </script>
 

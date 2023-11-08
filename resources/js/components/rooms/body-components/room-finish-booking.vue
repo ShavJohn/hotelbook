@@ -3,16 +3,16 @@
         <div class="your-information-container">
             <h2>Your Order Details</h2>
             <ul>
-                <li><span>Name:</span><span>{{  }}</span></li>
-                <li><span>Lastname:</span><span>{{  }}</span></li>
-                <li><span>Email:</span><span>{{  }}</span></li>
-                <li><span>Phone:</span><span>{{  }}</span></li>
-                <li><span>Address:</span><span>{{  }}</span></li>
-                <li><span>City:</span><span>{{  }}</span></li>
-                <li><span>County:</span><span>{{  }}</span></li>
-                <li><span>Check-In:</span><span>{{  }}</span></li>
-                <li><span>Check-Out:</span><span>{{  }}</span></li>
-                <li><span>Message:</span><span>{{  }}</span></li>
+                <li><span>Name:</span><span>{{ bookingData.guestData.name }}</span></li>
+                <li><span>Lastname:</span><span>{{ bookingData.guestData.lastName }}</span></li>
+                <li><span>Email:</span><span>{{ bookingData.guestData.email }}</span></li>
+                <li><span>Phone:</span><span>{{ bookingData.guestData.phone }}</span></li>
+                <li><span>Address:</span><span>{{ bookingData.guestData.address }}</span></li>
+                <li><span>City:</span><span>{{ bookingData.guestData.city }}</span></li>
+                <li><span>County:</span><span>{{ bookingData.guestData.country }}</span></li>
+                <li><span>Check-In:</span><span>{{ bookingData.guestData.checkIn }}</span></li>
+                <li><span>Check-Out:</span><span>{{ bookingData.guestData.checkOut }}</span></li>
+                <li><span>Message:</span><span>{{ bookingData.guestData.message }}</span></li>
             </ul>
             <h3>Extra Services:</h3>
             <ul>

@@ -21,12 +21,12 @@
         <div class="date-square hb-justify-content-around">
             <span>Guests</span>
             <div class="hb-flex hb-align-items-center hb-justify-content-center room-guest-count-container">
-                <span>{{ guestCount }}</span>
+                <span>{{ bookingData.guestCount }}</span>
                 <div class="room-guest-count-btn">
-                    <button class="btn-strip-default" @click="guestCount++">
+                    <button class="btn-strip-default" @click="bookingData.guestCount++">
                         <font-awesome-icon class="color-white cursor-pointer" icon="fa-solid fa-chevron-up" />
                     </button>
-                    <button class="btn-strip-default" @click="guestCount !== 1 && guestCount--">
+                    <button class="btn-strip-default" @click="bookingData.guestCount !== 1 && bookingData.guestCount--">
                         <font-awesome-icon class="color-white cursor-pointer" icon="fa-solid fa-chevron-down" />
                     </button>
                 </div>

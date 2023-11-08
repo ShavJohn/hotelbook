@@ -14,7 +14,7 @@
                     <span>{{ roomType[localeLang].description }}</span>
                 </div>
                 <p>{{ roomData[localeLang].description }}</p>
-                <button>
+                <button @click="chooseRoom(roomData)">
                     <span>Book Now For {{ roomData[localeLang].adult_price }} $</span>
                 </button>
             </div>
@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import bookingMixins from "../../../../mixins/booking-mixins"
+
 export default {
     name: "room-component",
     props: {
@@ -37,6 +39,7 @@ export default {
             required: true
         }
     },
+    mixins: [bookingMixins],
     computed: {
         roomType() {
             return this.roomData.room_options.find(item => item.type === 'types')

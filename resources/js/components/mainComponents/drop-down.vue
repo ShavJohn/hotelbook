@@ -1,5 +1,5 @@
 <template>
-    <div class="dropdown-container">
+    <div class="dropdown-container" v-outside="() => closeDrop()">
         <button @click.prevent="open = !open" class="dropdown-button cursor-pointer">
             <slot name="button"></slot>
         </button>
@@ -17,6 +17,11 @@ export default {
             open: false
         }
     },
+    methods: {
+        closeDrop() {
+            this.open = false
+        }
+    }
 }
 </script>
 
