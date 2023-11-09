@@ -76,9 +76,6 @@ export default {
             this.$store.commit('bookings/setChosenRoomData', roomData)
             this.$router.push({name: 'RoomBook'})
         },
-        checkout() {
-            this.$router.push({name: 'RoomCheckout'})
-        },
         dateFormat(date, format) {
             return moment(date).format(format)
         },

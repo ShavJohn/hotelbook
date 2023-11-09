@@ -15,9 +15,9 @@
                 <li><span>Message:</span><span>{{ bookingData.guestData.message }}</span></li>
             </ul>
             <h3>Extra Services:</h3>
-            <ul>
-                <li v-for="extraService in bookingData.guestData.extraServices">{{ extraService }}</li>
-            </ul>
+            <div class="extra-services-tag-container">
+                <span v-for="extraService in bookingData.guestData.extraServices">{{ extraService[localeLang].name }}</span>
+            </div>
         </div>
         <div class="payment-option">
 <!--            <h2>Payment Option</h2>-->
@@ -72,6 +72,11 @@ export default {
             // handle the token
             // send it to your server
         },
+    },
+    mounted() {
+        if(!Object.keys(this.bookingData.chosenRoom).length) {
+            this.$router.push({name: 'RoomSearch'})
+        }
     }
 }
 </script>

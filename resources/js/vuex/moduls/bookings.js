@@ -42,6 +42,14 @@ export default {
         },
         setChosenRoomData(state, data) {
             state.bookingData.chosenRoom = data
+
+            state.bookingData.extraServices = []
+
+            data.room_options.forEach(item => {
+                if(item.type === 'services') {
+                    state.bookingData.guestData.extraServices.push(item)
+                }
+            })
         },
         setExtraServices(state, data) {
             state.bookingData.guestData.extraServices.push(data)

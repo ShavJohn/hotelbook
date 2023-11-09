@@ -3,12 +3,12 @@
         <div class="extra-services-container">
             <h2>Add Extra Services</h2>
             <ul class="extra-services-list">
-                <li v-for="roomFeature in roomFeatures">
-                    <input type="checkbox" :id="roomFeature.type" :name="roomFeature.type" @change="tuggleData(roomFeature)">
-                    <label :for="roomFeature.type">{{ roomFeature[localeLang].name }}</label>
-                </li>
+<!--                <li v-for="roomFeature in roomFeatures">-->
+<!--                    <input type="checkbox" :id="roomFeature.type" :name="roomFeature.type" @change="tuggleData(roomFeature)">-->
+<!--                    <label :for="roomFeature.type">{{ roomFeature[localeLang].name }}</label>-->
+<!--                </li>-->
                 <li v-for="roomService in roomServices">
-                    <input type="checkbox" :id="roomService.type" :name="roomService.type" @change="tuggleData(roomService)">
+                    <input type="checkbox" :id="roomService.type" :name="roomService.type" :checked="checkIfIncluded(roomService)" @change="tuggleData(roomService)">
                     <label :for="roomService.type">{{ roomService[localeLang].name }}</label>
                 </li>
             </ul>
@@ -103,8 +103,75 @@ export default {
     name: "room-book",
     components: {DropDown},
     mixins: [BookingMixins, roomMixins],
+    async created() {
+        await this.$store.dispatch('rooms/getRoomFST')
+    },
+    methods: {
+        checkIfIncluded(roomService) {
+            return this.bookingData.guestData.extraServices.some(item => item.id === roomService.id);
+        },
+        validation() {
+            let message = ''
+
+            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if(!this.bookingData.guestData.name.length) {
+                message = 'File the name field'
+            }else if (!this.bookingData.guestData.lastName.length) {
+                message = 'File the last name field'
+            } else if (!this.bookingData.guestData.email.length) {
+                message = 'File the email field'
+            } else if (!this.bookingData.guestData.phone.length) {
+                message = 'File the phone number field'
+            } else if (!this.bookingData.guestData.country.length) {
+                message = 'File the country field'
+            } else if (!this.bookingData.guestData.city.length) {
+                message = 'File the city field'
+            } else if (!this.bookingData.guestData.address.length) {
+                message = 'File the address field'
+            }
+
+            if(message.length) {
+                this.$store.dispatch('alert/alertResponse', {
+                    'type': 'error',
+                    'status': 0,
+                    'message': message
+                })
+
+                return false
+            } else {
+                if(this.bookingData.guestData.email.length) {
+                    if(emailRegex.test(this.bookingData.guestData.email)) {
+                        if(this.bookingData.guestData.phone.length && this.bookingData.guestData.phone.length >= 9) {
+                            return true
+                        }
+                        this.$store.dispatch('alert/alertResponse', {
+                            'type': 'error',
+                            'status': 0,
+                            'message': 'Write correct phone number'
+                        })
+                        return false
+                    }
+                    this.$store.dispatch('alert/alertResponse', {
+                        'type': 'error',
+                        'status': 0,
+                        'message': 'Write correct email'
+                    })
+                    return false
+                }
+            }
+
+        },
+        checkout() {
+            if(this.validation()) {
+                this.$router.push({name: 'RoomCheckout'})
+            }
+        },
+    },
     mounted() {
-        this.$store.dispatch('rooms/getRoomFST')
+        if(!Object.keys(this.bookingData.chosenRoom).length) {
+            this.$router.push({name: 'RoomSearch'})
+        }
     }
 }
 </script>

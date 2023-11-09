@@ -25,13 +25,13 @@ export default {
                     this.$router.push({name: 'Home'})
                 }
                 this.$store.dispatch('alert/alertResponse', {
-                    'type': err?.data?.type,
-                    'message': err?.data?.message
+                    'type': res?.data?.type,
+                    'message': res?.data?.message
                 })
             }).catch(err => {
                 this.$store.dispatch('alert/alertResponse', {
-                    'type': res?.data?.type,
-                    'message': res?.data?.message
+                    'type': err?.data?.type,
+                    'message': err?.data?.message
                 })
             })
         }
