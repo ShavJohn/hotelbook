@@ -1,6 +1,9 @@
 <template>
     <div class="room-book-container">
         <div class="extra-services-container">
+            <button class="back-page-btn" @click="goToPage('RoomSearch')">
+                <font-awesome-icon icon="fa-solid fa-arrow-left" />
+            </button>
             <h2>Add Extra Services</h2>
             <ul class="extra-services-list">
 <!--                <li v-for="roomFeature in roomFeatures">-->
@@ -24,7 +27,7 @@
             <div class="booked-room-input">
                 <label for="user-lastname">Lastname</label>
                 <input id="user-lastname" type="text" name="user-lastname" placeholder="Enter your lastname"
-                        v-model="bookingData.guestData.lastName">
+                        v-model="bookingData.guestData.lastname">
                 <div class="input-delimiter"></div>
             </div>
             <div class="booked-room-input">
@@ -117,7 +120,7 @@ export default {
 
             if(!this.bookingData.guestData.name.length) {
                 message = 'File the name field'
-            }else if (!this.bookingData.guestData.lastName.length) {
+            }else if (!this.bookingData.guestData.lastname.length) {
                 message = 'File the last name field'
             } else if (!this.bookingData.guestData.email.length) {
                 message = 'File the email field'

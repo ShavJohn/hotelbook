@@ -10,7 +10,7 @@ export default {
             chosenRoom: {},
             guestData: {
                 name: '',
-                lastName: '',
+                lastname: '',
                 email: '',
                 phone: '',
                 country: '',
@@ -43,7 +43,7 @@ export default {
         setChosenRoomData(state, data) {
             state.bookingData.chosenRoom = data
 
-            state.bookingData.extraServices = []
+            state.bookingData.guestData.extraServices = []
 
             data.room_options.forEach(item => {
                 if(item.type === 'services') {

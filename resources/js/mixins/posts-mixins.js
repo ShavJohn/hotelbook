@@ -30,7 +30,6 @@ export default {
 
             this.$store.dispatch('imageActions/imageUpload', formData).then((res) => {
 
-                console.log(res.data.image, this.postData)
                 this.$store.commit('postActions/setPostImage', res.data.image)
 
                 this.$store.dispatch('alert/alertResponse', {

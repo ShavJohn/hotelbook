@@ -144,6 +144,17 @@
     }
 }
 
+.back-page-btn {
+    border: none;
+    background: transparent;
+    color: $dark-yellow;
+    margin-bottom: 30px;
+
+    svg {
+        font-size: 30px;
+    }
+}
+
 .booked-room-inputs-container {
     display: flex;
     flex-wrap: wrap;

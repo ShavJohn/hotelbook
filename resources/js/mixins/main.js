@@ -37,6 +37,9 @@ export default {
         },
     },
     methods: {
+        goToPage(page) {
+            this.$router.push({name: page})
+        },
         openElementEditModal(modalId, modalType) {
             this.$store.state.pageSettings.elementEditModalType = modalType
             $(modalId).modal("show");

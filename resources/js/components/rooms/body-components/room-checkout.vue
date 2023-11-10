@@ -1,10 +1,13 @@
 <template>
     <div  class="room-book-container">
         <div class="your-information-container">
+            <button class="back-page-btn" @click="goToPage('RoomBook')">
+                <font-awesome-icon icon="fa-solid fa-arrow-left" />
+            </button>
             <h2>Your Information</h2>
             <ul>
                 <li><span>Name:</span><span>{{ bookingData.guestData.name }}</span></li>
-                <li><span>Lastname:</span><span>{{ bookingData.guestData.lastName }}</span></li>
+                <li><span>Lastname:</span><span>{{ bookingData.guestData.lastname }}</span></li>
                 <li><span>Email:</span><span>{{ bookingData.guestData.email }}</span></li>
                 <li><span>Phone:</span><span>{{ bookingData.guestData.phone }}</span></li>
                 <li><span>Address:</span><span>{{ bookingData.guestData.address }}</span></li>
@@ -37,7 +40,7 @@
 <!--                    -->
 <!--                </template>-->
 <!--            </div>-->
-            <button class="chosen-room-checkout-btn">
+            <button class="chosen-room-checkout-btn" @click="bookRoom()">
                 Book Now
             </button>
         </div>
@@ -66,11 +69,6 @@ export default {
         submit () {
             // this will trigger the process
             this.$refs.elementRef.submit();
-        },
-        tokenCreated (token) {
-            console.log(token);
-            // handle the token
-            // send it to your server
         },
     },
     mounted() {

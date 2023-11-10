@@ -15490,6 +15490,16 @@ textarea.form-control-lg {
   margin-right: 10px;
 }
 
+.back-page-btn {
+  border: none;
+  background: transparent;
+  color: #C19B77;
+  margin-bottom: 30px;
+}
+.back-page-btn svg {
+  font-size: 30px;
+}
+
 .booked-room-inputs-container {
   display: flex;
   flex-wrap: wrap;

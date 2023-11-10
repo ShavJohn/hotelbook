@@ -75,7 +75,6 @@ export default {
             state.room.selectedType = data.room_options.find(( name ) => name.type === "types") ? data.room_options.find(( name ) => name.type === "types") : ''
 
             data.room_options.forEach(room => {
-                console.log(room)
                 if(room.type === 'features') {
                     state.room.selectedFeatures.push(room)
                 } else if(room.type === 'services') {

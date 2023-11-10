@@ -59,6 +59,9 @@ export default {
         },
     },
     methods: {
+        bookRoom() {
+            console.log(this.bookingData)
+        },
         tuggleData(data) {
             if(!this.bookingData.guestData.extraServices.find(item => item.id === data.id)) {
                 this.$store.commit('bookings/setExtraServices', data)
@@ -66,7 +69,6 @@ export default {
                 let key = this.bookingData.guestData.extraServices.findIndex(item => item.id === data.id)
                 this.$store.commit('bookings/removeExtraServices', key)
             }
-            console.log(this.bookingData.guestData.extraServices)
         },
         chooseRoom(roomData) {
             let dates = {
