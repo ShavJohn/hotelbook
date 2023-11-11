@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Interfaces\BookingInterface;
 use App\Interfaces\EmailInterface;
 use App\Interfaces\GeneralSettingsInterface;
 use App\Interfaces\ImageInterface;
@@ -9,6 +10,7 @@ use App\Interfaces\PostInterface;
 use App\Interfaces\RoomFSTInterface;
 use App\Interfaces\RoomInterface;
 use App\Interfaces\RoomOptionsInterface;
+use App\Repositories\BookingRepository;
 use App\Repositories\EmailRepository;
 use App\Repositories\GeneralSettingsRepository;
 use App\Repositories\ImageRepository;
@@ -60,6 +62,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             EmailInterface::class,
             EmailRepository::class
+        );
+        $this->app->bind(
+            BookingInterface::class,
+            BookingRepository::class
         );
     }
 }
