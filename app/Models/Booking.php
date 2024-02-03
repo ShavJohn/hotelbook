@@ -19,6 +19,8 @@ class Booking extends Model
         'country',
         'city',
         'address',
+        'guestCount',
+        'bookingStatus',
         'checkIn',
         'checkOut',
         'startDate',
@@ -32,7 +34,7 @@ class Booking extends Model
      */
     public function bookedRoom(): BelongsToMany
     {
-        return $this->belongsToMany(RoomBooking::class);
+        return $this->belongsToMany(Room::class);
     }
 
     /**
@@ -40,6 +42,6 @@ class Booking extends Model
      */
     public function bookingOptions(): BelongsToMany
     {
-        return $this->belongsToMany(BookingRoomOptions::class);
+        return $this->belongsToMany(RoomOptions::class);
     }
 }

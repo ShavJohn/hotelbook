@@ -60,7 +60,11 @@ export default {
     },
     methods: {
         bookRoom() {
-            console.log(this.bookingData)
+            this.$store.dispatch('bookings/bookingRoom', this.bookingData).then(res => {
+                if(res.data.success) {
+                    this.$router.push({name: 'RoomFinishBooking'})
+                }
+            })
         },
         tuggleData(data) {
             if(!this.bookingData.guestData.extraServices.find(item => item.id === data.id)) {

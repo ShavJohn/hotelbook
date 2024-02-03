@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('country');
             $table->string('city');
             $table->string('address');
+            $table->integer('guestCount');
+            $table->string('bookingStatus')->default('pending');
             $table->integer('checkIn');
             $table->integer('checkOut');
             $table->dateTime('startDate');

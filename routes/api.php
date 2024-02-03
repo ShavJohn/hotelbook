@@ -39,6 +39,9 @@ Route::group(['middleware' => 'api'], function() {
     Route::get('/get-rooms','App\Http\Controllers\RoomController@getRooms');
     Route::get('/get-room/{room}','App\Http\Controllers\RoomController@getRoom');
 
+    //booking room
+    Route::post('/booking-room', 'App\Http\Controllers\BookingController@booking');
+
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('/check-auth', 'App\Http\Controllers\AuthController@checkAuth');
 
