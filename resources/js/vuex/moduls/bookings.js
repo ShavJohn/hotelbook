@@ -26,7 +26,8 @@ export default {
                 startDate: today,
                 endDate: tomorrow,
             }
-        }
+        },
+        bookings: [],
     },
     getters: {
         getBookingData(state) {
@@ -34,6 +35,9 @@ export default {
         },
         getBookingDate(state) {
             return state.bookingData.bookingDate
+        },
+        getBookings(state) {
+            return state.bookings
         }
     },
     mutations: {
@@ -50,6 +54,9 @@ export default {
                     state.bookingData.guestData.extraServices.push(item)
                 }
             })
+        },
+        setBookings(state, data) {
+            state.bookings = data.bookings
         },
         setExtraServices(state, data) {
             state.bookingData.guestData.extraServices.push(data)
@@ -75,5 +82,15 @@ export default {
                 })
             })
         },
+        getBookingsList(context, data) {
+            return new Promise((resolve, reject) => {
+                axios.get('/get-bookings-list', {params: data}).then(res => {
+                    context.commit('setBookings', res.data)
+                    resolve(res)
+                }).catch(err => {
+                    reject(err)
+                })
+            })
+        }
     }
 }

@@ -17,6 +17,12 @@ interface BookingInterface
     public function getBooking(): mixed ;
 
     /**
+     * @param $startOfMonth
+     * @return mixed
+     */
+    public function getBookings($startOfMonth): mixed ;
+
+    /**
      * @param $id
      * @param $data
      * @return mixed

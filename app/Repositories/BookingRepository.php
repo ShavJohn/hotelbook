@@ -38,6 +38,21 @@ class BookingRepository implements BookingInterface
     }
 
     /**
+     * @param $startOfMonth
+     * @return mixed
+     */
+    public function getBookings($startOfMonth): mixed
+    {
+        return $this->model
+            ->where(function ($q) use ($startOfMonth) {
+                $q->where('startDate', '>=', $startOfMonth)
+                    ->orWhere('endDate', '>=', $startOfMonth);
+            })
+            ->with('bookedRoom', 'bookingOptions')
+            ->get();
+    }
+
+    /**
      * @param $id
      * @param $data
      * @return mixed

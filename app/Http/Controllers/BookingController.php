@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Interfaces\BookingInterface;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Carbon;
 
@@ -22,9 +23,10 @@ class BookingController extends Controller
      * @param Request $bookingData
      * @return JsonResponse
      */
-    public function booking(Request $bookingData) : JsonResponse
+    public function makeBooking(Request $bookingData) : JsonResponse
     {
         try {
+            DB::beginTransaction();
             $bookingStoreData = [
                 'name' => $bookingData->guestData['name'],
                 'lastname' => $bookingData->guestData['lastname'],
@@ -54,13 +56,39 @@ class BookingController extends Controller
                 }
             }
 
+            DB::commit();
+
             return  response()->json([
                 'success' => 1,
                 'type' => 'success',
                 'message'  => 'Your booking has been registered',
             ]);
         } catch (\Exception $exception) {
-            dd($exception);
+            DB::rollBack();
+            Log::error($exception);
+            return response()->json([
+                'success' => 0,
+                'type' => 'error',
+                'message'  => 'Something went wrong',
+            ], 422);
+        }
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function getBookings(Request $request) : JsonResponse
+    {
+        try {
+
+            $bookings = $this->bookingRepo->getBookings($request->startDate);
+
+            return  response()->json([
+                'success' => 1,
+                'type' => 'success',
+                'bookings' => $bookings,
+            ]);
+        } catch (\Exception $exception) {
             Log::error($exception);
             return response()->json([
                 'success' => 0,
