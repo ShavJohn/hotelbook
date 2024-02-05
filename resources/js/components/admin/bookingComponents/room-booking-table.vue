@@ -18,8 +18,15 @@
                 <tbody>
                 <tr v-for="(room, rowIndex) in roomWithBooking" :key="room.number">
                     <th class="table-sticky">{{ room.number }}</th>
-                    <td v-for="(booking, index) in bookingsData[rowIndex]" :key="index" :style="drawBooking(booking)">
-                        {{ booking.id }}
+                    <td v-for="(booking, index) in bookingsData[rowIndex]" :key="index"
+                        @click="openModal('#roomBookingAction', booking)"
+                        :style="drawBooking(booking)">
+                        <span v-if="booking.position === 'start'">
+                            {{ customFormat(booking.startDate) }}
+                        </span>
+                        <span v-if="booking.position === 'end'">
+                            {{ customFormat(booking.endDate) }}
+                        </span>
                     </td>
                 </tr>
                 </tbody>
@@ -29,19 +36,23 @@
             <button type="button" class="room-table-action-btn btn-bg-yellow" @click="changePage('prev')">Previous</button>
             <button type="button" class="room-table-action-btn btn-bg-yellow" @click="changePage('next')">Next</button>
         </div>
+        <room-booking-action-modal :bookingData="currentBooking"/>
     </div>
 </template>
 
 <script>
 import roomMixins from "../../../mixins/room-mixin";
+import RoomBookingActionModal from "./room-booking-action-modal";
 
 export default {
     name: "room-booking-table",
+    components: {RoomBookingActionModal},
     data() {
         return {
             monthDays: [],
             currentMonth: new Date().getMonth() + 1,
             currentYear: new Date().getFullYear(),
+            currentBooking: {}
         }
     },
     mixins: [roomMixins],
@@ -91,6 +102,10 @@ export default {
         }
     },
     methods: {
+        openModal(modalId, booking) {
+            this.currentBooking = booking
+            $(modalId).modal("show");
+        },
         calculateBookingPosition(roomData, date) {
             let position = '';
 
@@ -120,16 +135,17 @@ export default {
             let style = ''
             if(Object.keys(booking).length) {
                 style = 'cursor: pointer;'
-                if(booking.bookingStatus === 'pending') {
-                    style += 'background-color: #e0e0e0;'
-                }
 
                 if (booking.position === 'start') {
-                    style += 'border-left: 1px solid;border-top: 1px solid;border-bottom: 1px solid;';
+                    style += 'border-left: 1px solid;border-top: 1px solid;border-bottom: 1px solid;border-bottom-left-radius: 15px;border-top-left-radius: 15px;';
                 } else if (booking.position === 'end') {
-                    style += 'border-right: 1px solid;border-top: 1px solid;border-bottom: 1px solid;';
+                    style += 'border-right: 1px solid;border-top: 1px solid;border-bottom: 1px solid;border-bottom-right-radius: 15px;border-top-right-radius: 15px;';
                 } else if (booking.position === 'middle') {
                     style += 'border-top: 1px solid;border-bottom: 1px solid;';
+                }
+
+                if(booking.bookingStatus === 'pending') {
+                    style += 'background-color: #e0e0e0;border-color: #e0e0e0;'
                 }
             }
 
