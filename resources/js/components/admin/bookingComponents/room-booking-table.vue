@@ -2,7 +2,7 @@
     <div class="room-booking-panel">
         <div class="table-btn-container">
             <button class="date-btn" @click="changeDate('prev')"><font-awesome-icon icon="fa-solid fa-chevron-left" /></button>
-            <span>{{ displayDate(currentMonth, currentYear) }}</span>
+            <span class="text-center">{{ displayDate(currentMonth, currentYear) }}</span>
             <button class="date-btn" @click="changeDate('next')"><font-awesome-icon icon="fa-solid fa-chevron-right" /></button>
         </div>
         <div class="color-coding-container">
@@ -15,7 +15,7 @@
             <table :key="updateKey">
                 <thead>
                 <tr>
-                    <th class="table-sticky padding-horizontal-small">Rooms</th>
+                    <th class="padding-horizontal-small">Rooms</th>
                     <th  v-for="date in monthDays" :key="date">
                         {{ customFormat(date) }}
                     </th>

@@ -16948,6 +16948,7 @@ textarea.form-control-lg {
   display: flex;
   gap: 30px;
   margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 .room-booking-panel .color-coding-container .color-coding {
   display: flex;
@@ -17023,7 +17024,6 @@ textarea.form-control-lg {
   width: 100%;
   border-collapse: separate;
   background-color: white;
-  overflow: hidden;
   border-radius: 20px;
 }
 .room-booking-panel .inner-table table .booking-calendar-text {
@@ -17034,6 +17034,7 @@ textarea.form-control-lg {
   position: sticky;
   left: 0;
   top: auto;
+  z-index: 99;
   /*only relevant for first row*/
 }
 .room-booking-panel .inner-table table .headcol:before {
@@ -17043,6 +17044,7 @@ textarea.form-control-lg {
   background-color: #C19B77;
   color: white;
   font-size: 19px;
+  padding: 5px 20px;
 }
 .room-booking-panel .inner-table table td, .room-booking-panel .inner-table table th {
   border: none;

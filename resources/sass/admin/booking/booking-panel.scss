@@ -59,6 +59,7 @@
         display: flex;
         gap: 30px;
         margin-bottom: 30px;
+        flex-wrap: wrap;
 
         .color-coding {
             display: flex;
@@ -148,7 +149,6 @@
             width: 100%;
             border-collapse: separate;
             background-color: white;
-            overflow: hidden;
             border-radius: 20px;
 
             .booking-calendar-text {
@@ -160,6 +160,7 @@
                 position: sticky;
                 left: 0;
                 top: auto;
+                z-index: 99;
                 /*only relevant for first row*/
             }
 
@@ -171,6 +172,7 @@
                 background-color: $dark-yellow;
                 color: white;
                 font-size: 19px;
+                padding: 5px 20px;
             }
 
             td, th {
