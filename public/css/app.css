@@ -15733,26 +15733,26 @@ textarea.form-control-lg {
   font-size: 14px;
 }
 
-.rooms-booking-button-container {
+.rooms-booking-button-container, .room-booking-action-modal {
   display: flex;
   justify-content: center;
 }
-.rooms-booking-button-container .dropdown-calendar {
+.rooms-booking-button-container .dropdown-calendar, .room-booking-action-modal .dropdown-calendar {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
-.rooms-booking-button-container .dropdown-calendar span {
+.rooms-booking-button-container .dropdown-calendar span, .room-booking-action-modal .dropdown-calendar span {
   color: #C19B77 !important;
 }
-.rooms-booking-button-container p {
+.rooms-booking-button-container p, .room-booking-action-modal p {
   color: #fff;
   margin-bottom: 20px;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 2px;
 }
-.rooms-booking-button-container .booking-button {
+.rooms-booking-button-container .booking-button, .room-booking-action-modal .booking-button {
   padding: 15px 20px;
   border: 1px solid #fff;
   color: #fff;
@@ -15761,7 +15761,7 @@ textarea.form-control-lg {
   text-transform: uppercase;
   line-height: 18px;
 }
-.rooms-booking-button-container .booking-button button {
+.rooms-booking-button-container .booking-button button, .room-booking-action-modal .booking-button button {
   background-color: transparent;
   color: #fff;
   text-transform: uppercase;
@@ -15769,13 +15769,13 @@ textarea.form-control-lg {
   font-weight: 700;
   letter-spacing: 5px;
 }
-.rooms-booking-button-container:last-of-type .booking-button {
+.rooms-booking-button-container:last-of-type .booking-button, .room-booking-action-modal:last-of-type .booking-button {
   text-align: center;
 }
-.rooms-booking-button-container .v3dp__popout {
+.rooms-booking-button-container .v3dp__popout, .room-booking-action-modal .v3dp__popout {
   top: 100%;
 }
-.rooms-booking-button-container .v3dp__datepicker {
+.rooms-booking-button-container .v3dp__datepicker, .room-booking-action-modal .v3dp__datepicker {
   background-color: transparent;
   border-radius: 0;
   color: #C19B77;
@@ -15799,7 +15799,7 @@ textarea.form-control-lg {
   --vdp-elem-border-radius: 3px;
   --vdp-divider-color: $white-grey;
 }
-.rooms-booking-button-container .v3dp__datepicker input {
+.rooms-booking-button-container .v3dp__datepicker input, .room-booking-action-modal .v3dp__datepicker input {
   background-color: transparent;
   border: none;
   color: #C19B77;
@@ -15809,14 +15809,26 @@ textarea.form-control-lg {
   font-size: 60px;
   font-family: ui-rounded;
 }
-.rooms-booking-button-container .v3dp__datepicker input:focus-visible {
+.rooms-booking-button-container .v3dp__datepicker input:focus-visible, .room-booking-action-modal .v3dp__datepicker input:focus-visible {
   outline: transparent !important;
 }
-.rooms-booking-button-container .v3dp__datepicker:hover {
+.rooms-booking-button-container .v3dp__datepicker:hover, .room-booking-action-modal .v3dp__datepicker:hover {
   border-color: #fff !important;
 }
-.rooms-booking-button-container button {
+.rooms-booking-button-container button, .room-booking-action-modal button {
   background-color: transparent;
+}
+
+.room-booking-action-modal {
+  width: 50%;
+}
+.room-booking-action-modal .v3dp__datepicker input {
+  font-size: 26px;
+}
+.room-booking-action-modal .v3dp__datepicker [class*=v3dp__popout] {
+  right: 0px;
+  top: 0;
+  transform: translateY(-100%);
 }
 
 .navigation-btn-container {
@@ -16217,6 +16229,8 @@ textarea.form-control-lg {
   background-color: #373737;
   box-shadow: 0 0 1px 0 rgba(136, 136, 136, 0.69);
   z-index: 99;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .dropdown-container .dropdown-menu li {
   padding: 10px 20px;
@@ -16685,6 +16699,10 @@ textarea.form-control-lg {
   right: 0;
   top: 0;
 }
+.modal-content .modal-body .decreasing-modal-height {
+  max-height: 500px;
+  overflow-y: scroll;
+}
 .modal-content .modal-body .modal-inputs-container {
   padding: 30px;
 }
@@ -16700,6 +16718,10 @@ textarea.form-control-lg {
 }
 .modal-content .modal-body .modal-inputs-container .input-elements-display div:first-of-type {
   text-align: end;
+}
+.modal-content .modal-body .modal-inputs-container .booking-message {
+  width: 50%;
+  margin: 0;
 }
 .modal-content .modal-body .modal-inputs-container .input-elements, .modal-content .modal-body .modal-inputs-container .input-elements-display {
   display: flex;
@@ -16881,6 +16903,77 @@ textarea.form-control-lg {
   min-height: 91vh;
   background-color: #f0f5f8;
 }
+.room-booking-panel .draw-booking-container-start {
+  width: 50%;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.room-booking-panel .draw-booking-container-end {
+  justify-content: start;
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.room-booking-panel .draw-booking-container-middle {
+  justify-content: center;
+}
+.room-booking-panel .draw-booking-item {
+  cursor: pointer;
+  height: 30px;
+}
+.room-booking-panel .draw-booking-item-start {
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+}
+.room-booking-panel .draw-booking-item-end {
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.room-booking-panel .draw-booking-item-middle {
+  width: 100%;
+}
+.room-booking-panel .draw-booking-item-status-pending {
+  background-color: #67b2e7;
+}
+.room-booking-panel .draw-booking-item-status-active {
+  background-color: #a8e767;
+}
+.room-booking-panel .draw-booking-item-status-canceled {
+  background-color: #f05e5e;
+}
+.room-booking-panel .color-coding-container {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.room-booking-panel .color-coding-container .color-coding {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.room-booking-panel .color-coding-container .color-coding .color-name {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.room-booking-panel .color-coding-container .color-coding .color-code {
+  border-radius: 20px;
+  width: 50px;
+  height: 20px;
+  border: double;
+  color: white;
+}
+.room-booking-panel .color-coding-container .color-coding .color-pending {
+  background-color: #67b2e7;
+}
+.room-booking-panel .color-coding-container .color-coding .color-active {
+  background-color: #a8e767;
+}
+.room-booking-panel .color-coding-container .color-coding .color-canceled {
+  background-color: #f05e5e;
+}
 .room-booking-panel .table-btn-container {
   width: 100%;
   z-index: 99;
@@ -16895,11 +16988,13 @@ textarea.form-control-lg {
   font-weight: 600;
 }
 .room-booking-panel .table-btn-container .date-btn {
-  font-size: 30px;
-  border: none;
+  font-size: 20px;
   background: #C19B77;
   padding: 0px 15px;
   color: #fff;
+  border-radius: 20px;
+  width: 100px;
+  border: double;
 }
 .room-booking-panel .room-table-action-btn {
   color: white;
@@ -16928,6 +17023,12 @@ textarea.form-control-lg {
   width: 100%;
   border-collapse: separate;
   background-color: white;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.room-booking-panel .inner-table table .booking-calendar-text {
+  color: white;
+  font-weight: bold;
 }
 .room-booking-panel .inner-table table .table-sticky {
   position: sticky;
@@ -16941,10 +17042,12 @@ textarea.form-control-lg {
 .room-booking-panel .inner-table table th {
   background-color: #C19B77;
   color: white;
+  font-size: 19px;
 }
 .room-booking-panel .inner-table table td, .room-booking-panel .inner-table table th {
   border: none;
-  padding: 10px;
+  height: 70px;
+  position: relative;
 }
 .room-booking-panel .inner-table table tr {
   background-color: #fff;

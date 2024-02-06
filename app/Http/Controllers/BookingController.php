@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Interfaces\BookingInterface;
@@ -40,8 +41,8 @@ class BookingController extends Controller
                 'checkIn' => $bookingData->guestData['checkIn'],
                 'checkOut' => $bookingData->guestData['checkOut'],
                 'message' => $bookingData->guestData['message'],
-                'startDate' => Carbon::parse($bookingData->bookingDate['startDate'])->format('Y-m-d H:i:s'),
-                'endDate' => Carbon::parse($bookingData->bookingDate['endDate'])->format('Y-m-d H:i:s'),
+                'startDate' => Carbon::parse($bookingData->bookingDate['startDate'])->setHour($bookingData->guestData['checkIn'])->format('Y-m-d H:i:s'),
+                'endDate' => Carbon::parse($bookingData->bookingDate['endDate'])->setHour($bookingData->bookingDate['checkOut'])->format('Y-m-d H:i:s'),
             ];
 
             $bookingFromDB = $this->bookingRepo->store($bookingStoreData);
@@ -75,6 +76,7 @@ class BookingController extends Controller
     }
 
     /**
+     * @param Request $request
      * @return JsonResponse
      */
     public function getBookings(Request $request) : JsonResponse
@@ -89,6 +91,47 @@ class BookingController extends Controller
                 'bookings' => $bookings,
             ]);
         } catch (\Exception $exception) {
+            Log::error($exception);
+            return response()->json([
+                'success' => 0,
+                'type' => 'error',
+                'message'  => 'Something went wrong',
+            ], 422);
+        }
+    }
+
+
+    public function updateBooking(Booking $booking, Request $request)
+    {
+        try {
+            DB::beginTransaction();
+            $updatedBooking = $request->all();
+            $bookingData = [
+                'name' => $updatedBooking['name'],
+                'lastname' => $updatedBooking['lastname'],
+                'email' => $updatedBooking['email'],
+                'phone' => $updatedBooking['phone'],
+                'country' => $updatedBooking['country'],
+                'city' => $updatedBooking['city'],
+                'address' => $updatedBooking['address'],
+                'guestCount' => $updatedBooking['guestCount'],
+                'bookingStatus' => $updatedBooking['bookingStatus'],
+                'checkIn' => $updatedBooking['checkIn'],
+                'checkOut' => $updatedBooking['checkOut'],
+                'message' => $updatedBooking['message'],
+                'startDate' => Carbon::parse($updatedBooking['startDate'])->setHour($updatedBooking['checkIn'])->format('Y-m-d H:i:s'),
+                'endDate' => Carbon::parse($updatedBooking['endDate'])->setHour($updatedBooking['checkOut'])->format('Y-m-d H:i:s'),
+            ];
+
+            $this->bookingRepo->updateBooking($booking->id, $bookingData);
+            DB::commit();
+            return  response()->json([
+                'success' => 1,
+                'type' => 'success',
+                'message' => 'Booking has been updated',
+            ]);
+        } catch (\Exception $exception) {
+            DB::rollBack();
             Log::error($exception);
             return response()->json([
                 'success' => 0,

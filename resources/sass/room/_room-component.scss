@@ -433,7 +433,7 @@
     }
 }
 
-.rooms-booking-button-container {
+.rooms-booking-button-container, .room-booking-action-modal {
     display: flex;
     justify-content: center;
 
@@ -532,6 +532,22 @@
 
     button {
         background-color: transparent;
+    }
+}
+
+.room-booking-action-modal {
+    width: 50%;
+
+    .v3dp__datepicker {
+        input {
+            font-size: 26px;
+        }
+
+        [class*="v3dp__popout"] {
+            right: 0px;
+            top: 0;
+            transform: translateY(-100%);
+        }
     }
 }
 

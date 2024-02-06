@@ -24,6 +24,8 @@
         background-color: $light-black;
         box-shadow: 0 0 1px 0 rgba(136, 136, 136, 0.69);
         z-index: 99;
+        padding-top: 0;
+        padding-bottom: 0;
 
         li {
             padding: 10px 20px;

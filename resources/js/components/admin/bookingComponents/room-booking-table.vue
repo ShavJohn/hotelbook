@@ -5,11 +5,17 @@
             <span>{{ displayDate(currentMonth, currentYear) }}</span>
             <button class="date-btn" @click="changeDate('next')"><font-awesome-icon icon="fa-solid fa-chevron-right" /></button>
         </div>
+        <div class="color-coding-container">
+            <div class="color-coding" v-for="bookingStatus in bookingStatusList">
+                <span class="color-code" :class="`color-${bookingStatus}`"></span>
+                <span class="color-name">- {{ bookingStatus }}</span>
+            </div>
+        </div>
         <div class="inner-table">
-            <table>
+            <table :key="updateKey">
                 <thead>
                 <tr>
-                    <th class="table-sticky">Rooms</th>
+                    <th class="table-sticky padding-horizontal-small">Rooms</th>
                     <th  v-for="date in monthDays" :key="date">
                         {{ customFormat(date) }}
                     </th>
@@ -18,15 +24,15 @@
                 <tbody>
                 <tr v-for="(room, rowIndex) in roomWithBooking" :key="room.number">
                     <th class="table-sticky">{{ room.number }}</th>
-                    <td v-for="(booking, index) in bookingsData[rowIndex]" :key="index"
-                        @click="openModal('#roomBookingAction', booking)"
-                        :style="drawBooking(booking)">
-                        <span v-if="booking.position === 'start'">
-                            {{ customFormat(booking.startDate) }}
-                        </span>
-                        <span v-if="booking.position === 'end'">
-                            {{ customFormat(booking.endDate) }}
-                        </span>
+                    <td v-for="(bookings, index) in bookingsData[rowIndex]" :key="index">
+                        <div v-for="(booking, bookingIndex) in bookings" :key="bookingIndex"
+                             :class="(booking && Object.keys(booking).length) && `draw-booking-container-${booking.position}`">
+                            <div v-if="booking && Object.keys(booking).length"
+                                 @click="openModal('#roomBookingAction', booking)"
+                                 class="draw-booking-item"
+                                 :class="[`draw-booking-item-${booking.position}`, `draw-booking-item-status-${booking.bookingStatus}`]">
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 </tbody>
@@ -43,141 +49,12 @@
 <script>
 import roomMixins from "../../../mixins/room-mixin";
 import RoomBookingActionModal from "./room-booking-action-modal";
+import adminBookingMixins from "../../../mixins/admin-booking-mixins"
 
 export default {
     name: "room-booking-table",
     components: {RoomBookingActionModal},
-    data() {
-        return {
-            monthDays: [],
-            currentMonth: new Date().getMonth() + 1,
-            currentYear: new Date().getFullYear(),
-            currentBooking: {}
-        }
-    },
-    mixins: [roomMixins],
-    computed: {
-        bookings() {
-            return this.$store.getters['bookings/getBookings']
-        },
-        roomWithBooking() {
-            for(let i = 0; i < this.roomsData.length; ++i) {
-                this.roomsData[i].bookings = this.bookings.filter(room => {
-                    return room.booked_room.some(bookedRoom => bookedRoom.id === this.roomsData[i].id);
-                });
-            }
-
-            return this.roomsData
-        },
-        bookingsData() {
-            return this.roomWithBooking.map((room) => {
-                return this.monthDays.map((date) => {
-                    return this.calculateBookingPosition(room, date);
-                });
-            });
-        }
-    },
-    mounted() {
-        this.etDaysInMonth(this.currentMonth, this.currentYear)
-        let date = new Date(this.currentYear, this.currentMonth - 1, 1)
-        const startOfMonth = moment(date).startOf('month').format('YYYY-MM-DD hh:mm:ss');
-        // const endOfMonth   = moment(date).endOf('month').format('YYYY-MM-DD hh:mm::ss');
-
-        let data = {
-            startDate: startOfMonth,
-        }
-        this.$store.dispatch('bookings/getBookingsList', data)
-    },
-    watch: {
-        currentMonth(val) {
-            if(val === 0) {
-                this.currentMonth = 12
-                this.currentYear--
-                this.etDaysInMonth(this.currentMonth, this.currentYear)
-            } else if (val === 13) {
-                this.currentMonth = 1
-                this.currentYear++
-                this.etDaysInMonth(this.currentMonth, this.currentYear)
-            }
-        }
-    },
-    methods: {
-        openModal(modalId, booking) {
-            this.currentBooking = booking
-            $(modalId).modal("show");
-        },
-        calculateBookingPosition(roomData, date) {
-            let position = '';
-
-            for (let i = 0; i < roomData.bookings.length; ++i) {
-                const startDate = moment(roomData.bookings[i].startDate).format('YYYY-MM-DD');
-                const endDate = moment(roomData.bookings[i].endDate).format('YYYY-MM-DD');
-                const currentDate = moment(date).format('YYYY-MM-DD');
-
-                if (startDate <= currentDate && endDate >= currentDate) {
-                    const booking = { ...roomData.bookings[i] }; // Create a new object
-                    if (startDate === currentDate) {
-                        position = 'start';
-                    } else if (endDate === currentDate) {
-                        position = 'end';
-                    } else {
-                        position = 'middle';
-                    }
-                    booking.position = position;
-                    return booking; // Return the modified object
-                }
-            }
-
-            return { position };
-        },
-        drawBooking(booking) {
-
-            let style = ''
-            if(Object.keys(booking).length) {
-                style = 'cursor: pointer;'
-
-                if (booking.position === 'start') {
-                    style += 'border-left: 1px solid;border-top: 1px solid;border-bottom: 1px solid;border-bottom-left-radius: 15px;border-top-left-radius: 15px;';
-                } else if (booking.position === 'end') {
-                    style += 'border-right: 1px solid;border-top: 1px solid;border-bottom: 1px solid;border-bottom-right-radius: 15px;border-top-right-radius: 15px;';
-                } else if (booking.position === 'middle') {
-                    style += 'border-top: 1px solid;border-bottom: 1px solid;';
-                }
-
-                if(booking.bookingStatus === 'pending') {
-                    style += 'background-color: #e0e0e0;border-color: #e0e0e0;'
-                }
-            }
-
-            return style;
-        },
-        changeDate(type) {
-            if(type === 'prev') {
-                this.currentMonth--
-                this.etDaysInMonth(this.currentMonth, this.currentYear)
-            } else if(type === 'next') {
-                this.currentMonth++
-                this.etDaysInMonth(this.currentMonth, this.currentYear)
-            }
-        },
-        etDaysInMonth(month,year) {
-            const daysInMonth = [];
-            const date = new Date(year, month - 1, 1); // Month is 0-indexed, so subtract 1
-
-            while (date.getMonth() === month - 1) {
-                daysInMonth.push(new Date(date));
-                date.setDate(date.getDate() + 1);
-            }
-
-            this.monthDays = daysInMonth
-        },
-        customFormat(date) {
-            return moment(date).format('MMM DD')
-        },
-        displayDate(month, year) {
-            return moment([year, month-1, 1]).format('MMMM YYYY')
-        }
-    },
+    mixins: [roomMixins, adminBookingMixins],
 }
 </script>
 

@@ -91,6 +91,20 @@ export default {
                     reject(err)
                 })
             })
+        },
+        updateBooking(context, data) {
+            return new Promise((resolve, reject) => {
+                axios.post(`/update-booking/${data.id}`, data).then(res => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': res.data.type,
+                        'status': res.status,
+                        'message': res.data.message
+                    }, { root:true })
+                    resolve(res)
+                }).catch(err => {
+                    reject(err)
+                })
+            })
         }
     }
 }

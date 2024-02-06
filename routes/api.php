@@ -77,6 +77,9 @@ Route::group(['middleware' => 'api'], function() {
         Route::delete('/delete-room/{roomId}', 'App\Http\Controllers\RoomController@removeRoom');
         Route::put('/update-room', 'App\Http\Controllers\RoomController@updateRoom');
 
+        //Booking Rout
+        Route::post('/update-booking/{booking}', 'App\Http\Controllers\BookingController@updateBooking');
+
         Route::post('/logout', 'App\Http\Controllers\AuthController@logOut');
     });
 
