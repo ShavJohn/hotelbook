@@ -61,6 +61,16 @@ export default {
         dateFormat(date, format) {
             return moment(date).format(format)
         },
+        openRemoveBookingModal(modalId) {
+            $(modalId).modal("show");
+        },
+        removeBooking(bookingDataId) {
+            this.$store.dispatch('bookings/deleteBooking', bookingDataId).then(() => {
+                $('#roomBookingAction').modal("hide");
+                $('#removeBookingModal').modal("hide");
+                this.getBookingsList()
+            })
+        },
         updateBooking(bookingData) {
             bookingData.startDate.setHours(bookingData.startDate.getHours() + 3);
             bookingData.endDate.setHours(bookingData.endDate.getHours() + 3);

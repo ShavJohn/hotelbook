@@ -30,6 +30,7 @@ return new class extends Migration
             $table->dateTime('endDate');
             $table->longText('message');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -78,7 +78,8 @@ Route::group(['middleware' => 'api'], function() {
         Route::put('/update-room', 'App\Http\Controllers\RoomController@updateRoom');
 
         //Booking Rout
-        Route::post('/update-booking/{booking}', 'App\Http\Controllers\BookingController@updateBooking');
+        Route::put('/update-booking/{booking}', 'App\Http\Controllers\BookingController@updateBooking');
+        Route::delete('/delete-booking/{booking}', 'App\Http\Controllers\BookingController@deleteBooking');
 
         Route::post('/logout', 'App\Http\Controllers\AuthController@logOut');
     });

@@ -94,7 +94,21 @@ export default {
         },
         updateBooking(context, data) {
             return new Promise((resolve, reject) => {
-                axios.post(`/update-booking/${data.id}`, data).then(res => {
+                axios.put(`/update-booking/${data.id}`, data).then(res => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': res.data.type,
+                        'status': res.status,
+                        'message': res.data.message
+                    }, { root:true })
+                    resolve(res)
+                }).catch(err => {
+                    reject(err)
+                })
+            })
+        },
+        deleteBooking(context, data) {
+            return new Promise((resolve, reject) => {
+                axios.delete(`/delete-booking/${data}`).then(res => {
                     context.dispatch('alert/alertResponse', {
                         'type': res.data.type,
                         'status': res.status,

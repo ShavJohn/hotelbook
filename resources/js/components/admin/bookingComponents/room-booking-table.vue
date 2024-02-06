@@ -43,6 +43,7 @@
             <button type="button" class="room-table-action-btn btn-bg-yellow" @click="changePage('next')">Next</button>
         </div>
         <room-booking-action-modal :bookingData="currentBooking"/>
+        <remove-booking-modal :removeBookingId="currentBooking.id"/>
     </div>
 </template>
 
@@ -50,10 +51,11 @@
 import roomMixins from "../../../mixins/room-mixin";
 import RoomBookingActionModal from "./room-booking-action-modal";
 import adminBookingMixins from "../../../mixins/admin-booking-mixins"
+import RemoveBookingModal from "./remove-booking-modal";
 
 export default {
     name: "room-booking-table",
-    components: {RoomBookingActionModal},
+    components: {RemoveBookingModal, RoomBookingActionModal},
     mixins: [roomMixins, adminBookingMixins],
 }
 </script>

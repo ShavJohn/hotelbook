@@ -90,6 +90,7 @@
         </template>
         <template #modal-footer>
             <button type="button" data-bs-dismiss="modal" aria-label="Close" class="modal-btn btn-grey close">Close</button>
+            <button type="button" class="modal-btn btn-bg-red" @click="openRemoveBookingModal('#removeBookingModal')">Remove</button>
             <button type="button" class="modal-btn btn-action" @click="updateBooking(bookingData)">Update</button>
         </template>
     </modals>

@@ -40,9 +40,9 @@ class BookingController extends Controller
                 'bookingStatus' => 'pending',
                 'checkIn' => $bookingData->guestData['checkIn'],
                 'checkOut' => $bookingData->guestData['checkOut'],
-                'message' => $bookingData->guestData['message'],
+                'message' => $bookingData->guestData['message'] ?: '',
                 'startDate' => Carbon::parse($bookingData->bookingDate['startDate'])->setHour($bookingData->guestData['checkIn'])->format('Y-m-d H:i:s'),
-                'endDate' => Carbon::parse($bookingData->bookingDate['endDate'])->setHour($bookingData->bookingDate['checkOut'])->format('Y-m-d H:i:s'),
+                'endDate' => Carbon::parse($bookingData->bookingDate['endDate'])->setHour($bookingData->guestData['checkOut'])->format('Y-m-d H:i:s'),
             ];
 
             $bookingFromDB = $this->bookingRepo->store($bookingStoreData);
@@ -65,6 +65,7 @@ class BookingController extends Controller
                 'message'  => 'Your booking has been registered',
             ]);
         } catch (\Exception $exception) {
+
             DB::rollBack();
             Log::error($exception);
             return response()->json([
@@ -101,6 +102,11 @@ class BookingController extends Controller
     }
 
 
+    /**
+     * @param Booking $booking
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function updateBooking(Booking $booking, Request $request)
     {
         try {
@@ -132,6 +138,30 @@ class BookingController extends Controller
             ]);
         } catch (\Exception $exception) {
             DB::rollBack();
+            Log::error($exception);
+            return response()->json([
+                'success' => 0,
+                'type' => 'error',
+                'message'  => 'Something went wrong',
+            ], 422);
+        }
+    }
+
+    /**
+     * @param Booking $booking
+     * @return JsonResponse
+     */
+    public function deleteBooking(Booking $booking): JsonResponse
+    {
+        try {
+            $booking->delete();
+
+            return  response()->json([
+                'success' => 1,
+                'type' => 'success',
+                'message' => 'Booking has been deleted',
+            ]);
+        } catch (\Exception $exception) {
             Log::error($exception);
             return response()->json([
                 'success' => 0,
