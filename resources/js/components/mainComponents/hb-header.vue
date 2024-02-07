@@ -15,7 +15,6 @@
                     <option value="en">EN</option>
                     <option value="ru">RU</option>
                 </select>
-                <button class="btn bg-dark-yellow color-white font-bolder">{{ $t('book_now') }}</button>
             </div>
             <font-awesome-icon @click="openMenu = !openMenu" class="header-mobile-menu-icon color-white font-30 cursor-pointer" icon="fa-solid fa-bars" />
         </div>

@@ -15633,8 +15633,13 @@ textarea.form-control-lg {
   top: 10px;
   right: 0;
   padding: 5px 30px;
-  background-color: #C19B77;
   color: #fff;
+}
+.rooms-list .booking-room-container .room-image .room-status.busy {
+  background-color: #8c3131;
+}
+.rooms-list .booking-room-container .room-image .room-status.available {
+  background-color: #C19B77;
 }
 .rooms-list .booking-room-container .room-info-card {
   border-right: 1px solid rgba(170, 170, 170, 0.3294117647);

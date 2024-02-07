@@ -2,8 +2,8 @@
     <div class="booking-room-container">
         <div class="room-image">
             <img :src="`${imagePrefix}/${roomData.main_image}`"/>
-            <div class="room-status">
-                <span>Available</span>
+            <div class="room-status" :class="roomData.busy ? 'busy' : 'available'">
+                <span>{{ roomData.busy ? 'Busy' : 'Available' }}</span>
             </div>
         </div>
         <div class="room-info-card">
@@ -14,7 +14,7 @@
                     <span>{{ roomType[localeLang].description }}</span>
                 </div>
                 <p>{{ roomData[localeLang].description }}</p>
-                <button @click="chooseRoom(roomData)">
+                <button v-if="!roomData.busy" @click="chooseRoom(roomData)">
                     <span>Book Now For {{ roomData[localeLang].adult_price }} $</span>
                 </button>
             </div>
