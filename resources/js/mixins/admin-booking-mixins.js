@@ -16,8 +16,6 @@ export default {
     },
     mounted() {
         this.daysInMonth(this.currentMonth, this.currentYear)
-
-        this.getBookingsList()
     },
     computed: {
         bookings() {

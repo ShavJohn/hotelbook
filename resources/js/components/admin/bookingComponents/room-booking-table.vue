@@ -50,13 +50,16 @@
 <script>
 import roomMixins from "../../../mixins/room-mixin";
 import RoomBookingActionModal from "./room-booking-action-modal";
-import adminBookingMixins from "../../../mixins/admin-booking-mixins"
+import adminBookingMixins from "../../../mixins/admin-booking-mixins";
 import RemoveBookingModal from "./remove-booking-modal";
 
 export default {
     name: "room-booking-table",
     components: {RemoveBookingModal, RoomBookingActionModal},
     mixins: [roomMixins, adminBookingMixins],
+    mounted() {
+        this.getBookingsList()
+    }
 }
 </script>
 
