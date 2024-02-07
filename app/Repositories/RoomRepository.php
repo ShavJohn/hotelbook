@@ -83,8 +83,54 @@ class RoomRepository implements RoomInterface
     {
         $startDate = $data['startDate'];
         $endDate = $data['endDate'];
-        $skip = $data['skip'];
-        $take = $data['take'];
+        $skip = $data['skip'] ?: 0;
+        $take = $data['take'] ?: 5;
+        $guestCount = $data['guestCount'];
+
+        $availableRooms = $this->model->whereDoesntHave('bookings', function ($query) use ($startDate, $endDate) {
+            $query->where(function ($query) use ($startDate, $endDate) {
+                $query->where('startDate', '<', $endDate)
+                    ->where('endDate', '>', $startDate)
+                    ->where('bookingStatus', 'active');
+            });
+        })->orWhereDoesntHave('bookings')
+            ->with(['roomOptions' => function ($query) {
+                $query->where('type', 'types');
+            }])
+            ->skip($skip)
+            ->take($take)
+            ->get()->toArray();
+
+
+        $availableRooms = array_filter($availableRooms, function ($room) use ($guestCount) {
+            if (isset($room['room_options'])) {
+                foreach ($room['room_options'] as $room_option) {
+                    $roomGuestCount = intval($room_option['size']);
+                    return $roomGuestCount >= (int)$guestCount;
+                }
+            }
+            return false;
+        });
+
+        // Sort available rooms by guest count in ascending order
+        usort($availableRooms, function ($a, $b) {
+            $guestCountA = isset($a['room_options']) && isset($a['room_options']['size']) ? intval($a['room_options']['size']) : PHP_INT_MAX;
+            $guestCountB = isset($b['room_options']) && isset($b['room_options']['size']) ? intval($b['room_options']['size']) : PHP_INT_MAX;
+            return $guestCountA - $guestCountB;
+        });
+
+
+        return $availableRooms;
+    }
+
+    /**
+     * @param $data
+     * @return mixed
+     */
+    public function getAvailableRoomsTotalCount($data): mixed
+    {
+        $startDate = $data['startDate'];
+        $endDate = $data['endDate'];
         $guestCount = $data['guestCount'];
 
         $availableRooms = $this->model->whereDoesntHave('bookings', function ($query) use ($startDate, $endDate) {
@@ -117,8 +163,7 @@ class RoomRepository implements RoomInterface
             return $guestCountA - $guestCountB;
         });
 
-
-        return $availableRooms;
+        return count($availableRooms);
     }
 
     /**

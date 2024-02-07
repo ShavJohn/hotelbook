@@ -1,7 +1,7 @@
 <template>
     <div class="rooms-list">
         <room-component v-for="roomData in roomsData" :room-data="roomData"/>
-        <div class="hb-flex hb-justify-content-center navigation-btn-container">
+        <div v-if="visiblePages.length > 1" class="hb-flex hb-justify-content-center navigation-btn-container">
             <ul>
                 <li v-for="page in visiblePages" :class="page === currentPage && 'active-room-page'" @click="currentPage = page">{{ page }}</li>
             </ul>

@@ -60,11 +60,13 @@ class RoomController extends Controller
             $data = $request->all();
 
             $rooms = $this->roomRepo->checkAvailableRooms($data);
+            $roomTotalCount = $this->roomRepo->getAvailableRoomsTotalCount($data);
 
             return response()->json([
                 'success' => 1,
                 'type' => 'success',
                 'rooms'  => $rooms,
+                'roomTotalCount' => $roomTotalCount,
             ], 200);
         } catch (\Exception $exception) {
             Log::error($exception);

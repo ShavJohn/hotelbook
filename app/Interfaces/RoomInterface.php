@@ -26,6 +26,12 @@ interface RoomInterface
     public function checkAvailableRooms($data): mixed;
 
     /**
+     * @param $data
+     * @return mixed
+     */
+    public function getAvailableRoomsTotalCount($data): mixed;
+
+    /**
      * @return mixed
      */
     public function getRoomTotalCount(): mixed;

@@ -27,7 +27,12 @@ export default {
     watch: {
         'currentPage': function(val) {
             this.skip =  (val - 1) * 5;
-            this.getRooms()
+            console.log(this.filtered)
+            if(!this.filtered) {
+                this.getRooms()
+            } else {
+                this.getAvailability(this.bookingDate.startDate, this.bookingDate.endDate, this.bookingData.guestCount)
+            }
         }
     },
     computed: {
@@ -39,6 +44,12 @@ export default {
         },
         roomsData() {
             return this.$store.getters['rooms/roomsGetter']
+        },
+        bookingData() {
+            return this.$store.getters['bookings/getBookingData']
+        },
+        bookingDate() {
+            return this.$store.getters['bookings/getBookingDate']
         },
         roomTypes() {
             return this.$store.getters['rooms/typesGetter']
@@ -94,6 +105,9 @@ export default {
         roomTotalCount() {
             return this.$store.getters['rooms/getRoomTotalCount']
         },
+        filtered() {
+            return this.$store.getters['rooms/getIfRoomFiltered']
+        },
         totalPages() {
             return Math.ceil(this.roomTotalCount / this.take)
         },
@@ -106,6 +120,19 @@ export default {
         },
     },
     methods: {
+        getAvailability(startDate, endDate, guestCount) {
+            startDate = startDate.setHours(startDate.getHours() + 3)
+            endDate = endDate.setHours(endDate.getHours() + 3)
+            let data = {
+                skip: this.skip,
+                take: this.take,
+                startDate: new Date(startDate),
+                endDate: new Date(endDate),
+                guestCount: guestCount
+            }
+
+            this.$store.dispatch('rooms/getAvailableRooms', data)
+        },
         displayType(array) {
             return array.find(( name ) => name.type === "types")
         },

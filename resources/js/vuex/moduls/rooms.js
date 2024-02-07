@@ -28,6 +28,7 @@ export default {
         services: [],
         editModal: false,
         roomTotalCount: 0,
+        filtered: false,
     },
     getters: {
         roomGetter(state) {
@@ -59,6 +60,9 @@ export default {
         },
         getRoomTotalCount(state) {
             return state.roomTotalCount
+        },
+        getIfRoomFiltered(state) {
+            return state.filtered
         }
     },
     mutations: {
@@ -126,6 +130,9 @@ export default {
         },
         setRoomTotalCount(state, data) {
             state.roomTotalCount = data
+        },
+        setIfRoomFiltered(state, data) {
+            state.filtered = data
         }
     },
     actions: {
@@ -133,8 +140,11 @@ export default {
             return new Promise((resolve, reject) => {
                 axios.get('/check-available-room', {params: data}).then(res => {
                     context.commit('roomsSetter', res.data.rooms)
+                    context.commit('setRoomTotalCount', res.data.roomTotalCount)
+                    context.commit('setIfRoomFiltered', true)
                     resolve(res)
                 }).catch(err => {
+                    console.log(err)
                     context.dispatch('alert/alertResponse', {
                         'type': err.data.type,
                         'status': err.status,
