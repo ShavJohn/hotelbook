@@ -83,7 +83,8 @@ class RoomController extends Controller
     public function getRooms(Request $request): JsonResponse
     {
         try {
-            $roomsData = $this->roomRepo->getRooms($request->skip, $request->take);
+
+            $roomsData = $this->roomRepo->getRooms($request->skip, $request->take, $request->startDate, $request->endDate);
             $roomTotalCount = $this->roomRepo->getRoomTotalCount();
 
 

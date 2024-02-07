@@ -17,7 +17,7 @@ interface RoomInterface
      * @param $take
      * @return mixed
      */
-    public function getRooms($skip, $take): mixed;
+    public function getRooms($skip, $take, $startDate, $endDate): mixed;
 
     /**
      * @param $data

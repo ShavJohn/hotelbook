@@ -6,6 +6,7 @@ namespace App\Repositories;
 
 use App\Interfaces\RoomInterface;
 use App\Models\Room;
+use Carbon\Carbon;
 
 class RoomRepository implements RoomInterface
 {
@@ -31,9 +32,9 @@ class RoomRepository implements RoomInterface
      * @param $take
      * @return mixed
      */
-    public function getRooms($skip, $take): mixed
+    public function getRooms($skip, $take, $startDate, $endDate): mixed
     {
-        return $this->model->with(['roomOptions' => function($q) {
+        $rooms = $this->model->with(['roomOptions' => function($q) {
                 $q->select('room_options.id', 'room_options.type', 'room_options.en', 'room_options.ru');
             }])
             ->with('images')
@@ -41,7 +42,37 @@ class RoomRepository implements RoomInterface
                 $q->skip($skip)
                     ->take($take);
             })
+            ->with(['bookings' => function ($query) use ($startDate, $endDate) {
+                $query->where('startDate', '<', $endDate)
+                    ->where('endDate', '>', $startDate)
+                    ->where('bookingStatus', 'active');
+            }])
             ->get();
+
+        foreach ($rooms as &$room) {
+            $room['busy'] = false; // Initialize busy status to false by default
+
+            // Check if any bookings exist for the specific dates
+            foreach ($room['bookings'] as $booking) {
+                $bookingStartDate = Carbon::parse($booking['startDate']);
+                $bookingEndDate = Carbon::parse($booking['endDate']);
+                $checkStartDate = Carbon::parse($startDate);
+                $checkEndDate = Carbon::parse($endDate);
+
+                if ($bookingStartDate->between($checkStartDate, $checkEndDate) ||
+                    $bookingEndDate->between($checkStartDate, $checkEndDate) ||
+                    ($bookingStartDate->lte($checkStartDate) && $bookingEndDate->gte($checkEndDate))) {
+                    // Room is busy for the specified dates
+                    $room['busy'] = true;
+                    break; // No need to check further bookings for this room
+                }
+            }
+
+            unset($room['bookings']); // Remove bookings from the room data
+        }
+
+
+        return $rooms;
     }
 
     /**

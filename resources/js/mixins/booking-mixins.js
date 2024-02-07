@@ -70,6 +70,7 @@ export default {
             }
 
             this.$store.dispatch('rooms/getAvailableRooms', data)
+            this.$router.push({name: 'RoomSearch'})
         },
         bookRoom() {
             this.$store.dispatch('bookings/bookingRoom', this.bookingData).then(res => {

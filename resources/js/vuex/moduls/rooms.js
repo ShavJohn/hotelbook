@@ -132,7 +132,6 @@ export default {
         getAvailableRooms(context, data) {
             return new Promise((resolve, reject) => {
                 axios.get('/check-available-room', {params: data}).then(res => {
-                    console.log(res)
                     context.commit('roomsSetter', res.data.rooms)
                     resolve(res)
                 }).catch(err => {
@@ -190,6 +189,10 @@ export default {
                         take: 5,
                     }
                 }
+                data.startDate = new Date()
+                data.endDate = new Date()
+                data.endDate.setDate(data.startDate.getDate()+1);
+
                 axios.get('/get-rooms', {params: data}).then((res) => {
                     context.commit('roomsSetter', res.data.roomData)
                     context.commit('setRoomTotalCount', res.data.roomTotalCount)

@@ -59,6 +59,7 @@ export default {
     mixins: [roomMixins, adminBookingMixins],
     mounted() {
         this.getBookingsList()
+        this.getRooms()
     }
 }
 </script>
