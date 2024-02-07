@@ -78,6 +78,11 @@ export default {
 
                     resolve(res)
                 }).catch(err => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
                     reject(err)
                 })
             })
@@ -88,6 +93,11 @@ export default {
                     context.commit('setBookings', res.data)
                     resolve(res)
                 }).catch(err => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
                     reject(err)
                 })
             })
@@ -102,6 +112,11 @@ export default {
                     }, { root:true })
                     resolve(res)
                 }).catch(err => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
                     reject(err)
                 })
             })
@@ -116,6 +131,11 @@ export default {
                     }, { root:true })
                     resolve(res)
                 }).catch(err => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
                     reject(err)
                 })
             })

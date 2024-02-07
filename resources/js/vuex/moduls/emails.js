@@ -50,6 +50,11 @@ export default {
                 axios.post('/send-message', data).then((res) => {
                     resolve(res)
                 }).catch((err) => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
                     reject(err)
                 })
             })
@@ -69,6 +74,11 @@ export default {
                     context.commit('contactUsMessagesSetter', res.data.messages)
                     resolve(res)
                 }).catch(err => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
                     reject(err)
                 })
             })
@@ -78,6 +88,11 @@ export default {
                 axios.post('/reply-to-message', data).then((res) => {
                     resolve(res)
                 }).catch((err) => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
                     reject(err)
                 })
             })

@@ -9,7 +9,11 @@ export default {
                 axios.post('/upload-image', data,config).then((res) => {
                     resolve(res)
                 }).catch((err) => {
-
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
                     reject(err)
                 })
             })
@@ -19,7 +23,11 @@ export default {
                 axios.delete(`/delete-image/${data}`).then((res) => {
                     resolve(res)
                 }).catch((err) => {
-
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
                     reject(err)
                 })
             })
@@ -32,7 +40,11 @@ export default {
 
                     resolve(res)
                 }).catch((err) => {
-
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
                     reject(err)
                 })
             })

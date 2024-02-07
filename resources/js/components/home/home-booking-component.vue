@@ -4,25 +4,25 @@
             <div class="booking-button-container">
                 <label  class="cursor-pointer">
                     <p>{{ $t('check_in') }}</p>
-                    <Datepicker class="cursor-pointer" v-model="startDate" inputFormat="dd MMM" :lowerLimit="today"></Datepicker>
+                    <Datepicker class="cursor-pointer" v-model="bookingDate.startDate" inputFormat="dd MMM" :lowerLimit="today"></Datepicker>
                 </label>
             </div>
             <div class="booking-button-container">
                 <label class="cursor-pointer">
                     <p>{{ $t('check_out')}}</p>
-                    <Datepicker class="cursor-pointer" v-model="endDate" inputFormat="dd MMM" :lowerLimit="endDayLimit"></Datepicker>
+                    <Datepicker class="cursor-pointer" v-model="bookingDate.endDate" inputFormat="dd MMM" :lowerLimit="endDayLimit"></Datepicker>
                 </label>
             </div>
             <div class="booking-button-container">
                 <label class="hb-width-100">
                     <p>{{ $t('guests') }}</p>
                     <div class="booking-button hb-flex hb-justify-content-between">
-                        {{ guestCount }}
+                        {{ bookingData.guestCount }}
                         <div>
-                            <button class="btn-strip-default" @click="guestCount++">
+                            <button class="btn-strip-default" @click="bookingData.guestCount++">
                                 <font-awesome-icon class="color-white cursor-pointer margin-right" icon="fa-solid fa-chevron-up" />
                             </button>
-                            <button class="btn-strip-default" @click="guestCount !== 1 && guestCount--">
+                            <button class="btn-strip-default" @click="bookingData.guestCount !== 1 && bookingData.guestCount--">
                                 <font-awesome-icon class="color-white cursor-pointer" icon="fa-solid fa-chevron-down" />
                             </button>
                         </div>
@@ -32,7 +32,7 @@
 
             <div class="booking-button-container">
                 <div class="booking-button cursor-pointer">
-                    <button class="cursor-pointer">{{ $t('check_availability') }}</button>
+                    <button class="cursor-pointer" @click="checkAvailability(bookingDate.startDate, bookingDate.endDate, bookingData.guestCount)">{{ $t('check_availability') }}</button>
                 </div>
             </div>
         </div>
@@ -40,35 +40,11 @@
 </template>
 
 <script>
-    const today = new Date();
-    const tomorrow = new Date();
-    today.setHours(0, 0, 0, 0)
-    tomorrow.setHours(0, 0, 0, 0)
-    tomorrow.setDate(today.getDate()+1);
+import bookingMixins from "../../mixins/booking-mixins";
 
     export default {
         name: "home-booking-component",
-        data() {
-            return {
-                guestCount: 1,
-                today: today,
-                startDate: today,
-                endDate: tomorrow,
-                endDayLimit: tomorrow,
-                animationStarted: false
-            }
-        },
-        watch: {
-            startDate(val) {
-                if(val >= this.endDate) {
-                    let currentDate = new Date(val)
-                    this.endDate = currentDate.setDate(currentDate.getDate()+1)
-                    this.endDate = new Date(this.endDate)
-                }
-                this.endDayLimit = this.endDayLimit.setDate(this.startDate.getDate()+1)
-                this.endDayLimit = new Date(this.endDayLimit)
-            }
-        },
+        mixins: [bookingMixins],
         methods: {
             animateBookingInputs() {
                 this.animationStarted = true
@@ -81,9 +57,6 @@
                    removeEventListener('scroll', this.animateBookingInputs)
                }
             }
-        },
-        created() {
-
         },
         mounted() {
             let bookingInputsContainer =  document.getElementById('bookingInputsContainer')

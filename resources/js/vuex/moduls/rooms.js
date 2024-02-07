@@ -129,6 +129,23 @@ export default {
         }
     },
     actions: {
+        getAvailableRooms(context, data) {
+            return new Promise((resolve, reject) => {
+                axios.get('/check-available-room', {params: data}).then(res => {
+                    console.log(res)
+                    context.commit('roomsSetter', res.data.rooms)
+                    resolve(res)
+                }).catch(err => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
+
+                    reject(err)
+                })
+            })
+        },
         addRoom(context, data) {
             return new Promise((resolve, reject) => {
                 axios.post('/add-room', context.state.room).then((res) => {

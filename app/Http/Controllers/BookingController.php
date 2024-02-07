@@ -124,7 +124,7 @@ class BookingController extends Controller
                 'bookingStatus' => $updatedBooking['bookingStatus'],
                 'checkIn' => $updatedBooking['checkIn'],
                 'checkOut' => $updatedBooking['checkOut'],
-                'message' => $updatedBooking['message'],
+                'message' => $updatedBooking['message'] ?: '',
                 'startDate' => Carbon::parse($updatedBooking['startDate'])->setHour($updatedBooking['checkIn'])->format('Y-m-d H:i:s'),
                 'endDate' => Carbon::parse($updatedBooking['endDate'])->setHour($updatedBooking['checkOut'])->format('Y-m-d H:i:s'),
             ];

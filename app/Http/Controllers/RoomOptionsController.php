@@ -79,6 +79,7 @@ class RoomOptionsController extends Controller
             DB::beginTransaction();
             $data = [
                 'type' => $fst,
+                'size' => $fst === 'types' ? $request['size'] : '',
                 'en'   => $request['en'],
                 'ru'   => $request['ru']
             ];

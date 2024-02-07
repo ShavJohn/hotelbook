@@ -20,7 +20,7 @@
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Type Count</span>
-                    <input type="text" id="type-description" name="type-description" placeholder="Enter Room Type count" v-model="fSTItem[dataLang].description">
+                    <input type="text" id="type-description" name="type-description" placeholder="Enter Room Type count" v-model="fSTItem.size">
                 </div>
                 <template v-for="(type, key) in roomTypes">
                     <div class="position-relative margin-top-large">
@@ -40,7 +40,7 @@
                                 <span class="input-name">Count</span>
                             </div>
                             <div>
-                                <span>{{ type[dataLang].description }}</span>
+                                <span>{{ type.size }}</span>
                             </div>
                         </div>
                     </div>

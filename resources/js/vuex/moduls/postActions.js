@@ -76,6 +76,11 @@ export default {
                     context.commit('setPosts', res.data.posts)
                     resolve(res)
                 }).catch((err) => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
                     reject(err)
                 })
             })

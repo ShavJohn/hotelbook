@@ -40,4 +40,13 @@ class Room extends Model
     {
         return $this->morphMany(Image::class, 'imageable');
     }
+
+
+    /**
+     * @return BelongsToMany
+     */
+    public function bookings(): BelongsToMany
+    {
+        return $this->belongsToMany(Booking::class);
+    }
 }

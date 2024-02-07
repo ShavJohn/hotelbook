@@ -27,8 +27,6 @@ export default {
             ],
             guestCount: 1,
             today: today,
-            startDate: today,
-            endDate: tomorrow,
             endDayLimit: tomorrow,
             availableHours: [10,11,12,13,14,15,16,17],
             bookingPrice: 300,
@@ -36,6 +34,7 @@ export default {
             openServicesMenu: false,
             paymentMethod: 'payOnArrive',
             cardData: '',
+            animationStarted: false
         }
     },
     computed: {
@@ -47,18 +46,31 @@ export default {
         },
     },
     watch: {
-        startDate(val) {
-            if(val >= this.endDate) {
+        'bookingDate.startDate': function (val) {
+            if(val >= this.bookingDate.endDate) {
                 let currentDate = new Date(val)
-                this.endDate = currentDate.setDate(currentDate.getDate()+1)
-                this.endDate = new Date(this.endDate)
+                this.bookingDate.endDate = currentDate.setDate(currentDate.getDate()+1)
+                this.bookingDate.endDate = new Date(this.bookingDate.endDate)
             }
 
-            this.endDayLimit = this.endDayLimit.setDate(this.startDate.getDate()+1)
+            this.endDayLimit = this.endDayLimit.setDate(this.bookingDate.startDate.getDate()+1)
             this.endDayLimit = new Date(this.endDayLimit)
         },
     },
     methods: {
+        checkAvailability(startDate, endDate, guestCount) {
+            startDate = startDate.setHours(startDate.getHours() + 3)
+            endDate = endDate.setHours(endDate.getHours() + 3)
+            let data = {
+                skip: 0,
+                take: 5,
+                startDate: new Date(startDate),
+                endDate: new Date(endDate),
+                guestCount: guestCount
+            }
+
+            this.$store.dispatch('rooms/getAvailableRooms', data)
+        },
         bookRoom() {
             this.$store.dispatch('bookings/bookingRoom', this.bookingData).then(res => {
                 if(res.data.success) {
@@ -75,10 +87,6 @@ export default {
             }
         },
         chooseRoom(roomData) {
-            let dates = {
-                startDate: this.startDate,
-                endDate: this.endDate
-            }
             this.$store.commit('bookings/setChosenRoomData', roomData)
             this.$router.push({name: 'RoomBook'})
         },

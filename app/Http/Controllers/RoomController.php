@@ -53,6 +53,33 @@ class RoomController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
+    public function getAvailableRooms(Request $request): JsonResponse
+    {
+        try {
+
+            $data = $request->all();
+
+            $rooms = $this->roomRepo->checkAvailableRooms($data);
+
+            return response()->json([
+                'success' => 1,
+                'type' => 'success',
+                'rooms'  => $rooms,
+            ], 200);
+        } catch (\Exception $exception) {
+            Log::error($exception);
+            return response()->json([
+                'success' => 0,
+                'type' => 'error',
+                'message'  => 'Something went wrong',
+            ], 422);
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function getRooms(Request $request): JsonResponse
     {
         try {
@@ -229,7 +256,7 @@ class RoomController extends Controller
     }
 
     /**
-     * @param $id
+     * @param $roomId
      * @return JsonResponse
      */
     public function removeRoom($roomId): JsonResponse

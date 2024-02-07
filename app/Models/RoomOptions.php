@@ -13,7 +13,8 @@ class RoomOptions extends Model
     protected $fillable = [
         'type',
         'en',
-        'ru'
+        'ru',
+        'size'
     ];
 
     protected $casts = [

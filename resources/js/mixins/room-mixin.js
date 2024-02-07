@@ -13,7 +13,8 @@ export default {
                 ru: {
                     name: '',
                     description: ''
-                }
+                },
+                size: ''
             },
             skip: 0,
             take: 5,
@@ -123,7 +124,8 @@ export default {
                 ru: {
                     name: this.fSTItem.ru.name,
                     description: this.fSTItem.ru.description
-                }
+                },
+                size: this.fSTItem.size ? this.fSTItem.size : ''
             })
 
             let data = {
@@ -136,7 +138,8 @@ export default {
                     ru: {
                         name: this.fSTItem.ru.name,
                         description: this.fSTItem.ru.description
-                    }
+                    },
+                    size: this.fSTItem.size ? this.fSTItem.size : ''
                 }
             }
 
@@ -147,6 +150,7 @@ export default {
             this.fSTItem.en.description = ''
             this.fSTItem.ru.name = ''
             this.fSTItem.ru.description = ''
+            this.fSTItem.size = ''
         },
         uploadImage(e) {
             let formData = new FormData()
@@ -308,8 +312,7 @@ export default {
             })
         },
         removeSFTItem(arrayName, id, key) {
-            this.removeItemFromArray(arrayName, key)
-
+            this.$store.state.rooms[arrayName].splice(key, 1)
             this.$store.dispatch('rooms/removeFST', id)
         },
         removeItemFromArray(arrayName, key) {
