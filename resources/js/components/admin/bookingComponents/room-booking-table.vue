@@ -58,6 +58,7 @@ export default {
     components: {RemoveBookingModal, RoomBookingActionModal},
     mixins: [roomMixins, adminBookingMixins],
     mounted() {
+        this.getBookingsList()
         this.getRooms()
     }
 }

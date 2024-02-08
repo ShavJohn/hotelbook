@@ -31,7 +31,7 @@ export default {
         roomWithBooking() {
             for(let i = 0; i < this.roomsData.length; ++i) {
                 this.roomsData[i].bookings = this.bookings.filter(booking => {
-                    return booking.booked_room.id === this.roomsData[i].id;
+                    return booking.booked_room && booking.booked_room.id === this.roomsData[i].id;
                 });
             }
 
