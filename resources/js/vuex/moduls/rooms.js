@@ -24,6 +24,7 @@ export default {
             selectedServices: []
         },
         rooms: [],
+        allRooms: [],
         types: [],
         features: [],
         services: [],
@@ -38,6 +39,9 @@ export default {
         },
         roomsGetter(state) {
             return state.rooms
+        },
+        allRoomsGetter(state) {
+            return state.allRooms
         },
         typesGetter(state) {
             return state.types
@@ -143,6 +147,9 @@ export default {
         },
         setIsRoomBusy(state, data) {
             state.roomBusy = data;
+        },
+        setAllRooms(state, data) {
+            state.allRooms = data
         }
     },
     actions: {
@@ -216,6 +223,7 @@ export default {
                 axios.get('/get-rooms', {params: data}).then((res) => {
                     context.commit('roomsSetter', res.data.roomData)
                     context.commit('setRoomTotalCount', res.data.roomTotalCount)
+                    context.commit('setAllRooms', res.data.allRooms)
                     resolve(res)
                 }).catch(err => {
                     context.dispatch('alert/alertResponse', {

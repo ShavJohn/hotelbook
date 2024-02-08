@@ -94,6 +94,7 @@ class RoomController extends Controller
 
             $roomsData = $this->roomRepo->getRooms($request->skip, $request->take, $request->startDate, $request->endDate);
             $roomTotalCount = $this->roomRepo->getRoomTotalCount();
+            $allRooms = $this->roomRepo->getAllRooms();
 
 
             return response()->json([
@@ -101,6 +102,7 @@ class RoomController extends Controller
                 'type' => 'success',
                 'roomData'  => $roomsData,
                 'roomTotalCount' => $roomTotalCount,
+                'allRooms' => $allRooms,
             ], 200);
         } catch (\Exception $exception) {
             Log::error($exception);

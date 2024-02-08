@@ -21,7 +21,6 @@
                     </div>
                 </template>
                 <template v-else>
-                    {{ headerData }}
                     <div v-if="elementEditModalType === 'header_home_background_image'" class="input-elements">
                         <span class="input-name">Header Title</span>
                         <input type="text" id="header-title" name="header-title" placeholder="Enter Header Title" v-model="headerData.header_title[dataLang]">

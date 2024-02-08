@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\RoomInterface;
 use App\Models\Booking;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -14,9 +15,12 @@ class BookingController extends Controller
 {
     private BookingInterface $bookingRepo;
 
-    public function __construct(BookingInterface $bookingInterface)
+    private RoomInterface $roomRepo;
+
+    public function __construct(BookingInterface $bookingInterface, RoomInterface $roomRepo)
     {
         $this->bookingRepo = $bookingInterface;
+        $this->roomRepo = $roomRepo;
     }
 
 
@@ -137,11 +141,19 @@ class BookingController extends Controller
             ];
 
             $this->bookingRepo->updateBooking($booking->id, $bookingData);
+
+            $isRoomBooked = $this->roomRepo->isRoomBooked($updatedBooking['startDate'], $updatedBooking['endDate'], $updatedBooking['booked_room']['id']);
+
+            if(!$isRoomBooked) {
+                $booking->bookedRoom()->sync($updatedBooking['booked_room']['id']);
+            }
+
+
             DB::commit();
             return  response()->json([
                 'success' => 1,
                 'type' => 'success',
-                'message' => 'Booking has been updated',
+                'message' => $isRoomBooked ? 'Booking has been updated but room is booked' : 'Booking has been updated',
             ]);
         } catch (\Exception $exception) {
             DB::rollBack();

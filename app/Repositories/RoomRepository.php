@@ -134,6 +134,25 @@ class RoomRepository implements RoomInterface
     }
 
     /**
+     * @param $startDate
+     * @param $endDate
+     * @param $roomId
+     * @return bool
+     */
+    public function isRoomBooked($startDate, $endDate, $roomId): mixed
+    {
+        return $this->model->where('id', $roomId)
+            ->whereHas('bookings', function ($query) use ($startDate, $endDate) {
+                $query->where(function ($q) use ($startDate, $endDate) {
+                    $q->whereBetween('startDate', [$startDate, $endDate])
+                        ->orWhereBetween('endDate', [$startDate, $endDate]);
+                })
+                    ->where('bookingStatus', 'active');
+            })
+            ->exists();
+    }
+
+    /**
      * @param $data
      * @return int
      */
@@ -182,6 +201,14 @@ class RoomRepository implements RoomInterface
     public function getRoomTotalCount(): mixed
     {
         return $this->model->count();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAllRooms(): mixed
+    {
+        return $this->model->select('id', 'number', 'en', 'ru')->get();
     }
 
     /**

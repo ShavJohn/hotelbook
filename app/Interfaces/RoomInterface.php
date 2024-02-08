@@ -33,6 +33,14 @@ interface RoomInterface
     public function checkAvailableRooms($data): mixed;
 
     /**
+     * @param $startDate
+     * @param $endDate
+     * @param $roomId
+     * @return bool
+     */
+    public function isRoomBooked($startDate, $endDate, $roomId): mixed;
+
+    /**
      * @param $data
      * @return mixed
      */
@@ -42,6 +50,11 @@ interface RoomInterface
      * @return mixed
      */
     public function getRoomTotalCount(): mixed;
+
+    /**
+     * @return mixed
+     */
+    public function getAllRooms(): mixed;
 
     /**
      * @param $id

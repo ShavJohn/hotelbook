@@ -42,7 +42,7 @@
             <button type="button" class="room-table-action-btn btn-bg-yellow" @click="changePage('prev')">Previous</button>
             <button type="button" class="room-table-action-btn btn-bg-yellow" @click="changePage('next')">Next</button>
         </div>
-        <room-booking-action-modal :bookingData="currentBooking"/>
+        <room-booking-action-modal :bookedRoomData="currentBooking"/>
         <remove-booking-modal :removeBookingId="currentBooking.id"/>
     </div>
 </template>

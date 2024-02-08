@@ -1,7 +1,7 @@
 <template>
     <modals modal-id="removeBookingModal">
         <template #modal-header>
-            <h4>Remove Room</h4>
+            <h4>Remove Booking</h4>
             <div>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -10,7 +10,7 @@
         </template>
         <template #modal-body>
             <form class="modal-inputs-container">
-                <span class="remove-room-message">Are you sure want to remove the room</span>
+                <span class="remove-room-message">Are you sure want to remove the booking</span>
             </form>
         </template>
         <template #modal-footer>

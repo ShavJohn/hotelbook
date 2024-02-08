@@ -48,6 +48,9 @@ export default {
         roomsData() {
             return this.$store.getters['rooms/roomsGetter']
         },
+        roomsDataForBookings() {
+            return this.$store.getters['rooms/allRoomsGetter']
+        },
         bookingData() {
             return this.$store.getters['bookings/getBookingData']
         },
