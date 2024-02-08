@@ -294,10 +294,10 @@ export default {
         editRoom(roomData) {
             this.$store.dispatch('rooms/updateRoom',roomData).then(() => {
                 this.getRooms()
-                this.editModal = false
+                this.$store.state.rooms.editModal = false
                 $('#roomAction').modal("hide");
             }).catch(() => {
-                this.editModal = false
+                this.$store.state.rooms.editModal = false
             })
         },
         changePage(action) {

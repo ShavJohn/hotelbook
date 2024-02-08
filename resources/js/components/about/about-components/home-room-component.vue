@@ -26,6 +26,9 @@ export default {
         },
         guestCount: {
             required: true
+        },
+        backgroundImage: {
+            required: true
         }
     }
 }
