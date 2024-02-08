@@ -3,41 +3,27 @@
         <div class="date-square hb-justify-content-around margin-bottom-large">
             <span>Check-In</span>
             <div id="start-date-calendar" class="rooms-booking-button-container">
-                <Datepicker :locale="en" class="cursor-pointer" v-model="startDate" inputFormat="dd" :lowerLimit="today"></Datepicker>
+                <Datepicker :locale="en" class="cursor-pointer" v-model="bookingDate.startDate" inputFormat="dd" :lowerLimit="today"></Datepicker>
                 <div class="dropdown-calendar">
-                    <span>{{ dateFormat(startDate, 'MMM') }}</span>
+                    <span>{{ dateFormat(bookingDate.startDate, 'MMM') }}</span>
                 </div>
             </div>
         </div>
         <div class="date-square hb-justify-content-around margin-bottom-large">
             <span>Check-Out</span>
             <div id="end-date-calendar" class="rooms-booking-button-container">
-                <Datepicker class="cursor-pointer" v-model="endDate" inputFormat="dd" :lowerLimit="endDayLimit"></Datepicker>
+                <Datepicker class="cursor-pointer" v-model="bookingDate.endDate" inputFormat="dd" :lowerLimit="endDayLimit"></Datepicker>
                 <div class="dropdown-calendar">
-                    <span>{{ dateFormat(endDate, 'MMM') }}</span>
-                </div>
-            </div>
-        </div>
-        <div class="date-square hb-justify-content-around">
-            <span>Guests</span>
-            <div class="hb-flex hb-align-items-center hb-justify-content-center room-guest-count-container">
-                <span>{{ bookingData.guestCount }}</span>
-                <div class="room-guest-count-btn">
-                    <button class="btn-strip-default" @click="bookingData.guestCount++">
-                        <font-awesome-icon class="color-white cursor-pointer" icon="fa-solid fa-chevron-up" />
-                    </button>
-                    <button class="btn-strip-default" @click="bookingData.guestCount !== 1 && bookingData.guestCount--">
-                        <font-awesome-icon class="color-white cursor-pointer" icon="fa-solid fa-chevron-down" />
-                    </button>
+                    <span>{{ dateFormat(bookingDate.endDate, 'MMM') }}</span>
                 </div>
             </div>
         </div>
         <div class="date-square hb-justify-content-around">
             <span>Nights</span>
-            <b class="nights-count-styling">{{ parseInt((endDate - startDate) / (1000 * 60 * 60 * 24), 10) }}</b>
+            <b class="nights-count-styling">{{ parseInt((bookingDate.endDate - bookingDate.startDate) / (1000 * 60 * 60 * 24), 10) }}</b>
         </div>
         <div class="book-now-btn-container">
-            <button class="book-now-btn">
+            <button class="book-now-btn" @click="chooseRoom(roomData)">
                 Book Now
             </button>
         </div>
@@ -53,6 +39,11 @@ export default {
     name: "room-date-table",
     components: {DropDown},
     mixins: [BookingMixins],
+    props: {
+        roomData: {
+            required: true,
+        }
+    },
     data() {
         return {
             ru: ru,

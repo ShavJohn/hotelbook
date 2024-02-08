@@ -58,6 +58,9 @@ export default {
         },
     },
     methods: {
+        checkRoomIfBusy(busy) {
+            this.$store.commit('rooms/setIsRoomBusy', busy)
+        },
         checkAvailability(startDate, endDate, guestCount) {
             startDate = startDate.setHours(startDate.getHours() + 3)
             endDate = endDate.setHours(endDate.getHours() + 3)

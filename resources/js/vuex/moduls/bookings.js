@@ -49,11 +49,13 @@ export default {
 
             state.bookingData.guestData.extraServices = []
 
-            data.room_options.forEach(item => {
-                if(item.type === 'services') {
-                    state.bookingData.guestData.extraServices.push(item)
-                }
-            })
+            if(data.room_options && data.room_options.length) {
+                data.room_options.forEach(item => {
+                    if(item.type === 'services') {
+                        state.bookingData.guestData.extraServices.push(item)
+                    }
+                })
+            }
         },
         setBookings(state, data) {
             state.bookings = data.bookings

@@ -42,6 +42,9 @@ export default {
         roomData() {
             return this.$store.getters['rooms/roomGetter']
         },
+        roomBusy() {
+            return this.$store.getters['rooms/getIsRoomBusy']
+        },
         roomsData() {
             return this.$store.getters['rooms/roomsGetter']
         },

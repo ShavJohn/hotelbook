@@ -24,8 +24,8 @@
                 </p>
             </div>
         </div>
-        <div class="right-menu">
-            <room-date-table/>
+        <div v-if="!roomBusy" class="right-menu">
+            <room-date-table :roomData="roomData"/>
         </div>
     </div>
 </template>

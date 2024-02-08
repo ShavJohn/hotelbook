@@ -15,6 +15,7 @@ export default {
                 child_price: '',
                 description: ''
             },
+            busy: false,
             number: '',
             main_image: '',
             additionalImages: [],
@@ -29,6 +30,7 @@ export default {
         editModal: false,
         roomTotalCount: 0,
         filtered: false,
+        roomBusy: false,
     },
     getters: {
         roomGetter(state) {
@@ -63,6 +65,9 @@ export default {
         },
         getIfRoomFiltered(state) {
             return state.filtered
+        },
+        getIsRoomBusy(state) {
+            return state.roomBusy
         }
     },
     mutations: {
@@ -78,13 +83,15 @@ export default {
 
             state.room.selectedType = data.room_options.find(( name ) => name.type === "types") ? data.room_options.find(( name ) => name.type === "types") : ''
 
-            data.room_options.forEach(room => {
-                if(room.type === 'features') {
-                    state.room.selectedFeatures.push(room)
-                } else if(room.type === 'services') {
-                    state.room.selectedServices.push(room)
-                }
-            })
+            if(data.room_options && data.room_options.length) {
+                data.room_options.forEach(room => {
+                    if(room.type === 'features') {
+                        state.room.selectedFeatures.push(room)
+                    } else if(room.type === 'services') {
+                        state.room.selectedServices.push(room)
+                    }
+                })
+            }
         },
         resetRoomData(state, data) {
             state.room.id = '',
@@ -133,6 +140,9 @@ export default {
         },
         setIfRoomFiltered(state, data) {
             state.filtered = data
+        },
+        setIsRoomBusy(state, data) {
+            state.roomBusy = data;
         }
     },
     actions: {

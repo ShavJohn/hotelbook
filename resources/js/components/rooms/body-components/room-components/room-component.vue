@@ -23,7 +23,7 @@
                 <div class="feature-icons">
 
                 </div>
-                <button><router-link :to="{ name: 'Room', params: { room: roomData.id}}">Full Info </router-link></button>
+                <button @click="checkRoomIfBusy(roomData.busy)"><router-link :to="{ name: 'Room', params: { room: roomData.id}}">Full Info </router-link></button>
             </div>
         </div>
     </div>
