@@ -17,9 +17,24 @@
         border-right: 1px solid $light-yellow;
         background-color: #ebebeb;
 
+        .read {
+            background-color: #f9f7f4;
+        }
+
+        .unread {
+            background-color: #b09e82;
+
+            h4 {
+                color: white;
+            }
+
+            span {
+                color: white;
+            }
+        }
+
         .list-element {
             cursor: pointer;
-            background-color: #f9f7f4;
             transition: background-color .5s ease-in-out;
             padding: 20px;
             display: flex;

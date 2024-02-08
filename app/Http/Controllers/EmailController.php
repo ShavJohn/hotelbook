@@ -34,12 +34,14 @@ class EmailController extends Controller
             $take = $request['take'];
 
             $messages = $this->emailRepo->index($skip, $take);
+            $unreadEmails = $this->emailRepo->getUnreadEmailsCount();
 
             if($messages) {
                 return response()->json([
                     'success' => 1,
                     'type' => 'success',
-                    'messages' => $messages
+                    'messages' => $messages,
+                    'unreadEmails' => $unreadEmails,
                 ], 200);
             } else {
                 return response()->json([
@@ -49,6 +51,27 @@ class EmailController extends Controller
                 ], 200);
             }
 
+        } catch (\Exception $exception) {
+            Log::error($exception);
+            return response()->json([
+                'success' => 0,
+                'type' => 'error',
+                'message'  => 'Something went wrong',
+            ], 422);
+        }
+    }
+
+    public function updateStatus($messageId)
+    {
+        try {
+
+            $this->emailRepo->updateMessageStatus($messageId);
+
+            return response()->json([
+                'success' => 1,
+                'type' => 'success',
+                'message'  => 'Message status has been updated',
+            ], 200);
         } catch (\Exception $exception) {
             Log::error($exception);
             return response()->json([
@@ -105,7 +128,6 @@ class EmailController extends Controller
             }
         } catch (\Exception $exception) {
             DB::rollBack();
-            dd($exception);
             Log::error($exception);
             return response()->json([
                 'success' => 0,

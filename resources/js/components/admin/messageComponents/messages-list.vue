@@ -1,5 +1,5 @@
 <template>
-    <div class="list-element">
+    <div class="list-element" :class="message.read ? 'read' : 'unread'" @click="updateEmailStatus(message, index)">
         <div class="mail-sender-info">
             <h4>Customer request</h4>
             <div class="mail-from-container">
@@ -22,6 +22,9 @@ export default {
     name: "messages-list",
     props: {
         message: {
+            required: true
+        },
+        index: {
             required: true
         }
     },

@@ -28,6 +28,7 @@ export default {
             }
         },
         bookings: [],
+        pendingBookings: 0,
     },
     getters: {
         getBookingData(state) {
@@ -38,6 +39,9 @@ export default {
         },
         getBookings(state) {
             return state.bookings
+        },
+        getPendingBookings(state) {
+            return state.pendingBookings
         }
     },
     mutations: {
@@ -66,6 +70,9 @@ export default {
         removeExtraServices(state, key) {
             state.bookingData.guestData.extraServices.splice(key, 1)
         },
+        setPendingBookings(state, data) {
+            state.pendingBookings = data.pendingBookings
+        }
     },
     actions: {
         bookingRoom(context, data) {
@@ -93,6 +100,7 @@ export default {
             return new Promise((resolve, reject) => {
                 axios.get('/get-bookings-list', {params: data}).then(res => {
                     context.commit('setBookings', res.data)
+                    context.commit('setPendingBookings', res.data)
                     resolve(res)
                 }).catch(err => {
                     context.dispatch('alert/alertResponse', {

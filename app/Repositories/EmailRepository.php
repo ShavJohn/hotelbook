@@ -20,6 +20,26 @@ class EmailRepository implements  EmailInterface
     }
 
     /**
+     * @return int
+     */
+
+    public function getUnreadEmailsCount(): int
+    {
+        return $this->model->where('read', 0)->count();
+    }
+
+    /**
+     * @param $messageId
+     * @return mixed
+     */
+    public function updateMessageStatus($messageId): mixed
+    {
+        return $this->model->where('id', $messageId)->update([
+            'read' => 1
+        ]);
+    }
+
+    /**
      * @param $data
      * @return mixed
      */

@@ -84,12 +84,19 @@ class BookingController extends Controller
     {
         try {
 
-            $bookings = $this->bookingRepo->getBookings($request->startDate);
+            $bookings = $this->bookingRepo->getBookings($request['startDate']);
+            $pendingBookings = 0;
+            foreach ($bookings as $booking) {
+                if($booking->bookingStatus === 'pending') {
+                    $pendingBookings++;
+                }
+            }
 
             return  response()->json([
                 'success' => 1,
                 'type' => 'success',
                 'bookings' => $bookings,
+                'pendingBookings' => $pendingBookings,
             ]);
         } catch (\Exception $exception) {
             Log::error($exception);

@@ -1,3 +1,5 @@
+import {reject} from "lodash/collection";
+
 export default {
     namespaced: true,
     state: {
@@ -6,6 +8,7 @@ export default {
         displayTab: '',
         currentKey: 0,
         dataFinished: false,
+        unreadEmails: 0,
     },
     getters: {
         contactUsMessagesGetter(state) {
@@ -22,6 +25,9 @@ export default {
         },
         getDataFinished(state) {
             return state.dataFinished
+        },
+        getUnreadEmails(state) {
+            return state.unreadEmails
         }
     },
     mutations: {
@@ -42,12 +48,34 @@ export default {
         },
         setDataFinished(state, data) {
             state.dataFinished = data
+        },
+        setUnreadEmails(state, data) {
+            state.unreadEmails = data.unreadEmails
+        },
+        markMessageAsRead(state, data) {
+            state.contactUsMessages[data].read = true;
+            --state.unreadEmails
         }
     },
     actions: {
         sendMessage(context, data) {
             return new Promise((resolve, reject) => {
                 axios.post('/send-message', data).then((res) => {
+                    resolve(res)
+                }).catch((err) => {
+                    context.dispatch('alert/alertResponse', {
+                        'type': err.data.type,
+                        'status': err.status,
+                        'message': err.data.message
+                    }, { root:true })
+                    reject(err)
+                })
+            })
+        },
+        updateEmailStatus(context, data) {
+            return new Promise((resolve, reject) => {
+                axios.put(`/update-message-status/${data.id}`).then(res => {
+                    context.commit('markMessageAsRead', data.key)
                     resolve(res)
                 }).catch((err) => {
                     context.dispatch('alert/alertResponse', {
@@ -72,6 +100,8 @@ export default {
                     }
 
                     context.commit('contactUsMessagesSetter', res.data.messages)
+                    context.commit('setUnreadEmails', res.data)
+
                     resolve(res)
                 }).catch(err => {
                     context.dispatch('alert/alertResponse', {

@@ -2,7 +2,7 @@
     <div class="message-container">
        <div class="message-inner-container">
            <div id="messages-list-container" class="messages-lists" :class="displayTab === 'messages-list' ? 'open-messenger-tabs' : 'close-messenger-tab'">
-               <messages-list v-for="(message, key) in messages" :message="message" @click="toggleMessages(message, 'message-content', key)"/>
+               <messages-list v-for="(message, key) in messages" :message="message" :index="key" @click="toggleMessages(message, 'message-content', key)"/>
            </div>
            <div class="message-content" :class="displayTab === 'message-content' ? 'open-messenger-tabs' : 'close-messenger-tab'">
                <font-awesome-icon icon="fa-solid fa-arrow-left" class="show-on-ipad" @click="toggleMessages({}, 'messages-list')" />
@@ -40,8 +40,6 @@ export default {
         }
     },
     mounted() {
-        this.getEmails(this.skip, this.take)
-
         document.getElementById('messages-list-container').addEventListener('scroll', this.bringMoreData)
     },
     mixins: [emails],

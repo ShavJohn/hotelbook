@@ -32,6 +32,16 @@ export default {
         }
     },
     methods: {
+        updateEmailStatus(message, key) {
+            if(!message.read) {
+                let data = {
+                    key: key,
+                    id: message.id
+                }
+
+                this.$store.dispatch('emails/updateEmailStatus', data)
+            }
+        },
         formatDate(date) {
             return moment(date).format('MM/DD/YYYY hh:mm')
         },

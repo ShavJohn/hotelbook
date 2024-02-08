@@ -53,6 +53,7 @@ Route::group(['middleware' => 'api'], function() {
         //message routs
         Route::get('/get-messages', 'App\Http\Controllers\EmailController@index');
         Route::post('/reply-to-message', 'App\Http\Controllers\EmailController@reply');
+        Route::put('/update-message-status/{messageId}', 'App\Http\Controllers\EmailController@updateStatus');
 
         //room feature routs
         Route::post('/add-room-{fst}', 'App\Http\Controllers\RoomOptionsController@addRoomFST');

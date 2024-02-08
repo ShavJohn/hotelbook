@@ -12,6 +12,18 @@ interface EmailInterface
     public function index($skip, $take): mixed;
 
     /**
+     * @return int
+     */
+
+    public function getUnreadEmailsCount(): int;
+
+    /**
+     * @param $messageId
+     * @return mixed
+     */
+    public function updateMessageStatus($messageId): mixed;
+
+    /**
      * @param $data
      * @return mixed
      */

@@ -16551,6 +16551,30 @@ textarea.form-control-lg {
   font-size: 20px;
   cursor: pointer;
 }
+.admin-header-container .admin-buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+.admin-header-container .admin-buttons-container .notification-btn-container {
+  position: relative;
+  cursor: pointer;
+}
+.admin-header-container .admin-buttons-container .notification-btn-container svg {
+  font-size: 35px;
+  color: #C19B77;
+}
+.admin-header-container .admin-buttons-container .notification-btn-container .notifications-count {
+  position: absolute;
+  top: 0px;
+  right: -10px;
+  width: 25px;
+  background-color: #cebaa0;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: 900;
+}
 .admin-header-container .logout-btn {
   display: flex;
   align-items: center;
@@ -17106,9 +17130,20 @@ textarea.form-control-lg {
   border-right: 1px solid #cebaa0;
   background-color: #ebebeb;
 }
+.message-container .messages-lists .read {
+  background-color: #f9f7f4;
+}
+.message-container .messages-lists .unread {
+  background-color: #b09e82;
+}
+.message-container .messages-lists .unread h4, .message-container .messages-lists .unread .h4 {
+  color: white;
+}
+.message-container .messages-lists .unread span {
+  color: white;
+}
 .message-container .messages-lists .list-element {
   cursor: pointer;
-  background-color: #f9f7f4;
   transition: background-color 0.5s ease-in-out;
   padding: 20px;
   display: flex;
