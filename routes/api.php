@@ -45,7 +45,7 @@ Route::group(['middleware' => 'api'], function() {
     Route::get('/get-bookings-list', 'App\Http\Controllers\BookingController@getBookings');
 
     //about us
-    Route::get('/get-about-us-data', 'App\Http\Controllers\RoomController@getAboutUsPageData');
+    Route::get('/get-about-us-data', 'App\Http\Controllers\AboutUsPageController@getAboutUsPageData');
 
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('/check-auth', 'App\Http\Controllers\AuthController@checkAuth');
@@ -86,7 +86,7 @@ Route::group(['middleware' => 'api'], function() {
         Route::delete('/delete-booking/{booking}', 'App\Http\Controllers\BookingController@deleteBooking');
 
         //About Us page
-        Route::post('/update-about-us-page', 'App\Http\Controllers\RoomController@updateAboutUsPageData');
+        Route::post('/update-about-us-page', 'App\Http\Controllers\AboutUsPageController@updateAboutUsPageData');
 
         Route::post('/logout', 'App\Http\Controllers\AuthController@logOut');
     });
