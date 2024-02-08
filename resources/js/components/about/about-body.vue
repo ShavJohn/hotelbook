@@ -1,5 +1,5 @@
 <template>
-    <div class="about-body-container">
+    <div class="about-body-container display-edit-elements">
         <about-us-post/>
         <rooms-list/>
         <services-list/>

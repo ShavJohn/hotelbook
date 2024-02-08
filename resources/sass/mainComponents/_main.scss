@@ -42,7 +42,7 @@
     position: relative;
 
     &:hover {
-        .edit-elements {
+        .edit-elements, .edit-about-us-page {
             opacity: 1;
         }
     }
@@ -71,6 +71,31 @@
 
             svg {
                 color: $darker-yellow;
+            }
+        }
+
+        svg {
+            font-size: 25px;
+            color: $dark-yellow;
+        }
+    }
+
+    .edit-about-us-page {
+        position: absolute;
+        z-index: 999;
+        padding: 25px;
+        right: 100px;
+        opacity: 0;
+        border-radius: 20px;
+        cursor: pointer;
+        background-color: transparent;
+        transition: opacity .5s ease-in-out, background-color .5s linear, color .5s linear;
+
+        &:hover {
+            background-color: $dark-yellow;
+
+            svg {
+                color: $white;
             }
         }
 

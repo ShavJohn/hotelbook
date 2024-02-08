@@ -85,6 +85,9 @@ Route::group(['middleware' => 'api'], function() {
         Route::put('/update-booking/{booking}', 'App\Http\Controllers\BookingController@updateBooking');
         Route::delete('/delete-booking/{booking}', 'App\Http\Controllers\BookingController@deleteBooking');
 
+        //About Us page
+        Route::post('/update-about-us-page', 'App\Http\Controllers\RoomController@updateAboutUsPageData');
+
         Route::post('/logout', 'App\Http\Controllers\AuthController@logOut');
     });
 

@@ -65,6 +65,41 @@ class RoomController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function updateAboutUsPageData(Request $request): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+            $aboutUsPageContent = $request->all();
+            $data = [
+                'value' => $aboutUsPageContent['image'] ?: '',
+                'json_value' => [
+                    'en' => $aboutUsPageContent['en'] ?: '',
+                    'ru' => $aboutUsPageContent['ru'] ?: '',
+                ]
+            ];
+
+            $this->generalSettingsRepo->updateOrCreateData('aboutUsPageContent', $data);
+            DB::commit();
+            return response()->json([
+                'success' => 1,
+                'type' => 'success',
+                'message'  => 'Room data has been updated',
+            ], 200);
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            Log::error($exception);
+            return response()->json([
+                'success' => 0,
+                'type' => 'error',
+                'message'  => 'Something went wrong',
+            ], 422);
+        }
+    }
+
+    /**
      * @param Room $room
      * @return JsonResponse
      */

@@ -27,7 +27,7 @@ class GeneralSettingsRepository implements GeneralSettingsInterface
      */
     public function getAboutUsPageContent(): mixed
     {
-        return $this->model->where('key', 'aboutUsPageContent')->get();
+        return $this->model->where('key', 'aboutUsPageContent')->first();
     }
 
     /**
@@ -38,15 +38,32 @@ class GeneralSettingsRepository implements GeneralSettingsInterface
     public function updateOrCreateData($key, $data): mixed
     {
         if($this->ifExist($key)) {
-            return $this->model->where('key', $key)->update([
-                'value' => $data
-            ]);
+            if($key === 'aboutUsPageContent') {
+                return $this->model->where('key', $key)->update([
+                    'value' => $data['value'],
+                    'json_value' => $data['json_value']
+                ]);
+            } else {
+                return $this->model->where('key', $key)->update([
+                    'value' => $data
+                ]);
+            }
         } else {
-            $myData = [
-                'key' => $key,
-                'value' => $data,
-            ];
-            return $this->model->create($myData);
+            if($key === 'aboutUsPageContent') {
+                $myData = [
+                    'key' => $key,
+                    'value' => $data['value'],
+                    'json_value' => $data['json_value']
+                ];
+                return $this->model->create($myData);
+            } else {
+                $myData = [
+                    'key' => $key,
+                    'value' => $data,
+                ];
+                return $this->model->create($myData);
+            }
+
         }
     }
 
@@ -55,7 +72,7 @@ class GeneralSettingsRepository implements GeneralSettingsInterface
      * @param $data
      * @return mixed
      */
-    public function updateOrCreatePageData($key, $data)
+    public function updateOrCreatePageData($key, $data): mixed
     {
         if($this->ifExist($key)) {
             return $this->model->where('key', $key)->update($data);

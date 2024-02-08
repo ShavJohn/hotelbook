@@ -14498,7 +14498,7 @@ textarea.form-control-lg {
 .display-edit-elements {
   position: relative;
 }
-.display-edit-elements:hover .edit-elements {
+.display-edit-elements:hover .edit-elements, .display-edit-elements:hover .edit-about-us-page {
   opacity: 1;
 }
 .display-edit-elements .header-edit-vertical-position {
@@ -14525,6 +14525,27 @@ textarea.form-control-lg {
   color: #b18b3e;
 }
 .display-edit-elements .edit-elements svg {
+  font-size: 25px;
+  color: #C19B77;
+}
+.display-edit-elements .edit-about-us-page {
+  position: absolute;
+  z-index: 999;
+  padding: 25px;
+  right: 100px;
+  opacity: 0;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  transition: opacity 0.5s ease-in-out, background-color 0.5s linear, color 0.5s linear;
+}
+.display-edit-elements .edit-about-us-page:hover {
+  background-color: #C19B77;
+}
+.display-edit-elements .edit-about-us-page:hover svg {
+  color: #fff;
+}
+.display-edit-elements .edit-about-us-page svg {
   font-size: 25px;
   color: #C19B77;
 }

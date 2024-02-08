@@ -20,9 +20,6 @@ export default {
         roomName: {
             required: true
         },
-        guestCount: {
-            required: true
-        },
         backgroundImage: {
             required: true
         }
