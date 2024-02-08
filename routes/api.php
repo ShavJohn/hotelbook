@@ -49,6 +49,7 @@ Route::group(['middleware' => 'api'], function() {
 
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('/check-auth', 'App\Http\Controllers\AuthController@checkAuth');
+        Route::post('/create-user', 'App\Http\Controllers\AuthController@register');
 
         //message routs
         Route::get('/get-messages', 'App\Http\Controllers\EmailController@index');

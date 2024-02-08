@@ -25,6 +25,7 @@ class AuthController extends Controller
     {
         try {
             $requestData = $request->all();
+
             $requestData['password'] = Hash::make($requestData['password']);
 
             $user = User::create($requestData);

@@ -14,7 +14,7 @@
         </div>
         <div class="settings-element">
             <label for="new-user-password-confirm">New User Password Confirm</label>
-            <input id="new-user-password-confirm" type="text" placeholder="Enter New User Password Confirm"  v-model="newUser.password">
+            <input id="new-user-password-confirm" type="text" placeholder="Enter New User Password Confirm"  v-model="newUser.passwordConfirm">
         </div>
         <button @click.prevent="createUser()" class="hm-btn-style">Save Changes</button>
     </form>
@@ -41,6 +41,10 @@ export default {
                         'type': res?.data?.type,
                         'message': res?.data?.message
                     })
+                    this.newUser.name = ''
+                    this.newUser.email = ''
+                    this.newUser.password = ''
+                    this.newUser.passwordConfirm = ''
                 } else {
                     this.$store.dispatch('alert/alertResponse', {
                         'type': res?.data?.type,
