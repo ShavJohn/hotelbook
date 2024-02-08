@@ -13,7 +13,7 @@ import AboutUsPost from "./about-components/about-us-post";
 
 export default {
     name: "about-body",
-    components: {ServicesList, RoomsList, AboutUsPost}
+    components: {ServicesList, RoomsList, AboutUsPost},
 }
 </script>
 

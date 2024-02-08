@@ -5,18 +5,23 @@
             <button @click="$router.push({name: 'RoomSearch'})">View All</button>
         </div>
         <div class="rooms-list-container">
-            <home-room-component price="59" room-name="Deluxe Room" guest-count="3" backgroundImage=""/>
-            <home-room-component price="100" room-name="Family Room" guest-count="6" backgroundImage=""/>
-            <home-room-component price="28" room-name="Private Room" guest-count="2" backgroundImage=""/>
+            <home-room-component v-for="topRoom in topRooms" :price="topRoom[localeLang].adult_price"
+                                 :room-name="topRoom[localeLang].name"
+                                 :backgroundImage="topRoom.main_image"/>
         </div>
     </div>
 </template>
 
 <script>
 import HomeRoomComponent from "./home-room-component";
+import aboutUsMixins from "../../../mixins/about-us-mixins";
 export default {
     name: "rooms-list",
-    components: {HomeRoomComponent}
+    components: {HomeRoomComponent},
+    mixins: [aboutUsMixins],
+    mounted() {
+        this.getAllData()
+    }
 }
 </script>
 

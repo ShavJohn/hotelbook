@@ -1,14 +1,19 @@
 <template>
     <div class="service-component">
         <div class="delimiter"></div>
-        <h4>Spa & Massages</h4>
-        <p>Sed sit amet nisl in velit viverra bibendum in ac nisi. Etiam efficitur dui vitae sem rutrum, id pretium nunc varius. Vestibulum hendrerit malesuada .</p>
+        <h4>{{ roomOption[localeLang].name }}</h4>
+        <p>{{ roomOption[localeLang].description }}</p>
     </div>
 </template>
 
 <script>
 export default {
-    name: "home-services-component"
+    name: "home-services-component",
+    props: {
+        roomOption: {
+            required: true
+        }
+    }
 }
 </script>
 

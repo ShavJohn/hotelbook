@@ -5,6 +5,11 @@ namespace App\Interfaces;
 interface GeneralSettingsInterface
 {
     /**
+     * @return mixed
+     */
+    public function getAboutUsPageContent(): mixed;
+
+    /**
      * @param $key
      * @param $data
      * @return mixed

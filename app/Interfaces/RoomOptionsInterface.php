@@ -7,6 +7,12 @@ namespace App\Interfaces;
 interface RoomOptionsInterface
 {
     /**
+     * @param $roomOptionType
+     * @return mixed
+     */
+    public function getRoomOptions($roomOptionType): mixed;
+
+    /**
      * @return mixed
      */
     public function getFST(): mixed;

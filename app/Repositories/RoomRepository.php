@@ -28,8 +28,18 @@ class RoomRepository implements RoomInterface
     }
 
     /**
+     * @return mixed
+     */
+    public function getTopRooms(): mixed
+    {
+        return $this->model->take(3)->get();
+    }
+
+    /**
      * @param $skip
      * @param $take
+     * @param $startDate
+     * @param $endDate
      * @return mixed
      */
     public function getRooms($skip, $take, $startDate, $endDate): mixed
@@ -77,9 +87,9 @@ class RoomRepository implements RoomInterface
 
     /**
      * @param $data
-     * @return mixed
+     * @return array
      */
-    public function checkAvailableRooms($data): mixed
+    public function checkAvailableRooms($data): array
     {
         $startDate = $data['startDate'];
         $endDate = $data['endDate'];
@@ -125,9 +135,9 @@ class RoomRepository implements RoomInterface
 
     /**
      * @param $data
-     * @return mixed
+     * @return int
      */
-    public function getAvailableRoomsTotalCount($data): mixed
+    public function getAvailableRoomsTotalCount($data): int
     {
         $startDate = $data['startDate'];
         $endDate = $data['endDate'];

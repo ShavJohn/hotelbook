@@ -13,8 +13,15 @@ interface RoomInterface
     public function addRoom($data): mixed;
 
     /**
+     * @return mixed
+     */
+    public function getTopRooms(): mixed;
+
+    /**
      * @param $skip
      * @param $take
+     * @param $startDate
+     * @param $endDate
      * @return mixed
      */
     public function getRooms($skip, $take, $startDate, $endDate): mixed;

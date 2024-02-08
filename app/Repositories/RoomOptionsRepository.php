@@ -16,6 +16,15 @@ class RoomOptionsRepository implements RoomOptionsInterface
     }
 
     /**
+     * @param $roomOptionType
+     * @return mixed
+     */
+    public function getRoomOptions($roomOptionType): mixed
+    {
+        return $this->model->where('type', $roomOptionType)->get();
+    }
+
+    /**
      * @return mixed
      */
     public function getFST(): mixed

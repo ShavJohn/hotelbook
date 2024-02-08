@@ -23,6 +23,14 @@ class GeneralSettingsRepository implements GeneralSettingsInterface
     }
 
     /**
+     * @return mixed
+     */
+    public function getAboutUsPageContent(): mixed
+    {
+        return $this->model->where('key', 'aboutUsPageContent')->get();
+    }
+
+    /**
      * @param $key
      * @param $data
      * @return mixed

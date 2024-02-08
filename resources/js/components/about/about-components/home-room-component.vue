@@ -1,15 +1,11 @@
 <template>
     <div class="home-room-component-styling">
-        <img src="http://www.nicdarkthemes.com/themes/hotel-inn/wp/demo/inn-suites/wp-content/uploads/sites/2/2021/12/parallax-26.jpg">
+        <img :src="`${imagePrefix}/${backgroundImage}`">
         <div class="room-price">
             <span>From {{ price }}$</span>
         </div>
         <div class="room-info">
             <h3>{{ roomName }}</h3>
-            <div>
-                <font-awesome-icon icon="fa-solid fa-user" />
-                <span>{{ guestCount }}</span>
-            </div>
         </div>
     </div>
 </template>

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RoomRequest;
+use App\Interfaces\GeneralSettingsInterface;
 use App\Interfaces\ImageInterface;
 use App\Interfaces\RoomInterface;
+use App\Interfaces\RoomOptionsInterface;
 use App\Models\Room;
+use App\Models\RoomOptions;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -18,10 +21,47 @@ class RoomController extends Controller
 
     private ImageInterface $imageRepo;
 
-    public function __construct(RoomInterface $room, ImageInterface $imageRepo)
+    private RoomOptionsInterface $roomOptionsRepo;
+
+    private GeneralSettingsInterface $generalSettingsRepo;
+
+    public function __construct(RoomInterface $room, ImageInterface $imageRepo, RoomOptionsInterface $roomOptionsRepo, GeneralSettingsInterface $generalSettingsRepo)
     {
         $this->roomRepo = $room;
         $this->imageRepo = $imageRepo;
+        $this->roomOptionsRepo = $roomOptionsRepo;
+        $this->generalSettingsRepo = $generalSettingsRepo;
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function getAboutUsPageData(): JsonResponse
+    {
+        try {
+
+            $topRooms = $this->roomRepo->getTopRooms();
+            $services = $this->roomOptionsRepo->getRoomOptions('services');
+            $features = $this->roomOptionsRepo->getRoomOptions('features');
+            $aboutUsContent = $this->generalSettingsRepo->getAboutUsPageContent();
+
+
+            return response()->json([
+                'success' => 1,
+                'type' => 'success',
+                'topRooms' => $topRooms,
+                'services' => $services,
+                'features' => $features,
+                'aboutUsContent' => $aboutUsContent
+            ], 200);
+        } catch (\Exception $exception) {
+            Log::error($exception);
+            return response()->json([
+                'success' => 0,
+                'type' => 'error',
+                'message'  => 'Something went wrong',
+            ], 422);
+        }
     }
 
     /**
