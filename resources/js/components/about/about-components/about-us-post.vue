@@ -8,7 +8,7 @@
         <div class="about-us-post-image position-relative">
             <img :src="`${imagePrefix}/${aboutUsContent.image}`">
             <div class="number-squer">
-                <animate-number :number="aboutUsContent[localeLang].yearsOfExp" :animation-time="100"/>
+                <animate-number :number="setNumber(aboutUsContent[localeLang].yearsOfExp)" :animation-time="100"/>
                 <span>Years of Experience</span>
             </div>
         </div>
@@ -31,6 +31,11 @@ export default {
     name: "about-us-post",
     components: {AboutUsPostEditModal, AnimateNumber},
     mixins: [aboutUsMixins],
+    methods: {
+        setNumber(number) {
+            return number ? number : 0
+        }
+    }
 }
 </script>
 

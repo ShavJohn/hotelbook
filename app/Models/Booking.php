@@ -26,7 +26,8 @@ class Booking extends Model
         'checkOut',
         'startDate',
         'endDate',
-        'message'
+        'message',
+        'guest_note'
     ];
 
 

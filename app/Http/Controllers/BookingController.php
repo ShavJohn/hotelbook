@@ -137,6 +137,7 @@ class BookingController extends Controller
                 'checkIn' => $updatedBooking['checkIn'],
                 'checkOut' => $updatedBooking['checkOut'],
                 'message' => $updatedBooking['message'] ?: '',
+                'guest_note' => $updatedBooking['guest_note'] ?: '',
                 'startDate' => Carbon::parse($updatedBooking['startDate'])->setHour($updatedBooking['checkIn'])->format('Y-m-d H:i:s'),
                 'endDate' => Carbon::parse($updatedBooking['endDate'])->setHour($updatedBooking['checkOut'])->format('Y-m-d H:i:s'),
             ];
@@ -154,7 +155,7 @@ class BookingController extends Controller
             return  response()->json([
                 'success' => 1,
                 'type' => 'success',
-                'message' => $isRoomBooked ? 'Booking has been updated but room is booked' : 'Booking has been updated',
+                'message' => 'Booking has been updated',
             ]);
         } catch (\Exception $exception) {
             DB::rollBack();

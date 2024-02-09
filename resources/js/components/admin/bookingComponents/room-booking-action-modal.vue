@@ -92,6 +92,10 @@
                     <span class="input-name">Guests Message</span>
                     <p class="booking-message">{{ bookedRoomData.message }}</p>
                 </div>
+                <div class="input-elements">
+                    <span class="input-name">Guests Note</span>
+                    <textarea v-model="bookedRoomData.guest_note" placeholder="Enter Note"></textarea>
+                </div>
             </form>
         </template>
         <template #modal-footer>
