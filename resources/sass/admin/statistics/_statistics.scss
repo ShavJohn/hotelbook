@@ -1,0 +1,92 @@
+.statistics-page-container {
+    min-height: 91vh;
+    background-color: $light-blue;
+    padding: 50px;
+
+    .statistics-elements-container {
+        background-color: $white;
+        padding: 30px;
+        border-radius: 15px;
+
+        .statistics-btn-container {
+            display: flex;
+            justify-content: end;
+            margin-bottom: 30px;
+
+            .statistics-filter {
+                width: 150px;
+            }
+        }
+
+        .statistics-widget-container {
+            display: flex;
+            gap: 30px;
+
+            .statistics-widget {
+                width: 25%;
+                padding: 30px;
+                border-radius: 15px;
+                background-color: $light-blue;
+
+                h2 {
+                    text-align: center;
+                    font-size: 25px;
+                    margin: 0;
+                }
+
+                .statistics-data-container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-top: 10px;
+
+                    svg {
+                        font-size: 30px;
+                        color: $dark-yellow;
+                    }
+
+                    h3 {
+                        font-size: 40px;
+                    }
+                }
+            }
+        }
+
+        .statistics-chart-container {
+            margin-top: 60px;
+        }
+    }
+}
+
+@media screen and ( max-width: 1300px){
+    .statistics-page-container {
+        .statistics-elements-container {
+            .statistics-widget-container {
+                flex-wrap: wrap;
+
+                .statistics-widget {
+                    width: 48%;
+                }
+            }
+        }
+    };
+}
+
+@media screen and ( max-width: 950px){
+    .statistics-page-container {
+        .statistics-elements-container {
+            .statistics-btn-container {
+                .statistics-filter {
+                    width: 100%;
+                }
+            }
+            .statistics-widget-container {
+                flex-wrap: wrap;
+
+                .statistics-widget {
+                    width: 100%;
+                }
+            }
+        }
+    };
+}

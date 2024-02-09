@@ -11,7 +11,9 @@ import store from './vuex'
 import i18n from './i18n'
 import VueProgressBar from "@aacassandra/vue3-progressbar";
 import VueLazyLoad from "vue3-lazyload";
-import mian from './mixins/main'
+import mian from './mixins/main';
+import {Chart, registerables } from 'chart.js';
+import {BarChart, LineChart, PieChart } from 'vue-chart-3';
 
 import moment from 'moment'
 
@@ -57,6 +59,10 @@ import App from './views/App';
 
 Vue.component('App', App);
 Vue.component("font-awesome-icon", FontAwesomeIcon)
+Chart.register(...registerables);
+Vue.component('BarChart', BarChart);
+Vue.component('LineChart', LineChart);
+Vue.component('PieChart', PieChart);
 
 const outside = {
     beforeMount: (el, binding) => {

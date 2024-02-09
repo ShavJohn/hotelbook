@@ -10,6 +10,7 @@ use App\Interfaces\PostInterface;
 use App\Interfaces\RoomFSTInterface;
 use App\Interfaces\RoomInterface;
 use App\Interfaces\RoomOptionsInterface;
+use App\Interfaces\StatisticsInterface;
 use App\Repositories\BookingRepository;
 use App\Repositories\EmailRepository;
 use App\Repositories\GeneralSettingsRepository;
@@ -18,6 +19,7 @@ use App\Repositories\PostRepository;
 use App\Repositories\RoomFSTRepository;
 use App\Repositories\RoomOptionsRepository;
 use App\Repositories\RoomRepository;
+use App\Repositories\StatisticsRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -66,6 +68,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             BookingInterface::class,
             BookingRepository::class
+        );
+        $this->app->bind(
+            StatisticsInterface::class,
+            StatisticsRepository::class
         );
     }
 }
