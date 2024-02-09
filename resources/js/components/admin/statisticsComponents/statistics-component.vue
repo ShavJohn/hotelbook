@@ -3,7 +3,7 @@
         <div class="statistics-elements-container">
             <div class="statistics-btn-container">
                 <select name="statistics-filter" class="statistics-filter">
-                    <option v-for="statisticOption in statisticsOption" :value="statisticOption">{{ statisticOption }}</option>
+                    <option v-for="statisticOption in statisticsOption" :value="statisticOption.value">{{ statisticOption.name }}</option>
                 </select>
             </div>
             <div class="statistics-widget-container">
@@ -28,10 +28,22 @@ export default {
     data() {
         return {
             statisticsOption: [
-                'Week',
-                'Month',
-                'Year'
-
+                {
+                    name: 'Week',
+                    value: 'week'
+                },
+                {
+                    name: 'Month',
+                    value: 'month'
+                },
+                {
+                    name: 'Year',
+                    value: 'year'
+                },
+                {
+                    name: 'All Time',
+                    value: 'all_time'
+                },
             ],
             chartData: {
                 labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],

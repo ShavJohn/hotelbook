@@ -161,7 +161,6 @@ export default {
                     context.commit('setIfRoomFiltered', true)
                     resolve(res)
                 }).catch(err => {
-                    console.log(err)
                     context.dispatch('alert/alertResponse', {
                         'type': err.data.type,
                         'status': err.status,

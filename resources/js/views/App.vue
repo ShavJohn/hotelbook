@@ -54,6 +54,9 @@ export default {
                     })
                 })
             })
+        },
+        countVisitors(){
+
         }
     },
     async created() {
@@ -83,6 +86,7 @@ export default {
     },
     mounted() {
         this.getGeneralData()
+        this.countVisitors()
     }
 }
 </script>
