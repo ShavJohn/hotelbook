@@ -64,7 +64,7 @@ class AuthController extends Controller
                     return response()->json([
                         'success' => 1,
                         'type' => 'success',
-                        'message'  => 'You are Logged in',
+                        'message'  => trans('main.logged_in'),
                         'authUser' => $user,
                         'token' => $accessToken,
                     ], 200);

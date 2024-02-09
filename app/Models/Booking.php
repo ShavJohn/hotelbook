@@ -19,6 +19,7 @@ class Booking extends Model
         'country',
         'city',
         'address',
+        'daily_price',
         'guestCount',
         'bookingStatus',
         'checkIn',

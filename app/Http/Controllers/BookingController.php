@@ -40,6 +40,7 @@ class BookingController extends Controller
                 'country' => $bookingData->guestData['country'],
                 'city' => $bookingData->guestData['city'],
                 'address' => $bookingData->guestData['address'],
+                'daily_price' => $bookingData['chosenRoom']['ru']['adult_price'] ? $bookingData['chosenRoom']['ru']['adult_price'] : ($bookingData['chosenRoom']['en']['adult_price'] ? $bookingData['chosenRoom']['en']['adult_price'] : ''),
                 'guestCount' => $bookingData->guestCount,
                 'bookingStatus' => 'pending',
                 'checkIn' => $bookingData->guestData['checkIn'],

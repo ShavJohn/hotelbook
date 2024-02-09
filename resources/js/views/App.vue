@@ -56,8 +56,8 @@ export default {
             })
         },
         countVisitors(){
-
-        }
+            this.$store.dispatch('statistics/countVisitor')
+        },
     },
     async created() {
         this.$Progress.start()

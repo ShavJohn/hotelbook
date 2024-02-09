@@ -10,6 +10,7 @@ class Statistics extends Model
     use HasFactory;
 
     protected $fillable = [
+        'key',
         'statistics_date',
         'statistics_count',
         'statistics_data',

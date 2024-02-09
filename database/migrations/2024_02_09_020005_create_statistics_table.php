@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('statistics', function (Blueprint $table) {
             $table->id();
+            $table->string('key');
             $table->date('statistics_date');
             $table->integer('statistics_count');
-            $table->json('statistics_data');
+            $table->json('statistics_data')->nullable();
             $table->timestamps();
         });
     }
