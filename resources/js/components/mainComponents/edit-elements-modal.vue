@@ -14,8 +14,6 @@
         </template>
         <template #modal-body>
             <form class="modal-inputs-container overflow-modal">
-                <pre>{{ headerData }}</pre>
-                {{ elementEditModalType }}
                 <template v-if="elementEditModalType === 'footer-section'">
                     <div class="input-elements">
                         <span class="input-name">Footer text</span>
