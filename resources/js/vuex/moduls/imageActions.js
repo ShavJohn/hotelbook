@@ -20,7 +20,7 @@ export default {
         },
         imageDelete(context, data) {
             return new Promise((resolve, reject) => {
-                axios.delete(`/delete-image/${data}`).then((res) => {
+                axios.delete(`/imagedel/${data}`).then((res) => {
                     resolve(res)
                 }).catch((err) => {
                     context.dispatch('alert/alertResponse', {
