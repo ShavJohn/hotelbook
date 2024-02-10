@@ -66,7 +66,7 @@ export default {
         deleteImage(imageName, key, list) {
             this.$store.dispatch('imageActions/imageDelete', imageName).then((res) => {
                 if(res.data.success) {
-                    this.$store.state.pageSettings.headerData.header_home_background_image = ''
+                    this.$store.state.pageSettings.headerData[key] = ''
 
                     this.$store.dispatch('alert/alertResponse', {
                         'type': res?.data?.type,

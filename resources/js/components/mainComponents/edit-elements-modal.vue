@@ -14,6 +14,8 @@
         </template>
         <template #modal-body>
             <form class="modal-inputs-container overflow-modal">
+                <pre>{{ headerData }}</pre>
+                {{ elementEditModalType }}
                 <template v-if="elementEditModalType === 'footer-section'">
                     <div class="input-elements">
                         <span class="input-name">Footer text</span>
@@ -28,15 +30,15 @@
                     <div class="input-elements">
                         <span class="input-name">Background Image</span>
                         <label v-if="!headerData[elementEditModalType]?.length">
-                        <span class="image-action-btn">
-                            <font-awesome-icon icon="fa-solid fa-file-arrow-up" />
-                        </span>
-                            <input type="file" class="hidden" name="image" @change="uploadImage($event)">
-                        </label>
+                            <span class="image-action-btn">
+                                <font-awesome-icon icon="fa-solid fa-file-arrow-up" />
+                            </span>
+                                <input type="file" class="hidden" name="image" @change="uploadImage($event)">
+                            </label>
                         <div v-else class="image-content">
                             <img v-if="headerData[elementEditModalType] && headerData[elementEditModalType]?.length" :src="`${imagePrefix}/${headerData[elementEditModalType]}`">
                             <div class="image-action-btn">
-                                <font-awesome-icon icon="fa-solid fa-xmark" @click="deleteImage(headerData[elementEditModalType])" />
+                                <font-awesome-icon icon="fa-solid fa-xmark" @click="deleteImage(headerData[elementEditModalType], elementEditModalType)" />
                             </div>
                         </div>
                     </div>

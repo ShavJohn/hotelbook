@@ -15,7 +15,7 @@
         @if(get_meta_title())
             <title>{{ get_meta_title() }}</title>
         @else
-            <title>{{ config('app.name', 'HotelBook') }}</title>
+            <title>{{ config('app.name', 'Guest House Avet') }}</title>
         @endif
 
         @if(get_meta_desc())

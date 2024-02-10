@@ -31,7 +31,7 @@
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Room Image</span>
-                    <label v-if="!aboutUsContent.image.length" :key="imagesUploaded">
+                    <label v-if="!aboutUsContent.image && aboutUsContent.image.length" :key="imagesUploaded">
                         <span class="image-action-btn">
                             <font-awesome-icon icon="fa-solid fa-file-arrow-up" />
                         </span>

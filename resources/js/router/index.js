@@ -45,7 +45,7 @@ const router = createRouter({
 
 router.beforeEach(async (toRoute, fromRoute, next) => {
     if(toRoute.meta && toRoute.meta.title) {
-        if(Object.keys(toRoute.params).length) {
+        if(toRoute.params && Object.keys(toRoute.params) && Object.keys(toRoute.params).length) {
             let metaData = toRoute.params[toRoute.meta.title].replace('-', ' ')
             window.document.title = metaData.toUpperCase()
         } else {
