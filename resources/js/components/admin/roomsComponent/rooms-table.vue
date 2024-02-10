@@ -16,18 +16,20 @@
             </thead>
             <tbody>
                 <tr v-if="!tableContentLoader" v-for="(roomData, key) in roomsData">
-                    <td>{{ key = (key +1) + skip }}</td>
-                    <td class="hide-on-mobile">{{ roomData.number }}</td>
-                    <td><img :src="`${imagePrefix}/${roomData.main_image}`"></td>
-                    <td class="hide-on-large-tablet">{{ roomData[dataLang].name }}</td>
-                    <td class="hide-on-large-tablet hide-on-laptop">{{ displayType(roomData.room_options)[dataLang].name }}</td>
-                    <td class="hide-on-large-tablet hide-on-laptop"><div class="tag-container"><span v-for="feature in displayFeatures(roomData.room_options)" class="custom-tag">{{ feature[dataLang].name }}</span></div></td>
-                    <td class="hide-on-large-tablet hide-on-laptop"><div class="tag-container"><span v-for="service in displayServices(roomData.room_options)" class="custom-tag">{{ service[dataLang].name }}</span></div></td>
-                    <td class="hide-on-tablet">Available</td>
-                    <td>
-                        <button type="button" class="room-table-action-btn btn-bg-yellow" @click="openRoomEditModal(roomData)">Edit</button>
-                        <button type="button" class="room-table-action-btn btn-bg-red" @click="openRemoveRoomModal(roomData.id)">Remove</button>
-                    </td>
+                    <template v-if="roomData && roomData[dataLang]">
+                        <td>{{ key = (key +1) + skip }}</td>
+                        <td class="hide-on-mobile">{{ roomData.number }}</td>
+                        <td><img :src="`${imagePrefix}/${roomData.main_image}`"></td>
+                        <td class="hide-on-large-tablet">{{ roomData[dataLang].name }}</td>
+                        <td class="hide-on-large-tablet hide-on-laptop">{{ displayType(roomData.room_options)[dataLang].name }}</td>
+                        <td class="hide-on-large-tablet hide-on-laptop"><div class="tag-container"><span v-for="feature in displayFeatures(roomData.room_options)" class="custom-tag">{{ feature[dataLang].name }}</span></div></td>
+                        <td class="hide-on-large-tablet hide-on-laptop"><div class="tag-container"><span v-for="service in displayServices(roomData.room_options)" class="custom-tag">{{ service[dataLang].name }}</span></div></td>
+                        <td class="hide-on-tablet">Available</td>
+                        <td>
+                            <button type="button" class="room-table-action-btn btn-bg-yellow" @click="openRoomEditModal(roomData)">Edit</button>
+                            <button type="button" class="room-table-action-btn btn-bg-red" @click="openRemoveRoomModal(roomData.id)">Remove</button>
+                        </td>
+                    </template>
                 </tr>
             </tbody>
         </table>

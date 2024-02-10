@@ -77,8 +77,7 @@ class ImageController extends Controller
     public function deleteImage($image): JsonResponse
     {
         try {
-
-            $res = $this->filemenager->delete($image);
+            $this->filemenager->delete($image);
 
             return response()->json([
                 'success' => 1,
