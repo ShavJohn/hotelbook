@@ -44,7 +44,7 @@ window.axios.interceptors.response.use(
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-window.imagePrefix = `${process.env.MIX_APP_URL}/storage`;
+window.imagePrefix = `/storage`;
 
 let token = document.head.querySelector('meta[name="csrf-token"]');
 
