@@ -4,7 +4,7 @@
             <button class="back-page-btn" @click="goToPage('RoomSearch')">
                 <font-awesome-icon icon="fa-solid fa-arrow-left" />
             </button>
-            <h2>Add Extra Services</h2>
+            <h2>{{ $t('add_extra_services') }}</h2>
             <ul class="extra-services-list">
 <!--                <li v-for="roomFeature in roomFeatures">-->
 <!--                    <input type="checkbox" :id="roomFeature.type" :name="roomFeature.type" @change="tuggleData(roomFeature)">-->
@@ -16,53 +16,53 @@
                 </li>
             </ul>
         </div>
-        <h2 class="margin-top-large">Add Your Information</h2>
+        <h2 class="margin-top-large">{{ $t('add_your_information') }}</h2>
         <div class="booked-room-inputs-container">
             <div class="booked-room-input">
-                <label for="user-name">Name</label>
-                <input id="user-name" type="text" name="user-name" placeholder="Enter your name"
+                <label for="user-name">{{ $t('name') }}</label>
+                <input id="user-name" type="text" name="user-name" :placeholder="$t('enter_your') + ' ' + $t('name')"
                        v-model="bookingData.guestData.name">
                 <div class="input-delimiter"></div>
             </div>
             <div class="booked-room-input">
-                <label for="user-lastname">Lastname</label>
-                <input id="user-lastname" type="text" name="user-lastname" placeholder="Enter your lastname"
+                <label for="user-lastname">{{ $t('lastname') }}</label>
+                <input id="user-lastname" type="text" name="user-lastname" :placeholder="$t('enter_your') + ' ' + $t('lastname')"
                         v-model="bookingData.guestData.lastname">
                 <div class="input-delimiter"></div>
             </div>
             <div class="booked-room-input">
-                <label for="user-email">Email</label>
-                <input id="user-email" type="email" name="user-email" placeholder="Enter your email"
+                <label for="user-email">{{ $t('email') }}</label>
+                <input id="user-email" type="email" name="user-email" :placeholder="$t('enter_your') + ' ' + $t('email')"
                         v-model="bookingData.guestData.email">
                 <div class="input-delimiter"></div>
             </div>
             <div class="booked-room-input">
-                <label for="user-phone">Phone</label>
-                <input id="user-phone" type="tel" name="user-phone" placeholder="Enter your phone"
+                <label for="user-phone">{{ $t('phone') }}</label>
+                <input id="user-phone" type="tel" name="user-phone" :placeholder="$t('enter_your') + ' ' + $t('phone')"
                        v-model="bookingData.guestData.phone">
                 <div class="input-delimiter"></div>
             </div>
             <div class="booked-room-input">
-                <label for="user-address">Address</label>
-                <input id="user-address" type="text" name="user-address" placeholder="Enter your address"
+                <label for="user-address">{{ $t('address') }}</label>
+                <input id="user-address" type="text" name="user-address" :placeholder="$t('enter_your') + ' ' + $t('address')"
                        v-model="bookingData.guestData.address">
                 <div class="input-delimiter"></div>
             </div>
             <div class="booked-room-input">
-                <label for="user-city">City</label>
-                <input id="user-city" type="text" name="user-city" placeholder="Enter your city"
+                <label for="user-city">{{ $t('city') }}</label>
+                <input id="user-city" type="text" name="user-city" :placeholder="$t('enter_your') + ' ' + $t('city')"
                        v-model="bookingData.guestData.city">
                 <div class="input-delimiter"></div>
             </div>
             <div class="booked-room-input">
-                <label for="user-country">Country</label>
-                <input id="user-country" type="text" name="user-country" placeholder="Enter your country"
+                <label for="user-country">{{ $t('country') }}</label>
+                <input id="user-country" type="text" name="user-country" :placeholder="$t('enter_your') + ' ' + $t('country')"
                        v-model="bookingData.guestData.country">
                 <div class="input-delimiter"></div>
             </div>
             <div class="booked-room-dropdown">
                 <div class="hour-dropdowns">
-                    <label for="user-country">Check-In</label>
+                    <label for="user-country">{{ $t('check_in') }}</label>
                     <drop-down>
                         <template #button>
                             {{ bookingData.guestData.checkIn }}
@@ -73,7 +73,7 @@
                     </drop-down>
                 </div>
                 <div class="hour-dropdowns">
-                    <label for="user-country">Check-Out</label>
+                    <label for="user-country">{{ $t('check_out') }}</label>
                     <drop-down>
                         <template #button>
                             {{ bookingData.guestData.checkOut }}
@@ -85,13 +85,13 @@
                 </div>
             </div>
             <div class="booked-room-input text-area">
-                <label>Message</label>
-                <textarea id="user-message"  name="user-message" placeholder="Enter your message"
+                <label>{{ $t('message') }}</label>
+                <textarea id="user-message"  name="user-message" :placeholder="$t('enter_your') + ' ' + $t('message')"
                           v-model="bookingData.guestData.message"></textarea>
                 <div class="input-delimiter"></div>
             </div>
             <button class="chosen-room-checkout-btn" @click="checkout()">
-                Checkout
+                {{ $t('check_out') }}
             </button>
         </div>
     </div>

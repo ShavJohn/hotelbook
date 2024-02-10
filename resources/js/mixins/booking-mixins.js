@@ -9,19 +9,19 @@ export default {
         return {
             bookingIndicators: [
                 {
-                    name: 'Search',
+                    name: 'search',
                     routeName: 'RoomSearch'
                 },
                 {
-                    name: 'Bookings',
+                    name: 'bookings',
                     routeName: 'RoomBook'
                 },
                 {
-                    name: 'Checkout',
+                    name: 'check_out',
                     routeName: 'RoomCheckout'
                 },
                 {
-                    name: 'Thank you',
+                    name: 'thank_you',
                     routeName: 'RoomFinishBooking'
                 }
             ],

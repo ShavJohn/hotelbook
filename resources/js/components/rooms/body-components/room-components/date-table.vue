@@ -1,7 +1,7 @@
 <template>
     <div class="date-table">
         <div class="date-square hb-justify-content-around margin-bottom-large">
-            <span>Check-In</span>
+            <span>{{ $t('check_in') }}</span>
             <div id="start-date-calendar" class="rooms-booking-button-container">
                 <Datepicker :locale="en" class="cursor-pointer" v-model="bookingDate.startDate" inputFormat="dd" :lowerLimit="today"></Datepicker>
                 <div class="dropdown-calendar">
@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="date-square hb-justify-content-around margin-bottom-large">
-            <span>Check-Out</span>
+            <span>{{ $t('check_out') }}</span>
             <div id="end-date-calendar" class="rooms-booking-button-container">
                 <Datepicker class="cursor-pointer" v-model="bookingDate.endDate" inputFormat="dd" :lowerLimit="endDayLimit"></Datepicker>
                 <div class="dropdown-calendar">
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="date-square hb-justify-content-around">
-            <span>Guests</span>
+            <span>{{ $t('guests') }}</span>
             <div class="hb-flex hb-align-items-center hb-justify-content-center room-guest-count-container">
                 <span>{{ bookingData.guestCount }}</span>
                 <div class="room-guest-count-btn">
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="date-square hb-justify-content-around">
-            <span>Nights</span>
+            <span>{{ $t('nights') }}</span>
             <b class="nights-count-styling">{{ parseInt((bookingDate.endDate - bookingDate.startDate) / (1000 * 60 * 60 * 24), 10) }}</b>
         </div>
     </div>

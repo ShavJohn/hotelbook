@@ -4,20 +4,20 @@
             <button class="back-page-btn" @click="goToPage('RoomBook')">
                 <font-awesome-icon icon="fa-solid fa-arrow-left" />
             </button>
-            <h2>Your Information</h2>
+            <h2>{{ $t('add_your_information') }}</h2>
             <ul>
-                <li><span>Name:</span><span>{{ bookingData.guestData.name }}</span></li>
-                <li><span>Lastname:</span><span>{{ bookingData.guestData.lastname }}</span></li>
-                <li><span>Email:</span><span>{{ bookingData.guestData.email }}</span></li>
-                <li><span>Phone:</span><span>{{ bookingData.guestData.phone }}</span></li>
-                <li><span>Address:</span><span>{{ bookingData.guestData.address }}</span></li>
-                <li><span>City:</span><span>{{ bookingData.guestData.city }}</span></li>
-                <li><span>County:</span><span>{{ bookingData.guestData.country }}</span></li>
-                <li><span>Check-In:</span><span>{{ bookingData.guestData.checkIn }}</span></li>
-                <li><span>Check-Out:</span><span>{{ bookingData.guestData.checkOut }}</span></li>
-                <li><span>Message:</span><span>{{ bookingData.guestData.message }}</span></li>
+                <li><span>{{ $t('name') }}:</span><span>{{ bookingData.guestData.name }}</span></li>
+                <li><span>{{ $t('lastname') }}:</span><span>{{ bookingData.guestData.lastname }}</span></li>
+                <li><span>{{ $t('email') }}:</span><span>{{ bookingData.guestData.email }}</span></li>
+                <li><span>{{ $t('phone') }}:</span><span>{{ bookingData.guestData.phone }}</span></li>
+                <li><span>{{ $t('address') }}:</span><span>{{ bookingData.guestData.address }}</span></li>
+                <li><span>{{ $t('city') }}:</span><span>{{ bookingData.guestData.city }}</span></li>
+                <li><span>{{ $t('country') }}:</span><span>{{ bookingData.guestData.country }}</span></li>
+                <li><span>{{ $t('check_in') }}:</span><span>{{ bookingData.guestData.checkIn }}</span></li>
+                <li><span>{{ $t('check_out') }}:</span><span>{{ bookingData.guestData.checkOut }}</span></li>
+                <li><span>{{ $t('message') }}:</span><span>{{ bookingData.guestData.message }}</span></li>
             </ul>
-            <h3>Extra Services:</h3>
+            <h3>{{ $t('extra_services') }}:</h3>
             <div class="extra-services-tag-container">
                 <span v-for="extraService in bookingData.guestData.extraServices">{{ extraService[localeLang].name }}</span>
             </div>
@@ -41,7 +41,7 @@
 <!--                </template>-->
 <!--            </div>-->
             <button class="chosen-room-checkout-btn" @click="bookRoom()">
-                Book Now
+                {{ $t('book_now') }}
             </button>
         </div>
     </div>

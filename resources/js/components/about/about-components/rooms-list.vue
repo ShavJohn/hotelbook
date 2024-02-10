@@ -1,8 +1,8 @@
 <template>
     <div class="home-rooms-component-container">
         <div class="all-rooms-btn">
-            <h1>All Rooms</h1>
-            <button @click="$router.push({name: 'RoomSearch'})">View All</button>
+            <h1>{{ $t('all_rooms') }}</h1>
+            <button @click="$router.push({name: 'RoomSearch'})">{{ $t('view_all') }}</button>
         </div>
         <div class="rooms-list-container">
             <home-room-component v-for="topRoom in topRooms" :price="topRoom[localeLang].adult_price"

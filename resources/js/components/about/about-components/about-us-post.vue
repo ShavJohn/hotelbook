@@ -9,14 +9,14 @@
             <img :src="`${imagePrefix}/${aboutUsContent.image}`">
             <div class="number-squer">
                 <animate-number :number="setNumber(aboutUsContent[localeLang].yearsOfExp)" :animation-time="100"/>
-                <span>Years of Experience</span>
+                <span>{{ $t('years_of_experience') }}</span>
             </div>
         </div>
         <div class="about-us-post-text">
             <h2>{{ aboutUsContent[localeLang].title }}</h2>
             <p>{{ aboutUsContent[localeLang].content }}</p>
             <hr>
-            <strong class="margin-top">Main Mail</strong>
+            <strong class="margin-top">{{ $t('main_mail') }}</strong>
             <p class="margin-top">{{ email.value }}</p>
         </div>
         <about-us-post-edit-modal/>

@@ -2,13 +2,13 @@
     <div  class="room-book-container-last-step">
         <div>
             <div class="finish-message-container">
-                <h2>Thank You!</h2>
-                <p>Your booking is in progress.We will contact you soon via email to confirm your booking</p>
+                <h2>{{ $t('thank_you') }}!</h2>
+                <p>{{ $t('booking_process_message') }}</p>
                 <font-awesome-icon icon="fa-solid fa-check" />
             </div>
             <div class="finish-booking-btn-container">
                 <button class="chosen-room-checkout-btn" @click="$router.push({name: 'Home'})">
-                    Go to home
+                    {{ $t('go_to_home') }}
                 </button>
             </div>
         </div>

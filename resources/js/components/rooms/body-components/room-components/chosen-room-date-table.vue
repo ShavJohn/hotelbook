@@ -6,10 +6,10 @@
         </div>
         <div class="date-table">
             <div class="your-reservation">
-                <span>Your Reservation</span>
+                <span>{{ $t('your_reservation') }}</span>
             </div>
             <div class="date-square hb-justify-content-between margin-bottom-large">
-                <span>Check-In</span>
+                <span>{{ $t('check_in') }}</span>
                 <div class="rooms-booking-chosen-dates-container">
                     <span class="booking-day">{{ dateFormat(bookingDate.startDate, 'DD') }}</span>
                     <span class="booking-month-year">{{ dateFormat(bookingDate.startDate, 'MMM YYYY') }}</span>
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="date-square hb-justify-content-between margin-bottom-large">
-                <span>Check-Out</span>
+                <span>{{ $t('check_out') }}</span>
                 <div class="rooms-booking-chosen-dates-container">
                     <span class="booking-day">{{ dateFormat( bookingDate.endDate , 'DD') }}</span>
                     <span class="booking-month-year">{{ dateFormat( bookingDate.endDate , 'MMM YYYY') }}</span>
@@ -25,17 +25,17 @@
                 </div>
             </div>
             <div class="date-square hb-justify-content-around">
-                <span>Guests</span>
+                <span>{{ $t('guests') }}</span>
                 <div class="hb-flex hb-align-items-center hb-justify-content-center room-guest-count-container">
                     <span>{{ bookingData.guestCount }}</span>
                 </div>
             </div>
             <div class="date-square hb-justify-content-around">
-                <span>Nights</span>
+                <span>{{ $t('nights') }}</span>
                 <b class="nights-count-styling">{{ parseInt((bookingDate.endDate - bookingDate.startDate) / (1000 * 60 * 60 * 24), 10) }}</b>
             </div>
             <div class="total-mount-of-reservation">
-                <span>Total</span>
+                <span>{{ $t('total') }}</span>
                 <span>{{ (bookingData?.chosenRoom[localeLang]?.adult_price ? bookingData.chosenRoom[localeLang].adult_price : 1) * daysCount}}$</span>
             </div>
         </div>

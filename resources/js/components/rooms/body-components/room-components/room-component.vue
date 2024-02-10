@@ -3,7 +3,7 @@
         <div class="room-image">
             <img :src="`${imagePrefix}/${roomData.main_image}`"/>
             <div class="room-status" :class="roomData.busy ? 'busy' : 'available'">
-                <span>{{ roomData.busy ? 'Busy' : 'Available' }}</span>
+                <span>{{ roomData.busy ? $t('busy') : $t('available') }}</span>
             </div>
         </div>
         <div class="room-info-card">
@@ -15,7 +15,7 @@
                 </div>
                 <p>{{ roomData[localeLang].description }}</p>
                 <button v-if="!roomData.busy" @click="chooseRoom(roomData)">
-                    <span>Book Now For {{ roomData[localeLang].adult_price }} $</span>
+                    <span>{{ $t('book_now_for') }} {{ roomData[localeLang].adult_price }} $</span>
                 </button>
             </div>
             <div class="room-features">
@@ -23,7 +23,7 @@
                 <div class="feature-icons">
 
                 </div>
-                <button @click="checkRoomIfBusy(roomData.busy)"><router-link :to="{ name: 'Room', params: { room: roomData.id}}">Full Info </router-link></button>
+                <button @click="checkRoomIfBusy(roomData.busy)"><router-link :to="{ name: 'Room', params: { room: roomData.id}}">{{ $t('full_info') }}</router-link></button>
             </div>
         </div>
     </div>
