@@ -21,9 +21,9 @@ export default {
         imageDelete(context, data) {
             return new Promise((resolve, reject) => {
 
-                const randomParam = Math.floor(Math.random() * 1000000);
+                const encodedImageName = encodeURIComponent(data);
 
-                axios.delete(`/delete-image/${data}?_=${randomParam}`).then((res) => {
+                axios.delete(`/delete-image/${encodedImageName}`).then((res) => {
                     resolve(res)
                 }).catch((err) => {
                     context.dispatch('alert/alertResponse', {
