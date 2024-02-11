@@ -43,13 +43,15 @@ export default {
             state.features = data.features
         },
         setAboutUsContent(state, data) {
-            state.aboutUsContent.en.title = data.aboutUsContent.json_value.en.title ? data.aboutUsContent.json_value.en.title : ''
-            state.aboutUsContent.ru.title = data.aboutUsContent.json_value.ru.title ? data.aboutUsContent.json_value.ru.title : ''
-            state.aboutUsContent.en.content = data.aboutUsContent.json_value.en.content ? data.aboutUsContent.json_value.en.content : ''
-            state.aboutUsContent.ru.content = data.aboutUsContent.json_value.ru.content ? data.aboutUsContent.json_value.ru.content : ''
-            state.aboutUsContent.en.yearsOfExp = data.aboutUsContent.json_value.en.yearsOfExp ? data.aboutUsContent.json_value.en.yearsOfExp : ''
-            state.aboutUsContent.ru.yearsOfExp = data.aboutUsContent.json_value.ru.yearsOfExp ? data.aboutUsContent.json_value.ru.yearsOfExp : ''
-            state.aboutUsContent.image = data.aboutUsContent.value ? data.aboutUsContent.value : ''
+            if(data.aboutUsContent && data.aboutUsContent.json_value) {
+                state.aboutUsContent.en.title = data.aboutUsContent.json_value.en.title ? data.aboutUsContent.json_value.en.title : ''
+                state.aboutUsContent.ru.title = data.aboutUsContent.json_value.ru.title ? data.aboutUsContent.json_value.ru.title : ''
+                state.aboutUsContent.en.content = data.aboutUsContent.json_value.en.content ? data.aboutUsContent.json_value.en.content : ''
+                state.aboutUsContent.ru.content = data.aboutUsContent.json_value.ru.content ? data.aboutUsContent.json_value.ru.content : ''
+                state.aboutUsContent.en.yearsOfExp = data.aboutUsContent.json_value.en.yearsOfExp ? data.aboutUsContent.json_value.en.yearsOfExp : ''
+                state.aboutUsContent.ru.yearsOfExp = data.aboutUsContent.json_value.ru.yearsOfExp ? data.aboutUsContent.json_value.ru.yearsOfExp : ''
+                state.aboutUsContent.image = data.aboutUsContent.value ? data.aboutUsContent.value : ''
+            }
         },
         setImage(state, data) {
             state.aboutUsContent.image = data
