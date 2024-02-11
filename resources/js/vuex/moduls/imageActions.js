@@ -20,7 +20,10 @@ export default {
         },
         imageDelete(context, data) {
             return new Promise((resolve, reject) => {
-                axios.delete(`/delete-image/${data}`).then((res) => {
+
+                const randomParam = Math.floor(Math.random() * 1000000);
+
+                axios.delete(`/delete-image/${data}?_=${randomParam}`).then((res) => {
                     resolve(res)
                 }).catch((err) => {
                     context.dispatch('alert/alertResponse', {
