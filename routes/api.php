@@ -63,8 +63,8 @@ Route::group(['middleware' => 'api'], function() {
 
         //image routes
         Route::post('/upload-image', 'App\Http\Controllers\ImageController@uploadImage');
-        Route::delete('/imagedel/{image}', 'App\Http\Controllers\ImageController@deleteImage');
-        Route::delete('/deleteimage-from-db/{image}', 'App\Http\Controllers\ImageController@deleteImageFromDB');
+        Route::post('/delete-image/{image}', 'App\Http\Controllers\ImageController@deleteImage');
+        Route::post('/delete-image-from-db/{image}', 'App\Http\Controllers\ImageController@deleteImageFromDB');
 
         //General Settings
         Route::post('/upload-logo', 'App\Http\Controllers\GeneralSettingsController@uploadLogo');
