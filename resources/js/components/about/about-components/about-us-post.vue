@@ -6,7 +6,7 @@
             </div>
         </template>
         <div class="about-us-post-image position-relative">
-            <img :src="`${imagePrefix}/${aboutUsContent.image}`">
+            <img v-if="aboutUsContent.image && aboutUsContent.image.length" :src="`${imagePrefix}/${aboutUsContent.image}`">
             <div class="number-squer">
                 <animate-number :number="setNumber(aboutUsContent[localeLang].yearsOfExp)" :animation-time="100"/>
                 <span>{{ $t('years_of_experience') }}</span>
