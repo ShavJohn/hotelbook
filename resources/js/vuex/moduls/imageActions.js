@@ -21,9 +21,10 @@ export default {
         imageDelete(context, data) {
             return new Promise((resolve, reject) => {
 
-                const encodedImageName = encodeURIComponent(data);
+                const dotIndex = data.lastIndexOf('.');
+                let imageName = data.substring(0, dotIndex);
 
-                axios.delete(`/delete-image/${encodedImageName}`).then((res) => {
+                axios.delete(`/delete-image/${imageName}`).then((res) => {
                     resolve(res)
                 }).catch((err) => {
                     context.dispatch('alert/alertResponse', {
@@ -37,7 +38,10 @@ export default {
         },
         imageDeleteFromDb(context, data) {
             return new Promise((resolve, reject) => {
-                axios.delete(`/delete-image-from-db/${data}`, {
+                const dotIndex = data.lastIndexOf('.');
+                let imageName = data.substring(0, dotIndex);
+
+                axios.delete(`/delete-image-from-db/${imageName}`, {
                     data: data
                 }).then((res) => {
 

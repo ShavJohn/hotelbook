@@ -95,6 +95,7 @@ class ImageRepository implements ImageInterface
      */
     public function deleteByImageName($image): mixed
     {
+        $image = $image . '.webp';
         return $this->model->where('image', $image)->delete();
     }
 }

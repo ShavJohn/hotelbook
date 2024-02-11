@@ -41,7 +41,7 @@ class ImageController extends Controller
         try {
             $file = $request->file('image');
             $filePath = $file->path();
-            $fileExtension = 'jpg';
+            $fileExtension = 'webp';
             $uniqueName = time() . '_' . str_shuffle('local_project_image') . '_' . time();
             $newImageName = $uniqueName . '.' . $fileExtension;
 

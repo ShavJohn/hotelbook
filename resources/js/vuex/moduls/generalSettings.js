@@ -115,7 +115,11 @@ export default {
         },
         logoDelete(context, data) {
             return new Promise((resolve, reject) => {
-                axios.delete(`/delete-logo/${data}`).then((res) => {
+
+                const dotIndex = data.lastIndexOf('.');
+                let imageName = data.substring(0, dotIndex);
+
+                axios.delete(`/delete-logo/${imageName}`).then((res) => {
                     context.state.logo.value = ''
                     resolve(res)
                 }).catch((err) => {

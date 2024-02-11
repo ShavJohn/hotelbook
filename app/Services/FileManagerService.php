@@ -145,6 +145,7 @@ class FileManagerService
     public function delete($path): JsonResponse
     {
         try {
+            $path = $path . '.webp';
             $prefix = $path[0] === '/' ? 'public' : 'public/';
             if($this->disk->exists($prefix . $path)) {
                 $this->disk->delete($prefix . $path);
