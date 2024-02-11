@@ -1,7 +1,7 @@
 <template>
     <div class="responsive-background-image position-relative display-edit-elements" :style="(headerData.header_home_background_image && headerData.header_home_background_image?.length) && `background-image: url(${imagePrefix}/${headerData.header_home_background_image})`">
         <div class="background-image-filter">
-            <animate-text class="header-text-styling" :text="headerData.header_title?.[localeLang] && headerData.header_title[localeLang]" :display-time="200"/>
+            <animate-text v-if="headerData.header_title && headerData.header_title[localeLang]" class="header-text-styling" :text="headerData.header_title?.[localeLang] && headerData.header_title[localeLang]" :display-time="200"/>
         </div>
         <template v-if="authUser">
             <div class="edit-elements header-edit-vertical-position">
