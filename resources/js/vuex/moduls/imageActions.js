@@ -34,7 +34,7 @@ export default {
         },
         imageDeleteFromDb(context, data) {
             return new Promise((resolve, reject) => {
-                axios.delete(`/delete-image-from-db/${data}`, {
+                axios.delete(`/deleteimage-from-db/${data}`, {
                     data: data
                 }).then((res) => {
 
