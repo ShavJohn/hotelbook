@@ -66,11 +66,13 @@ export default {
 
                     resolve(res)
                 }).catch(err => {
-                    context.dispatch('alert/alertResponse', {
-                        'type': err.data.type,
-                        'status': err.status,
-                        'message': err.data.message
-                    }, { root:true })
+                    if(err && err.data) {
+                        context.dispatch('alert/alertResponse', {
+                            'type': err.data.type,
+                            'status': err.status,
+                            'message': err.data.message
+                        }, { root:true })
+                    }
                     reject(err)
                 })
             })
