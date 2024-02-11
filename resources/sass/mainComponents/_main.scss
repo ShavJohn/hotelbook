@@ -57,7 +57,7 @@
 
     .edit-elements {
         position: absolute;
-        z-index: 999;
+        z-index: 998;
         padding: 25px;
         right: 100px;
         opacity: 0;
@@ -162,4 +162,13 @@
 
 ::-webkit-scrollbar-track {
     background: #fff;
+}
+
+@media screen and (max-width: 650px) {
+
+    .display-edit-elements {
+        .edit-elements, .edit-about-us-page {
+            right: 40px;
+        }
+    }
 }

@@ -328,6 +328,12 @@
             .room-info-container {
                 padding: 30px;
 
+                .room-info-inner {
+                    align-items: center;
+                    display: flex;
+                    gap: 30px;
+                }
+
                 h2 {
                     font-size: 30px;
                     font-weight: 500;
@@ -984,6 +990,11 @@
         margin-right: 0;
     }
 
+    .filter-btn-container {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
     .rooms-list, .rooms-page-item {
         width: 100% !important;
         justify-content: center;
@@ -992,7 +1003,6 @@
         .booking-room-container {
             width: 100%;
             justify-content: center;
-            padding: 30px;
         }
     }
 

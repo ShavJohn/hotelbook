@@ -86,7 +86,8 @@
             text-transform: uppercase;
             cursor: pointer;
             transition: all .5s ease-in-out;
-
+            font-weight: 700;
+            
             &:hover {
                 transform: scale(1.1);
             }
@@ -126,6 +127,7 @@
                 color: $white;
                 text-transform: uppercase;
                 letter-spacing: 3px;
+                font-weight: 700;
             }
 
             .room-info {
@@ -235,10 +237,7 @@
     }
 
     .number-squer {
-        bottom: -25px;
-        left: -25px;
-        width: 150px;
-        height: 150px;
+        display: none;
 
         span {
             text-align: center;

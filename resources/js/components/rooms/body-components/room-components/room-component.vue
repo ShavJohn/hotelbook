@@ -8,10 +8,12 @@
         </div>
         <div class="room-info-card">
             <div class="room-info-container">
-                <h2>{{ roomData[localeLang].name }}</h2>
-                <div class="room-guest-count">
-                    <font-awesome-icon icon="fa-solid fa-user" />
-                    <span>{{ roomType[localeLang].description }}</span>
+                <div class="room-info-inner">
+                    <h2>{{ roomData[localeLang].name }}</h2>
+                    <div class="room-guest-count">
+                        <font-awesome-icon icon="fa-solid fa-user" />
+                        <span>{{ roomType[localeLang].description }}</span>
+                    </div>
                 </div>
                 <p>{{ roomData[localeLang].description }}</p>
                 <button v-if="!roomData.busy" @click="chooseRoom(roomData)">

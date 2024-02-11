@@ -93,6 +93,10 @@
     .booking-button-container {
         width: 49%;
         margin-bottom: 30px;
+
+        label.cursor-pointer {
+            width: 100%;
+        }
     }
 }
 
@@ -100,6 +104,10 @@
     .booking-button-container {
         width: 100%;
         margin-bottom: 30px;
+
+        label.cursor-pointer {
+            width: 100%;
+        }
 
         &:last-of-type {
             margin-bottom: 0;

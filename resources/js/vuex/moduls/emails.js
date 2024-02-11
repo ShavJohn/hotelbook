@@ -5,7 +5,7 @@ export default {
     state: {
         contactUsMessages: [],
         selectedMessage: {},
-        displayTab: '',
+        displayTab: 'messages-list',
         currentKey: 0,
         dataFinished: false,
         unreadEmails: 0,

@@ -1,7 +1,7 @@
 .header-style {
     position: absolute;
 
-    z-index: 999;
+    z-index: 970;
     background: $white;
     background: linear-gradient(0deg, $transparent-white 0%, $half-transparent-black 100%);
     width: 100%;
@@ -68,6 +68,7 @@
     background: $light-black;
     box-shadow: -1px 0px 4px 0px $light-grey;
     overflow: hidden;
+    z-index: 1200;
 }
 
 .header-mobile-menu-list {

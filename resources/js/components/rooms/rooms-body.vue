@@ -3,7 +3,9 @@
         <div class="left-menu">
             <template v-if="$route.name == 'RoomSearch'">
                 <date-table/>
-                <button class="btn bg-dark-yellow color-white margin-top-large hb-width-100" @click="checkAvailability(bookingDate.startDate, bookingDate.endDate, bookingData.guestCount)">{{ $t('check_availability') }}</button>
+                <div class="filter-btn-container">
+                    <button class="btn bg-dark-yellow color-white margin-top-large hb-width-100" @click="checkAvailability(bookingDate.startDate, bookingDate.endDate, bookingData.guestCount)">{{ $t('check_availability') }}</button>
+                </div>
 <!--                <room-filter-component/>-->
             </template>
             <chosen-room-date-table v-else/>
