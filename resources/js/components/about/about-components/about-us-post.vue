@@ -14,7 +14,7 @@
         </div>
         <div class="about-us-post-text">
             <h2>{{ aboutUsContent[localeLang].title }}</h2>
-            <p>{{ aboutUsContent[localeLang].content }}</p>
+            <p v-html="aboutUsContent[localeLang].content"></p>
             <hr>
             <strong class="margin-top">{{ $t('main_mail') }}</strong>
             <p class="margin-top">{{ email.value }}</p>

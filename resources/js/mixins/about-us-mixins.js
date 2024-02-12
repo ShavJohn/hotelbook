@@ -2,6 +2,10 @@ export default {
     data() {
         return {
             imagesUploaded: 0,
+            options: {
+                placeholder: 'Enter Content',
+                theme: 'snow'
+            }
         }
     },
     computed: {

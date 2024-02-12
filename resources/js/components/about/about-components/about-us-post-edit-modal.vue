@@ -13,37 +13,35 @@
             </div>
         </template>
         <template #modal-body>
-            <form class="modal-inputs-container decreasing-modal-height">
-                <div class="input-elements">
-                    <span class="input-name">Title</span>
-                    <input type="text" id="Title" name="title"
-                           placeholder="Enter Title" v-model="aboutUsContent[dataLang].title">
-                </div>
-                <div class="input-elements">
-                    <span class="input-name">Content</span>
-                    <input type="text" id="content" name="content"
-                           placeholder="Enter Content" v-model="aboutUsContent[dataLang].content">
-                </div>
-                <div class="input-elements">
-                    <span class="input-name">Years of Experience</span>
-                    <input type="number" id="years-of-exp" name="years-of-exp"
-                           placeholder="Enter Your Experience" v-model="aboutUsContent[dataLang].yearsOfExp">
-                </div>
-                <div class="input-elements">
-                    <span class="input-name">Room Image</span>
-                    <label v-if="!aboutUsContent.image && !aboutUsContent.image.length" :key="imagesUploaded">
+            <form>
+                <div class="modal-inputs-container decreasing-modal-height">
+                    <div class="input-elements">
+                        <span class="input-name">Title</span>
+                        <input type="text" id="Title" name="title"
+                               placeholder="Enter Title" v-model="aboutUsContent[dataLang].title">
+                    </div>
+                    <div class="input-elements">
+                        <span class="input-name">Years of Experience</span>
+                        <input type="number" id="years-of-exp" name="years-of-exp"
+                               placeholder="Enter Your Experience" v-model="aboutUsContent[dataLang].yearsOfExp">
+                    </div>
+                    <div class="input-elements">
+                        <span class="input-name">Room Image</span>
+                        <label v-if="!aboutUsContent.image && !aboutUsContent.image.length" :key="imagesUploaded">
                         <span class="image-action-btn">
                             <font-awesome-icon icon="fa-solid fa-file-arrow-up" />
                         </span>
-                        <input type="file" class="hidden" name="image" @change="uploadAboutUsImage($event)">
-                    </label>
-                    <div v-else class="image-content">
-                        <img v-if="aboutUsContent.image && aboutUsContent.image.length" :src="`${imagePrefix}/${aboutUsContent.image}`">
-                        <div class="image-action-btn">
-                            <font-awesome-icon icon="fa-solid fa-xmark" @click="deleteAboutUsImage(aboutUsContent.image, 0, 'single')" />
+                            <input type="file" class="hidden" name="image" @change="uploadAboutUsImage($event)">
+                        </label>
+                        <div v-else class="image-content">
+                            <img v-if="aboutUsContent.image && aboutUsContent.image.length" :src="`${imagePrefix}/${aboutUsContent.image}`">
+                            <div class="image-action-btn">
+                                <font-awesome-icon icon="fa-solid fa-xmark" @click="deleteAboutUsImage(aboutUsContent.image, 0, 'single')" />
+                            </div>
                         </div>
                     </div>
                 </div>
+                <QuillEditor :options="options" contentType="html" v-model:content="aboutUsContent[dataLang].content"/>
             </form>
         </template>
         <template #modal-footer>
