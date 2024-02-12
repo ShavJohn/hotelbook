@@ -33,8 +33,15 @@ export default {
                         context.commit('authUserSetter', res.data.authUser)
                     }
                     resolve(res)
-                }).catch((error) => {
-                    reject(error)
+                }).catch((err) => {
+                    if(err && err.data) {
+                        context.dispatch('alert/alertResponse', {
+                            'type': err.data.type,
+                            'status': err.status,
+                            'message': err.data.message
+                        }, { root:true })
+                    }
+                    reject(err)
                 })
             })
         },
@@ -42,8 +49,15 @@ export default {
             return new Promise((resolve, reject) => {
                 axios.get('/check-auth').then((res) => {
                     resolve(res)
-                }).catch((error) => {
-                    reject(error)
+                }).catch((err) => {
+                    if(err && err.data) {
+                        context.dispatch('alert/alertResponse', {
+                            'type': err.data.type,
+                            'status': err.status,
+                            'message': err.data.message
+                        }, { root:true })
+                    }
+                    reject(err)
                 })
             })
         },
@@ -52,7 +66,14 @@ export default {
                 axios.post(`/change-current-user-data/${data.id}`, data).then(res => {
                     resolve(res)
                 }).catch(err => {
-                    reject.error
+                    if(err && err.data) {
+                        context.dispatch('alert/alertResponse', {
+                            'type': err.data.type,
+                            'status': err.status,
+                            'message': err.data.message
+                        }, { root:true })
+                    }
+                    reject(err)
                 })
             })
         },
@@ -61,7 +82,14 @@ export default {
                 axios.post(`/create-user`, data).then(res => {
                     resolve(res)
                 }).catch(err => {
-                    reject.error
+                    if(err && err.data) {
+                        context.dispatch('alert/alertResponse', {
+                            'type': err.data.type,
+                            'status': err.status,
+                            'message': err.data.message
+                        }, { root:true })
+                    }
+                    reject(err)
                 })
             })
         },
@@ -76,6 +104,13 @@ export default {
                     }
                     resolve(res)
                 }).catch((error) => {
+                    if(err && err.data) {
+                        context.dispatch('alert/alertResponse', {
+                            'type': err.data.type,
+                            'status': err.status,
+                            'message': err.data.message
+                        }, { root:true })
+                    }
                     reject(error)
                 })
             })

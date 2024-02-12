@@ -108,18 +108,22 @@ export default {
         deletePost(context, data) {
             return new Promise((resolve, reject) => {
                 axios.delete(`/delete-post/${data}`).then(res => {
-                    context.dispatch('alert/alertResponse', {
-                        'type': res.data.type,
-                        'status': res.status,
-                        'message': res.data.message
-                    }, { root:true })
+                    if(res && res.data) {
+                        context.dispatch('alert/alertResponse', {
+                            'type': res.data.type,
+                            'status': res.status,
+                            'message': res.data.message
+                        }, { root:true })
+                    }
                     resolve(res)
                 }).catch((err) => {
-                    context.dispatch('alert/alertResponse', {
-                        'type': err.data.type,
-                        'status': err.status,
-                        'message': err.data.message
-                    }, { root:true })
+                    if(err && err.data) {
+                        context.dispatch('alert/alertResponse', {
+                            'type': err.data.type,
+                            'status': err.status,
+                            'message': err.data.message
+                        }, {root: true})
+                    }
                     reject(err)
                 })
             })

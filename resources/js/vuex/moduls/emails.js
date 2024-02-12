@@ -63,11 +63,13 @@ export default {
                 axios.post('/send-message', data).then((res) => {
                     resolve(res)
                 }).catch((err) => {
-                    context.dispatch('alert/alertResponse', {
-                        'type': err.data.type,
-                        'status': err.status,
-                        'message': err.data.message
-                    }, { root:true })
+                    if(err && err.data) {
+                        context.dispatch('alert/alertResponse', {
+                            'type': err.data.type,
+                            'status': err.status,
+                            'message': err.data.message
+                        }, { root:true })
+                    }
                     reject(err)
                 })
             })
@@ -78,11 +80,13 @@ export default {
                     context.commit('markMessageAsRead', data.key)
                     resolve(res)
                 }).catch((err) => {
-                    context.dispatch('alert/alertResponse', {
-                        'type': err.data.type,
-                        'status': err.status,
-                        'message': err.data.message
-                    }, { root:true })
+                    if(err && err.data) {
+                        context.dispatch('alert/alertResponse', {
+                            'type': err.data.type,
+                            'status': err.status,
+                            'message': err.data.message
+                        }, { root:true })
+                    }
                     reject(err)
                 })
             })
@@ -104,11 +108,13 @@ export default {
 
                     resolve(res)
                 }).catch(err => {
-                    context.dispatch('alert/alertResponse', {
-                        'type': err.data.type,
-                        'status': err.status,
-                        'message': err.data.message
-                    }, { root:true })
+                    if(err && err.data) {
+                        context.dispatch('alert/alertResponse', {
+                            'type': err.data.type,
+                            'status': err.status,
+                            'message': err.data.message
+                        }, { root:true })
+                    }
                     reject(err)
                 })
             })
@@ -118,11 +124,13 @@ export default {
                 axios.post('/reply-to-message', data).then((res) => {
                     resolve(res)
                 }).catch((err) => {
-                    context.dispatch('alert/alertResponse', {
-                        'type': err.data.type,
-                        'status': err.status,
-                        'message': err.data.message
-                    }, { root:true })
+                    if(err && err.data) {
+                        context.dispatch('alert/alertResponse', {
+                            'type': err.data.type,
+                            'status': err.status,
+                            'message': err.data.message
+                        }, { root:true })
+                    }
                     reject(err)
                 })
             })
