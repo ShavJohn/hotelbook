@@ -112,7 +112,7 @@ class PostController extends Controller
         try {
             DB::beginTransaction();
 
-            $this->filemenager->delete($post->image_path);
+            $this->fileManagerService->delete($post->image_path);
             $this->postRepo->deletePost($post->id);
 
             DB::commit();
