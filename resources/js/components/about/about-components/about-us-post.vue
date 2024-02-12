@@ -27,6 +27,7 @@
 import AnimateNumber from "../../mainComponents/animate-number";
 import AboutUsPostEditModal from "./about-us-post-edit-modal";
 import aboutUsMixins from "../../../mixins/about-us-mixins";
+
 export default {
     name: "about-us-post",
     components: {AboutUsPostEditModal, AnimateNumber},
