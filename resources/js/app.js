@@ -14,6 +14,9 @@ import VueLazyLoad from "vue3-lazyload";
 import mian from './mixins/main';
 import {Chart, registerables } from 'chart.js';
 import {BarChart, LineChart, PieChart } from 'vue-chart-3';
+import { QuillEditor } from '@vueup/vue-quill'
+
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
 import moment from 'moment'
 
@@ -84,6 +87,8 @@ Vue.directive('outside', outside)
 
 Vue.component('Datepicker', Datepicker);
 
+Vue.component('QuillEditor', QuillEditor);
+
 Vue.mixin(mian)
 
 window.i18n = i18n;
@@ -98,6 +103,7 @@ Vue.use(VueLazyLoad, {
 })
 Vue.use(store)
 Vue.use(i18n)
+
 
 window.moment = moment
 

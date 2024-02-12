@@ -9,7 +9,7 @@
         </div>
         <div class="about-us-post-text">
             <h2>{{ currentPostData.title[localeLang] }}</h2>
-            <p>{{ currentPostData.body[localeLang] }}</p>
+            <p v-html="currentPostData.body[localeLang]"></p>
         </div>
     </div>
 </template>

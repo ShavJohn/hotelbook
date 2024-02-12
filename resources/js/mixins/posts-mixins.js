@@ -1,7 +1,11 @@
 export default {
     data() {
         return {
-            imagesUploaded: 0
+            imagesUploaded: 0,
+            options: {
+                placeholder: 'Enter Post text',
+                theme: 'snow'
+            }
         }
     },
     computed: {
@@ -22,6 +26,10 @@ export default {
             }
             this.$store.commit('postActions/setPostsModalType', type)
             $(modalId).modal("show");
+        },
+        handleEditorInput(value) {
+            console.log(value)
+            this.postData.body[this.dataLang] = value;
         },
         uploadPostImage(e) {
             let formData = new FormData()

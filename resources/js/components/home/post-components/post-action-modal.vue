@@ -14,30 +14,29 @@
             </div>
         </template>
         <template #modal-body>
-            <form class="modal-inputs-container">
-                <div class="input-elements">
-                    <span class="input-name">Room Image</span>
-                    <label v-if="!postData.image_path.length" :key="imagesUploaded">
+            <form>
+                <div class="modal-inputs-container">
+                    <div class="input-elements">
+                        <span class="input-name">Room Image</span>
+                        <label v-if="!postData.image_path.length" :key="imagesUploaded">
                         <span class="image-action-btn">
                             <font-awesome-icon icon="fa-solid fa-file-arrow-up" />
                         </span>
-                        <input type="file" class="hidden" name="image" @change="uploadPostImage($event)">
-                    </label>
-                    <div v-else class="image-content">
-                        <img v-if="postData.image_path && postData.image_path.length" :src="`${imagePrefix}/${postData.image_path}`">
-                        <div class="image-action-btn">
-                            <font-awesome-icon icon="fa-solid fa-xmark" @click="deletePostImage(postData.image_path, 0, 'single')" />
+                            <input type="file" class="hidden" name="image"  @change="uploadPostImage($event)">
+                        </label>
+                        <div v-else class="image-content">
+                            <img v-if="postData.image_path && postData.image_path.length" :src="`${imagePrefix}/${postData.image_path}`">
+                            <div class="image-action-btn">
+                                <font-awesome-icon icon="fa-solid fa-xmark" @click="deletePostImage(postData.image_path, 0, 'single')" />
+                            </div>
                         </div>
                     </div>
+                    <div class="input-elements">
+                        <span class="input-name">Post Title</span>
+                        <input type="text" id="post-title" name="post-title" placeholder="Enter Post Title" v-model="postData.title[dataLang]">
+                    </div>
                 </div>
-                <div class="input-elements">
-                    <span class="input-name">Post Title</span>
-                    <input type="text" id="post-title" name="post-title" placeholder="Enter Post Title" v-model="postData.title[dataLang]">
-                </div>
-                <div class="input-elements">
-                    <span class="input-name">Post Text</span>
-                    <textarea id="post-text" name="post-text" placeholder="Enter Post text" v-model="postData.body[dataLang]"></textarea>
-                </div>
+                <QuillEditor :options="options" contentType="html" v-model:content="postData.body[dataLang]"/>
             </form>
         </template>
         <template #modal-footer>

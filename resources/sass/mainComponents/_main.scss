@@ -26,6 +26,23 @@
     margin-left: 15px;
 }
 
+
+.ql-toolbar {
+    border: none !important;
+    background-color: #f6f6f6;
+}
+
+.ql-container {
+    background-color: #e3e9ec;
+    border: none !important;
+
+    .ql-editor {
+        min-height: 100px;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+}
+
 .tag-container {
     display: flex;
     gap: 10px;
