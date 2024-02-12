@@ -9,6 +9,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -36,6 +37,7 @@ class AuthController extends Controller
                 'message'  => 'User registered successfully',
             ], 200);
         } catch (\Exception $exception) {
+            Log::error($exception);
             return response()->json([
                 'success' => 0,
                 'type' => 'error',
@@ -82,7 +84,8 @@ class AuthController extends Controller
                 'type' => 'error',
                 'message'  => 'Something went wrong',
             ], 422);
-        } catch (\Exception $e) {
+        } catch (\Exception $exception) {
+            Log::error($exception);
             return response()->json([
                 'success' => 0,
                 'type' => 'error',
@@ -114,7 +117,8 @@ class AuthController extends Controller
                     'authUser' => [],
                 ], 200);
             }
-        } catch (\Exception $e) {
+        } catch (\Exception $exception) {
+            Log::error($exception);
             return response()->json([
                 'success' => 0,
                 'type' => 'error',
@@ -131,19 +135,19 @@ class AuthController extends Controller
     public function changeUserData(Request $request, User $user): JsonResponse
     {
         try {
-            if($user) {
+            if($user->id) {
                 if(!$request->name || !$request->email) {
                     if(!$request->name) {
                         return response()->json([
                             'success' => 0,
                             'type' => 'error',
-                            'message'  => 'Your name fild is required',
+                            'message'  => 'Your name field is required',
                         ]);
                     } else {
                         return response()->json([
                             'success' => 0,
                             'type' => 'error',
-                            'message'  => 'Your email fild is required',
+                            'message'  => 'Your email field is required',
                         ]);
                     }
                 } else {
@@ -182,20 +186,18 @@ class AuthController extends Controller
                     $user->name = $request->name;
 
                     if($request->email !== $user->email) {
-                        if($request->email) {
-                            $emailValidate = $request->validate([
-                                'email'  =>  'email|unique:users',
-                            ]);
+                        $emailValidate = $request->validate([
+                            'email'  =>  'email|unique:users',
+                        ]);
 
-                            if($emailValidate) {
-                                $user->email = $request->email;
-                            } else {
-                                return response()->json([
-                                    'success' => 0,
-                                    'type' => 'error',
-                                    'message'  => 'Email is already taken',
-                                ]);
-                            }
+                        if($emailValidate) {
+                            $user->email = $request->email;
+                        } else {
+                            return response()->json([
+                                'success' => 0,
+                                'type' => 'error',
+                                'message'  => 'Email is already taken',
+                            ]);
                         }
                     }
 
@@ -217,6 +219,7 @@ class AuthController extends Controller
                 ], 422);
             }
         } catch (\Exception $exception) {
+            Log::error($exception);
             return response()->json([
                 'success' => 0,
                 'type' => 'error',
@@ -240,7 +243,8 @@ class AuthController extends Controller
                 'type' => 'success',
                 'message'  => 'You are Logged out',
             ]);
-        } catch (\Exception $e) {
+        } catch (\Exception $exception) {
+            Log::error($exception);
             return response()->json([
                 'success' => 0,
                 'type' => 'error',

@@ -63,7 +63,7 @@ export default {
         },
         saveUserChanges(context, data) {
             return new Promise((resolve, reject) => {
-                axios.post(`/change-current-user-data/${data.id}`, data).then(res => {
+                axios.put(`/change-current-user-data/${data.id}`, data).then(res => {
                     resolve(res)
                 }).catch(err => {
                     if(err && err.data) {

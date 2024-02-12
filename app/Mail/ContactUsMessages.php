@@ -35,7 +35,7 @@ class ContactUsMessages extends Mailable implements ShouldQueue
         $mailData = $this->data;
 
         return $this
-            ->from($mailData['email'])
+            ->from(config('mail.from.address'), config('mail.from.name'))
             ->subject('New Message from customer')
             ->markdown('emails.contactUs')
             ->with($mailData);
