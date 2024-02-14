@@ -15,7 +15,7 @@
                         <span>{{ roomType[localeLang].description }}</span>
                     </div>
                 </div>
-                <p>{{ roomData[localeLang].description }}</p>
+                <p v-html="roomData[localeLang].description" class="trim-room-desc"></p>
                 <button v-if="!roomData.busy" @click="chooseRoom(roomData)">
                     <span>{{ $t('book_now_for') }} {{ roomData[localeLang].adult_price }} $</span>
                 </button>

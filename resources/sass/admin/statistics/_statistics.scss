@@ -90,3 +90,14 @@
         }
     };
 }
+
+
+@media screen and ( max-width: 680px){
+    .statistics-page-container {
+        padding: 10px 0;
+
+        .statistics-elements-container {
+            padding: 10px;
+        }
+    }
+}

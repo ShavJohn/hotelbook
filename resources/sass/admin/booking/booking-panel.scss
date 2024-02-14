@@ -196,3 +196,16 @@
     }
 
 }
+
+
+@media screen and ( max-width: 680px){
+    .room-booking-panel {
+        padding: 10px;
+
+        .table-btn-container, .color-coding-container {
+            justify-content: center;
+            gap: 10px;
+        }
+
+    }
+}

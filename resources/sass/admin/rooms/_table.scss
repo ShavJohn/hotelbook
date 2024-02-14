@@ -80,3 +80,21 @@
         font-weight: 600;
     }
 }
+
+@media screen and ( max-width: 680px){
+    .room-actions-container {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px 10px 0 !important;
+
+         .room-action-btn {
+             margin-right: 0 !important;
+         }
+    }
+
+    .rooms-table-container {
+        padding: 10px 0;
+    }
+}

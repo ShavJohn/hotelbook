@@ -19,9 +19,7 @@
                 </div>
             </div>
             <div class="room-info-container">
-                <p>
-                    {{ roomData[localeLang].description }}
-                </p>
+                <p v-html="roomData[localeLang].description"></p>
             </div>
         </div>
         <div v-if="!roomBusy" class="right-menu">

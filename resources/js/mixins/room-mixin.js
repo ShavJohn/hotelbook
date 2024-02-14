@@ -21,7 +21,11 @@ export default {
             currentPage: 1,
             pageCount: 5,
             removeRoomId: 0,
-            testType: "Double"
+            testType: "Double",
+            options: {
+                placeholder: 'Enter Content',
+                theme: 'snow'
+            }
         }
     },
     watch: {

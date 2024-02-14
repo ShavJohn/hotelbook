@@ -17,45 +17,46 @@
         border-right: 1px solid $light-yellow;
         background-color: #ebebeb;
 
-        .read {
-            background-color: #f9f7f4;
-        }
-
-        .unread {
-            background-color: #b09e82;
-
-            h4 {
-                color: white;
-            }
-
-            span {
-                color: white;
-            }
-        }
-
         .list-element {
             cursor: pointer;
             transition: background-color .5s ease-in-out;
             padding: 20px;
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            align-items: flex-start;
             border-bottom: 1px solid $light-yellow;
 
             .mail-sender-info {
 
                 h4 {
-                    color: $light-yellow;
+                    color: #7A6D5D;
                     transition: color .5s ease-in-out;
                 }
 
                 .mail-from-container {
+                    display: flex;
+                    gap: 5px;
+
                     span:first-of-type {
                         margin-right: 10px;
                         font-weight: 700;
-                        color: $light-yellow;
+                        color: #7A6D5D;
                         transition: color .5s ease-in-out;
                     }
+
+                    p {
+                        white-space: nowrap;
+                        width: 140px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+
+                .mail-from-message {
+                    white-space: nowrap;
+                    width: 180px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
             }
 
@@ -68,13 +69,13 @@
                 transition: background-color .5s ease-in-out;
 
                 h4 {
-                    color: $dark-yellow;
+                    color: #7A6D5D;
                     transition: color .5s ease-in-out;
                 }
 
                 .mail-from-container {
                     span:first-of-type {
-                        color: $dark-yellow;
+                        color: #7A6D5D;
                         transition: color .5s ease-in-out;
                     }
                 }
@@ -216,6 +217,38 @@
             }
         }
     }
+
+    .read {
+        background-color: #f9f7f4;
+    }
+
+    .unread {
+        background-color: #DED0BB;
+
+        h4 {
+            color: #112643 !important;
+        }
+
+        .mail-from-container {
+
+
+            span:first-of-type {
+                color: #112643 !important;
+            }
+
+            p {
+                color: #112643 !important;
+            }
+        }
+
+        .mail-from-message {
+            color: #112643 !important;
+        }
+
+        span {
+            color: #112643;
+        }
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -232,6 +265,10 @@
 
 
 @media screen and (max-width: 680px) {
+    .message-container {
+        padding: 10px 0;
+    }
+
     .message-section-height {
         height: 60% !important;
 

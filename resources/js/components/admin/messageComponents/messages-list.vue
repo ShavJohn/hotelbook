@@ -4,9 +4,9 @@
             <h4>Customer request</h4>
             <div class="mail-from-container">
                 <span>from:</span>
-                <span>{{ message.email }}</span>
+                <p>{{ message.email }}</p>
             </div>
-            <span>{{ message.message }}</span>
+            <p class="mail-from-message">{{ message.message }}</p>
         </div>
         <div class="mail-date">
             <span>{{  formatDate(message.created_at) }}</span>
