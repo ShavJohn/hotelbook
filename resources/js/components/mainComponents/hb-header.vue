@@ -24,7 +24,7 @@
                     <font-awesome-icon @click="openMenu = !openMenu" class="color-white font-20 cursor-pointer" icon="fa-solid fa-xmark" />
                 </div>
                 <div class="padding">
-                    <select id="header-choose-language-mobile" name="header-choose-language-mobile" class="language-dropdown">
+                    <select id="header-choose-language-mobile" name="header-choose-language-mobile" class="language-dropdown" v-model="$store.state.generalSettings.localeLang" @change="changeLang()">
                         <option value="en">EN</option>
                         <option value="ru">RU</option>
                     </select>
