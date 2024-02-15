@@ -12,13 +12,13 @@
     "devDependencies": {
         "@popperjs/core": "^2.10.2",
         "babel-preset-es2015": "^6.24.1",
-        "browser-sync": "^3.0.2",
+        "browser-sync": "^2.29.3",
         "browser-sync-webpack-plugin": "^2.3.0",
         "jquery": "^3.6.1",
         "laravel-mix": "^6.0.49",
         "sass": "^1.54.8",
         "sass-loader": "^13.0.2",
-        "vue": "^3.2.47",
+        "vue": "^3.4.19",
         "vue-loader": "^17.0.0",
         "vue-template-compiler": "^2.7.10",
         "webpack": "^5.74.0"
