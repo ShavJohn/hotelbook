@@ -23,7 +23,10 @@
             </template>
         </div>
         <div class="bg-dark-black padding-medium hb-flex hb-justify-content-center">
-            <span class="color-white font-16">&copy; {{ new Date().getFullYear() }} {{ $t('all_rights_belong_to') }} HotelBook.com</span>
+            <span class="color-white font-16">&copy; {{ new Date().getFullYear() }} {{ $t('all_rights_belong_to') }} guesthouseavet.com</span>
+        </div>
+        <div class="bg-dark-black padding-bottom-medium hb-flex hb-justify-content-center">
+            <span class="color-white font-16">WebSite is created by <a href="https://www.linkedin.com/in/shavarsh-john-karapetyan-83130b22b/">ShavJohn</a></span>
         </div>
     </div>
 </template>
