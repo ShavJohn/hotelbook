@@ -49,6 +49,8 @@ class GeneralSettingsController extends Controller
             $businessHours = '';
             $metaTitle = '';
             $metaDesc = '';
+            $termsAndConditions = [];
+            $bookingConfirmEmail = [];
             foreach ($generalSettings as $setting) {
                 if($setting->key === 'logo') {
                     $logo = $setting->value;
@@ -68,6 +70,10 @@ class GeneralSettingsController extends Controller
                     $metaTitle = $setting->value;
                 }  elseif($setting->key === 'metaDesc') {
                     $metaDesc = $setting->value;
+                }  elseif($setting->key === 'termsAndConditions') {
+                    $termsAndConditions = $setting->json_value;
+                }  elseif($setting->key === 'bookingConfirmEmail') {
+                    $bookingConfirmEmail = $setting->json_value;
                 }
             }
 
@@ -80,7 +86,9 @@ class GeneralSettingsController extends Controller
                 'fax' => $fax ?: '',
                 'businessHours' => $businessHours ?: '',
                 'metaTitle' => $metaTitle ?: '',
-                'metaDesc' => $metaDesc ?: ''
+                'metaDesc' => $metaDesc ?: '',
+                'termsAndConditions' => $termsAndConditions ?: [],
+                'bookingConfirmEmail' => $bookingConfirmEmail ?: []
             ];
             return response()->json([
                 'success' => 1,
@@ -181,7 +189,7 @@ class GeneralSettingsController extends Controller
             $settingsData = $request->all();
             DB::beginTransaction();
             foreach ($settingsData as $data) {
-                $this->generalSettingsRepo->updateOrCreateData($data['key'], $data['value'] === null ? '' : $data['value']);
+                $this->generalSettingsRepo->updateOrCreateData($data['key'], $data);
             }
             DB::commit();
             return response()->json([

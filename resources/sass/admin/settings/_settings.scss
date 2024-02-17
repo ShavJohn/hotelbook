@@ -38,6 +38,16 @@
 
             .settings-content {
 
+                .general-settings-language-options-container{
+                    display: flex;
+                    justify-content: end;
+                    margin-bottom: 30px;
+
+                    .general-settings-language-options {
+                        width: 100px;
+                    }
+                }
+
                 .settings-element {
                     display: flex;
                     align-items: center;
@@ -72,9 +82,35 @@
                         overflow-y: auto;
                     }
 
+                    .settings-element-edit-container {
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 30px;
+                        align-items: center;
+                        width: 50%;
+
+                        .terms-and-conditions-switch-container {
+                            svg {
+                                font-size: 30px;
+                            }
+
+                            .fa-toggle-on {
+                                color: #4ec50c;
+                            }
+                        }
+
+                        .settings-quill-container {
+                            width: 90%;
+                        }
+                    }
+
+                    .settings-quill-container {
+                        width: 50%;
+                    }
+
                 }
 
-                button {
+                .settings-button {
                     background-color: $dark-yellow;
                     color: white;
                     padding: 10px 30px;
@@ -101,7 +137,7 @@
                 margin-right: 0 !important;
             }
 
-            input, textarea {
+            input, textarea, .settings-quill-container, .settings-element-edit-container {
                 width: 100% !important;
             }
         }

@@ -37,29 +37,30 @@ class GeneralSettingsRepository implements GeneralSettingsInterface
      */
     public function updateOrCreateData($key, $data): mixed
     {
+        $data['value'] = $data['value'] === null ? '' : $data['value'];
         if($this->ifExist($key)) {
-            if($key === 'aboutUsPageContent') {
+            if($key === 'aboutUsPageContent' || $key === 'termsAndConditions' || $key === 'bookingConfirmEmail') {
                 return $this->model->where('key', $key)->update([
-                    'value' => $data['value'],
-                    'json_value' => $data['json_value']
+                    'value' => $data['value'] ?: '',
+                    'json_value' => $data['json_value'] ?: ''
                 ]);
             } else {
                 return $this->model->where('key', $key)->update([
-                    'value' => $data
+                    'value' => $data['value'] ?: '',
                 ]);
             }
         } else {
-            if($key === 'aboutUsPageContent') {
+            if($key === 'aboutUsPageContent' || $key === 'termsAndConditions' || $key === 'bookingConfirmEmail') {
                 $myData = [
                     'key' => $key,
-                    'value' => $data['value'],
-                    'json_value' => $data['json_value']
+                    'value' => $data['value'] ?: '',
+                    'json_value' => $data['json_value'] ?: ''
                 ];
                 return $this->model->create($myData);
             } else {
                 $myData = [
                     'key' => $key,
-                    'value' => $data,
+                    'value' => $data['value'] ?: '',
                 ];
                 return $this->model->create($myData);
             }

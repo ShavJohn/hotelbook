@@ -39,6 +39,23 @@ export default {
             key: 'metaDesc',
             value: '',
         },
+        termsAndConditions: {
+            key: 'termsAndConditions',
+            value: '',
+            json_value: {
+                en: '',
+                ru: '',
+                termsAdnConditionsSwitch: false
+            }
+        },
+        bookingConfirmEmail: {
+            key: 'bookingConfirmEmail',
+            value: '',
+            json_value: {
+                en: '',
+                ru: '',
+            }
+        }
     },
     getters: {
         openSideBar(state) {
@@ -70,6 +87,12 @@ export default {
         },
         metaDesc(state) {
             return state.metaDesc
+        },
+        termsAndConditions(state) {
+            return state.termsAndConditions
+        },
+        bookingConfirmEmail(state) {
+            return state.bookingConfirmEmail
         }
     },
     mutations: {
@@ -96,6 +119,19 @@ export default {
         },
         metaDescSetter(state, data) {
             state.metaDesc.value = data.metaDesc ? data.metaDesc : ''
+        },
+        termsAndConditions(state, data) {
+            if(data.termsAndConditions) {
+                state.termsAndConditions.json_value.en = data.termsAndConditions.en ? data.termsAndConditions.en : ''
+                state.termsAndConditions.json_value.ru = data.termsAndConditions.ru ? data.termsAndConditions.ru : ''
+                state.termsAndConditions.json_value.termsAdnConditionsSwitch = data.termsAndConditions.termsAdnConditionsSwitch ? data.termsAndConditions.termsAdnConditionsSwitch : false
+            }
+        },
+        bookingConfirmEmail(state, data) {
+            if(data.bookingConfirmEmail) {
+                state.bookingConfirmEmail.json_value.en = data.bookingConfirmEmail.en ? data.bookingConfirmEmail.en : ''
+                state.bookingConfirmEmail.json_value.ru = data.bookingConfirmEmail.ru ? data.bookingConfirmEmail.ru : ''
+            }
         }
     },
     actions: {
@@ -162,6 +198,8 @@ export default {
                     context.commit('businessHoursSetter', res.data.setting)
                     context.commit('metaTitleSetter', res.data.setting)
                     context.commit('metaDescSetter', res.data.setting)
+                    context.commit('termsAndConditions', res.data.setting)
+                    context.commit('bookingConfirmEmail', res.data.setting)
                     resolve(res)
                 }).catch((err) => {
                     if(err && err.data) {

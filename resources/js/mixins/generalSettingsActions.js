@@ -1,4 +1,16 @@
 export default {
+    data() {
+        return {
+            optionsTermsAndConditions: {
+                placeholder: 'Enter Term and conditions text',
+                theme: 'snow'
+            },
+            optionsBookingConfirmEmail: {
+                placeholder: 'Enter Booking Confirm Email text',
+                theme: 'snow'
+            }
+        }
+    },
     computed: {
         logo() {
             return this.$store.getters['generalSettings/logo']
@@ -23,6 +35,12 @@ export default {
         },
         metaDesc() {
             return this.$store.getters['generalSettings/metaDesc']
+        },
+        termsAndConditions() {
+            return this.$store.getters['generalSettings/termsAndConditions']
+        },
+        bookingConfirmEmail() {
+            return this.$store.getters['generalSettings/bookingConfirmEmail']
         },
         authUser() {
             return this.$store.getters['auth/authUserGetter']
@@ -72,6 +90,8 @@ export default {
                 this.$store.state.generalSettings.businessHours,
                 this.$store.state.generalSettings.metaTitle,
                 this.$store.state.generalSettings.metaDesc,
+                this.$store.state.generalSettings.termsAndConditions,
+                this.$store.state.generalSettings.bookingConfirmEmail,
             ]
             this.$store.dispatch('generalSettings/updateGeneralSettings', data).then((res) => {
                 this.$store.dispatch('alert/alertResponse', {

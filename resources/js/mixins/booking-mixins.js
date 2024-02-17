@@ -34,7 +34,8 @@ export default {
             openServicesMenu: false,
             paymentMethod: 'payOnArrive',
             cardData: '',
-            animationStarted: false
+            animationStarted: false,
+            termsAndConditionsCheckBox: false,
         }
     },
     computed: {
@@ -43,6 +44,9 @@ export default {
         },
         bookingDate() {
             return this.$store.getters['bookings/getBookingDate']
+        },
+        termsAndConditions() {
+            return this.$store.getters['generalSettings/termsAndConditions']
         },
     },
     watch: {
@@ -75,12 +79,32 @@ export default {
             this.$store.dispatch('rooms/getAvailableRooms', data)
             this.$router.push({name: 'RoomSearch'})
         },
+        confirmTermsAndConditions() {
+            if(this.termsAndConditionsCheckBox) {
+                $('#terms-and-conditions').modal('hide')
+                this.$store.dispatch('bookings/bookingRoom', this.bookingData).then(res => {
+                    if(res.data.success) {
+                        this.$router.push({name: 'RoomFinishBooking'})
+                    }
+                })
+            } else {
+                this.$store.dispatch('alert/alertResponse', {
+                    'type': 'error',
+                    'status': 0,
+                    'message': 'Please check conditions'
+                })
+            }
+        },
         bookRoom() {
-            this.$store.dispatch('bookings/bookingRoom', this.bookingData).then(res => {
-                if(res.data.success) {
-                    this.$router.push({name: 'RoomFinishBooking'})
-                }
-            })
+            if(this.termsAndConditions && this.termsAndConditions.json_value && Object.keys(this.termsAndConditions.json_value).length && this.termsAndConditions.json_value.termsAdnConditionsSwitch) {
+                $('#terms-and-conditions').modal('show')
+            } else {
+                this.$store.dispatch('bookings/bookingRoom', this.bookingData).then(res => {
+                    if(res.data.success) {
+                        this.$router.push({name: 'RoomFinishBooking'})
+                    }
+                })
+            }
         },
         tuggleData(data) {
             if(!this.bookingData.guestData.extraServices.find(item => item.id === data.id)) {

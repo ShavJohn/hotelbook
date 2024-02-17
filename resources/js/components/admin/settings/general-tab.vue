@@ -1,5 +1,11 @@
 <template>
     <form class="settings-content">
+        <div class="general-settings-language-options-container">
+            <select name="general-settings-language" id="general-settings-language" class="general-settings-language-options" v-model="dataLang">
+                <option value="en">EN</option>
+                <option value="ru">RU</option>
+            </select>
+        </div>
         <div class="settings-element">
             <label for="web-name">Web Site Name</label>
             <input id="web-name" name="web-name" type="text" placeholder="Enter Name" v-model="companyName.value">
@@ -43,7 +49,25 @@
             <label for="meta-desc">Meta Description for Google search engine</label>
             <textarea id="meta-desc" type="text" placeholder="Enter Meta Description for Google search engine" v-model="metaDesc.value"></textarea>
         </div>
-        <button @click.prevent="updateGeneralSettings()">Update Settings</button>
+        <div class="settings-element">
+            <label>Terms And Conditions text</label>
+            <div class="settings-element-edit-container">
+                <div class="terms-and-conditions-switch-container" @click="termsAndConditions.json_value.termsAdnConditionsSwitch = !termsAndConditions.json_value.termsAdnConditionsSwitch">
+                    <font-awesome-icon v-if="termsAndConditions.json_value.termsAdnConditionsSwitch" icon="fa-solid fa-toggle-on" />
+                    <font-awesome-icon v-else icon="fa-solid fa-toggle-off" />
+                </div>
+                <div class="settings-quill-container">
+                    <QuillEditor :options="optionsTermsAndConditions" contentType="html" v-model:content="termsAndConditions.json_value[dataLang]"/>
+                </div>
+            </div>
+        </div>
+        <div class="settings-element">
+            <label>Booking Confirm Email text</label>
+            <div class="settings-quill-container">
+                <QuillEditor :options="optionsBookingConfirmEmail" contentType="html" v-model:content="bookingConfirmEmail.json_value[dataLang]"/>
+            </div>
+        </div>
+        <button @click.prevent="updateGeneralSettings()" class="settings-button">Update Settings</button>
     </form>
 </template>
 

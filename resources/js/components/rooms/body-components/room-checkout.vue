@@ -40,16 +40,43 @@
 <!--                    -->
 <!--                </template>-->
 <!--            </div>-->
-            <button class="chosen-room-checkout-btn" @click="bookRoom()">
-                {{ $t('book_now') }}
-            </button>
         </div>
+        <modals modal-id="terms-and-conditions">
+            <template #modal-header>
+                <h4>Terms and Conditions</h4>
+                <div>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </template>
+            <template #modal-body>
+                <div class="terms-and-conditions-container">
+                    <div class="terms-and-conditions-text" v-html="termsAndConditions.json_value[localeLang]"></div>
+                    <div class="terms-and-conditions-input">
+                        <input type="checkbox" id="agree-to-conditions" name="agree-to-conditions" v-model="termsAndConditionsCheckBox">
+                        <label for="agree-to-conditions">
+                            Agree to terms and conditions
+                        </label>
+                    </div>
+                </div>
+            </template>
+            <template #modal-footer>
+                <button type="button" data-bs-dismiss="modal" aria-label="Close" class="modal-btn btn-grey close">Close</button>
+                <button type="button" class="modal-btn btn-action" @click="confirmTermsAndConditions()">Confirm</button>
+            </template>
+        </modals>
+        <button class="chosen-room-checkout-btn" @click="bookRoom()">
+            {{ $t('book_now') }}
+        </button>
     </div>
 </template>
 
 <script>
 import BookingMixins from "../../../mixins/booking-mixins";
 import { StripeElementCard } from '@vue-stripe/vue-stripe';
+import Modals from "../../mainComponents/modals";
+
 
 let pubKey = process.env.STRIPE_PUBLISHABLE_KEY
 
@@ -57,13 +84,8 @@ export default {
     name: "room-checkout",
     mixins: [BookingMixins],
     components: {
+        Modals,
         StripeElementCard
-    },
-    data () {
-        return {
-            token: null,
-            publishableKey: pubKey
-        };
     },
     methods: {
         submit () {

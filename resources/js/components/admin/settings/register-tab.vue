@@ -16,7 +16,7 @@
             <label for="new-user-password-confirm">New User Password Confirm</label>
             <input id="new-user-password-confirm" type="text" placeholder="Enter New User Password Confirm"  v-model="newUser.passwordConfirm">
         </div>
-        <button @click.prevent="createUser()" class="hm-btn-style">Save Changes</button>
+        <button @click.prevent="createUser()" class="hm-btn-style settings-button">Save Changes</button>
     </form>
 </template>
 

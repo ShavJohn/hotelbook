@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const { DefinePlugin } = require('webpack');
 
 /*
  |--------------------------------------------------------------------------
@@ -10,6 +11,14 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+
+mix.webpackConfig({
+    plugins: [
+        new DefinePlugin({
+            '__VUE_PROD_HYDRATION_MISMATCH_DETAILS__': JSON.stringify(false)
+        })
+    ]
+});
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')

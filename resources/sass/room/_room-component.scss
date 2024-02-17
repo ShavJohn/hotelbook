@@ -725,6 +725,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 60%;
 
     .finish-message-container {
 
@@ -805,6 +806,23 @@
         background-color: $dark-yellow;
         color: $white;
         border: double;
+    }
+}
+
+.terms-and-conditions-container {
+   padding: 30px;
+    max-height: 350px;
+    overflow-y: auto;
+
+    .terms-and-conditions-input {
+        margin-top: 20px;
+
+        input[type='checkbox'] {
+            accent-color: #c35f00;
+            color: white;
+            margin-right: 20px;
+        }
+
     }
 }
 

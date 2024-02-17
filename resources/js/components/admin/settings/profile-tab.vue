@@ -24,7 +24,7 @@
             <label for="new-password-confirm">New Password Confirm</label>
             <input id="new-password-confirm" type="password" autocomplete="off" placeholder="Enter Your Confirm Password" v-model="currentUser.newPasswordConfirm">
         </div>
-        <button @click.prevent="saveChanges()" class="hm-btn-style">Save Changes</button>
+        <button @click.prevent="saveChanges()" class="hm-btn-style settings-button">Save Changes</button>
     </form>
 </template>
 
