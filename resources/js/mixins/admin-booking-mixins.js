@@ -19,23 +19,19 @@ export default {
     },
     computed: {
         bookings() {
-            let bookings = this.$store.getters['bookings/getBookings']
-            for(let i = 0; i < bookings.length; ++i) {
-                bookings[i].booked_room = bookings[i].booked_room[0]
-            }
-            return bookings
+            return this.$store.getters['bookings/getBookings'].map(booking => ({
+                ...booking,
+                booked_room: booking.booked_room[0],
+            }));
         },
         roomsData() {
             return this.$store.getters['rooms/roomsGetter']
         },
         roomWithBooking() {
-            for(let i = 0; i < this.roomsData.length; ++i) {
-                this.roomsData[i].bookings = this.bookings.filter(booking => {
-                    return booking.booked_room && booking.booked_room.id === this.roomsData[i].id;
-                });
-            }
-
-            return this.roomsData
+            return this.roomsData.map(room => ({
+                ...room,
+                bookings: this.bookings.filter(booking => booking.booked_room && booking.booked_room.id === room.id),
+            }));
         },
         bookingsData() {
             return this.roomWithBooking.map((room) => {
