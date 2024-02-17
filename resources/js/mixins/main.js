@@ -1,7 +1,7 @@
 export default {
     data() {
         return {
-            dataLang: localStorage.getItem('lang') ? localStorage.getItem('lang') :  'en',
+            dataLang: localStorage.getItem('lang') ? localStorage.getItem('lang') :  'ru',
         }
     },
     computed: {
