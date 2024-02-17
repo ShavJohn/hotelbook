@@ -41,5 +41,9 @@
     "all_services": "All Services",
     "about_us": "About us",
     "all_contacts": "All Contacts",
-    "all_rights_belong_to": "All rights belong to"
+    "all_rights_belong_to": "All rights belong to",
+    "terms_and_conditions": "Terms and Conditions",
+    "agree_to_terms_and_conditions": "Agree to terms and conditions",
+    "confirm": "Confirm",
+    "close": "Close"
 }

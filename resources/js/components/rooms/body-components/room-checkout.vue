@@ -43,7 +43,7 @@
         </div>
         <modals modal-id="terms-and-conditions">
             <template #modal-header>
-                <h4>Terms and Conditions</h4>
+                <h4>{{ $t('terms_and_conditions') }}</h4>
                 <div>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -56,14 +56,14 @@
                     <div class="terms-and-conditions-input">
                         <input type="checkbox" id="agree-to-conditions" name="agree-to-conditions" v-model="termsAndConditionsCheckBox">
                         <label for="agree-to-conditions">
-                            Agree to terms and conditions
+                            {{ $t('agree_to_terms_and_conditions') }}
                         </label>
                     </div>
                 </div>
             </template>
             <template #modal-footer>
-                <button type="button" data-bs-dismiss="modal" aria-label="Close" class="modal-btn btn-grey close">Close</button>
-                <button type="button" class="modal-btn btn-action" @click="confirmTermsAndConditions()">Confirm</button>
+                <button type="button" data-bs-dismiss="modal" aria-label="Close" class="modal-btn btn-grey close">{{ $t('close') }}</button>
+                <button type="button" class="modal-btn btn-action" @click="confirmTermsAndConditions()">{{ $t('confirm') }}</button>
             </template>
         </modals>
         <button class="chosen-room-checkout-btn" @click="bookRoom()">

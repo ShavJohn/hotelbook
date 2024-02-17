@@ -41,5 +41,9 @@
     "all_services": "Все услуги",
     "about_us": "О нас",
     "all_contacts": "Все контакты",
-    "all_rights_belong_to": "Все права принадлежат"
+    "all_rights_belong_to": "Все права принадлежат",
+    "terms_and_conditions": "Правила и условия",
+    "agree_to_terms_and_conditions": "Согласен с условиями",
+    "confirm": "Подтвердить",
+    "close": "Закрыть"
 }
