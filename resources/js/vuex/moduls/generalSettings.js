@@ -2,7 +2,7 @@ export default {
     namespaced: true,
     state: {
         openSideBar: false,
-        localeLang: localStorage.getItem('lang') ? localStorage.getItem('lang') :  'en',
+        localeLang: localStorage.getItem('lang') ? localStorage.getItem('lang') :  'ru',
         logo: {
             key: 'logo',
             value: ''
