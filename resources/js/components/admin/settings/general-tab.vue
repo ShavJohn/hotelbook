@@ -50,6 +50,10 @@
             <textarea id="meta-desc" type="text" placeholder="Enter Meta Description for Google search engine" v-model="metaDesc.value"></textarea>
         </div>
         <div class="settings-element">
+            <label for="address-on-map">Add your address on Google Maps</label>
+            <textarea id="address-on-map" type="text" placeholder="<iframe src='https://www.google.com/maps/ ...." v-model="addressOnMap.value"></textarea>
+        </div>
+        <div class="settings-element">
             <label>Terms And Conditions text</label>
             <div class="settings-element-edit-container">
                 <div class="terms-and-conditions-switch-container" @click="termsAndConditions.json_value.termsAdnConditionsSwitch = !termsAndConditions.json_value.termsAdnConditionsSwitch">

@@ -42,6 +42,14 @@ export default {
         bookingConfirmEmail() {
             return this.$store.getters['generalSettings/bookingConfirmEmail']
         },
+        addressOnMap: {
+            get() {
+                return this.$store.getters['generalSettings/addressOnMap']
+            },
+            set(value) {
+                this.$store.commit('generalSettings/addressOnMap', value)
+            }
+        },
         authUser() {
             return this.$store.getters['auth/authUserGetter']
         },
@@ -92,6 +100,7 @@ export default {
                 this.$store.state.generalSettings.metaDesc,
                 this.$store.state.generalSettings.termsAndConditions,
                 this.$store.state.generalSettings.bookingConfirmEmail,
+                this.addressOnMap
             ]
             this.$store.dispatch('generalSettings/updateGeneralSettings', data).then((res) => {
                 this.$store.dispatch('alert/alertResponse', {

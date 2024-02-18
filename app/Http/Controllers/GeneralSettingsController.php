@@ -49,6 +49,7 @@ class GeneralSettingsController extends Controller
             $businessHours = '';
             $metaTitle = '';
             $metaDesc = '';
+            $addressOnMap = '';
             $termsAndConditions = [];
             $bookingConfirmEmail = [];
             foreach ($generalSettings as $setting) {
@@ -74,6 +75,8 @@ class GeneralSettingsController extends Controller
                     $termsAndConditions = $setting->json_value;
                 }  elseif($setting->key === 'bookingConfirmEmail') {
                     $bookingConfirmEmail = $setting->json_value;
+                } elseif ($setting->key === 'addressOnMap') {
+                    $addressOnMap = $setting->value;
                 }
             }
 
@@ -88,7 +91,8 @@ class GeneralSettingsController extends Controller
                 'metaTitle' => $metaTitle ?: '',
                 'metaDesc' => $metaDesc ?: '',
                 'termsAndConditions' => $termsAndConditions ?: [],
-                'bookingConfirmEmail' => $bookingConfirmEmail ?: []
+                'bookingConfirmEmail' => $bookingConfirmEmail ?: [],
+                'addressOnMap' => $addressOnMap ?: ''
             ];
             return response()->json([
                 'success' => 1,

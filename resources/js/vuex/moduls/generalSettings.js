@@ -39,6 +39,10 @@ export default {
             key: 'metaDesc',
             value: '',
         },
+        addressOnMap: {
+            key: 'addressOnMap',
+            value: ''
+        },
         termsAndConditions: {
             key: 'termsAndConditions',
             value: '',
@@ -93,6 +97,9 @@ export default {
         },
         bookingConfirmEmail(state) {
             return state.bookingConfirmEmail
+        },
+        addressOnMap(state) {
+            return state.addressOnMap
         }
     },
     mutations: {
@@ -132,6 +139,9 @@ export default {
                 state.bookingConfirmEmail.json_value.en = data.bookingConfirmEmail.en ? data.bookingConfirmEmail.en : ''
                 state.bookingConfirmEmail.json_value.ru = data.bookingConfirmEmail.ru ? data.bookingConfirmEmail.ru : ''
             }
+        },
+        addressOnMap(state, data) {
+            state.addressOnMap.value = data ? data : ''
         }
     },
     actions: {
@@ -200,6 +210,7 @@ export default {
                     context.commit('metaDescSetter', res.data.setting)
                     context.commit('termsAndConditions', res.data.setting)
                     context.commit('bookingConfirmEmail', res.data.setting)
+                    context.commit('addressOnMap', res.data.setting.addressOnMap)
                     resolve(res)
                 }).catch((err) => {
                     if(err && err.data) {

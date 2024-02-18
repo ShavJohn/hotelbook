@@ -29,6 +29,9 @@ export default {
         },
         dataFinished() {
             return this.$store.getters['emails/getDataFinished']
+        },
+        addressOnMap() {
+            return this.$store.getters['generalSettings/addressOnMap']
         }
     },
     methods: {
