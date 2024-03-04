@@ -98,16 +98,18 @@ export default {
         getStatistics(context, data) {
             return new Promise((resolve, reject) => {
                 axios.get('/get-statistics-data', {params: data}).then(res => {
-                    context.commit('setVisitors', res.data.visitors)
-                    context.commit('setVisitorsCount', res.data.visitorsCount)
-                    context.commit('setPageReloads', res.data.pageReloads)
-                    context.commit('setPageReloadsCount', res.data.pageReloadsCount)
-                    context.commit('setGuests', res.data.guests)
-                    context.commit('setGuestsCount', res.data.guestsCount)
-                    context.commit('setBookings', res.data.bookings)
-                    context.commit('setBookingsCount', res.data.bookingsCount)
-                    context.commit('setIncome', res.data.income)
-                    context.commit('setIncomeTotal', res.data.totalIncome)
+                    if(res && res.data) {
+                        context.commit('setVisitors', res.data.visitors)
+                        context.commit('setVisitorsCount', res.data.visitorsCount)
+                        context.commit('setPageReloads', res.data.pageReloads)
+                        context.commit('setPageReloadsCount', res.data.pageReloadsCount)
+                        context.commit('setGuests', res.data.guests)
+                        context.commit('setGuestsCount', res.data.guestsCount)
+                        context.commit('setBookings', res.data.bookings)
+                        context.commit('setBookingsCount', res.data.bookingsCount)
+                        context.commit('setIncome', res.data.income)
+                        context.commit('setIncomeTotal', res.data.totalIncome)
+                    }
                     resolve(res)
                 }).catch(err => {
                     if(err && err.data) {

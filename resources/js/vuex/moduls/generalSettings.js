@@ -112,7 +112,7 @@ export default {
     },
     mutations: {
         logoSetter(state, data) {
-            state.logo.value = data && data.logo ? data.logo : ''
+            state.logo.value = data.logo ? data.logo : ''
         },
         companyNameSetter(state, data) {
             state.companyName.value = data.companyName ? data.companyName : ''
@@ -168,7 +168,9 @@ export default {
             }
             return new Promise((resolve, reject) => {
                 axios.post('/upload-logo', data, config).then((res) => {
-                    context.commit('logoSetter', res.data)
+                   if(res && res.data) {
+                       context.commit('logoSetter', res.data)
+                   }
                     resolve(res)
                 }).catch((err) => {
 
@@ -224,18 +226,20 @@ export default {
         getGeneralSettings(context, data) {
             return new Promise((resolve, reject) => {
                 axios.get(`/get-general-settings`).then((res) => {
-                    context.commit('logoSetter', res.data.settings)
-                    context.commit('companyNameSetter', res.data.settings)
-                    context.commit('addressSetter', res.data.settings)
-                    context.commit('phoneSetter', res.data.settings)
-                    context.commit('emailSetter', res.data.settings)
-                    context.commit('businessHoursSetter', res.data.settings)
-                    context.commit('metaTitleSetter', res.data.settings)
-                    context.commit('metaDescSetter', res.data.settings)
-                    context.commit('termsAndConditions', res.data.settings)
-                    context.commit('bookingConfirmEmail', res.data.settings)
-                    context.commit('addressOnMap', res.data.settings.addressOnMap)
-                    context.commit('priceListIntervals', res.data.settings.priceListIntervals)
+                    if(res && res.data && res.data.settings) {
+                        context.commit('logoSetter', res.data.settings)
+                        context.commit('companyNameSetter', res.data.settings)
+                        context.commit('addressSetter', res.data.settings)
+                        context.commit('phoneSetter', res.data.settings)
+                        context.commit('emailSetter', res.data.settings)
+                        context.commit('businessHoursSetter', res.data.settings)
+                        context.commit('metaTitleSetter', res.data.settings)
+                        context.commit('metaDescSetter', res.data.settings)
+                        context.commit('termsAndConditions', res.data.settings)
+                        context.commit('bookingConfirmEmail', res.data.settings)
+                        context.commit('addressOnMap', res.data.settings.addressOnMap)
+                        context.commit('priceListIntervals', res.data.settings.priceListIntervals)
+                    }
                     resolve(res)
                 }).catch((err) => {
                     if(err && err.data) {

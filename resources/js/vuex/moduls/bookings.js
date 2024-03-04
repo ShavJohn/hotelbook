@@ -101,8 +101,10 @@ export default {
         getBookingsList(context, data) {
             return new Promise((resolve, reject) => {
                 axios.get('/get-bookings-list', {params: data}).then(res => {
-                    context.commit('setBookings', res.data)
-                    context.commit('setPendingBookings', res.data)
+                    if(res && res.data) {
+                        context.commit('setBookings', res.data)
+                        context.commit('setPendingBookings', res.data)
+                    }
                     resolve(res)
                 }).catch(err => {
                     if(err && err.data) {

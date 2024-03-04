@@ -73,7 +73,9 @@ export default {
         getAllPosts(context, data) {
             return new Promise((resolve, reject) => {
                 axios.get('/get-posts').then((res) => {
-                    context.commit('setPosts', res.data.posts)
+                    if(res && res.data) {
+                        context.commit('setPosts', res.data.posts)
+                    }
                     resolve(res)
                 }).catch((err) => {
                     context.dispatch('alert/alertResponse', {

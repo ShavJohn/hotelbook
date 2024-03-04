@@ -28,8 +28,10 @@ export default {
     },
     actions: {
         alertResponse(context, data) {
-            context.commit('alertSetter', data)
-            context.commit('alertOpenSetter', true)
+            if(data) {
+                context.commit('alertSetter', data)
+                context.commit('alertOpenSetter', true)
+            }
 
             setTimeout(() => {
                 context.commit('alertOpenSetter', false)

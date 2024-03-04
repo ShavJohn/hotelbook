@@ -77,7 +77,9 @@ export default {
         updateEmailStatus(context, data) {
             return new Promise((resolve, reject) => {
                 axios.put(`/update-message-status/${data.id}`).then(res => {
-                    context.commit('markMessageAsRead', data.key)
+                    if(res && res.data) {
+                        context.commit('markMessageAsRead', data.key)
+                    }
                     resolve(res)
                 }).catch((err) => {
                     if(err && err.data) {
@@ -103,8 +105,10 @@ export default {
                         context.commit('setDataFinished', true)
                     }
 
-                    context.commit('contactUsMessagesSetter', res.data.messages)
-                    context.commit('setUnreadEmails', res.data)
+                   if(res && res.data) {
+                       context.commit('contactUsMessagesSetter', res.data.messages)
+                       context.commit('setUnreadEmails', res.data)
+                   }
 
                     resolve(res)
                 }).catch(err => {

@@ -76,8 +76,10 @@ export default {
         getPageSettings(context, data) {
             return new Promise((resolve, reject) => {
                 axios.get(`/get-page-settings`).then((res) => {
-                    context.commit('setHeaderData', res.data.settings)
-                    context.commit('setFooterData', res.data.settings)
+                    if(res && res.data) {
+                        context.commit('setHeaderData', res.data.settings)
+                        context.commit('setFooterData', res.data.settings)
+                    }
                     resolve(res)
                 }).catch((err) => {
                     if(err && err.data) {

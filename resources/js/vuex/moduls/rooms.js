@@ -197,9 +197,11 @@ export default {
         getAvailableRooms(context, data) {
             return new Promise((resolve, reject) => {
                 axios.get('/check-available-room', {params: data}).then(res => {
-                    context.commit('roomsSetter', res.data.rooms)
-                    context.commit('setRoomTotalCount', res.data.roomTotalCount)
-                    context.commit('setIfRoomFiltered', true)
+                    if(res && res.data) {
+                        context.commit('roomsSetter', res.data.rooms)
+                        context.commit('setRoomTotalCount', res.data.roomTotalCount)
+                        context.commit('setIfRoomFiltered', true)
+                    }
                     resolve(res)
                 }).catch(err => {
                     if(err && err.data) {
@@ -237,7 +239,9 @@ export default {
         getRoom(context, data) {
             return new Promise((resolve, reject) => {
                 axios.get(`/get-room/${data}`).then((res) => {
-                    context.commit('roomSetter', res.data.room)
+                    if(res && res.data) {
+                        context.commit('roomSetter', res.data.room)
+                    }
                     resolve(res)
                 }).catch(err => {
                     context.dispatch('alert/alertResponse', {
@@ -263,9 +267,11 @@ export default {
                 data.endDate.setDate(data.startDate.getDate()+1);
 
                 axios.get('/get-rooms', {params: data}).then((res) => {
-                    context.commit('roomsSetter', res.data.roomData)
-                    context.commit('setRoomTotalCount', res.data.roomTotalCount)
-                    context.commit('setAllRooms', res.data.allRooms)
+                    if(res && res.data) {
+                        context.commit('roomsSetter', res.data.roomData)
+                        context.commit('setRoomTotalCount', res.data.roomTotalCount)
+                        context.commit('setAllRooms', res.data.allRooms)
+                    }
                     resolve(res)
                 }).catch(err => {
                     context.dispatch('alert/alertResponse', {
@@ -369,9 +375,11 @@ export default {
         getRoomFST(context, data) {
             return new Promise((resolve, reject) => {
                 axios.get('/get-room-fst').then((res) => {
-                    context.commit('featuresSetter', res.data.features)
-                    context.commit('servicesSetter', res.data.services)
-                    context.commit('typesSetter', res.data.roomTypes)
+                   if(res && res.data) {
+                       context.commit('featuresSetter', res.data.features)
+                       context.commit('servicesSetter', res.data.services)
+                       context.commit('typesSetter', res.data.roomTypes)
+                   }
 
                     resolve(res)
                 }).catch((err) => {

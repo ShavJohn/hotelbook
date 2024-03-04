@@ -24,7 +24,7 @@ export default {
         login(context, data) {
             return new Promise((resolve, reject) => {
                 axios.post('/login', data).then(res => {
-                    if(res.data.success) {
+                    if(res && res.data && res.data.success) {
                         localStorage.setItem('access_token', res.data.token)
                         localStorage.setItem('auth_user', JSON.stringify(res.data.authUser))
                         axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;

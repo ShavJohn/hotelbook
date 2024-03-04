@@ -61,10 +61,12 @@ export default {
         getAllData(context, data) {
             return new Promise((resolve, reject) => {
                 axios.get('/get-about-us-data').then(res => {
-                    context.commit('setTopRooms', res.data)
-                    context.commit('setServices', res.data)
-                    context.commit('setFeatures', res.data)
-                    context.commit('setAboutUsContent', res.data)
+                    if(res && res.data) {
+                        context.commit('setTopRooms', res.data)
+                        context.commit('setServices', res.data)
+                        context.commit('setFeatures', res.data)
+                        context.commit('setAboutUsContent', res.data)
+                    }
 
                     resolve(res)
                 }).catch(err => {
