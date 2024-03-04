@@ -41,7 +41,7 @@ class PostController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 
@@ -70,7 +70,7 @@ class PostController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 
@@ -99,7 +99,7 @@ class PostController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 
@@ -128,7 +128,7 @@ class PostController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 }

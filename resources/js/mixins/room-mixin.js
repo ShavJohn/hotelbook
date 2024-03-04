@@ -25,13 +25,17 @@ export default {
             options: {
                 placeholder: 'Enter Content',
                 theme: 'snow'
-            }
+            },
+            interval: {
+                startDate: '',
+                endDate: ''
+            },
+            currentIntervalPrice: ''
         }
     },
     watch: {
         'currentPage': function(val) {
             this.skip =  (val - 1) * 5;
-            console.log(this.filtered)
             if(!this.filtered) {
                 this.getRooms()
             } else {
@@ -128,8 +132,35 @@ export default {
 
             return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
         },
+        priceListIntervals() {
+            return this.$store.getters['generalSettings/priceListIntervals']
+        },
     },
     methods: {
+        updateIntervalPrice(currentRoomType, currentRoomTypeKey, currentInterval, price) {
+            let data = {
+                key: currentRoomTypeKey,
+                startDate: currentInterval.startDate,
+                endDate: currentInterval.endDate,
+                price: price,
+                currentRoomType: currentRoomType
+            }
+            this.$store.commit('rooms/setRoomTypePriceForInterval', data)
+            $('#edit-room-interval-price').modal('hide')
+            this.$store.dispatch('rooms/updateRoomType', data)
+            this.currentIntervalPrice = ''
+        },
+        addPricingInterval() {
+            this.$store.commit('generalSettings/pushPriceListIntervals', this.interval)
+        },
+        removeInterval(key) {
+            this.$store.commit('generalSettings/removeInterval', key)
+        },
+        updateIntervals() {
+            this.$store.dispatch('generalSettings/updateGeneralSettings', [this.priceListIntervals]).then(() => {
+                $('#addIntervals').modal("hide");
+            })
+        },
         getAvailability(startDate, endDate, guestCount) {
             startDate = startDate.setHours(startDate.getHours() + 3)
             endDate = endDate.setHours(endDate.getHours() + 3)

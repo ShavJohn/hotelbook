@@ -52,6 +52,7 @@ class GeneralSettingsController extends Controller
             $addressOnMap = '';
             $termsAndConditions = [];
             $bookingConfirmEmail = [];
+            $priceListIntervals = [];
             foreach ($generalSettings as $setting) {
                 if($setting->key === 'logo') {
                     $logo = $setting->value;
@@ -77,6 +78,8 @@ class GeneralSettingsController extends Controller
                     $bookingConfirmEmail = $setting->json_value;
                 } elseif ($setting->key === 'addressOnMap') {
                     $addressOnMap = $setting->value;
+                } elseif ($setting->key === 'priceListIntervals') {
+                    $priceListIntervals = $setting->json_value;
                 }
             }
 
@@ -92,12 +95,13 @@ class GeneralSettingsController extends Controller
                 'metaDesc' => $metaDesc ?: '',
                 'termsAndConditions' => $termsAndConditions ?: [],
                 'bookingConfirmEmail' => $bookingConfirmEmail ?: [],
-                'addressOnMap' => $addressOnMap ?: ''
+                'addressOnMap' => $addressOnMap ?: '',
+                'priceListIntervals' => $priceListIntervals ?: []
             ];
             return response()->json([
                 'success' => 1,
                 'type' => 'success',
-                'setting' => $data
+                'settings' => $data
             ], 200);
         }  catch (\Exception $exception) {
             Log::error($exception);
@@ -105,7 +109,7 @@ class GeneralSettingsController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 
@@ -128,7 +132,7 @@ class GeneralSettingsController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 
@@ -179,7 +183,7 @@ class GeneralSettingsController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 
@@ -208,7 +212,7 @@ class GeneralSettingsController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 
@@ -252,7 +256,7 @@ class GeneralSettingsController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 
@@ -279,7 +283,7 @@ class GeneralSettingsController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 }

@@ -33,7 +33,7 @@
                 </tr>
             </tbody>
         </table>
-        <div v-if="tableContentLoader" class="leader-animation">
+        <div v-if="tableContentLoader" class="loader-animation">
             <div class="spinner-border loader-style" role="status">
                 <span class="sr-only"></span>
             </div>

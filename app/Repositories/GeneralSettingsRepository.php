@@ -39,7 +39,10 @@ class GeneralSettingsRepository implements GeneralSettingsInterface
     {
         $data['value'] = $data['value'] === null ? '' : $data['value'];
         if($this->ifExist($key)) {
-            if($key === 'aboutUsPageContent' || $key === 'termsAndConditions' || $key === 'bookingConfirmEmail') {
+            if($key === 'aboutUsPageContent' ||
+                $key === 'termsAndConditions' ||
+                $key === 'priceListIntervals' ||
+                $key === 'bookingConfirmEmail') {
                 return $this->model->where('key', $key)->update([
                     'value' => $data['value'] ?: '',
                     'json_value' => $data['json_value'] ?: ''
@@ -50,7 +53,10 @@ class GeneralSettingsRepository implements GeneralSettingsInterface
                 ]);
             }
         } else {
-            if($key === 'aboutUsPageContent' || $key === 'termsAndConditions' || $key === 'bookingConfirmEmail') {
+            if($key === 'aboutUsPageContent' ||
+                $key === 'termsAndConditions' ||
+                $key === 'priceListIntervals' ||
+                $key === 'bookingConfirmEmail') {
                 $myData = [
                     'key' => $key,
                     'value' => $data['value'] ?: '',

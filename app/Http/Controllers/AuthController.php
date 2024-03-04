@@ -42,7 +42,7 @@ class AuthController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 
@@ -75,7 +75,7 @@ class AuthController extends Controller
                         'success' => 0,
                         'type' => 'error',
                         'message'  => 'Something went wrong',
-                    ], 422);
+                    ]);
                 }
             }
 
@@ -83,14 +83,14 @@ class AuthController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         } catch (\Exception $exception) {
             Log::error($exception);
             return response()->json([
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 
@@ -123,7 +123,7 @@ class AuthController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 
@@ -216,7 +216,7 @@ class AuthController extends Controller
                     'success' => 0,
                     'type' => 'error',
                     'message'  => 'Something went wrong',
-                ], 422);
+                ]);
             }
         } catch (\Exception $exception) {
             Log::error($exception);
@@ -224,7 +224,7 @@ class AuthController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 
@@ -249,7 +249,7 @@ class AuthController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 }

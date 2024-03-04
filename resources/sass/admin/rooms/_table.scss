@@ -1,4 +1,4 @@
-.rooms-table-container {
+.rooms-table-container, .room-type-price-list-container {
     padding: 30px;
 
     table {
@@ -39,7 +39,7 @@
         }
     }
 
-    .leader-animation {
+    .loader-animation {
         display: flex;
         justify-content: center;
         margin-top: 60px;
@@ -53,7 +53,7 @@
         }
     }
 
-    .room-table-action-btn {
+    .room-table-action-btn, .types-table-action-btn {
         color: white;
         padding: 5px 30px;
         border: double;
@@ -79,6 +79,71 @@
         font-size: 18px;
         font-weight: 600;
     }
+}
+
+.room-type-price-list-container {
+    padding: 30px 30px 0;
+
+    table {
+
+        td {
+            text-align: left;
+        }
+
+        .types-table-action-btn-container {
+            text-align: right;
+        }
+    }
+}
+
+.price-list-interval-container {
+    position: relative;
+    padding-right: 30px;
+
+    .price-list-interval-item {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        input {
+            border-radius: 20px;
+            padding: 5px 20px;
+            border: none;
+            background-color: #f0f5f8;
+        }
+    }
+
+    .add-interval-btn {
+        padding: 5px 30px;
+        color: $white;
+        background-color: $dark-yellow;
+        border-radius: 20px;
+        border: none;
+    }
+
+    .delete-btn {
+        border: none;
+        background: transparent;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+
+        svg {
+            color: #d23c3c;
+        }
+    }
+
+    .price-list-interval-btn-container {
+        display: flex;
+        justify-content: flex-end;
+        padding: 20px;
+    }
+}
+
+.intervals-list {
+
 }
 
 @media screen and ( max-width: 680px){

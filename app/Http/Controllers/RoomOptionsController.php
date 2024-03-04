@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RoomOptions;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Interfaces\RoomOptionsInterface;
@@ -64,7 +65,38 @@ class RoomOptionsController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
+        }
+    }
+
+    /**
+     * @param RoomOptions $type
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function updateRoomType(RoomOptions $type, Request $request): JsonResponse
+    {
+        try {
+            DB::beginTransaction();
+
+            $type->update([
+                'price_list' => $request['currentRoomType']['price_list']
+            ]);
+
+            DB::commit();
+            return response()->json([
+                'success' => 1,
+                'type' => 'success',
+                'message'  => 'Type has been updated',
+            ], 200);
+        } catch (\Exception $exception) {
+            DB::rollBack();
+
+            return response()->json([
+                'success' => 0,
+                'type' => 'error',
+                'message'  => 'Something went wrong',
+            ]);
         }
     }
 
@@ -99,7 +131,7 @@ class RoomOptionsController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 
@@ -123,7 +155,7 @@ class RoomOptionsController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 }

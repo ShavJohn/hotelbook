@@ -118,8 +118,5 @@ export default {
             this.$store.commit('bookings/setChosenRoomData', roomData)
             this.$router.push({name: 'RoomBook'})
         },
-        dateFormat(date, format) {
-            return moment(date).format(format)
-        },
     }
 }

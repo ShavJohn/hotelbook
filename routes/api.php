@@ -61,6 +61,7 @@ Route::group(['middleware' => 'api'], function() {
         //room feature routs
         Route::post('/add-room-{fst}', 'App\Http\Controllers\RoomOptionsController@addRoomFST');
         Route::delete('/delete-fst/{fst}', 'App\Http\Controllers\RoomOptionsController@removeFST');
+        Route::put('/update-room-type/{type}', 'App\Http\Controllers\RoomOptionsController@updateRoomType');
 
         //image routes
         Route::post('/upload-image', 'App\Http\Controllers\ImageController@uploadImage');

@@ -45,7 +45,7 @@ class RoomRepository implements RoomInterface
     public function getRooms($skip, $take, $startDate, $endDate): mixed
     {
         $rooms = $this->model->with(['roomOptions' => function($q) {
-                $q->select('room_options.id', 'room_options.type', 'room_options.en', 'room_options.ru');
+                $q->select('room_options.id', 'room_options.type', 'room_options.en', 'room_options.ru', 'room_options.price_list');
             }])
             ->with('images')
             ->when(($skip || $skip === '0') && $take, function($q) use ($skip, $take) {

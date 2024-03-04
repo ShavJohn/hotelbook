@@ -33,7 +33,8 @@ export default {
                         context.commit('authUserSetter', res.data.authUser)
                     }
                     resolve(res)
-                }).catch((err) => {
+                }).catch(err => {
+                    console.log(err)
                     if(err && err.data) {
                         context.dispatch('alert/alertResponse', {
                             'type': err.data.type,

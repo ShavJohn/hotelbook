@@ -56,9 +56,6 @@ export default {
         }
     },
     methods: {
-        dateFormat(date, format) {
-            return moment(date).format(format)
-        },
         openRemoveBookingModal(modalId) {
             $(modalId).modal("show");
         },

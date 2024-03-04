@@ -14,12 +14,14 @@ class RoomOptions extends Model
         'type',
         'en',
         'ru',
-        'size'
+        'size',
+        'price_list'
     ];
 
     protected $casts = [
         'en' => 'array',
-        'ru' => 'array'
+        'ru' => 'array',
+        'price_list' => 'array',
     ];
 
     /**

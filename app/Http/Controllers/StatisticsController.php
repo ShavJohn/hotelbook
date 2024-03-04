@@ -46,7 +46,7 @@ class StatisticsController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 
@@ -129,7 +129,7 @@ class StatisticsController extends Controller
                 'success' => 0,
                 'type' => 'error',
                 'message'  => 'Something went wrong',
-            ], 422);
+            ]);
         }
     }
 

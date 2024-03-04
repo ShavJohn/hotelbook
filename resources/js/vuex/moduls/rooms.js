@@ -150,9 +150,50 @@ export default {
         },
         setAllRooms(state, data) {
             state.allRooms = data
+        },
+        setRoomTypePriceForInterval(state, data) {
+            if(state.types[data.key].price_list && state.types[data.key].price_list.length) {
+                let intervalIndex = state.types[data.key].price_list.findIndex(interval => {
+                    return interval.startDate === data.startDate && interval.endDate === data.endDate
+                })
+                if(intervalIndex >= 0) {
+                    state.types[data.key].price_list[intervalIndex].price = data.price
+                } else {
+                    state.types[data.key].price_list.push({
+                        startDate: data.startDate,
+                        endDate: data.endDate,
+                        price: data.price
+                    })
+                }
+            } else {
+                state.types[data.key].price_list = []
+                state.types[data.key].price_list.push({
+                    startDate: data.startDate,
+                    endDate: data.endDate,
+                    price: data.price
+                })
+            }
         }
     },
     actions: {
+        updateRoomType(context, data) {
+            return new Promise((resolve, reject) => {
+                axios.put(`/update-room-type/${data.currentRoomType.id}`, data).then(res => {
+
+                    resolve(res)
+                }).catch(err => {
+                    if(err && err.data) {
+                        context.dispatch('alert/alertResponse', {
+                            'type': err.data.type,
+                            'status': err.status,
+                            'message': err.data.message
+                        }, { root:true })
+                    }
+
+                    reject(err)
+                })
+            })
+        },
         getAvailableRooms(context, data) {
             return new Promise((resolve, reject) => {
                 axios.get('/check-available-room', {params: data}).then(res => {

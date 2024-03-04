@@ -37,6 +37,9 @@ export default {
         },
     },
     methods: {
+        dateFormat(date, format) {
+            return moment(date).format(format)
+        },
         goToPage(page) {
             this.$router.push({name: page})
         },
