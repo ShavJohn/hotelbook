@@ -112,7 +112,7 @@ export default {
     },
     mutations: {
         logoSetter(state, data) {
-            state.logo.value = data.logo ? data.logo : ''
+            state.logo.value = data && data.logo ? data.logo : ''
         },
         companyNameSetter(state, data) {
             state.companyName.value = data.companyName ? data.companyName : ''
