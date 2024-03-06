@@ -21,11 +21,6 @@ import BookingMixins from "../../../mixins/booking-mixins";
 export default {
     name: "room-finish-booking",
     mixins: [BookingMixins],
-    mounted() {
-        if(!Object.keys(this.bookingData.chosenRoom).length) {
-            this.$router.push({name: 'RoomSearch'})
-        }
-    }
 }
 </script>
 

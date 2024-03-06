@@ -36,7 +36,7 @@
             </div>
             <div class="total-mount-of-reservation">
                 <span>{{ $t('total') }}</span>
-                <span>{{ (bookingData?.chosenRoom[localeLang]?.adult_price ? bookingData.chosenRoom[localeLang].adult_price : 1) * daysCount}}$</span>
+                <span>{{ roomPrice }} ₽</span>
             </div>
         </div>
     </div>
@@ -48,9 +48,45 @@ import BookingMixins from "../../../../mixins/booking-mixins";
 export default {
     name: "chosen-room-date-table",
     mixins: [BookingMixins],
+    mounted() {
+        if(!Object.keys(this.bookingData.chosenRoom).length) {
+            this.$router.push({name: 'RoomSearch'})
+        }
+    },
     computed: {
-        daysCount() {
-            return parseInt((this.bookingDate.endDate - this.bookingDate.startDate) / (1000 * 60 * 60 * 24), 10)
+        roomType() {
+            return this.bookingData.chosenRoom.room_options.find(item => item.type === 'types')
+        },
+        roomPrice() {
+            let price = 0;
+            if(Object.keys(this.bookingData.chosenRoom).length) {
+                let currentDate = new Date(this.bookingDate.startDate); // Convert to Date object
+                let defaultPrice = this.bookingData.chosenRoom[this.localeLang].adult_price;
+                const endDate = new Date(this.bookingDate.endDate); // Convert to Date object
+
+                while (currentDate < endDate) {
+                    let currentDateFromPriceList = null;
+
+                    if (this.roomType.price_list && this.roomType.price_list.length) {
+                        currentDateFromPriceList = this.roomType.price_list.find(item => {
+                            const startDate = new Date(item.startDate); // Convert to Date object
+                            const endDate = new Date(item.endDate); // Convert to Date object
+                            return currentDate >= startDate && currentDate <= endDate;
+                        });
+                    }
+
+                    if (currentDateFromPriceList) {
+                        price += currentDateFromPriceList.price;
+                    } else {
+                        price += defaultPrice;
+                    }
+
+                    // Move to the next day
+                    currentDate.setDate(currentDate.getDate() + 1);
+                }
+            }
+
+            return price;
         }
     }
 }

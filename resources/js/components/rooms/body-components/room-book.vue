@@ -171,11 +171,6 @@ export default {
             }
         },
     },
-    mounted() {
-        if(!Object.keys(this.bookingData.chosenRoom).length) {
-            this.$router.push({name: 'RoomSearch'})
-        }
-    }
 }
 </script>
 
