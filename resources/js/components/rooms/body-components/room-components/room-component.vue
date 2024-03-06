@@ -17,7 +17,7 @@
                 </div>
                 <p v-html="roomData[localeLang].description" class="trim-room-desc"></p>
                 <button v-if="!roomData.busy" @click="chooseRoom(roomData)">
-                    <span>{{ $t('book_now_for') }} {{ roomData[localeLang].adult_price }} $</span>
+                    <span>{{ $t('book_now_for') }} {{ roomPrice }} ₽</span>
                 </button>
             </div>
             <div class="room-features">
@@ -46,6 +46,35 @@ export default {
         roomType() {
             return this.roomData.room_options.find(item => item.type === 'types')
         },
+        roomPrice() {
+            let price = 0;
+            let currentDate = new Date(this.bookingDate.startDate); // Convert to Date object
+            let defaultPrice = this.roomData[this.localeLang].adult_price;
+            const endDate = new Date(this.bookingDate.endDate); // Convert to Date object
+
+            while (currentDate < endDate) {
+                let currentDateFromPriceList = null;
+
+                if (this.roomType.price_list && this.roomType.price_list.length) {
+                    currentDateFromPriceList = this.roomType.price_list.find(item => {
+                        const startDate = new Date(item.startDate); // Convert to Date object
+                        const endDate = new Date(item.endDate); // Convert to Date object
+                        return currentDate >= startDate && currentDate <= endDate;
+                    });
+                }
+
+                if (currentDateFromPriceList) {
+                    price += currentDateFromPriceList.price;
+                } else {
+                    price += defaultPrice;
+                }
+
+                // Move to the next day
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+
+            return price;
+        }
 
     }
 

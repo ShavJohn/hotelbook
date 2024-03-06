@@ -98,24 +98,24 @@ export default {
             }
         },
         resetRoomData(state, data) {
-            state.room.id = '',
+            state.room.id = ''
             state.room.en = {
                 name: '',
                 adult_price: '',
                 child_price: '',
                 description: ''
-            },
+            }
             state.room.ru = {
                 name: '',
                     adult_price: '',
                     child_price: '',
                     description: ''
-            },
-            state.room.number = '',
-            state.room.main_image = '',
-            state.room.additionalImages = [],
-            state.room.selectedType = {},
-            state.room.selectedFeatures = [],
+            }
+            state.room.number = ''
+            state.room.main_image = ''
+            state.room.additionalImages = []
+            state.room.selectedType = {}
+            state.room.selectedFeatures = []
             state.room.selectedServices = []
         },
         roomsSetter(state, data) {
@@ -259,7 +259,7 @@ export default {
                 if(!data) {
                     data = {
                         skip: 0,
-                        take: 5,
+                        take: 6,
                     }
                 }
                 data.startDate = new Date()

@@ -94,7 +94,7 @@ class RoomRepository implements RoomInterface
         $startDate = $data['startDate'];
         $endDate = $data['endDate'];
         $skip = $data['skip'] ?: 0;
-        $take = $data['take'] ?: 5;
+        $take = $data['take'] ?: 6;
         $guestCount = $data['guestCount'];
 
         $availableRooms = $this->model->whereDoesntHave('bookings', function ($query) use ($startDate, $endDate) {
@@ -219,7 +219,7 @@ class RoomRepository implements RoomInterface
     {
         return $this->model->where('id', $id)
             ->with(['roomOptions' => function($q) {
-                $q->select('room_options.id', 'room_options.type', 'room_options.en', 'room_options.ru');
+                $q->select('room_options.id', 'room_options.type', 'room_options.en', 'room_options.ru', 'room_options.price_list');
             }])
             ->with('images')
             ->first();

@@ -17,9 +17,9 @@ export default {
                 size: ''
             },
             skip: 0,
-            take: 5,
+            take: 6,
             currentPage: 1,
-            pageCount: 5,
+            pageCount: 6,
             removeRoomId: 0,
             testType: "Double",
             options: {
@@ -35,7 +35,7 @@ export default {
     },
     watch: {
         'currentPage': function(val) {
-            this.skip =  (val - 1) * 5;
+            this.skip =  (val - 1) * this.pageCount;
             if(!this.filtered) {
                 this.getRooms()
             } else {

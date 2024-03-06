@@ -7,7 +7,6 @@
             </button>
         </template>
         <template #modal-body>
-            {{ roomTypes[currentRoomTypeKey] }}
             <div class="modal-inputs-container">
                 <div class="input-elements">
                     <label class="input-name" for="interval-dates">{{ dateFormat(currentInterval.startDate, 'DD//MM') }} - {{ dateFormat(currentInterval.endDate, 'DD//MM')}}</label>
