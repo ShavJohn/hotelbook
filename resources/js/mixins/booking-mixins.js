@@ -1,7 +1,7 @@
 const today = new Date();
-today.setHours(0, 0, 0, 0)
+today.setHours(4, 0, 0, 0)
 const tomorrow = new Date();
-tomorrow.setHours(0, 0, 0, 0)
+tomorrow.setHours(4, 0, 0, 0)
 tomorrow.setDate(today.getDate()+1);
 
 export default {
@@ -57,8 +57,8 @@ export default {
                 this.bookingDate.endDate = new Date(this.bookingDate.endDate)
             }
 
-            this.endDayLimit = this.endDayLimit.setDate(this.bookingDate.startDate.getDate()+1)
-            this.endDayLimit = new Date(this.endDayLimit)
+            this.endDayLimit = new Date(val);
+            this.endDayLimit.setDate(this.endDayLimit.getDate() + 1);
         },
     },
     methods: {

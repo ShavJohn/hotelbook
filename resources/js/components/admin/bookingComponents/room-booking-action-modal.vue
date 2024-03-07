@@ -76,16 +76,18 @@
                         </template>
                     </drop-down>
                 </div>
+                {{ bookedRoomData.startDate }}
                 <div class="input-elements">
                     <span class="input-name">Check-In Date</span>
                     <div id="start-date-calendar" class="room-booking-action-modal">
-                        <Datepicker class="cursor-pointer" v-model="bookedRoomData.startDate" inputFormat="yyyy-MM-dd"></Datepicker>
+                        <Datepicker :locale="localeLang === 'en' ? en : ru" class="cursor-pointer" v-model="bookedRoomData.startDate" inputFormat="yyyy-MM-dd"></Datepicker>
                     </div>
                 </div>
+                {{ bookedRoomData.endDate }}
                 <div class="input-elements">
                     <span class="input-name">Check-Out Date</span>
                     <div id="end-date-calendar" class="room-booking-action-modal">
-                        <Datepicker class="cursor-pointer" v-model="bookedRoomData.endDate" inputFormat="yyyy-MM-dd"></Datepicker>
+                        <Datepicker :locale="localeLang === 'en' ? en : ru" class="cursor-pointer" v-model="bookedRoomData.endDate" inputFormat="yyyy-MM-dd"></Datepicker>
                     </div>
                 </div>
                 <div class="input-elements">
@@ -111,6 +113,7 @@ import Modals from "../../mainComponents/modals";
 import DropDown from "../../mainComponents/drop-down";
 import adminBookingMixins from "../../../mixins/admin-booking-mixins";
 import roomMixins from "../../../mixins/room-mixin";
+import {enGB, ru} from "date-fns/locale";
 
 export default {
     name: "room-booking-action-modal",
@@ -119,6 +122,12 @@ export default {
     props: {
         bookedRoomData: {
             required: true
+        }
+    },
+    data() {
+        return {
+            ru: ru,
+            en: enGB
         }
     },
 }

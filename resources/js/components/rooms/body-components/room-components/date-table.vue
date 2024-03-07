@@ -3,7 +3,7 @@
         <div class="date-square hb-justify-content-around margin-bottom-large">
             <span>{{ $t('check_in') }}</span>
             <div id="start-date-calendar" class="rooms-booking-button-container">
-                <Datepicker :locale="en" class="cursor-pointer" v-model="bookingDate.startDate" inputFormat="dd" :lowerLimit="today"></Datepicker>
+                <Datepicker :locale="localeLang === 'en' ? en : ru" class="cursor-pointer" :use-utc="true" v-model="bookingDate.startDate" inputFormat="dd" :lowerLimit="today"></Datepicker>
                 <div class="dropdown-calendar">
                     <span>{{ dateFormat(bookingDate.startDate, 'MMM') }}</span>
                 </div>
@@ -12,7 +12,7 @@
         <div class="date-square hb-justify-content-around margin-bottom-large">
             <span>{{ $t('check_out') }}</span>
             <div id="end-date-calendar" class="rooms-booking-button-container">
-                <Datepicker class="cursor-pointer" v-model="bookingDate.endDate" inputFormat="dd" :lowerLimit="endDayLimit"></Datepicker>
+                <Datepicker :locale="localeLang === 'en' ? en : ru" class="cursor-pointer" :use-utc="true" v-model="bookingDate.endDate" inputFormat="dd" :lowerLimit="endDayLimit"></Datepicker>
                 <div class="dropdown-calendar">
                     <span>{{ dateFormat(bookingDate.endDate, 'MMM') }}</span>
                 </div>

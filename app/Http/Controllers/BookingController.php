@@ -31,6 +31,19 @@ class BookingController extends Controller
     public function makeBooking(Request $bookingData) : JsonResponse
     {
         try {
+
+            $startingDate = $bookingData->bookingDate['startDate'];
+            $endingDate = $bookingData->bookingDate['endDate'];
+
+            $startingCarbonDate = Carbon::parse($startingDate);
+            $endingCarbonDate = Carbon::parse($endingDate);
+
+            $startingCarbonDate->setTimezone('3');
+            $endingCarbonDate->setTimezone('3');
+
+            $formattedStartDate = $startingCarbonDate->format('Y-m-d H:i:s');
+            $formattedEndDate = $endingCarbonDate->format('Y-m-d H:i:s');
+
             DB::beginTransaction();
             $bookingStoreData = [
                 'name' => $bookingData->guestData['name'],
@@ -46,8 +59,8 @@ class BookingController extends Controller
                 'checkIn' => $bookingData->guestData['checkIn'],
                 'checkOut' => $bookingData->guestData['checkOut'],
                 'message' => $bookingData->guestData['message'] ?: '',
-                'startDate' => Carbon::parse($bookingData->bookingDate['startDate'])->setHour($bookingData->guestData['checkIn'])->format('Y-m-d H:i:s'),
-                'endDate' => Carbon::parse($bookingData->bookingDate['endDate'])->setHour($bookingData->guestData['checkOut'])->format('Y-m-d H:i:s'),
+                'startDate' => Carbon::parse($formattedStartDate)->setHour($bookingData->guestData['checkIn'])->format('Y-m-d H:i:s'),
+                'endDate' => Carbon::parse($formattedEndDate)->setHour($bookingData->guestData['checkOut'])->format('Y-m-d H:i:s'),
             ];
 
             $bookingFromDB = $this->bookingRepo->store($bookingStoreData);

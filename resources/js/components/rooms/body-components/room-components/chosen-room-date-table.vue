@@ -1,7 +1,7 @@
 <template>
     <div class="rooms-booking-chosen-container">
         <div class="chosen-room-image-container">
-            <img :src="bookingData.chosenRoom.main_image && imagePrefix +'/' + bookingData.chosenRoom.main_image "/>
+            <img :src="bookingData.chosenRoom.main_image && imagePrefix +'/' + bookingData.chosenRoom.main_image " alt="room-image"/>
             <div class="chosen-room-image-filter"></div>
         </div>
         <div class="date-table">
@@ -44,6 +44,7 @@
 
 <script>
 import BookingMixins from "../../../../mixins/booking-mixins";
+import {enGB, ru} from "date-fns/locale";
 
 export default {
     name: "chosen-room-date-table",
@@ -51,6 +52,12 @@ export default {
     mounted() {
         if(!Object.keys(this.bookingData.chosenRoom).length) {
             this.$router.push({name: 'RoomSearch'})
+        }
+    },
+    data() {
+        return {
+            ru: ru,
+            en: enGB
         }
     },
     computed: {

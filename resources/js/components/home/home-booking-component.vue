@@ -4,13 +4,13 @@
             <div class="booking-button-container">
                 <label  class="cursor-pointer">
                     <p>{{ $t('check_in') }}</p>
-                    <Datepicker class="cursor-pointer" v-model="bookingDate.startDate" inputFormat="dd MMM" :lowerLimit="today"></Datepicker>
+                    <Datepicker :locale="localeLang === 'en' ? en : ru" class="cursor-pointer" v-model="bookingDate.startDate" inputFormat="dd MMM" :lowerLimit="today"></Datepicker>
                 </label>
             </div>
             <div class="booking-button-container">
                 <label class="cursor-pointer">
                     <p>{{ $t('check_out')}}</p>
-                    <Datepicker class="cursor-pointer" v-model="bookingDate.endDate" inputFormat="dd MMM" :lowerLimit="endDayLimit"></Datepicker>
+                    <Datepicker :locale="localeLang === 'en' ? en : ru" class="cursor-pointer" v-model="bookingDate.endDate" inputFormat="dd MMM" :lowerLimit="endDayLimit"></Datepicker>
                 </label>
             </div>
             <div class="booking-button-container">
@@ -41,10 +41,17 @@
 
 <script>
 import bookingMixins from "../../mixins/booking-mixins";
+import {enGB, ru} from "date-fns/locale";
 
     export default {
         name: "home-booking-component",
         mixins: [bookingMixins],
+        data() {
+            return {
+                ru: ru,
+                en: enGB
+            }
+        },
         methods: {
             animateBookingInputs() {
                 this.animationStarted = true

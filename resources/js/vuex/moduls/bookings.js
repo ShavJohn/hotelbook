@@ -1,7 +1,7 @@
 const today = new Date();
-today.setHours(0, 0, 0, 0)
+today.setHours(4, 0, 0, 0)
 const tomorrow = new Date();
-tomorrow.setHours(0, 0, 0, 0)
+tomorrow.setHours(4, 0, 0, 0)
 tomorrow.setDate(today.getDate()+1);
 export default {
     namespaced: true,
