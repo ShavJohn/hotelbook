@@ -8,7 +8,7 @@
                 <font-awesome-icon @click="openElementEditModal('#edit-elements-modal', 'header_home_background_image')" icon="fa-solid fa-pen-to-square" />
             </div>
         </template>
-        <div class="hotel-average-rating">
+        <div v-if="averageRating > 0" class="hotel-average-rating">
             <vue3-star-ratings v-model="averageRating"
                                starColor="#F5E81A"
                                controlBg="#d5d9e0"
