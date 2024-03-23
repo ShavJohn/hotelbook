@@ -19,26 +19,35 @@ export default {
     },
     computed: {
         bookings() {
-            return this.$store.getters['bookings/getBookings'].map(booking => ({
-                ...booking,
-                booked_room: booking.booked_room[0],
-            }));
+            if(this.$store.getters['bookings/getBookings'].length) {
+                return this.$store.getters['bookings/getBookings'].map(booking => ({
+                    ...booking,
+                    booked_room: booking.booked_room[0],
+                }));
+            }
+            return [];
         },
         roomsData() {
             return this.$store.getters['rooms/roomsGetter']
         },
         roomWithBooking() {
-            return this.roomsData.map(room => ({
-                ...room,
-                bookings: this.bookings.filter(booking => booking.booked_room && booking.booked_room.id === room.id),
-            }));
+            if(this.roomsData.length) {
+                return this.roomsData.map(room => ({
+                    ...room,
+                    bookings: this.bookings.filter(booking => booking.booked_room && booking.booked_room.id === room.id),
+                }));
+            }
+            return [];
         },
         bookingsData() {
-            return this.roomWithBooking.map((room) => {
-                return this.monthDays.map((date) => {
-                    return this.calculateBookingPosition(room, date);
+            if(this.roomWithBooking.length) {
+                return this.roomWithBooking.map((room) => {
+                    return this.monthDays.map((date) => {
+                        return this.calculateBookingPosition(room, date);
+                    });
                 });
-            });
+            }
+            return [];
         }
     },
     watch: {

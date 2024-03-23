@@ -11,10 +11,11 @@ import store from './vuex'
 import i18n from './i18n'
 import VueProgressBar from "@aacassandra/vue3-progressbar";
 import VueLazyLoad from "vue3-lazyload";
-import mian from './mixins/main';
+import main from './mixins/main';
 import {Chart, registerables } from 'chart.js';
 import {BarChart, LineChart, PieChart } from 'vue-chart-3';
-import { QuillEditor } from '@vueup/vue-quill'
+import { QuillEditor } from '@vueup/vue-quill';
+import vue3StarRatings from "vue3-star-ratings";
 
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
@@ -55,17 +56,16 @@ window.$ = window.jQuery = require("jquery");
 
 library.add(fas, far, fab)
 
-window.Vue = createApp({});
-
 import App from './views/App';
 
+window.Vue = createApp(App);
 
-Vue.component('App', App);
 Vue.component("font-awesome-icon", FontAwesomeIcon)
 Chart.register(...registerables);
 Vue.component('BarChart', BarChart);
 Vue.component('LineChart', LineChart);
 Vue.component('PieChart', PieChart);
+Vue.component("vue3-star-ratings", vue3StarRatings);
 
 const outside = {
     beforeMount: (el, binding) => {
@@ -89,7 +89,7 @@ Vue.component('Datepicker', Datepicker);
 
 Vue.component('QuillEditor', QuillEditor);
 
-Vue.mixin(mian)
+Vue.mixin(main)
 
 window.i18n = i18n;
 
@@ -103,7 +103,6 @@ Vue.use(VueLazyLoad, {
 })
 Vue.use(store)
 Vue.use(i18n)
-
 
 window.moment = moment
 

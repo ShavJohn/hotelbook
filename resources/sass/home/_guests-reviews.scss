@@ -1,0 +1,109 @@
+.guest-review-form-container {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+
+    .guest-review-form {
+        width: 80%;
+
+        .guest-review-form-item {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+
+            label {
+                width: 50%;
+                text-align: right;
+            }
+
+            input {
+                width: 50%;
+                padding: 10px 20px;
+                border: none;
+                background: #eee7e7;
+            }
+
+            textarea {
+                width: 50%;
+                resize: none;
+                background: #eee7e7;
+                border: none;
+                padding: 10px 20px;
+                max-height: 300px;
+                overflow-y: auto;
+            }
+
+            button {
+                border: none;
+                background: #C19B77;
+                padding: 10px 40px;
+                font-size: 14px;
+                font-weight: 600;
+                color: white;
+                letter-spacing: 2px;
+
+            }
+
+            svg  {
+                margin-right: 15px;
+            }
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.guest-review-container {
+    background-color: #f0f5f8;
+    padding: 40px 0;
+
+    .guest-review {
+        background-color: white;
+        padding: 20px;
+        width: 350px;
+
+        .guest-review-item {
+            margin-bottom: 20px;
+
+            &:last-of-type {
+                margin-bottom: 0;
+                display: flex;
+                align-items: center;
+
+                svg {
+                    font-size: 30px;
+                    margin-right: 20px;
+                    color: $dark-yellow;
+                }
+            }
+
+            svg  {
+                margin-right: 15px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 840px) {
+    .guest-review-form-container {
+        .guest-review-form {
+            .guest-review-form-item {
+                flex-wrap: wrap;
+
+                label {
+                    width: 100%;
+                    margin-bottom: 20px;
+                    text-align: left;
+                }
+
+                input, textarea {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

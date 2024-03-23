@@ -7,6 +7,7 @@ use App\Interfaces\EmailInterface;
 use App\Interfaces\GeneralSettingsInterface;
 use App\Interfaces\ImageInterface;
 use App\Interfaces\PostInterface;
+use App\Interfaces\ReviewInterface;
 use App\Interfaces\RoomFSTInterface;
 use App\Interfaces\RoomInterface;
 use App\Interfaces\RoomOptionsInterface;
@@ -16,6 +17,7 @@ use App\Repositories\EmailRepository;
 use App\Repositories\GeneralSettingsRepository;
 use App\Repositories\ImageRepository;
 use App\Repositories\PostRepository;
+use App\Repositories\ReviewRepository;
 use App\Repositories\RoomFSTRepository;
 use App\Repositories\RoomOptionsRepository;
 use App\Repositories\RoomRepository;
@@ -72,6 +74,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             StatisticsInterface::class,
             StatisticsRepository::class
+        );
+        $this->app->bind(
+            ReviewInterface::class,
+            ReviewRepository::class
         );
     }
 }

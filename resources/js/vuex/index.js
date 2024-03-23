@@ -11,6 +11,7 @@ import emails from "./moduls/emails";
 import bookings from "./moduls/bookings";
 import aboutUs from "./moduls/aboutUs";
 import statistics from "./moduls/statistics";
+import review from "./moduls/review";
 
 
 export default createStore({
@@ -26,6 +27,7 @@ export default createStore({
         emails,
         bookings,
         aboutUs,
-        statistics
+        statistics,
+        review
     }
 })

@@ -44,16 +44,13 @@ export default {
         },
     },
     methods: {
-        getGeneralData() {
-            this.$store.dispatch('generalSettings/getGeneralSettings').then(() => {
-                this.$store.dispatch('pageSettings/getPageSettings').then(() => {
-                    this.$store.dispatch('postActions/getAllPosts').then(() => {
-                        this.$store.dispatch('rooms/getRooms').then(() => {
-                            this.loader = false
-                        })
-                    })
-                })
-            })
+        async getGeneralData() {
+            await this.$store.dispatch('generalSettings/getGeneralSettings')
+            await this.$store.dispatch('pageSettings/getPageSettings')
+            await this.$store.dispatch('postActions/getAllPosts')
+            await this.$store.dispatch('rooms/getRooms')
+            await this.$store.dispatch('review/getReviews')
+            this.loader = false
         },
         countVisitors(){
             this.$store.dispatch('statistics/countVisitor')

@@ -2,7 +2,7 @@
     <div class="">
         <div class="bg-light-black padding-gigantic color-white hb-flex hb-justify-content-between hb-flex-wrap display-edit-elements">
             <div class="hb-width-50 hb-width-100-tablet margin-bottom-large-tablet">
-                <template v-if="footerData.footerText[localeLang].length">
+                <template v-if="footerData.footerText && footerData.footerText[localeLang] && footerData.footerText[localeLang].length">
                     <h2 class="margin-bottom font-500">{{ $t('about_us') }}</h2>
                     <p class="font-16 font-500 hb-width-70 line-height-25">{{ footerData.footerText[localeLang] }}</p>
                 </template>

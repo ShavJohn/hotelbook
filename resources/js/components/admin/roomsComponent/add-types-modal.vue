@@ -20,7 +20,7 @@
                 </div>
                 <div class="input-elements">
                     <span class="input-name">Type Count</span>
-                    <input type="text" id="type-description" name="type-description" placeholder="Enter Room Type count" v-model="fSTItem.size">
+                    <input type="number" id="type-description" name="type-description" placeholder="Enter Room Type count" v-model="fSTItem.size">
                 </div>
             </form>
         </template>

@@ -38,6 +38,10 @@ Route::group(['middleware' => 'api'], function() {
     Route::get('/get-room/{room}','App\Http\Controllers\RoomController@getRoom');
     Route::get('/check-available-room', 'App\Http\Controllers\RoomController@getAvailableRooms');
 
+    //Review
+    Route::get('/get-reviews', 'App\Http\Controllers\ReviewController@getReviews');
+    Route::post('/rate-hotel', 'App\Http\Controllers\ReviewController@rateHotel');
+
     //booking room
     Route::post('/booking-room', 'App\Http\Controllers\BookingController@makeBooking');
     Route::get('/get-bookings-list', 'App\Http\Controllers\BookingController@getBookings');
