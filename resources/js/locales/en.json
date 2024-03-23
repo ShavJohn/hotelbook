@@ -45,5 +45,18 @@
     "terms_and_conditions": "Terms and Conditions",
     "agree_to_terms_and_conditions": "Agree to terms and conditions",
     "confirm": "Confirm",
-    "close": "Close"
+    "close": "Close",
+    "review": {
+        "email_label": "Your Email you booked with",
+        "enter_email": "Enter your email",
+        "phone_label": "Your Phone number you booked with",
+        "enter_phone": "Enter your phone number",
+        "first_name_label": "Your First Name",
+        "enter_first_name": "Enter your firstname",
+        "last_name_label": "Your Last Name",
+        "enter_last_name": "Enter your lastname",
+        "review_label": "Your Review",
+        "enter_review": "Enter your Review",
+        "send_review": "Send Review"
+    }
 }

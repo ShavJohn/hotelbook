@@ -8,6 +8,17 @@
                 <font-awesome-icon @click="openElementEditModal('#edit-elements-modal', 'header_home_background_image')" icon="fa-solid fa-pen-to-square" />
             </div>
         </template>
+        <div class="hotel-average-rating">
+            <vue3-star-ratings v-model="averageRating"
+                               starColor="#F5E81A"
+                               controlBg="#d5d9e0"
+                               inactiveColor="#888888"
+                               :numberOfStars="5"
+                               starSize="30"
+                               controlColor="#d23c3c"
+                               controlSize="60"
+                               :disableClick="true" />
+        </div>
     </div>
 </template>
 
@@ -16,6 +27,11 @@ import AnimateText from "../mainComponents/animate-text";
 export default {
     name: "home-header",
     components: {AnimateText},
+    computed: {
+        averageRating() {
+            return this.$store.getters['review/getAverageRating']
+        }
+    }
 }
 </script>
 

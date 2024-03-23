@@ -28,10 +28,23 @@ class ReviewController extends Controller
 
             $reviews = $this->reviewRepo->getReviews();
 
+            $reviewSum = 0;
+
+            $reviewCount = count($reviews);
+
+            $reviews->each(function($review) use (&$reviewSum) {
+                $reviewSum += floatval($review['rating']);
+            });
+
+            $averageRating = $reviewCount > 0 ? $reviewSum / $reviewCount : 0;
+
+            $averageRating = number_format($averageRating, 1);
+
             return response()->json([
                 'success' => 1,
                 'type' => 'success',
                 'reviews'  => $reviews,
+                'average_rating' => $averageRating,
             ], 200);
         } catch (\Exception $exception) {
             Log::error($exception);

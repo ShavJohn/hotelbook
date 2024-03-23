@@ -3,6 +3,18 @@
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    position: relative;
+}
+
+.hotel-average-rating {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .vue3-star-ratings__icon {
+        margin-right: 15px !important;
+    }
 }
 
 

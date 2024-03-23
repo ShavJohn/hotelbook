@@ -2,20 +2,20 @@
     <div class="guest-review-form-container">
         <div class="guest-review-form">
             <div class="guest-review-form-item">
-                <label>Your Email you booked with</label>
-                <input type="email" placeholder="Enter your email" v-model="review.email">
+                <label>{{ $t('review.email_label') }}</label>
+                <input type="email" :placeholder="$t('review.enter_email')" v-model="review.email">
             </div>
             <div class="guest-review-form-item">
-                <label>Your Phone number you booked with</label>
-                <input type="number" placeholder="Enter your phone number" v-model="review.phone_number">
+                <label>{{ $t('review.phone_label') }}</label>
+                <input type="number" :placeholder="$t('review.enter_phone')" v-model="review.phone_number">
             </div>
             <div class="guest-review-form-item">
-                <label>Your First Name</label>
-                <input type="text" placeholder="Enter your name" v-model="review.fist_name">
+                <label>{{ $t('review.first_name_label') }}</label>
+                <input type="text" :placeholder="$t('review.enter_first_name')" v-model="review.fist_name">
             </div>
             <div class="guest-review-form-item">
-                <label>Your Last Name</label>
-                <input type="text" placeholder="Enter your name" v-model="review.last_name">
+                <label>{{ $t('review.last_name_label') }}</label>
+                <input type="text" :placeholder="$t('review.enter_last_name')" v-model="review.last_name">
             </div>
             <div class="guest-review-form-item">
                 <vue3-star-ratings v-model="review.rating"
@@ -29,11 +29,11 @@
                                :disableClick="false" />
             </div>
             <div class="guest-review-form-item">
-                <label>Enter Your Review</label>
-                <textarea placeholder="Enter your Review" v-model="review.review_text"></textarea>
+                <label>{{ $t('review.review_label') }}</label>
+                <textarea :placeholder="$t('review.enter_review')" v-model="review.review_text"></textarea>
             </div>
             <div class="guest-review-form-item">
-                <button @click="rateHotel">Send Review</button>
+                <button @click="rateHotel">{{ $t('review.send_review') }}</button>
             </div>
         </div>
     </div>
